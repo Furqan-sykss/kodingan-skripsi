@@ -1,0 +1,2 @@
+- ubah kode python dengan mengurangi pengambilan komentar , batasi dengan ambil hanya 2/3 vidio saja 
+- 
