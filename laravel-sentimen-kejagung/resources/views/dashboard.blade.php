@@ -1,15 +1,15 @@
 <x-app-layout>
-    <x-slot name="header">
+    {{-- <x-slot name="header">
         <h2 class="font-semibold text-xl text-gray-800 leading-tight">
             Dashboard
         </h2>
-    </x-slot>
+    </x-slot> --}}
 
     <div class="py-6 max-w-7xl mx-auto sm:px-6 lg:px-8">
 
         {{-- Header --}}
         <div class="flex items-center justify-between mb-4">
-            <h1 class="text-2xl font-semibold">Dashboard</h1>
+            <h1 class="text-2xl text-white font-semibold">Dashboard</h1>
             <p class="text-sm text-white">Login sebagai: <strong>{{ Auth::user()->name }}</strong>
                 ({{ Auth::user()->role }})</p>
         </div>
@@ -31,7 +31,7 @@
         </div>
         {{-- Dropdown pemilihan jumlah data --}}
         <form method="GET" action="{{ route('dashboard') }}" class="mb-4">
-            <label for="limit" class="text-sm mr-2 font-medium text-gray-700">Tampilkan:</label>
+            <label for="limit" class="text-sm mr-2 font-medium text-white">Tampilkan:</label>
             <select name="limit" id="limit" onchange="this.form.submit()" class="border rounded px-2 py-1">
                 <option value="100" {{ $limit == 100 ? 'selected' : '' }}>100</option>
                 <option value="200" {{ $limit == 200 ? 'selected' : '' }}>200</option>
