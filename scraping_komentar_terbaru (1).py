@@ -21,8 +21,6 @@ db = pymysql.connect(
 cursor = db.cursor()
 
 # Cek apakah video sudah ada
-
-
 def video_sudah_ada(video_url):
     sql = "SELECT COUNT(*) FROM komentar_mentah WHERE video_id = %s"
     cursor.execute(sql, (video_url,))
@@ -30,8 +28,6 @@ def video_sudah_ada(video_url):
     return result[0] > 0
 
 # Simpan komentar ke DB (versi terbaru dengan likes dan replies)
-
-
 def simpan_komentar(data):
     sql = """
         INSERT INTO komentar_mentah (
@@ -51,8 +47,6 @@ def simpan_komentar(data):
     db.commit()
 
 # Load cookie TikTok dari file JSON
-
-
 def load_cookies(driver, cookie_file):
     with open(cookie_file, "r") as f:
         cookies = json.load(f)
@@ -69,8 +63,6 @@ def load_cookies(driver, cookie_file):
                 print(f"Gagal tambah cookie: {cookie.get('name')} - {e}")
 
 # Fungsi scraping berdasarkan hashtag
-
-
 def scraping_by_hashtag(tagar, max_videos=3, max_comments=100):
     print(f"\n🔍 Scraping untuk tagar: #{tagar}")
     options = Options()
@@ -150,10 +142,10 @@ def scraping_by_hashtag(tagar, max_videos=3, max_comments=100):
 
     driver.quit()
 
-
 # Jalankan program utama
 if __name__ == '__main__':
-    hashtags = ["kinerja kejaksaan agung", "kejaksaan agung"]
+    hashtags = ["kinerja kejaksaan agung", "kinerjakejaksaanagung",
+                "kejaksaanagung", "kejagung", "kejaksaan"]
     for tag in hashtags:
         scraping_by_hashtag(tag)
     print("\n✅ Semua komentar berhasil disimpan ke database (komentar_mentah).")

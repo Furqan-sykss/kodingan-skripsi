@@ -1,3 +1,4 @@
+
 import re
 import json
 import time
@@ -20,7 +21,21 @@ db = pymysql.connect(
 )
 cursor = db.cursor()
 
-# Cek apakah video sudah ada
+
+def komentar_valid(teks):
+    teks = teks.strip()
+    if len(teks.split()) < 2:
+        return False
+    if re.fullmatch(r"[^\w\s]+", teks):  # hanya simbol/emot
+        return False
+    return True
+
+
+def komentar_sudah_ada(video_id, comment_text):
+    sql = "SELECT COUNT(*) FROM komentar_mentah WHERE video_id = %s AND comment = %s"
+    cursor.execute(sql, (video_id, comment_text))
+    result = cursor.fetchone()
+    return result[0] > 0
 
 
 def video_sudah_ada(video_url):
@@ -28,8 +43,6 @@ def video_sudah_ada(video_url):
     cursor.execute(sql, (video_url,))
     result = cursor.fetchone()
     return result[0] > 0
-
-# Simpan komentar ke DB (versi terbaru dengan likes dan replies)
 
 
 def simpan_komentar(data):
@@ -50,8 +63,6 @@ def simpan_komentar(data):
     ))
     db.commit()
 
-# Load cookie TikTok dari file JSON
-
 
 def load_cookies(driver, cookie_file):
     with open(cookie_file, "r") as f:
@@ -68,10 +79,8 @@ def load_cookies(driver, cookie_file):
             except Exception as e:
                 print(f"Gagal tambah cookie: {cookie.get('name')} - {e}")
 
-# Fungsi scraping berdasarkan hashtag
 
-
-def scraping_by_hashtag(tagar, max_videos=3, max_comments=100):
+def scraping_by_hashtag(tagar, max_videos=10, max_comments=100):
     print(f"\n🔍 Scraping untuk tagar: #{tagar}")
     options = Options()
     options.add_argument('--headless')
@@ -123,6 +132,16 @@ def scraping_by_hashtag(tagar, max_videos=3, max_comments=100):
 
             for item in comments:
                 raw_comment = item.get('text', '')
+                if not komentar_valid(raw_comment):
+                    print(
+                        f"⏩ Komentar tidak valid, dilewati: '{raw_comment.strip()}'")
+                    continue
+
+                full_video_id = f"@{username}/video/{aweme_id}"
+                if komentar_sudah_ada(full_video_id, raw_comment):
+                    print(f"⏩ Komentar duplikat ditemukan, dilewati.")
+                    continue
+
                 user_nickname = item.get('user', {}).get('nickname', 'unknown')
                 likes = item.get('digg_count', 0)
                 replies = item.get('reply_comment_total', 0)
@@ -132,7 +151,7 @@ def scraping_by_hashtag(tagar, max_videos=3, max_comments=100):
                     '%Y-%m-%d %H:%M:%S') if unix_date else None
 
                 simpan_komentar({
-                    "video_id": f"@{username}/video/{aweme_id}",
+                    "video_id": full_video_id,
                     "kata_kunci": tagar,
                     "username": user_nickname,
                     "comment": raw_comment,
@@ -151,9 +170,8 @@ def scraping_by_hashtag(tagar, max_videos=3, max_comments=100):
     driver.quit()
 
 
-# Jalankan program utama
 if __name__ == '__main__':
-    hashtags = ["kinerja kejaksaan agung", "kejaksaan agung"]
+    hashtags = ["kinerja kejaksaan agung", "kejaksaan agung", "kejagung"]
     for tag in hashtags:
         scraping_by_hashtag(tag)
     print("\n✅ Semua komentar berhasil disimpan ke database (komentar_mentah).")
