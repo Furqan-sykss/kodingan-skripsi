@@ -4,7 +4,8 @@ namespace App\Http\Controllers;
 
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Http\Request;
-use App\Models\KomentarTiktok;
+use App\Models\KomentarSentimenHybrid;
+use Illuminate\Support\Facades\DB;
 
 class DashboardController extends Controller
 {
@@ -13,12 +14,12 @@ class DashboardController extends Controller
         $limit = $request->input('limit', 100);
 
         $komentar = $limit === 'all'
-            ? KomentarTiktok::latest()->get()
-            : KomentarTiktok::latest()->take($limit)->get();
+            ? KomentarSentimenHybrid::orderBy('processed_at', 'desc')->get()
+            : KomentarSentimenHybrid::orderBy('processed_at', 'desc')->take($limit)->get();
 
-        $sentimentCounts = KomentarTiktok::selectRaw('hybrid_sentiment, COUNT(*) as total')
-            ->groupBy('hybrid_sentiment')
-            ->pluck('total', 'hybrid_sentiment');
+        $sentimentCounts = KomentarSentimenHybrid::selectRaw('final_hybrid_label as label, COUNT(*) as total')
+            ->groupBy('final_hybrid_label')
+            ->pluck('total', 'label');
 
         return view('dashboard', compact('komentar', 'limit', 'sentimentCounts'));
     }
