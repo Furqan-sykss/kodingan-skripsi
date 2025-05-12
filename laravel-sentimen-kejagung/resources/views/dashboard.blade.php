@@ -1,115 +1,50 @@
-<x-app-layout>
-    <div class="py-6 max-w-7xl mx-auto sm:px-6 lg:px-8">
+<!DOCTYPE html>
+<html>
 
-        {{-- Header --}}
-        <div class="flex items-center justify-between mb-4">
-            <h1 class="text-2xl text-white font-semibold">Dashboard</h1>
-            <p class="text-sm text-white">
-                Login sebagai: <strong>{{ Auth::user()->name }}</strong> ({{ Auth::user()->role }})
-            </p>
-        </div>
+<head>
+    <title>Dashboard - Scraping TikTok</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <style>
+        #loading {
+            display: none;
+            position: fixed;
+            left: 50%;
+            top: 50%;
+            transform: translate(-50%, -50%);
+        }
+    </style>
+</head>
 
-        {{-- Tombol Admin --}}
-        @if (Auth::user()->role === 'admin')
-            <div class="mb-6 space-x-2">
-                <a href="{{ route('scrape.run') }}" class="bg-blue-600 text-white px-4 py-2 rounded hover:bg-blue-700">🔄
-                    Scraping</a>
-                <a href="{{ route('labeling.index') }}"
-                    class="bg-yellow-500 text-white px-4 py-2 rounded hover:bg-yellow-600">📝 Label Manual</a>
-                <a href="{{ route('admin.analyze.vader') }}"
-                    class="bg-green-600 text-white px-4 py-2 rounded hover:bg-green-700">🧠 Analisis VADER</a>
-                <a href="{{ route('admin.analyze.indobert') }}"
-                    class="bg-purple-600 text-white px-4 py-2 rounded hover:bg-purple-700">🔍 Analisis IndoBERT</a>
-                <a href="{{ route('admin.analyze.hybrid') }}"
-                    class="bg-pink-600 text-white px-4 py-2 rounded hover:bg-pink-700">♻️ Proses Hybrid</a>
-            </div>
-        @endif
+<body>
 
-        {{-- Pie Chart --}}
-        <div class="flex justify-center mb-6">
-            <div class="w-[300px] h-[300px] bg-white rounded shadow p-2">
-                <canvas id="sentimentChart" width="300" height="300"></canvas>
-            </div>
-        </div>
+    <button id="scrapeButton">Scrape Sekarang</button>
+    <img id="loading" src="{{ asset('images/loading.gif') }}" alt="Loading...">
 
-        {{-- Filter jumlah data --}}
-        <form method="GET" action="{{ route('dashboard') }}" class="mb-4">
-            <label for="limit" class="text-sm mr-2 font-medium text-white">Tampilkan:</label>
-            <select name="limit" id="limit" onchange="this.form.submit()" class="border rounded px-2 py-1">
-                <option value="100" {{ $limit == 100 ? 'selected' : '' }}>100</option>
-                <option value="200" {{ $limit == 200 ? 'selected' : '' }}>200</option>
-                <option value="400" {{ $limit == 400 ? 'selected' : '' }}>400</option>
-                <option value="600" {{ $limit == 600 ? 'selected' : '' }}>600</option>
-                <option value="all" {{ $limit == 'all' ? 'selected' : '' }}>Semua</option>
-            </select>
-        </form>
-
-        {{-- Tabel Komentar --}}
-        <div class="overflow-x-auto bg-white shadow rounded-lg">
-            <table class="min-w-full table-auto border border-gray-200 text-sm">
-                <thead class="bg-gray-100">
-                    <tr class="text-left">
-                        <th class="px-4 py-2 border">No</th>
-                        <th class="px-4 py-2 border">Username</th>
-                        <th class="px-4 py-2 border">Komentar</th>
-                        <th class="px-4 py-2 border">Tanggal</th>
-                        <th class="px-4 py-2 border">Sentimen (VADER)</th>
-                        <th class="px-4 py-2 border">Sentimen (IndoBERT)</th>
-                        <th class="px-4 py-2 border">Hybrid</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    @foreach ($komentar as $i => $item)
-                        <tr class="{{ $loop->even ? 'bg-gray-50' : '' }}">
-                            <td class="px-4 py-2 border">{{ $i + 1 }}</td>
-                            <td class="px-4 py-2 border">{{ $item->username }}</td>
-                            <td class="px-4 py-2 border">{{ $item->comment }}</td>
-                            <td class="px-4 py-2 border">{{ $item->tanggal_komentar }}</td>
-                            <td class="px-4 py-2 border text-center">{{ $item->vader_label }}</td>
-                            <td class="px-4 py-2 border text-center">{{ $item->indobert_label }}</td>
-                            <td class="px-4 py-2 border text-center font-semibold">
-                                @if ($item->final_hybrid_label === 'positif')
-                                    <span class="text-green-600">Positif</span>
-                                @elseif($item->final_hybrid_label === 'negatif')
-                                    <span class="text-red-600">Negatif</span>
-                                @else
-                                    <span class="text-gray-600">Netral</span>
-                                @endif
-                            </td>
-                        </tr>
-                    @endforeach
-                </tbody>
-            </table>
-        </div>
-    </div>
-
-    {{-- Chart.js --}}
-    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     <script>
-        const data = {
-            labels: ['Positif', 'Netral', 'Negatif'],
-            datasets: [{
-                label: 'Distribusi Sentimen',
-                data: [
-                    {{ $sentimentCounts['positif'] ?? 0 }},
-                    {{ $sentimentCounts['netral'] ?? 0 }},
-                    {{ $sentimentCounts['negatif'] ?? 0 }}
-                ],
-                backgroundColor: ['#10b981', '#d1d5db', '#ef4444']
-            }]
-        };
-
-        new Chart(document.getElementById('sentimentChart'), {
-            type: 'pie',
-            data: data,
-            options: {
-                responsive: true,
-                plugins: {
-                    legend: {
-                        position: 'bottom'
+        $('#scrapeButton').on('click', function() {
+            $('#loading').show();
+            $.ajax({
+                url: "http://127.0.0.1:5000/scrape",
+                type: "POST",
+                headers: {
+                    'X-CSRF-TOKEN': '{{ csrf_token() }}' // ⬅️ Tambahkan ini
+                },
+                success: function(response) {
+                    $('#loading').hide();
+                    alert(response.message);
+                    if (confirm("Scraping berhasil! Ingin melihat hasil?")) {
+                        window.location.href = "{{ route('scraping.result') }}";
                     }
+                },
+                error: function(xhr, status, error) {
+                    $('#loading').hide();
+                    alert("Tidak dapat menghubungi server. Error: " + status);
                 }
-            }
+            });
         });
     </script>
-</x-app-layout>
+
+
+</body>
+
+</html>
