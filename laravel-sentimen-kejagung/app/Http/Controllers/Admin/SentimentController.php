@@ -3,37 +3,63 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\Http;
 use Illuminate\Http\Request;
 
 class SentimentController extends Controller
 {
     public function analyzeVader()
     {
-        $output = shell_exec('python3 sentiment_vader.py');
-        return view('admin.feedback', [
-            'message' => '✅ Analisis VADER selesai!',
-            'next' => route('admin.analyze.indobert'),
-            'next_label' => 'Lanjut Analisis IndoBERT'
-        ]);
+        try {
+            // 🔄 Mengirim permintaan ke Flask API untuk Analisis VADER
+            $response = Http::post('http://127.0.0.1:5000/analyze/vader');
+
+            if ($response->successful()) {
+                return redirect()->route('scraping.result')
+                    ->with('success', '✅ Analisis VADER berhasil dijalankan!');
+            } else {
+                return redirect()->route('scraping.result')
+                    ->with('error', 'Gagal menjalankan Analisis VADER.');
+            }
+        } catch (\Exception $e) {
+            return redirect()->route('scraping.result')
+                ->with('error', 'Terjadi kesalahan: ' . $e->getMessage());
+        }
     }
 
     public function analyzeIndobert()
     {
-        $output = shell_exec('python3 sentiment_indobert.py');
-        return view('admin.feedback', [
-            'message' => '✅ Analisis IndoBERT selesai!',
-            'next' => route('admin.analyze.hybrid'),
-            'next_label' => 'Lanjut Proses Hybrid'
-        ]);
+        try {
+            $response = Http::post('http://127.0.0.1:5000/analyze/indobert');
+
+            if ($response->successful()) {
+                return redirect()->route('scraping.result')
+                    ->with('success', '✅ Analisis IndoBERT berhasil dijalankan!');
+            } else {
+                return redirect()->route('scraping.result')
+                    ->with('error', 'Gagal menjalankan Analisis IndoBERT.');
+            }
+        } catch (\Exception $e) {
+            return redirect()->route('scraping.result')
+                ->with('error', 'Terjadi kesalahan: ' . $e->getMessage());
+        }
     }
 
     public function analyzeHybrid()
     {
-        $output = shell_exec('python3 sentiment_hybrid.py');
-        return view('admin.feedback', [
-            'message' => '✅ Analisis Hybrid selesai!',
-            'next' => route('dashboard'),
-            'next_label' => 'Kembali ke Dashboard'
-        ]);
+        try {
+            $response = Http::post('http://127.0.0.1:5000/analyze/hybrid');
+
+            if ($response->successful()) {
+                return redirect()->route('scraping.result')
+                    ->with('success', '✅ Analisis Hybrid berhasil dijalankan!');
+            } else {
+                return redirect()->route('scraping.result')
+                    ->with('error', 'Gagal menjalankan Analisis Hybrid.');
+            }
+        } catch (\Exception $e) {
+            return redirect()->route('scraping.result')
+                ->with('error', 'Terjadi kesalahan: ' . $e->getMessage());
+        }
     }
 }

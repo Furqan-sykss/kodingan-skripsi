@@ -2,8 +2,9 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\ProfileController;
-use Illuminate\Support\Facades\DB;
+// use Illuminate\Support\Facades\DB;
 use App\Http\Controllers\DashboardController;
+use App\Http\Controllers\Admin\ResultController;
 use App\Http\Controllers\Admin\ScrapeController;
 use App\Http\Controllers\Admin\LabelingController;
 use App\Http\Controllers\Admin\SentimentController;
@@ -24,17 +25,16 @@ Route::middleware(['auth'])->group(function () {
 
     Route::middleware([AdminMiddleware::class])->group(function () {
         Route::post('/scrape', [ScrapeController::class, 'scrape'])->name('scrape');
-        Route::get('/result', function () {
-            $komentar = DB::table('komentar_mentah')->get();
-            return view('admin.result', compact('komentar'));
-        })->name('scraping.result');
+        Route::get('/result', [ResultController::class, 'index'])->name('scraping.result');
+
+
 
         Route::get('/admin/labeling', [LabelingController::class, 'index'])->name('labeling.index');
         Route::post('/admin/labeling/update', [LabelingController::class, 'update'])->name('labeling.update');
 
-        Route::get('/admin/analyze/vader', [SentimentController::class, 'analyzeVader'])->name('admin.analyze.vader');
-        Route::get('/admin/analyze/indobert', [SentimentController::class, 'analyzeIndobert'])->name('admin.analyze.indobert');
-        Route::get('/admin/analyze/hybrid', [SentimentController::class, 'analyzeHybrid'])->name('admin.analyze.hybrid');
+        Route::post('/admin/analyze/vader', [SentimentController::class, 'analyzeVader'])->name('admin.analyze.vader');
+        Route::post('/admin/analyze/indobert', [SentimentController::class, 'analyzeIndobert'])->name('admin.analyze.indobert');
+        Route::post('/admin/analyze/hybrid', [SentimentController::class, 'analyzeHybrid'])->name('admin.analyze.hybrid');
 
 
         // // 🔐 Route khusus admin (Scraping, Labeling, Analisis)
@@ -51,8 +51,3 @@ Route::middleware(['auth'])->group(function () {
 });
 
 require __DIR__ . '/auth.php';
-
-use App\Http\Controllers\ScrapingController;
-
-Route::post('/scrape', [ScrapingController::class, 'scrape'])->name('scrape');
-Route::get('/result', [ScrapingController::class, 'result'])->name('scraping.result');
