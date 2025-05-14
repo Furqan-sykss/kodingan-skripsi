@@ -3,8 +3,11 @@ from flask_cors import CORS
 import subprocess
 import os
 
-# ✅ Import file sentiment_vader
+# ✅ Import file analisis_sentimen
 from sentiment_vader import run_vader_analysis
+from sentiment_indobert import run_indobert_analysis  # ⬅️ Tambahkan ini nanti
+from sentiment_hybrid import run_hybrid_analysis  # ⬅️ tambahkan ini
+
 
 app = Flask(__name__)
 CORS(app)  # <-- Aktifkan CORS di sini
@@ -42,6 +45,31 @@ def analyze_vader():
     except Exception as e:
         return jsonify({"error": str(e)}), 500
 
+# ✅ Route Baru untuk Analisis IndoBERT
+
+
+@app.route('/analyze/indobert', methods=['POST'])
+def analyze_indobert():
+    try:
+        run_indobert_analysis()
+        return jsonify({"message": "Analisis IndoBERT berhasil!"}), 200
+    except Exception as e:
+        return jsonify({"error": str(e)}), 500
+
+# ✅ Route baru untuk Analisis Hybrid
+
+
+@app.route('/analyze/hybrid', methods=['POST'])
+def analyze_hybrid():
+    try:
+        run_hybrid_analysis()
+        return jsonify({"message": "Analisis Hybrid berhasil!"}), 200
+    except Exception as e:
+        return jsonify({"error": str(e)}), 500
+
 
 if __name__ == '__main__':
     app.run(port=5000)
+# if __name__ == '__main__':
+#     # Tambahkan host='0.0.0.0' agar bisa menerima request lebih baik
+#     app.run(host='0.0.0.0', port=5000, debug=True)

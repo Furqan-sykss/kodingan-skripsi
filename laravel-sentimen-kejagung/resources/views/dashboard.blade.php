@@ -156,66 +156,57 @@
     <script>
         $('#vaderButton').on('click', function(e) {
             e.preventDefault();
-            $('#loadingVader').show(); // Menampilkan GIF Loading
+            $('#loadingVader').show();
 
             $.ajax({
-                url: "{{ route('admin.analyze.vader') }}",
+                url: "http://127.0.0.1:5000/analyze/vader", // ⬅️ Ganti URL langsung ke Flask
                 type: "POST",
-                headers: {
-                    'X-CSRF-TOKEN': '{{ csrf_token() }}'
-                },
                 success: function(response) {
-                    $('#loadingVader').hide(); // Sembunyikan GIF Loading
-                    alert("Analisis VADER berhasil!");
+                    $('#loadingVader').hide();
+                    alert(response.message);
                     window.location.href = "{{ route('scraping.result') }}";
                 },
                 error: function(xhr, status, error) {
-                    $('#loadingVader').hide(); // Sembunyikan GIF Loading
-                    alert("Terjadi kesalahan saat analisis VADER. Silakan coba lagi.");
+                    $('#loadingVader').hide();
+                    alert("Terjadi kesalahan saat analisis VADER. Error: " + error);
                 }
             });
         });
 
         $('#indobertButton').on('click', function(e) {
             e.preventDefault();
-            $('#loadingIndobert').show(); // Menampilkan GIF Loading
+            $('#loadingIndobert').show();
 
             $.ajax({
-                url: "{{ route('admin.analyze.indobert') }}",
+                url: "http://127.0.0.1:5000/analyze/indobert", // Langsung ke Flask
                 type: "POST",
-                headers: {
-                    'X-CSRF-TOKEN': '{{ csrf_token() }}'
-                },
                 success: function(response) {
-                    $('#loadingIndobert').hide(); // Sembunyikan GIF Loading
-                    alert("Analisis IndoBERT berhasil!");
+                    $('#loadingIndobert').hide();
+                    alert(response.message);
                     window.location.href = "{{ route('scraping.result') }}";
                 },
                 error: function(xhr, status, error) {
-                    $('#loadingIndobert').hide(); // Sembunyikan GIF Loading
-                    alert("Terjadi kesalahan saat analisis IndoBERT. Silakan coba lagi.");
+                    $('#loadingIndobert').hide();
+                    alert("Terjadi kesalahan saat analisis IndoBERT: " + error);
                 }
             });
         });
 
         $('#hybridButton').on('click', function(e) {
             e.preventDefault();
-            $('#loadingHybrid').show(); // Menampilkan GIF Loading
+            $('#loadingHybrid').show();
 
             $.ajax({
-                url: "{{ route('admin.analyze.hybrid') }}",
+                url: "http://127.0.0.1:5000/analyze/hybrid", // Langsung ke Flask API
                 type: "POST",
-                headers: {
-                    'X-CSRF-TOKEN': '{{ csrf_token() }}'
-                },
                 success: function(response) {
-                    $('#loadingHybrid').hide(); // Sembunyikan GIF Loading
-                    alert("Proses Hybrid berhasil!");
+                    $('#loadingHybrid').hide();
+                    alert(response.message);
                     window.location.href = "{{ route('scraping.result') }}";
                 },
                 error: function(xhr, status, error) {
-                    $('#loadingHybrid').hide(); // Sembunyikan GIF Loading
-                    alert("Terjadi kesalahan saat proses Hybrid. Silakan coba lagi.");
+                    $('#loadingHybrid').hide();
+                    alert("Terjadi kesalahan saat proses Hybrid: " + error);
                 }
             });
         });
