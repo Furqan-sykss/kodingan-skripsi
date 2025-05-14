@@ -1334,3 +1334,8 @@ not sat set like that
 2025-05-15 00:48:24,162 - DEBUG - https://huggingface.co:443 "HEAD /w11wo/indonesian-roberta-base-sentiment-classifier/resolve/main/config.json HTTP/11" 200 0
 2025-05-15 00:48:26,272 - DEBUG - https://huggingface.co:443 "HEAD /w11wo/indonesian-roberta-base-sentiment-classifier/resolve/main/tokenizer_config.json HTTP/11" 200 0
 2025-05-15 00:48:39,977 - INFO - 127.0.0.1 - - [15/May/2025 00:48:39] "POST /analyze/indobert HTTP/1.1" 200 -
+2025-05-15 01:02:29,561 - INFO - \U0001f680 Memulai proses analisis VADER...
+2025-05-15 01:02:31,731 - INFO - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on http://127.0.0.1:5000
+2025-05-15 01:02:31,732 - INFO - [33mPress CTRL+C to quit[0m
+2025-05-15 01:03:45,815 - INFO - 127.0.0.1 - - [15/May/2025 01:03:45] "POST /analyze/hybrid HTTP/1.1" 200 -
