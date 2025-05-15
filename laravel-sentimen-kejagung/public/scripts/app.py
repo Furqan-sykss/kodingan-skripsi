@@ -69,7 +69,7 @@ def analyze_hybrid():
 
 
 if __name__ == '__main__':
-    app.run(port=5000)
+    app.run(port=5000, debug=True)
 # if __name__ == '__main__':
 #     # Tambahkan host='0.0.0.0' agar bisa menerima request lebih baik
 #     app.run(host='0.0.0.0', port=5000, debug=True)

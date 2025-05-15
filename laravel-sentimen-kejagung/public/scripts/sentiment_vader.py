@@ -1,4 +1,5 @@
 from sqlalchemy import create_engine, text
+from sqlalchemy.orm import sessionmaker
 from deep_translator import GoogleTranslator
 from nltk.sentiment.vader import SentimentIntensityAnalyzer
 from datetime import datetime
@@ -24,6 +25,7 @@ db_config = {
 }
 db_url = f"mysql+pymysql://{db_config['user']}:{db_config['password']}@{db_config['host']}:{db_config['port']}/{db_config['database']}"
 engine = create_engine(db_url)
+Session = sessionmaker(bind=engine)
 
 # 🔄 Query untuk mengambil komentar yang belum dianalisis
 select_query = """
@@ -40,8 +42,7 @@ def bersihkan_teks(teks):
     import re
     teks = re.sub(r"http\S+|@\S+|#[A-Za-z0-9_]+", "", teks)
     teks = re.sub(r"[^a-zA-Z\s]", " ", teks)
-    teks = teks.lower()
-    return teks.strip()
+    return teks.lower().strip()
 
 # ✅ Fungsi untuk menterjemahkan komentar ke Bahasa Inggris
 
@@ -54,38 +55,31 @@ def translate_comment(teks):
         return translated
     except Exception as e:
         logging.error(f"❌ Terjadi kesalahan saat translate: {e}")
-        return teks  # Jika gagal, kembalikan teks asli
+        return teks
 
 # ✅ Fungsi untuk melakukan analisis sentimen
 
 
 def analyze_sentiment(teks):
     scores = analyzer.polarity_scores(teks)
-    pos = scores['pos']
-    neu = scores['neu']
-    neg = scores['neg']
     compound = scores['compound']
-
-    # Label sentimen
+    label = 'netral'
     if compound >= 0.05:
-        vader_label = 'positif'
+        label = 'positif'
     elif compound <= -0.05:
-        vader_label = 'negatif'
-    else:
-        vader_label = 'netral'
-
+        label = 'negatif'
     return {
-        "positif": pos,
-        "netral": neu,
-        "negatif": neg,
+        "positif": scores['pos'],
+        "netral": scores['neu'],
+        "negatif": scores['neg'],
         "compound": compound,
-        "label": vader_label
+        "label": label
     }
 
 # ✅ Fungsi untuk menyimpan hasil analisis ke database
 
 
-def save_to_database(conn, data):
+def save_to_database(session, data):
     insert_query = """
         INSERT INTO komentar_sentimen_vader (
             mentah_id, video_id, username, tanggal_komentar, comment,
@@ -98,23 +92,23 @@ def save_to_database(conn, data):
         )
     """
     try:
-        conn.execute(text(insert_query), data)
+        session.execute(text(insert_query), data)
         logging.info(f"✅ Data berhasil disimpan untuk ID: {data['mentah_id']}")
     except Exception as e:
         logging.error(f"❌ Gagal menyimpan ke database: {e}")
+        raise
 
 # ✅ Fungsi untuk mengupdate status di database
 
 
-def update_status(conn, mentah_id):
+def update_status(session, mentah_id):
     update_query = """
         UPDATE komentar_mentah
         SET is_processed_vader = 1
         WHERE id = :id
     """
     try:
-        result = conn.execute(text(update_query), {"id": mentah_id})
-        conn.commit()
+        result = session.execute(text(update_query), {"id": mentah_id})
         if result.rowcount > 0:
             logging.info(
                 f"✅ Status is_processed_vader = 1 untuk ID {mentah_id}")
@@ -122,6 +116,7 @@ def update_status(conn, mentah_id):
             logging.warning(f"⚠️ ID {mentah_id} tidak ditemukan untuk update.")
     except Exception as e:
         logging.error(f"❌ Gagal update status: {e}")
+        raise
 
 # ✅ Fungsi utama yang akan dipanggil oleh Flask API
 
@@ -130,8 +125,11 @@ def run_vader_analysis():
     print("🚀 Memulai Analisis VADER...")
     logging.info("🚀 Memulai Analisis VADER...")
 
-    with engine.begin() as conn:
-        rows = conn.execute(text(select_query)).fetchall()
+    # ✅ Mulai sesi SQLAlchemy
+    session = Session()
+
+    try:
+        rows = session.execute(text(select_query)).fetchall()
 
         for row in rows:
             try:
@@ -149,7 +147,7 @@ def run_vader_analysis():
                 # Analisis Sentimen
                 sentiment_result = analyze_sentiment(translated_comment)
 
-                # Data untuk diinsert ke database
+                # Data untuk disimpan ke database
                 data_to_save = {
                     "mentah_id": mentah_id,
                     "video_id": video_id,
@@ -166,14 +164,25 @@ def run_vader_analysis():
                     "created_at": datetime.now()
                 }
 
-                # ✅ Simpan ke database
-                save_to_database(conn, data_to_save)
+                # ✅ Simpan hasil analisis
+                save_to_database(session, data_to_save)
 
                 # ✅ Update status komentar
-                update_status(conn, mentah_id)
+                update_status(session, mentah_id)
+
+                # ✅ Commit setelah selesai per baris
+                session.commit()
+
+                logging.info(f"✅ Berhasil memproses komentar ID {mentah_id}")
+                print(f"✅ Berhasil memproses komentar ID {mentah_id}")
 
             except Exception as e:
                 logging.error(
-                    f"❌ Terjadi error saat memproses komentar ID {row.id}: {e}")
-    print("✅ Analisis VADER selesai.")
-    logging.info("✅ Analisis VADER selesai.")
+                    f"❌ Error saat memproses komentar ID {row.id}: {e}")
+                session.rollback()
+                print(f"❌ Error saat memproses komentar ID {row.id}: {e}")
+
+    finally:
+        session.close()
+        print("✅ Analisis VADER selesai.")
+        logging.info("✅ Analisis VADER selesai.")
