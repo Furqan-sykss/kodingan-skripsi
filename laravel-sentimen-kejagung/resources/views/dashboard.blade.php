@@ -30,21 +30,29 @@
                 <img id="loading" src="{{ asset('images/loading.gif') }}" alt="Loading..."
                     style="display:none; margin-left: 10px;">
 
-                <a href="{{ route('labeling.index') }}"
-                    class="bg-yellow-500 text-white px-4 py-2 rounded hover:bg-yellow-600">📝 Label Manual</a>
+                {{-- <a href="{{ route('labeling.index') }}"
+                    class="bg-yellow-500 text-white px-4 py-2 rounded hover:bg-yellow-600">📝 Label Manual</a> --}}
+
+                {{-- tombol analisis ML --}}
+                <button id="btn-analisis-ml" class="bg-blue-600 text-white px-4 py-2 rounded hover:bg-blue-700">
+                    Analisis ML
+                </button>
+                <img id="loading" src="{{ asset('images/loading.gif') }}" alt="Loading..."
+                    style="display:none; margin-left: 10px;">
+
 
                 {{-- Tombol VADER --}}
-                <form id="vaderForm" action="{{ route('admin.analyze.vader') }}" method="POST" style="display:inline;">
+                {{-- <form id="vaderForm" action="{{ route('admin.analyze.vader') }}" method="POST" style="display:inline;">
                     @csrf
                     <button id="vaderButton" class="bg-green-600 text-white px-4 py-2 rounded hover:bg-green-700">
                         🧠 Analisis VADER
                     </button>
                     <img id="loadingVader" src="{{ asset('images/loading.gif') }}" alt="Loading..."
                         style="display:none; margin-left: 10px;">
-                </form>
+                </form> --}}
 
                 {{-- Tombol IndoBERT --}}
-                <form id="indobertForm" action="{{ route('admin.analyze.indobert') }}" method="POST"
+                {{-- <form id="indobertForm" action="{{ route('admin.analyze.indobert') }}" method="POST"
                     style="display:inline;">
                     @csrf
                     <button id="indobertButton" class="bg-purple-600 text-white px-4 py-2 rounded hover:bg-purple-700">
@@ -52,10 +60,10 @@
                     </button>
                     <img id="loadingIndobert" src="{{ asset('images/loading.gif') }}" alt="Loading..."
                         style="display:none; margin-left: 10px;">
-                </form>
+                </form> --}}
 
                 {{-- Tombol Hybrid --}}
-                <form id="hybridForm" action="{{ route('admin.analyze.hybrid') }}" method="POST"
+                {{-- <form id="hybridForm" action="{{ route('admin.analyze.hybrid') }}" method="POST"
                     style="display:inline;">
                     @csrf
                     <button id="hybridButton" class="bg-pink-600 text-white px-4 py-2 rounded hover:bg-pink-700">
@@ -63,7 +71,7 @@
                     </button>
                     <img id="loadingHybrid" src="{{ asset('images/loading.gif') }}" alt="Loading..."
                         style="display:none; margin-left: 10px;">
-                </form>
+                </form> --}}
 
             </div>
         @endif
@@ -85,9 +93,14 @@
                 <option value="600" {{ $limit == 600 ? 'selected' : '' }}>600</option>
                 <option value="all" {{ $limit == 'all' ? 'selected' : '' }}>Semua</option>
             </select>
+
+            {{-- Menampilkan Total Data --}}
+            <p class="text-sm ml-4 font-medium text-white">
+                Total Data: <strong>{{ $totalData }}</strong>
+            </p>
         </form>
 
-        {{-- Tabel Komentar --}}
+        {{-- Tabel Komentar ML --}}
         <div class="overflow-x-auto bg-white shadow rounded-lg">
             <table class="min-w-full table-auto border border-gray-200 text-sm">
                 <thead class="bg-gray-100">
@@ -96,9 +109,8 @@
                         <th class="px-4 py-2 border">Username</th>
                         <th class="px-4 py-2 border">Komentar</th>
                         <th class="px-4 py-2 border">Tanggal</th>
-                        <th class="px-4 py-2 border">Sentimen (VADER)</th>
-                        <th class="px-4 py-2 border">Sentimen (IndoBERT)</th>
-                        <th class="px-4 py-2 border">Hybrid</th>
+                        <th class="px-4 py-2 border">Label ML</th>
+                        <th class="px-4 py-2 border">Confidence Score</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -108,22 +120,23 @@
                             <td class="px-4 py-2 border">{{ $item->username }}</td>
                             <td class="px-4 py-2 border">{{ $item->comment }}</td>
                             <td class="px-4 py-2 border">{{ $item->tanggal_komentar }}</td>
-                            <td class="px-4 py-2 border text-center">{{ $item->vader_label }}</td>
-                            <td class="px-4 py-2 border text-center">{{ $item->indobert_label }}</td>
-                            <td class="px-4 py-2 border text-center font-semibold">
-                                @if ($item->final_hybrid_label === 'positif')
+                            <td class="px-4 py-2 border text-center">
+                                @if ($item->predicted_label === 'positif')
                                     <span class="text-green-600">Positif</span>
-                                @elseif($item->final_hybrid_label === 'negatif')
+                                @elseif($item->predicted_label === 'negatif')
                                     <span class="text-red-600">Negatif</span>
                                 @else
                                     <span class="text-gray-600">Netral</span>
                                 @endif
+                            </td>
+                            <td class="px-4 py-2 border text-center">{{ number_format($item->confidence_score, 2) }}
                             </td>
                         </tr>
                     @endforeach
                 </tbody>
             </table>
         </div>
+
     </div>
 
     {{-- Script AJAX Scraping --}}
@@ -153,63 +166,84 @@
 
 
     {{-- Script AJAX analisis sentimen --}}
-    <script>
-        $('#vaderButton').on('click', function(e) {
-            e.preventDefault();
-            $('#loadingVader').show();
-
-            $.ajax({
-                url: "http://127.0.0.1:5000/analyze/vader", // ⬅️ Ganti URL langsung ke Flask
-                type: "POST",
-                success: function(response) {
-                    $('#loadingVader').hide();
-                    alert(response.message);
-                    window.location.href = "{{ route('scraping.result') }}";
-                },
-                error: function(xhr, status, error) {
-                    $('#loadingVader').hide();
-                    alert("Terjadi kesalahan saat analisis VADER. Error: " + error);
-                }
-            });
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js">
+        $('#btn-analisis-ml').click(function() {
+            if (confirm("Yakin ingin melakukan analisis ML pada 400 data terbaru?")) {
+                $.ajax({
+                    url: "http://127.0.0.1:5000/api/analyze-ml",
+                    type: "GET",
+                    success: function(response) {
+                        alert(response.message);
+                        console.log(response.output);
+                        // Refresh halaman untuk memuat hasil terbaru
+                        window.location.reload();
+                    },
+                    error: function(xhr, status, error) {
+                        alert("Terjadi kesalahan: " + error);
+                        console.error(xhr.responseText);
+                    }
+                });
+            }
         });
 
-        $('#indobertButton').on('click', function(e) {
-            e.preventDefault();
-            $('#loadingIndobert').show();
 
-            $.ajax({
-                url: "http://127.0.0.1:5000/analyze/indobert", // Langsung ke Flask
-                type: "POST",
-                success: function(response) {
-                    $('#loadingIndobert').hide();
-                    alert(response.message);
-                    window.location.href = "{{ route('scraping.result') }}";
-                },
-                error: function(xhr, status, error) {
-                    $('#loadingIndobert').hide();
-                    alert("Terjadi kesalahan saat analisis IndoBERT: " + error);
-                }
-            });
-        });
 
-        $('#hybridButton').on('click', function(e) {
-            e.preventDefault();
-            $('#loadingHybrid').show();
+        // $('#vaderButton').on('click', function(e) {
+        //     e.preventDefault();
+        //     $('#loadingVader').show();
 
-            $.ajax({
-                url: "http://127.0.0.1:5000/analyze/hybrid", // Langsung ke Flask API
-                type: "POST",
-                success: function(response) {
-                    $('#loadingHybrid').hide();
-                    alert(response.message);
-                    window.location.href = "{{ route('scraping.result') }}";
-                },
-                error: function(xhr, status, error) {
-                    $('#loadingHybrid').hide();
-                    alert("Terjadi kesalahan saat proses Hybrid: " + error);
-                }
-            });
-        });
+        //     $.ajax({
+        //         url: "http://127.0.0.1:5000/analyze/vader", // ⬅️ Ganti URL langsung ke Flask
+        //         type: "POST",
+        //         success: function(response) {
+        //             $('#loadingVader').hide();
+        //             alert(response.message);
+        //             window.location.href = "{{ route('scraping.result') }}";
+        //         },
+        //         error: function(xhr, status, error) {
+        //             $('#loadingVader').hide();
+        //             alert("Terjadi kesalahan saat analisis VADER. Error: " + error);
+        //         }
+        //     });
+        // });
+
+        // $('#indobertButton').on('click', function(e) {
+        //     e.preventDefault();
+        //     $('#loadingIndobert').show();
+
+        //     $.ajax({
+        //         url: "http://127.0.0.1:5000/analyze/indobert", // Langsung ke Flask
+        //         type: "POST",
+        //         success: function(response) {
+        //             $('#loadingIndobert').hide();
+        //             alert(response.message);
+        //             window.location.href = "{{ route('scraping.result') }}";
+        //         },
+        //         error: function(xhr, status, error) {
+        //             $('#loadingIndobert').hide();
+        //             alert("Terjadi kesalahan saat analisis IndoBERT: " + error);
+        //         }
+        //     });
+        // });
+
+        // $('#hybridButton').on('click', function(e) {
+        //     e.preventDefault();
+        //     $('#loadingHybrid').show();
+
+        //     $.ajax({
+        //         url: "http://127.0.0.1:5000/analyze/hybrid", // Langsung ke Flask API
+        //         type: "POST",
+        //         success: function(response) {
+        //             $('#loadingHybrid').hide();
+        //             alert(response.message);
+        //             window.location.href = "{{ route('scraping.result') }}";
+        //         },
+        //         error: function(xhr, status, error) {
+        //             $('#loadingHybrid').hide();
+        //             alert("Terjadi kesalahan saat proses Hybrid: " + error);
+        //         }
+        //     });
+        // });
     </script>
 
 

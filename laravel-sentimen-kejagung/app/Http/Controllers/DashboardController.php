@@ -4,7 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Http\Request;
-use App\Models\KomentarSentimenHybrid;
+use App\Models\KomentarSentimenML;
 use Illuminate\Support\Facades\DB;
 
 class DashboardController extends Controller
@@ -14,13 +14,17 @@ class DashboardController extends Controller
         $limit = $request->input('limit', 100);
 
         $komentar = $limit === 'all'
-            ? KomentarSentimenHybrid::orderBy('processed_at', 'desc')->get()
-            : KomentarSentimenHybrid::orderBy('processed_at', 'desc')->take($limit)->get();
+            ? KomentarSentimenML::orderBy('created_at', 'desc')->get()
+            : KomentarSentimenML::orderBy('created_at', 'desc')->take($limit)->get();
 
-        $sentimentCounts = KomentarSentimenHybrid::selectRaw('final_hybrid_label as label, COUNT(*) as total')
-            ->groupBy('final_hybrid_label')
+        $sentimentCounts = KomentarSentimenML::selectRaw('predicted_label as label, COUNT(*) as total')
+            ->groupBy('predicted_label')
             ->pluck('total', 'label');
 
-        return view('dashboard', compact('komentar', 'limit', 'sentimentCounts'));
+        // 🚀 Ambil Total Data Keseluruhan
+        $totalData = KomentarSentimenML::count();
+
+
+        return view('dashboard', compact('komentar', 'limit', 'sentimentCounts', 'totalData'));
     }
 }

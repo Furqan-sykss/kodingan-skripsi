@@ -32,7 +32,7 @@ select_query = """
     SELECT id, video_id, username, comment, tanggal_komentar
     FROM komentar_mentah
     WHERE is_processed_vader = 0
-    LIMIT 100
+    LIMIT 300
 """
 
 # ✅ Fungsi untuk membersihkan teks

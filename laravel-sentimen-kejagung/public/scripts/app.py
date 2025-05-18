@@ -35,6 +35,33 @@ def scrape():
         return jsonify({"error": str(e)}), 500
 
 
+@app.route('/api/analyze-ml', methods=['GET'])
+def analyze_ml():
+    try:
+        # Menjalankan script Python untuk prediksi
+        result = subprocess.run(
+            ['python', 'public/scripts/ml_predict.py'], capture_output=True, text=True
+        )
+
+        if result.returncode == 0:
+            return jsonify({
+                "status": "success",
+                "message": "Proses analisis ML berhasil dijalankan.",
+                "output": result.stdout
+            }), 200
+        else:
+            return jsonify({
+                "status": "error",
+                "message": "Terjadi kesalahan saat menjalankan analisis ML.",
+                "output": result.stderr
+            }), 500
+    except Exception as e:
+        return jsonify({
+            "status": "error",
+            "message": str(e)
+        }), 500
+
+
 # ✅ Route untuk Analisis VADER
 @app.route('/analyze/vader', methods=['POST'])
 def analyze_vader():
