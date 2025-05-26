@@ -34,11 +34,20 @@
                     class="bg-yellow-500 text-white px-4 py-2 rounded hover:bg-yellow-600">📝 Label Manual</a> --}}
 
                 {{-- tombol analisis ML --}}
-                <button id="btn-analisis-ml" class="bg-blue-600 text-white px-4 py-2 rounded hover:bg-blue-700">
+                {{-- <button id="btn-analisis-ml" class="bg-blue-600 text-white px-4 py-2 rounded hover:bg-blue-700">
                     Analisis ML
                 </button>
-                <img id="loading" src="{{ asset('images/loading.gif') }}" alt="Loading..."
-                    style="display:none; margin-left: 10px;">
+                <img id="loadingML" src="{{ asset('images/loading.gif') }}" alt="Loading..."
+                    style="display:none; margin-left: 10px;"> --}}
+
+                <form id="ml-form" action="{{ route('admin.analyze.ml') }}" method="POST" style="display:inline;">
+                    @csrf
+                    <button id="btn-analisis-ml" class="bg-green-600 text-white px-4 py-2 rounded hover:bg-green-700">
+                        🧠 Analisis ML
+                    </button>
+                    <img id="loadingML" src="{{ asset('images/loading.gif') }}" alt="Loading..."
+                        style="display:none; margin-left: 10px;">
+                </form>
 
 
                 {{-- Tombol VADER --}}
@@ -85,14 +94,14 @@
 
         {{-- Filter jumlah data --}}
         <form method="GET" action="{{ route('dashboard') }}" class="mb-4">
-            <label for="limit" class="text-sm mr-2 font-medium text-white">Tampilkan:</label>
+            {{-- <label for="limit" class="text-sm mr-2 font-medium text-white">Tampilkan:</label>
             <select name="limit" id="limit" onchange="this.form.submit()" class="border rounded px-2 py-1">
                 <option value="100" {{ $limit == 100 ? 'selected' : '' }}>100</option>
                 <option value="200" {{ $limit == 200 ? 'selected' : '' }}>200</option>
                 <option value="400" {{ $limit == 400 ? 'selected' : '' }}>400</option>
                 <option value="600" {{ $limit == 600 ? 'selected' : '' }}>600</option>
                 <option value="all" {{ $limit == 'all' ? 'selected' : '' }}>Semua</option>
-            </select>
+            </select> --}}
 
             {{-- Menampilkan Total Data --}}
             <p class="text-sm ml-4 font-medium text-white">
@@ -114,9 +123,10 @@
                     </tr>
                 </thead>
                 <tbody>
-                    @foreach ($komentar as $i => $item)
+                    @foreach ($komentar as $item)
                         <tr class="{{ $loop->even ? 'bg-gray-50' : '' }}">
-                            <td class="px-4 py-2 border">{{ $i + 1 }}</td>
+                            <td class="px-4 py-2 border">
+                                {{ ($komentar->currentPage() - 1) * $komentar->perPage() + $loop->iteration }}</td>
                             <td class="px-4 py-2 border">{{ $item->username }}</td>
                             <td class="px-4 py-2 border">{{ $item->comment }}</td>
                             <td class="px-4 py-2 border">{{ $item->tanggal_komentar }}</td>
@@ -135,7 +145,13 @@
                     @endforeach
                 </tbody>
             </table>
+            <br>
+            <div class="flex justify-center mt-4">
+                {{ $komentar->links() }}
+            </div>
+            <br>
         </div>
+
 
     </div>
 
@@ -166,25 +182,28 @@
 
 
     {{-- Script AJAX analisis sentimen --}}
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js">
-        $('#btn-analisis-ml').click(function() {
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script>
+        $('#btn-analisis-ml').click(function(event) {
+            event.preventDefault(); // ⛔ cegah submit form default Laravel
             if (confirm("Yakin ingin melakukan analisis ML pada 400 data terbaru?")) {
+                $('#loadingML').show(); // ✅ tampilkan loading saat proses
                 $.ajax({
-                    url: "http://127.0.0.1:5000/api/analyze-ml",
-                    type: "GET",
+                    url: "http://127.0.0.1:5000/analyze/analisis-ml", // ✅ perbaiki URL
+                    type: "POST",
                     success: function(response) {
+                        $('#loadingML').hide();
                         alert(response.message);
-                        console.log(response.output);
-                        // Refresh halaman untuk memuat hasil terbaru
-                        window.location.reload();
+                        window.location.href = "{{ route('dashboard') }}";
                     },
                     error: function(xhr, status, error) {
-                        alert("Terjadi kesalahan: " + error);
-                        console.error(xhr.responseText);
+                        $('#loadingML').hide();
+                        alert("Terjadi kesalahan saat analisis ML. Error: " + error);
                     }
                 });
             }
         });
+
 
 
 

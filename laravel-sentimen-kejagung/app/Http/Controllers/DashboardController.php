@@ -11,20 +11,13 @@ class DashboardController extends Controller
 {
     public function index(Request $request)
     {
-        $limit = $request->input('limit', 100);
-
-        $komentar = $limit === 'all'
-            ? KomentarSentimenML::orderBy('created_at', 'desc')->get()
-            : KomentarSentimenML::orderBy('created_at', 'desc')->take($limit)->get();
-
+        $limit = $request->input('limit', 10);
+        $komentar = KomentarSentimenML::orderBy('created_at', 'desc')->paginate($limit);
         $sentimentCounts = KomentarSentimenML::selectRaw('predicted_label as label, COUNT(*) as total')
             ->groupBy('predicted_label')
             ->pluck('total', 'label');
-
         // 🚀 Ambil Total Data Keseluruhan
         $totalData = KomentarSentimenML::count();
-
-
         return view('dashboard', compact('komentar', 'limit', 'sentimentCounts', 'totalData'));
     }
 }

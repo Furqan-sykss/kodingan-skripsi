@@ -2977,3 +2977,838 @@
 2025-05-14 00:46:54,669 - DEBUG - http://localhost:32499 "DELETE /session/5ddf97e3bac8785e521451e7d3e8ea6f HTTP/11" 200 0
 2025-05-14 00:46:54,669 - DEBUG - Remote response: status=200 | data={"value":null} | headers=HTTPHeaderDict({'Content-Length': '14', 'Content-Type': 'application/json; charset=utf-8', 'cache-control': 'no-cache'})
 2025-05-14 00:46:54,669 - DEBUG - Finished Request
+2025-05-26 00:05:10,127 - DEBUG - \U0001f680 Memulai proses scraping...
+2025-05-26 00:05:10,189 - DEBUG - \u2705 Koneksi database berhasil.
+2025-05-26 00:05:10,189 - DEBUG - 
+\U0001f50d Scraping untuk tagar: #kinerja kejaksaan agung
+2025-05-26 00:05:10,189 - DEBUG - Skipping Selenium Manager; path to chrome driver specified in Service class: C:\WebDriver\chromedriver.exe
+2025-05-26 00:05:10,533 - DEBUG - Started executable: `C:\WebDriver\chromedriver.exe` in a child process with pid: 1800 using 0 to output -3
+2025-05-26 00:05:12,548 - DEBUG - POST http://localhost:7880/session {'capabilities': {'firstMatch': [{}], 'alwaysMatch': {'browserName': 'chrome', 'pageLoadStrategy': <PageLoadStrategy.normal: 'normal'>, 'goog:chromeOptions': {'extensions': [], 'args': ['--headless', '--no-sandbox', '--disable-dev-shm-usage', '--disable-gpu', '--window-size=1920,1080']}}}}
+2025-05-26 00:05:12,548 - DEBUG - Starting new HTTP connection (1): localhost:7880
+2025-05-26 00:05:24,753 - DEBUG - http://localhost:7880 "POST /session HTTP/11" 200 0
+2025-05-26 00:05:24,753 - DEBUG - Remote response: status=200 | data={"value":{"capabilities":{"acceptInsecureCerts":false,"browserName":"chrome","browserVersion":"109.0.5414.168","chrome":{"chromedriverVersion":"109.0.5414.74 (e7c5703604daa9cc128ccf5a5d3e993513758913-refs/branch-heads/5414@{#1172})","userDataDir":"C:\\Program Files (x86)\\scoped_dir1800_132535636"},"goog:chromeOptions":{"debuggerAddress":"localhost:7886"},"networkConnectionEnabled":false,"pageLoadStrategy":"normal","platformName":"windows","proxy":{},"setWindowRect":true,"strictFileInteractability":false,"timeouts":{"implicit":0,"pageLoad":300000,"script":30000},"unhandledPromptBehavior":"dismiss and notify","webauthn:extension:credBlob":true,"webauthn:extension:largeBlob":true,"webauthn:virtualAuthenticators":true},"sessionId":"4ddb5c3b520497376053d5765681faf4"}} | headers=HTTPHeaderDict({'Content-Length': '774', 'Content-Type': 'application/json; charset=utf-8', 'cache-control': 'no-cache'})
+2025-05-26 00:05:24,753 - DEBUG - Finished Request
+2025-05-26 00:05:24,753 - DEBUG - POST http://localhost:7880/session/4ddb5c3b520497376053d5765681faf4/url {'url': 'https://www.tiktok.com'}
+2025-05-26 00:05:58,983 - DEBUG - http://localhost:7880 "POST /session/4ddb5c3b520497376053d5765681faf4/url HTTP/11" 200 0
+2025-05-26 00:05:58,983 - DEBUG - Remote response: status=200 | data={"value":null} | headers=HTTPHeaderDict({'Content-Length': '14', 'Content-Type': 'application/json; charset=utf-8', 'cache-control': 'no-cache'})
+2025-05-26 00:05:58,983 - DEBUG - Finished Request
+2025-05-26 00:06:03,984 - ERROR - \u274c Gagal memuat cookies: [Errno 2] No such file or directory: 'tiktok_cookies.json'
+2025-05-26 00:06:03,985 - DEBUG - POST http://localhost:7880/session/4ddb5c3b520497376053d5765681faf4/url {'url': 'https://www.tiktok.com/search?q=%23kinerja kejaksaan agung'}
+2025-05-26 00:06:06,486 - DEBUG - http://localhost:7880 "POST /session/4ddb5c3b520497376053d5765681faf4/url HTTP/11" 200 0
+2025-05-26 00:06:06,486 - DEBUG - Remote response: status=200 | data={"value":null} | headers=HTTPHeaderDict({'Content-Length': '14', 'Content-Type': 'application/json; charset=utf-8', 'cache-control': 'no-cache'})
+2025-05-26 00:06:06,486 - DEBUG - Finished Request
+2025-05-26 00:06:11,488 - DEBUG - POST http://localhost:7880/session/4ddb5c3b520497376053d5765681faf4/element {'using': 'tag name', 'value': 'body'}
+2025-05-26 00:06:11,787 - DEBUG - http://localhost:7880 "POST /session/4ddb5c3b520497376053d5765681faf4/element HTTP/11" 200 0
+2025-05-26 00:06:11,787 - DEBUG - Remote response: status=200 | data={"value":{"element-6066-11e4-a52e-4f735466cecf":"6a7f9298-7118-436f-8a50-810704c2c45f"}} | headers=HTTPHeaderDict({'Content-Length': '88', 'Content-Type': 'application/json; charset=utf-8', 'cache-control': 'no-cache'})
+2025-05-26 00:06:11,787 - DEBUG - Finished Request
+2025-05-26 00:06:11,829 - DEBUG - POST http://localhost:7880/session/4ddb5c3b520497376053d5765681faf4/element/6a7f9298-7118-436f-8a50-810704c2c45f/value {'text': '\ue010', 'value': ['\ue010']}
+2025-05-26 00:06:13,053 - DEBUG - http://localhost:7880 "POST /session/4ddb5c3b520497376053d5765681faf4/element/6a7f9298-7118-436f-8a50-810704c2c45f/value HTTP/11" 200 0
+2025-05-26 00:06:13,053 - DEBUG - Remote response: status=200 | data={"value":null} | headers=HTTPHeaderDict({'Content-Length': '14', 'Content-Type': 'application/json; charset=utf-8', 'cache-control': 'no-cache'})
+2025-05-26 00:06:13,053 - DEBUG - Finished Request
+2025-05-26 00:06:15,054 - DEBUG - POST http://localhost:7880/session/4ddb5c3b520497376053d5765681faf4/element {'using': 'tag name', 'value': 'body'}
+2025-05-26 00:06:15,063 - DEBUG - http://localhost:7880 "POST /session/4ddb5c3b520497376053d5765681faf4/element HTTP/11" 200 0
+2025-05-26 00:06:15,063 - DEBUG - Remote response: status=200 | data={"value":{"element-6066-11e4-a52e-4f735466cecf":"6a7f9298-7118-436f-8a50-810704c2c45f"}} | headers=HTTPHeaderDict({'Content-Length': '88', 'Content-Type': 'application/json; charset=utf-8', 'cache-control': 'no-cache'})
+2025-05-26 00:06:15,063 - DEBUG - Finished Request
+2025-05-26 00:06:15,063 - DEBUG - POST http://localhost:7880/session/4ddb5c3b520497376053d5765681faf4/element/6a7f9298-7118-436f-8a50-810704c2c45f/value {'text': '\ue010', 'value': ['\ue010']}
+2025-05-26 00:06:15,123 - DEBUG - http://localhost:7880 "POST /session/4ddb5c3b520497376053d5765681faf4/element/6a7f9298-7118-436f-8a50-810704c2c45f/value HTTP/11" 200 0
+2025-05-26 00:06:15,123 - DEBUG - Remote response: status=200 | data={"value":null} | headers=HTTPHeaderDict({'Content-Length': '14', 'Content-Type': 'application/json; charset=utf-8', 'cache-control': 'no-cache'})
+2025-05-26 00:06:15,123 - DEBUG - Finished Request
+2025-05-26 00:06:17,123 - DEBUG - POST http://localhost:7880/session/4ddb5c3b520497376053d5765681faf4/element {'using': 'tag name', 'value': 'body'}
+2025-05-26 00:06:17,131 - DEBUG - http://localhost:7880 "POST /session/4ddb5c3b520497376053d5765681faf4/element HTTP/11" 200 0
+2025-05-26 00:06:17,131 - DEBUG - Remote response: status=200 | data={"value":{"element-6066-11e4-a52e-4f735466cecf":"6a7f9298-7118-436f-8a50-810704c2c45f"}} | headers=HTTPHeaderDict({'Content-Length': '88', 'Content-Type': 'application/json; charset=utf-8', 'cache-control': 'no-cache'})
+2025-05-26 00:06:17,132 - DEBUG - Finished Request
+2025-05-26 00:06:17,132 - DEBUG - POST http://localhost:7880/session/4ddb5c3b520497376053d5765681faf4/element/6a7f9298-7118-436f-8a50-810704c2c45f/value {'text': '\ue010', 'value': ['\ue010']}
+2025-05-26 00:06:17,203 - DEBUG - http://localhost:7880 "POST /session/4ddb5c3b520497376053d5765681faf4/element/6a7f9298-7118-436f-8a50-810704c2c45f/value HTTP/11" 200 0
+2025-05-26 00:06:17,203 - DEBUG - Remote response: status=200 | data={"value":null} | headers=HTTPHeaderDict({'Content-Length': '14', 'Content-Type': 'application/json; charset=utf-8', 'cache-control': 'no-cache'})
+2025-05-26 00:06:17,203 - DEBUG - Finished Request
+2025-05-26 00:06:19,203 - DEBUG - POST http://localhost:7880/session/4ddb5c3b520497376053d5765681faf4/elements {'using': 'css selector', 'value': 'a[href*="/video/"]'}
+2025-05-26 00:06:19,861 - DEBUG - http://localhost:7880 "POST /session/4ddb5c3b520497376053d5765681faf4/elements HTTP/11" 200 0
+2025-05-26 00:06:19,862 - DEBUG - Remote response: status=200 | data={"value":[{"element-6066-11e4-a52e-4f735466cecf":"b9e5cae1-b3ff-4707-b1c0-2cbd68041a87"},{"element-6066-11e4-a52e-4f735466cecf":"9a53cf09-7ab5-4fcd-8684-a84ebfe8122a"},{"element-6066-11e4-a52e-4f735466cecf":"4cb63521-0b6d-4215-aa8d-6de5ed7d8a87"},{"element-6066-11e4-a52e-4f735466cecf":"ef55611c-171d-4b29-9109-8dbbb26b0a95"},{"element-6066-11e4-a52e-4f735466cecf":"2a568761-e5e4-4ffb-8960-80076c5022d0"},{"element-6066-11e4-a52e-4f735466cecf":"8d093d74-e50e-4cc0-8d47-feeefd9eff3b"},{"element-6066-11e4-a52e-4f735466cecf":"2d66d1ea-87b6-4ac5-9092-0352eaecff43"},{"element-6066-11e4-a52e-4f735466cecf":"96b5adcc-f447-47f7-8c69-e8ae4f34e3be"},{"element-6066-11e4-a52e-4f735466cecf":"0dd1a958-b569-4760-a55b-93197dfec29e"},{"element-6066-11e4-a52e-4f735466cecf":"c4b76ede-4878-4a35-b119-f4c61d0fe793"},{"element-6066-11e4-a52e-4f735466cecf":"06f35ebb-7574-4ffa-81db-000cc1a8d635"},{"element-6066-11e4-a52e-4f735466cecf":"bf85afec-0036-49f0-b706-6cd40c8a6c7b"},{"element-6066-11e4-a52e-4f735466cecf":"f1f59f61-ba7d-49ea-affb-394c24871a58"},{"element-6066-11e4-a52e-4f735466cecf":"6ada1b4f-15ed-468f-b03e-1137ab520033"},{"element-6066-11e4-a52e-4f735466cecf":"99b2e634-bc30-495a-bcc4-199314b80cc7"},{"element-6066-11e4-a52e-4f735466cecf":"576fdff6-d272-44ee-b213-a751587190f8"},{"element-6066-11e4-a52e-4f735466cecf":"b95a389a-3550-4e5f-8e0f-ae874e54bfe9"},{"element-6066-11e4-a52e-4f735466cecf":"e7fe308b-bd01-4252-9f4b-60d5071790e8"},{"element-6066-11e4-a52e-4f735466cecf":"f5cbdb63-cd54-4a54-98d5-0b34799819a6"},{"element-6066-11e4-a52e-4f735466cecf":"73459d0e-9d2c-46c8-81ea-d9de059a62b1"},{"element-6066-11e4-a52e-4f735466cecf":"ac4b15c0-3404-41de-97f5-e62947d783fc"},{"element-6066-11e4-a52e-4f735466cecf":"77bb0532-54ea-4202-87d3-4d347602bbb4"},{"element-6066-11e4-a52e-4f735466cecf":"3ea0c658-31fd-469b-8082-56a3cee5b443"},{"element-6066-11e4-a52e-4f735466cecf":"2fe9bff5-64f7-432b-a034-83626f2a638d"},{"element-6066-11e4-a52e-4f735466cecf":"34ca94ac-cbac-4de2-b53f-efc18535c7e2"},{"element-6066-11e4-a52e-4f735466cecf":"671098e2-4755-4c6c-9b74-be1ebc3c1695"},{"element-6066-11e4-a52e-4f735466cecf":"8a3c4162-bdc4-4ec5-a901-ae3c692125d6"},{"element-6066-11e4-a52e-4f735466cecf":"a5796dbb-65e5-4315-a981-2c97ba8948e9"},{"element-6066-11e4-a52e-4f735466cecf":"00d6bd98-052b-4ea5-bc3d-2d6bab75e7d0"},{"element-6066-11e4-a52e-4f735466cecf":"4937deae-37e7-420f-a83c-a411dc80709c"},{"element-6066-11e4-a52e-4f735466cecf":"8fad837d-c242-4f7a-ad1b-d1332a58cd20"},{"element-6066-11e4-a52e-4f735466cecf":"860c1239-f274-4f67-a798-041921cd1390"},{"element-6066-11e4-a52e-4f735466cecf":"4cd5ff42-5de9-4642-af50-5bbf70def5b3"},{"element-6066-11e4-a52e-4f735466cecf":"da967043-8042-46ec-bf08-58ba8deebb01"},{"element-6066-11e4-a52e-4f735466cecf":"81217434-1387-4795-9020-6f86d79b9715"},{"element-6066-11e4-a52e-4f735466cecf":"69a2bbc2-4ae6-4119-b204-9389e8673afa"},{"element-6066-11e4-a52e-4f735466cecf":"a010c5f5-51f0-41f7-8e8d-9e9cb488116f"},{"element-6066-11e4-a52e-4f735466cecf":"fe5fa8ce-ca9b-4445-87dd-53d7ea25e3e2"},{"element-6066-11e4-a52e-4f735466cecf":"9a5242ae-0971-4d12-b886-03abceae49ab"},{"element-6066-11e4-a52e-4f735466cecf":"07e9cb37-c44a-423c-9555-3f5cb3d6b955"},{"element-6066-11e4-a52e-4f735466cecf":"e8ef659d-0556-4258-bddf-b61af53ed1b6"},{"element-6066-11e4-a52e-4f735466cecf":"c3924bf3-96f9-4dc8-898c-ee2f94d5d574"},{"element-6066-11e4-a52e-4f735466cecf":"b2063eb4-5176-4160-abf3-fa0d6fec80e7"},{"element-6066-11e4-a52e-4f735466cecf":"9de671cb-bf06-4fc1-80a3-b81a51a903db"},{"element-6066-11e4-a52e-4f735466cecf":"e4cff5cb-3282-4c06-aff8-9d60eb3e261b"},{"element-6066-11e4-a52e-4f735466cecf":"a433b95e-f3dd-4637-9763-9546e5509126"},{"element-6066-11e4-a52e-4f735466cecf":"0bd77eb8-913b-4705-8aba-7c4180752e38"},{"element-6066-11e4-a52e-4f735466cecf":"bda821eb-8c45-40e3-bed0-e1a2f0f3bd21"}]} | headers=HTTPHeaderDict({'Content-Length': '3803', 'Content-Type': 'application/json; charset=utf-8', 'cache-control': 'no-cache'})
+2025-05-26 00:06:19,862 - DEBUG - Finished Request
+2025-05-26 00:06:20,327 - DEBUG - POST http://localhost:7880/session/4ddb5c3b520497376053d5765681faf4/execute/sync {'script': '/* getAttribute */return (function(){return (function(){var d=this||self;function f(a,b){function c(...', 'args': [{'element-6066-11e4-a52e-4f735466cecf': 'b9e5cae1-b3ff-4707-b1c0-2cbd68041a87'}, 'href']}
+2025-05-26 00:06:20,403 - DEBUG - http://localhost:7880 "POST /session/4ddb5c3b520497376053d5765681faf4/execute/sync HTTP/11" 200 0
+2025-05-26 00:06:20,403 - DEBUG - Remote response: status=200 | data={"value":"https://www.tiktok.com/@jaksapedia/video/7505721584552889655"} | headers=HTTPHeaderDict({'Content-Length': '72', 'Content-Type': 'application/json; charset=utf-8', 'cache-control': 'no-cache'})
+2025-05-26 00:06:20,404 - DEBUG - Finished Request
+2025-05-26 00:06:21,324 - DEBUG - POST http://localhost:7880/session/4ddb5c3b520497376053d5765681faf4/execute/sync {'script': '/* getAttribute */return (function(){return (function(){var d=this||self;function f(a,b){function c(...', 'args': [{'element-6066-11e4-a52e-4f735466cecf': '9a53cf09-7ab5-4fcd-8684-a84ebfe8122a'}, 'href']}
+2025-05-26 00:06:21,336 - DEBUG - http://localhost:7880 "POST /session/4ddb5c3b520497376053d5765681faf4/execute/sync HTTP/11" 200 0
+2025-05-26 00:06:21,336 - DEBUG - Remote response: status=200 | data={"value":"https://www.tiktok.com/@adhyaksa.online/video/7508400501520731397"} | headers=HTTPHeaderDict({'Content-Length': '77', 'Content-Type': 'application/json; charset=utf-8', 'cache-control': 'no-cache'})
+2025-05-26 00:06:21,336 - DEBUG - Finished Request
+2025-05-26 00:06:21,345 - DEBUG - POST http://localhost:7880/session/4ddb5c3b520497376053d5765681faf4/execute/sync {'script': '/* getAttribute */return (function(){return (function(){var d=this||self;function f(a,b){function c(...', 'args': [{'element-6066-11e4-a52e-4f735466cecf': '4cb63521-0b6d-4215-aa8d-6de5ed7d8a87'}, 'href']}
+2025-05-26 00:06:21,354 - DEBUG - http://localhost:7880 "POST /session/4ddb5c3b520497376053d5765681faf4/execute/sync HTTP/11" 200 0
+2025-05-26 00:06:21,354 - DEBUG - Remote response: status=200 | data={"value":"https://www.tiktok.com/@ranto_megahosoi/video/7506663455047388434"} | headers=HTTPHeaderDict({'Content-Length': '77', 'Content-Type': 'application/json; charset=utf-8', 'cache-control': 'no-cache'})
+2025-05-26 00:06:21,354 - DEBUG - Finished Request
+2025-05-26 00:06:21,362 - DEBUG - POST http://localhost:7880/session/4ddb5c3b520497376053d5765681faf4/execute/sync {'script': '/* getAttribute */return (function(){return (function(){var d=this||self;function f(a,b){function c(...', 'args': [{'element-6066-11e4-a52e-4f735466cecf': 'ef55611c-171d-4b29-9109-8dbbb26b0a95'}, 'href']}
+2025-05-26 00:06:21,371 - DEBUG - http://localhost:7880 "POST /session/4ddb5c3b520497376053d5765681faf4/execute/sync HTTP/11" 200 0
+2025-05-26 00:06:21,371 - DEBUG - Remote response: status=200 | data={"value":"https://www.tiktok.com/@jaksapedia/video/7428400122674859269"} | headers=HTTPHeaderDict({'Content-Length': '72', 'Content-Type': 'application/json; charset=utf-8', 'cache-control': 'no-cache'})
+2025-05-26 00:06:21,371 - DEBUG - Finished Request
+2025-05-26 00:06:21,379 - DEBUG - POST http://localhost:7880/session/4ddb5c3b520497376053d5765681faf4/execute/sync {'script': '/* getAttribute */return (function(){return (function(){var d=this||self;function f(a,b){function c(...', 'args': [{'element-6066-11e4-a52e-4f735466cecf': '2a568761-e5e4-4ffb-8960-80076c5022d0'}, 'href']}
+2025-05-26 00:06:21,396 - DEBUG - http://localhost:7880 "POST /session/4ddb5c3b520497376053d5765681faf4/execute/sync HTTP/11" 200 0
+2025-05-26 00:06:21,396 - DEBUG - Remote response: status=200 | data={"value":"https://www.tiktok.com/@indozona.id/video/7508195377120562437"} | headers=HTTPHeaderDict({'Content-Length': '73', 'Content-Type': 'application/json; charset=utf-8', 'cache-control': 'no-cache'})
+2025-05-26 00:06:21,397 - DEBUG - Finished Request
+2025-05-26 00:06:21,405 - DEBUG - POST http://localhost:7880/session/4ddb5c3b520497376053d5765681faf4/execute/sync {'script': '/* getAttribute */return (function(){return (function(){var d=this||self;function f(a,b){function c(...', 'args': [{'element-6066-11e4-a52e-4f735466cecf': '8d093d74-e50e-4cc0-8d47-feeefd9eff3b'}, 'href']}
+2025-05-26 00:06:21,420 - DEBUG - http://localhost:7880 "POST /session/4ddb5c3b520497376053d5765681faf4/execute/sync HTTP/11" 200 0
+2025-05-26 00:06:21,420 - DEBUG - Remote response: status=200 | data={"value":"https://www.tiktok.com/@tempatviral64/video/7426368666956090629"} | headers=HTTPHeaderDict({'Content-Length': '75', 'Content-Type': 'application/json; charset=utf-8', 'cache-control': 'no-cache'})
+2025-05-26 00:06:21,420 - DEBUG - Finished Request
+2025-05-26 00:06:21,429 - DEBUG - \U0001f3a5 Memproses: https://www.tiktok.com/@indozona.id/video/7508195377120562437
+2025-05-26 00:06:23,425 - DEBUG - Starting new HTTPS connection (1): www.tiktok.com:443
+2025-05-26 00:06:24,500 - DEBUG - https://www.tiktok.com:443 "GET /api/comment/list/?aid=1988&aweme_id=7508195377120562437&cursor=0&count=100 HTTP/11" 200 4241
+2025-05-26 00:06:25,191 - DEBUG - \u2705 Data berhasil disimpan untuk video_id: https://www.tiktok.com/@indozona.id/video/7508195377120562437
+2025-05-26 00:06:25,442 - DEBUG - \u2705 Data berhasil disimpan untuk video_id: https://www.tiktok.com/@indozona.id/video/7508195377120562437
+2025-05-26 00:06:25,551 - DEBUG - \u2705 Data berhasil disimpan untuk video_id: https://www.tiktok.com/@indozona.id/video/7508195377120562437
+2025-05-26 00:06:25,651 - DEBUG - \u2705 Data berhasil disimpan untuk video_id: https://www.tiktok.com/@indozona.id/video/7508195377120562437
+2025-05-26 00:06:25,663 - DEBUG - \u23e9 Komentar tidak valid: '@\u2661Nadya_KhayLa\u2661'
+2025-05-26 00:06:26,073 - DEBUG - \u2705 Data berhasil disimpan untuk video_id: https://www.tiktok.com/@indozona.id/video/7508195377120562437
+2025-05-26 00:06:26,610 - DEBUG - \u2705 Data berhasil disimpan untuk video_id: https://www.tiktok.com/@indozona.id/video/7508195377120562437
+2025-05-26 00:06:26,610 - DEBUG - \U0001f3a5 Memproses: https://www.tiktok.com/@ranto_megahosoi/video/7506663455047388434
+2025-05-26 00:06:26,614 - DEBUG - Starting new HTTPS connection (1): www.tiktok.com:443
+2025-05-26 00:06:27,202 - DEBUG - https://www.tiktok.com:443 "GET /api/comment/list/?aid=1988&aweme_id=7506663455047388434&cursor=0&count=100 HTTP/11" 200 3699
+2025-05-26 00:06:28,128 - DEBUG - \u2705 Data berhasil disimpan untuk video_id: https://www.tiktok.com/@ranto_megahosoi/video/7506663455047388434
+2025-05-26 00:06:28,192 - DEBUG - \u2705 Data berhasil disimpan untuk video_id: https://www.tiktok.com/@ranto_megahosoi/video/7506663455047388434
+2025-05-26 00:06:28,270 - DEBUG - \u2705 Data berhasil disimpan untuk video_id: https://www.tiktok.com/@ranto_megahosoi/video/7506663455047388434
+2025-05-26 00:06:28,381 - DEBUG - \u2705 Data berhasil disimpan untuk video_id: https://www.tiktok.com/@ranto_megahosoi/video/7506663455047388434
+2025-05-26 00:06:28,381 - DEBUG - \u23e9 Komentar tidak valid: '\U0001f92a'
+2025-05-26 00:06:28,424 - DEBUG - \u2705 Data berhasil disimpan untuk video_id: https://www.tiktok.com/@ranto_megahosoi/video/7506663455047388434
+2025-05-26 00:06:28,424 - DEBUG - \U0001f3a5 Memproses: https://www.tiktok.com/@jaksapedia/video/7505721584552889655
+2025-05-26 00:06:28,428 - DEBUG - Starting new HTTPS connection (1): www.tiktok.com:443
+2025-05-26 00:06:29,107 - DEBUG - https://www.tiktok.com:443 "GET /api/comment/list/?aid=1988&aweme_id=7505721584552889655&cursor=0&count=100 HTTP/11" 200 9171
+2025-05-26 00:06:29,516 - DEBUG - \u2705 Data berhasil disimpan untuk video_id: https://www.tiktok.com/@jaksapedia/video/7505721584552889655
+2025-05-26 00:06:29,868 - DEBUG - \u2705 Data berhasil disimpan untuk video_id: https://www.tiktok.com/@jaksapedia/video/7505721584552889655
+2025-05-26 00:06:30,014 - DEBUG - \u2705 Data berhasil disimpan untuk video_id: https://www.tiktok.com/@jaksapedia/video/7505721584552889655
+2025-05-26 00:06:30,144 - DEBUG - \u2705 Data berhasil disimpan untuk video_id: https://www.tiktok.com/@jaksapedia/video/7505721584552889655
+2025-05-26 00:06:30,345 - DEBUG - \u2705 Data berhasil disimpan untuk video_id: https://www.tiktok.com/@jaksapedia/video/7505721584552889655
+2025-05-26 00:06:30,534 - DEBUG - \u2705 Data berhasil disimpan untuk video_id: https://www.tiktok.com/@jaksapedia/video/7505721584552889655
+2025-05-26 00:06:31,037 - DEBUG - \u2705 Data berhasil disimpan untuk video_id: https://www.tiktok.com/@jaksapedia/video/7505721584552889655
+2025-05-26 00:06:34,717 - DEBUG - \u2705 Data berhasil disimpan untuk video_id: https://www.tiktok.com/@jaksapedia/video/7505721584552889655
+2025-05-26 00:06:35,327 - DEBUG - \u2705 Data berhasil disimpan untuk video_id: https://www.tiktok.com/@jaksapedia/video/7505721584552889655
+2025-05-26 00:06:35,804 - DEBUG - \u2705 Data berhasil disimpan untuk video_id: https://www.tiktok.com/@jaksapedia/video/7505721584552889655
+2025-05-26 00:06:36,399 - DEBUG - \u2705 Data berhasil disimpan untuk video_id: https://www.tiktok.com/@jaksapedia/video/7505721584552889655
+2025-05-26 00:06:36,914 - DEBUG - \u2705 Data berhasil disimpan untuk video_id: https://www.tiktok.com/@jaksapedia/video/7505721584552889655
+2025-05-26 00:06:37,056 - DEBUG - \u2705 Data berhasil disimpan untuk video_id: https://www.tiktok.com/@jaksapedia/video/7505721584552889655
+2025-05-26 00:06:37,146 - DEBUG - \u2705 Data berhasil disimpan untuk video_id: https://www.tiktok.com/@jaksapedia/video/7505721584552889655
+2025-05-26 00:06:37,223 - DEBUG - \u2705 Data berhasil disimpan untuk video_id: https://www.tiktok.com/@jaksapedia/video/7505721584552889655
+2025-05-26 00:06:37,223 - DEBUG - \u23e9 Komentar tidak valid: '\U0001f44d'
+2025-05-26 00:06:37,223 - DEBUG - \u23e9 Komentar tidak valid: '\U0001f601'
+2025-05-26 00:06:37,224 - DEBUG - \u23e9 Komentar tidak valid: '\U0001f923'
+2025-05-26 00:06:37,334 - DEBUG - \u2705 Data berhasil disimpan untuk video_id: https://www.tiktok.com/@jaksapedia/video/7505721584552889655
+2025-05-26 00:06:37,445 - DEBUG - \u2705 Data berhasil disimpan untuk video_id: https://www.tiktok.com/@jaksapedia/video/7505721584552889655
+2025-05-26 00:06:37,489 - DEBUG - \u2705 Data berhasil disimpan untuk video_id: https://www.tiktok.com/@jaksapedia/video/7505721584552889655
+2025-05-26 00:06:37,670 - DEBUG - \u2705 Data berhasil disimpan untuk video_id: https://www.tiktok.com/@jaksapedia/video/7505721584552889655
+2025-05-26 00:06:37,670 - DEBUG - \U0001f3a5 Memproses: https://www.tiktok.com/@tempatviral64/video/7426368666956090629
+2025-05-26 00:06:37,671 - DEBUG - Starting new HTTPS connection (1): www.tiktok.com:443
+2025-05-26 00:06:38,373 - DEBUG - https://www.tiktok.com:443 "GET /api/comment/list/?aid=1988&aweme_id=7426368666956090629&cursor=0&count=100 HTTP/11" 200 1754
+2025-05-26 00:06:38,384 - DEBUG - \u23e9 Komentar tidak valid: 'kerennn\U0001f525\U0001f525\U0001f525'
+2025-05-26 00:06:38,384 - DEBUG - \U0001f3a5 Memproses: https://www.tiktok.com/@jaksapedia/video/7428400122674859269
+2025-05-26 00:06:38,386 - DEBUG - Starting new HTTPS connection (1): www.tiktok.com:443
+2025-05-26 00:06:39,033 - DEBUG - https://www.tiktok.com:443 "GET /api/comment/list/?aid=1988&aweme_id=7428400122674859269&cursor=0&count=100 HTTP/11" 200 None
+2025-05-26 00:06:39,339 - DEBUG - \u2705 Data berhasil disimpan untuk video_id: https://www.tiktok.com/@jaksapedia/video/7428400122674859269
+2025-05-26 00:06:39,564 - DEBUG - \u2705 Data berhasil disimpan untuk video_id: https://www.tiktok.com/@jaksapedia/video/7428400122674859269
+2025-05-26 00:06:39,619 - DEBUG - \u2705 Data berhasil disimpan untuk video_id: https://www.tiktok.com/@jaksapedia/video/7428400122674859269
+2025-05-26 00:06:39,687 - DEBUG - \u2705 Data berhasil disimpan untuk video_id: https://www.tiktok.com/@jaksapedia/video/7428400122674859269
+2025-05-26 00:06:39,776 - DEBUG - \u2705 Data berhasil disimpan untuk video_id: https://www.tiktok.com/@jaksapedia/video/7428400122674859269
+2025-05-26 00:06:39,964 - DEBUG - \u2705 Data berhasil disimpan untuk video_id: https://www.tiktok.com/@jaksapedia/video/7428400122674859269
+2025-05-26 00:06:40,008 - DEBUG - \u2705 Data berhasil disimpan untuk video_id: https://www.tiktok.com/@jaksapedia/video/7428400122674859269
+2025-05-26 00:06:40,098 - DEBUG - \u2705 Data berhasil disimpan untuk video_id: https://www.tiktok.com/@jaksapedia/video/7428400122674859269
+2025-05-26 00:06:40,175 - DEBUG - \u2705 Data berhasil disimpan untuk video_id: https://www.tiktok.com/@jaksapedia/video/7428400122674859269
+2025-05-26 00:06:40,231 - DEBUG - \u2705 Data berhasil disimpan untuk video_id: https://www.tiktok.com/@jaksapedia/video/7428400122674859269
+2025-05-26 00:06:40,286 - DEBUG - \u2705 Data berhasil disimpan untuk video_id: https://www.tiktok.com/@jaksapedia/video/7428400122674859269
+2025-05-26 00:06:40,364 - DEBUG - \u2705 Data berhasil disimpan untuk video_id: https://www.tiktok.com/@jaksapedia/video/7428400122674859269
+2025-05-26 00:06:40,508 - DEBUG - \u2705 Data berhasil disimpan untuk video_id: https://www.tiktok.com/@jaksapedia/video/7428400122674859269
+2025-05-26 00:06:40,630 - DEBUG - \u2705 Data berhasil disimpan untuk video_id: https://www.tiktok.com/@jaksapedia/video/7428400122674859269
+2025-05-26 00:06:40,708 - DEBUG - \u2705 Data berhasil disimpan untuk video_id: https://www.tiktok.com/@jaksapedia/video/7428400122674859269
+2025-05-26 00:06:40,774 - DEBUG - \u2705 Data berhasil disimpan untuk video_id: https://www.tiktok.com/@jaksapedia/video/7428400122674859269
+2025-05-26 00:06:40,841 - DEBUG - \u2705 Data berhasil disimpan untuk video_id: https://www.tiktok.com/@jaksapedia/video/7428400122674859269
+2025-05-26 00:06:40,918 - DEBUG - \u2705 Data berhasil disimpan untuk video_id: https://www.tiktok.com/@jaksapedia/video/7428400122674859269
+2025-05-26 00:06:41,063 - DEBUG - \u2705 Data berhasil disimpan untuk video_id: https://www.tiktok.com/@jaksapedia/video/7428400122674859269
+2025-05-26 00:06:41,129 - DEBUG - \u2705 Data berhasil disimpan untuk video_id: https://www.tiktok.com/@jaksapedia/video/7428400122674859269
+2025-05-26 00:06:41,207 - DEBUG - \u2705 Data berhasil disimpan untuk video_id: https://www.tiktok.com/@jaksapedia/video/7428400122674859269
+2025-05-26 00:06:41,240 - DEBUG - \u2705 Data berhasil disimpan untuk video_id: https://www.tiktok.com/@jaksapedia/video/7428400122674859269
+2025-05-26 00:06:41,285 - DEBUG - \u2705 Data berhasil disimpan untuk video_id: https://www.tiktok.com/@jaksapedia/video/7428400122674859269
+2025-05-26 00:06:41,340 - DEBUG - \u2705 Data berhasil disimpan untuk video_id: https://www.tiktok.com/@jaksapedia/video/7428400122674859269
+2025-05-26 00:06:41,461 - DEBUG - \u2705 Data berhasil disimpan untuk video_id: https://www.tiktok.com/@jaksapedia/video/7428400122674859269
+2025-05-26 00:06:41,585 - DEBUG - \u2705 Data berhasil disimpan untuk video_id: https://www.tiktok.com/@jaksapedia/video/7428400122674859269
+2025-05-26 00:06:41,662 - DEBUG - \u2705 Data berhasil disimpan untuk video_id: https://www.tiktok.com/@jaksapedia/video/7428400122674859269
+2025-05-26 00:06:41,751 - DEBUG - \u2705 Data berhasil disimpan untuk video_id: https://www.tiktok.com/@jaksapedia/video/7428400122674859269
+2025-05-26 00:06:41,817 - DEBUG - \u2705 Data berhasil disimpan untuk video_id: https://www.tiktok.com/@jaksapedia/video/7428400122674859269
+2025-05-26 00:06:41,896 - DEBUG - \u2705 Data berhasil disimpan untuk video_id: https://www.tiktok.com/@jaksapedia/video/7428400122674859269
+2025-05-26 00:06:42,006 - DEBUG - \u2705 Data berhasil disimpan untuk video_id: https://www.tiktok.com/@jaksapedia/video/7428400122674859269
+2025-05-26 00:06:42,084 - DEBUG - \u2705 Data berhasil disimpan untuk video_id: https://www.tiktok.com/@jaksapedia/video/7428400122674859269
+2025-05-26 00:06:42,161 - DEBUG - \u2705 Data berhasil disimpan untuk video_id: https://www.tiktok.com/@jaksapedia/video/7428400122674859269
+2025-05-26 00:06:42,250 - DEBUG - \u2705 Data berhasil disimpan untuk video_id: https://www.tiktok.com/@jaksapedia/video/7428400122674859269
+2025-05-26 00:06:42,306 - DEBUG - \u2705 Data berhasil disimpan untuk video_id: https://www.tiktok.com/@jaksapedia/video/7428400122674859269
+2025-05-26 00:06:42,395 - DEBUG - \u2705 Data berhasil disimpan untuk video_id: https://www.tiktok.com/@jaksapedia/video/7428400122674859269
+2025-05-26 00:06:42,461 - DEBUG - \u2705 Data berhasil disimpan untuk video_id: https://www.tiktok.com/@jaksapedia/video/7428400122674859269
+2025-05-26 00:06:42,550 - DEBUG - \u2705 Data berhasil disimpan untuk video_id: https://www.tiktok.com/@jaksapedia/video/7428400122674859269
+2025-05-26 00:06:42,639 - DEBUG - \u2705 Data berhasil disimpan untuk video_id: https://www.tiktok.com/@jaksapedia/video/7428400122674859269
+2025-05-26 00:06:42,716 - DEBUG - \u2705 Data berhasil disimpan untuk video_id: https://www.tiktok.com/@jaksapedia/video/7428400122674859269
+2025-05-26 00:06:42,783 - DEBUG - \u2705 Data berhasil disimpan untuk video_id: https://www.tiktok.com/@jaksapedia/video/7428400122674859269
+2025-05-26 00:06:42,872 - DEBUG - \u2705 Data berhasil disimpan untuk video_id: https://www.tiktok.com/@jaksapedia/video/7428400122674859269
+2025-05-26 00:06:42,927 - DEBUG - \u2705 Data berhasil disimpan untuk video_id: https://www.tiktok.com/@jaksapedia/video/7428400122674859269
+2025-05-26 00:06:42,994 - DEBUG - \u2705 Data berhasil disimpan untuk video_id: https://www.tiktok.com/@jaksapedia/video/7428400122674859269
+2025-05-26 00:06:43,083 - DEBUG - \u2705 Data berhasil disimpan untuk video_id: https://www.tiktok.com/@jaksapedia/video/7428400122674859269
+2025-05-26 00:06:43,172 - DEBUG - \u2705 Data berhasil disimpan untuk video_id: https://www.tiktok.com/@jaksapedia/video/7428400122674859269
+2025-05-26 00:06:44,559 - DEBUG - \u2705 Data berhasil disimpan untuk video_id: https://www.tiktok.com/@jaksapedia/video/7428400122674859269
+2025-05-26 00:06:46,278 - DEBUG - \u2705 Data berhasil disimpan untuk video_id: https://www.tiktok.com/@jaksapedia/video/7428400122674859269
+2025-05-26 00:06:46,563 - DEBUG - \u2705 Data berhasil disimpan untuk video_id: https://www.tiktok.com/@jaksapedia/video/7428400122674859269
+2025-05-26 00:06:46,645 - DEBUG - \u2705 Data berhasil disimpan untuk video_id: https://www.tiktok.com/@jaksapedia/video/7428400122674859269
+2025-05-26 00:06:46,645 - DEBUG - \U0001f3a5 Memproses: https://www.tiktok.com/@adhyaksa.online/video/7508400501520731397
+2025-05-26 00:06:46,649 - DEBUG - Starting new HTTPS connection (1): www.tiktok.com:443
+2025-05-26 00:06:47,401 - DEBUG - https://www.tiktok.com:443 "GET /api/comment/list/?aid=1988&aweme_id=7508400501520731397&cursor=0&count=100 HTTP/11" 200 3735
+2025-05-26 00:06:47,465 - DEBUG - \u2705 Data berhasil disimpan untuk video_id: https://www.tiktok.com/@adhyaksa.online/video/7508400501520731397
+2025-05-26 00:06:47,677 - DEBUG - \u2705 Data berhasil disimpan untuk video_id: https://www.tiktok.com/@adhyaksa.online/video/7508400501520731397
+2025-05-26 00:06:47,761 - DEBUG - \u2705 Data berhasil disimpan untuk video_id: https://www.tiktok.com/@adhyaksa.online/video/7508400501520731397
+2025-05-26 00:06:47,762 - DEBUG - DELETE http://localhost:7880/session/4ddb5c3b520497376053d5765681faf4 {}
+2025-05-26 00:06:47,816 - DEBUG - http://localhost:7880 "DELETE /session/4ddb5c3b520497376053d5765681faf4 HTTP/11" 200 0
+2025-05-26 00:06:47,816 - DEBUG - Remote response: status=200 | data={"value":null} | headers=HTTPHeaderDict({'Content-Length': '14', 'Content-Type': 'application/json; charset=utf-8', 'cache-control': 'no-cache'})
+2025-05-26 00:06:47,816 - DEBUG - Finished Request
+2025-05-26 00:06:52,378 - DEBUG - 
+\U0001f50d Scraping untuk tagar: #kejaksaan agung
+2025-05-26 00:06:52,378 - DEBUG - Skipping Selenium Manager; path to chrome driver specified in Service class: C:\WebDriver\chromedriver.exe
+2025-05-26 00:06:52,410 - DEBUG - Started executable: `C:\WebDriver\chromedriver.exe` in a child process with pid: 1888 using 0 to output -3
+2025-05-26 00:06:52,925 - DEBUG - POST http://localhost:8004/session {'capabilities': {'firstMatch': [{}], 'alwaysMatch': {'browserName': 'chrome', 'pageLoadStrategy': <PageLoadStrategy.normal: 'normal'>, 'goog:chromeOptions': {'extensions': [], 'args': ['--headless', '--no-sandbox', '--disable-dev-shm-usage', '--disable-gpu', '--window-size=1920,1080']}}}}
+2025-05-26 00:06:52,925 - DEBUG - Starting new HTTP connection (1): localhost:8004
+2025-05-26 00:06:53,645 - DEBUG - http://localhost:8004 "POST /session HTTP/11" 200 0
+2025-05-26 00:06:53,645 - DEBUG - Remote response: status=200 | data={"value":{"capabilities":{"acceptInsecureCerts":false,"browserName":"chrome","browserVersion":"109.0.5414.168","chrome":{"chromedriverVersion":"109.0.5414.74 (e7c5703604daa9cc128ccf5a5d3e993513758913-refs/branch-heads/5414@{#1172})","userDataDir":"C:\\Program Files (x86)\\scoped_dir1888_1107180586"},"goog:chromeOptions":{"debuggerAddress":"localhost:8010"},"networkConnectionEnabled":false,"pageLoadStrategy":"normal","platformName":"windows","proxy":{},"setWindowRect":true,"strictFileInteractability":false,"timeouts":{"implicit":0,"pageLoad":300000,"script":30000},"unhandledPromptBehavior":"dismiss and notify","webauthn:extension:credBlob":true,"webauthn:extension:largeBlob":true,"webauthn:virtualAuthenticators":true},"sessionId":"776d699eb557663f57e6bc1e20625841"}} | headers=HTTPHeaderDict({'Content-Length': '775', 'Content-Type': 'application/json; charset=utf-8', 'cache-control': 'no-cache'})
+2025-05-26 00:06:53,645 - DEBUG - Finished Request
+2025-05-26 00:06:53,645 - DEBUG - POST http://localhost:8004/session/776d699eb557663f57e6bc1e20625841/url {'url': 'https://www.tiktok.com'}
+2025-05-26 00:07:03,145 - DEBUG - http://localhost:8004 "POST /session/776d699eb557663f57e6bc1e20625841/url HTTP/11" 200 0
+2025-05-26 00:07:03,145 - DEBUG - Remote response: status=200 | data={"value":null} | headers=HTTPHeaderDict({'Content-Length': '14', 'Content-Type': 'application/json; charset=utf-8', 'cache-control': 'no-cache'})
+2025-05-26 00:07:03,146 - DEBUG - Finished Request
+2025-05-26 00:07:08,146 - ERROR - \u274c Gagal memuat cookies: [Errno 2] No such file or directory: 'tiktok_cookies.json'
+2025-05-26 00:07:08,146 - DEBUG - POST http://localhost:8004/session/776d699eb557663f57e6bc1e20625841/url {'url': 'https://www.tiktok.com/search?q=%23kejaksaan agung'}
+2025-05-26 00:07:10,829 - DEBUG - http://localhost:8004 "POST /session/776d699eb557663f57e6bc1e20625841/url HTTP/11" 200 0
+2025-05-26 00:07:10,829 - DEBUG - Remote response: status=200 | data={"value":null} | headers=HTTPHeaderDict({'Content-Length': '14', 'Content-Type': 'application/json; charset=utf-8', 'cache-control': 'no-cache'})
+2025-05-26 00:07:10,830 - DEBUG - Finished Request
+2025-05-26 00:07:15,830 - DEBUG - POST http://localhost:8004/session/776d699eb557663f57e6bc1e20625841/element {'using': 'tag name', 'value': 'body'}
+2025-05-26 00:07:16,326 - DEBUG - http://localhost:8004 "POST /session/776d699eb557663f57e6bc1e20625841/element HTTP/11" 200 0
+2025-05-26 00:07:16,326 - DEBUG - Remote response: status=200 | data={"value":{"element-6066-11e4-a52e-4f735466cecf":"f87997c7-f33c-486d-b7e5-286c8c97ed25"}} | headers=HTTPHeaderDict({'Content-Length': '88', 'Content-Type': 'application/json; charset=utf-8', 'cache-control': 'no-cache'})
+2025-05-26 00:07:16,326 - DEBUG - Finished Request
+2025-05-26 00:07:16,327 - DEBUG - POST http://localhost:8004/session/776d699eb557663f57e6bc1e20625841/element/f87997c7-f33c-486d-b7e5-286c8c97ed25/value {'text': '\ue010', 'value': ['\ue010']}
+2025-05-26 00:07:17,565 - DEBUG - http://localhost:8004 "POST /session/776d699eb557663f57e6bc1e20625841/element/f87997c7-f33c-486d-b7e5-286c8c97ed25/value HTTP/11" 200 0
+2025-05-26 00:07:17,565 - DEBUG - Remote response: status=200 | data={"value":null} | headers=HTTPHeaderDict({'Content-Length': '14', 'Content-Type': 'application/json; charset=utf-8', 'cache-control': 'no-cache'})
+2025-05-26 00:07:17,565 - DEBUG - Finished Request
+2025-05-26 00:07:19,566 - DEBUG - POST http://localhost:8004/session/776d699eb557663f57e6bc1e20625841/element {'using': 'tag name', 'value': 'body'}
+2025-05-26 00:07:19,589 - DEBUG - http://localhost:8004 "POST /session/776d699eb557663f57e6bc1e20625841/element HTTP/11" 200 0
+2025-05-26 00:07:19,589 - DEBUG - Remote response: status=200 | data={"value":{"element-6066-11e4-a52e-4f735466cecf":"f87997c7-f33c-486d-b7e5-286c8c97ed25"}} | headers=HTTPHeaderDict({'Content-Length': '88', 'Content-Type': 'application/json; charset=utf-8', 'cache-control': 'no-cache'})
+2025-05-26 00:07:19,589 - DEBUG - Finished Request
+2025-05-26 00:07:19,590 - DEBUG - POST http://localhost:8004/session/776d699eb557663f57e6bc1e20625841/element/f87997c7-f33c-486d-b7e5-286c8c97ed25/value {'text': '\ue010', 'value': ['\ue010']}
+2025-05-26 00:07:19,694 - DEBUG - http://localhost:8004 "POST /session/776d699eb557663f57e6bc1e20625841/element/f87997c7-f33c-486d-b7e5-286c8c97ed25/value HTTP/11" 200 0
+2025-05-26 00:07:19,695 - DEBUG - Remote response: status=200 | data={"value":null} | headers=HTTPHeaderDict({'Content-Length': '14', 'Content-Type': 'application/json; charset=utf-8', 'cache-control': 'no-cache'})
+2025-05-26 00:07:19,695 - DEBUG - Finished Request
+2025-05-26 00:07:21,696 - DEBUG - POST http://localhost:8004/session/776d699eb557663f57e6bc1e20625841/element {'using': 'tag name', 'value': 'body'}
+2025-05-26 00:07:21,717 - DEBUG - http://localhost:8004 "POST /session/776d699eb557663f57e6bc1e20625841/element HTTP/11" 200 0
+2025-05-26 00:07:21,718 - DEBUG - Remote response: status=200 | data={"value":{"element-6066-11e4-a52e-4f735466cecf":"f87997c7-f33c-486d-b7e5-286c8c97ed25"}} | headers=HTTPHeaderDict({'Content-Length': '88', 'Content-Type': 'application/json; charset=utf-8', 'cache-control': 'no-cache'})
+2025-05-26 00:07:21,718 - DEBUG - Finished Request
+2025-05-26 00:07:21,718 - DEBUG - POST http://localhost:8004/session/776d699eb557663f57e6bc1e20625841/element/f87997c7-f33c-486d-b7e5-286c8c97ed25/value {'text': '\ue010', 'value': ['\ue010']}
+2025-05-26 00:07:22,078 - DEBUG - http://localhost:8004 "POST /session/776d699eb557663f57e6bc1e20625841/element/f87997c7-f33c-486d-b7e5-286c8c97ed25/value HTTP/11" 200 0
+2025-05-26 00:07:22,078 - DEBUG - Remote response: status=200 | data={"value":null} | headers=HTTPHeaderDict({'Content-Length': '14', 'Content-Type': 'application/json; charset=utf-8', 'cache-control': 'no-cache'})
+2025-05-26 00:07:22,078 - DEBUG - Finished Request
+2025-05-26 00:07:24,078 - DEBUG - POST http://localhost:8004/session/776d699eb557663f57e6bc1e20625841/elements {'using': 'css selector', 'value': 'a[href*="/video/"]'}
+2025-05-26 00:07:24,098 - DEBUG - http://localhost:8004 "POST /session/776d699eb557663f57e6bc1e20625841/elements HTTP/11" 200 0
+2025-05-26 00:07:24,098 - DEBUG - Remote response: status=200 | data={"value":[{"element-6066-11e4-a52e-4f735466cecf":"551405e5-8859-4247-820d-3271d52304da"},{"element-6066-11e4-a52e-4f735466cecf":"8063b418-f658-44a2-bfc6-ac873c8e182d"},{"element-6066-11e4-a52e-4f735466cecf":"00695999-687c-4bea-b3e9-7bd514067928"},{"element-6066-11e4-a52e-4f735466cecf":"a89a1219-003a-4605-a4c9-27fa31149a2d"},{"element-6066-11e4-a52e-4f735466cecf":"e4964255-0911-49da-a1b2-27f755d34817"},{"element-6066-11e4-a52e-4f735466cecf":"f2790968-5669-454f-bf57-e8bfb233c664"},{"element-6066-11e4-a52e-4f735466cecf":"90a8b4bb-31f5-44a2-9aa2-f48cafc2e79d"},{"element-6066-11e4-a52e-4f735466cecf":"ed45282c-4d6f-4722-a372-2cb8a09e9b1c"},{"element-6066-11e4-a52e-4f735466cecf":"404cf98f-0609-4db6-9d7e-16a26c958eae"},{"element-6066-11e4-a52e-4f735466cecf":"1ef5263f-66ed-419e-8542-39d4aa4e5176"},{"element-6066-11e4-a52e-4f735466cecf":"b692347e-bbda-4f95-a84d-bf1f95c96e7d"},{"element-6066-11e4-a52e-4f735466cecf":"c0d7997b-ee82-4cc3-ba7f-89c748f1a2a0"},{"element-6066-11e4-a52e-4f735466cecf":"5f446ac3-a44b-4e16-8418-b5778ff48702"},{"element-6066-11e4-a52e-4f735466cecf":"bc819283-935c-4890-8093-9d6902a99fe3"},{"element-6066-11e4-a52e-4f735466cecf":"8f2c5aac-e536-4d08-9bc5-4eccc10b6d32"},{"element-6066-11e4-a52e-4f735466cecf":"9be8c554-12b9-4494-9030-e4c2347e2191"},{"element-6066-11e4-a52e-4f735466cecf":"133ff4ae-7065-4b48-8aee-74bb80fed006"},{"element-6066-11e4-a52e-4f735466cecf":"7b19d094-95af-4cd5-9102-5c2f72a8c999"},{"element-6066-11e4-a52e-4f735466cecf":"64ad9d0a-3497-49d5-a528-a6c25ca0694b"},{"element-6066-11e4-a52e-4f735466cecf":"c9ee9c13-b6ba-4247-a1c1-f0f1bd4bc23a"},{"element-6066-11e4-a52e-4f735466cecf":"bc4b2c22-7b57-4004-ae94-c5f6b238ce15"},{"element-6066-11e4-a52e-4f735466cecf":"70aa65e9-bb1a-458c-ab01-19c4cf424f1f"},{"element-6066-11e4-a52e-4f735466cecf":"a19c29af-87c2-426e-bd04-418e59375576"},{"element-6066-11e4-a52e-4f735466cecf":"b5d5666a-adef-447b-9018-697cb228774d"},{"element-6066-11e4-a52e-4f735466cecf":"992ba6a4-ded3-42d4-9c7a-40bf64af7082"},{"element-6066-11e4-a52e-4f735466cecf":"f4869ade-db77-4f15-85da-e9a9ffa8bb6d"},{"element-6066-11e4-a52e-4f735466cecf":"e55d3e18-2c9a-437e-a103-a3457ec79710"},{"element-6066-11e4-a52e-4f735466cecf":"c73d7ef4-4b73-4290-96fa-1d1837ecd72f"},{"element-6066-11e4-a52e-4f735466cecf":"84fcdf95-098d-4946-aff8-78b30521f42c"},{"element-6066-11e4-a52e-4f735466cecf":"25df330e-8cbb-4ec5-b4d1-0c1ba95deeca"},{"element-6066-11e4-a52e-4f735466cecf":"b2af84bc-f8e1-4186-9524-0cc39a2ed51f"},{"element-6066-11e4-a52e-4f735466cecf":"4f993564-f4f4-4e28-9506-a80483b66702"},{"element-6066-11e4-a52e-4f735466cecf":"a2b3754e-96c8-4620-9ad4-f1bb0cbd3e7a"},{"element-6066-11e4-a52e-4f735466cecf":"d7b8628e-6475-4284-9af5-d9005ca38f5d"},{"element-6066-11e4-a52e-4f735466cecf":"46269d2c-07b4-433e-b779-7f7eb1449e3d"},{"element-6066-11e4-a52e-4f735466cecf":"4d69b75c-ff40-4817-adfe-c0eb8672b9ad"},{"element-6066-11e4-a52e-4f735466cecf":"fe9e3430-a965-41a9-a75a-af121e1dd3ca"},{"element-6066-11e4-a52e-4f735466cecf":"693ce3ff-4f3b-47e8-b714-f3a39b73feac"},{"element-6066-11e4-a52e-4f735466cecf":"9f4e14f3-168f-4aff-8390-05cdb77bcda2"},{"element-6066-11e4-a52e-4f735466cecf":"1ccf26ec-1e21-43f8-9b0f-5e095e11a2f2"},{"element-6066-11e4-a52e-4f735466cecf":"2ea41e7a-eee9-499f-be42-3ac67951cbef"},{"element-6066-11e4-a52e-4f735466cecf":"137f8c6c-2e02-4870-a3f6-896a05fce224"},{"element-6066-11e4-a52e-4f735466cecf":"4cf6ef5b-e362-4944-8318-5a4a4481f806"},{"element-6066-11e4-a52e-4f735466cecf":"86d07527-b0c1-4218-b5e1-e4dea36a442a"},{"element-6066-11e4-a52e-4f735466cecf":"bbdb178c-0421-4d25-8c51-745bb5f5254a"},{"element-6066-11e4-a52e-4f735466cecf":"0f6d0e3e-b99f-45fa-a480-8ead65f78619"},{"element-6066-11e4-a52e-4f735466cecf":"13ee2983-8610-46b3-bc5f-d9405331f377"},{"element-6066-11e4-a52e-4f735466cecf":"c2091e4e-36d7-47c9-86b1-d2d0fdeb8233"}]} | headers=HTTPHeaderDict({'Content-Length': '3803', 'Content-Type': 'application/json; charset=utf-8', 'cache-control': 'no-cache'})
+2025-05-26 00:07:24,098 - DEBUG - Finished Request
+2025-05-26 00:07:24,099 - DEBUG - POST http://localhost:8004/session/776d699eb557663f57e6bc1e20625841/execute/sync {'script': '/* getAttribute */return (function(){return (function(){var d=this||self;function f(a,b){function c(...', 'args': [{'element-6066-11e4-a52e-4f735466cecf': '551405e5-8859-4247-820d-3271d52304da'}, 'href']}
+2025-05-26 00:07:24,106 - DEBUG - http://localhost:8004 "POST /session/776d699eb557663f57e6bc1e20625841/execute/sync HTTP/11" 200 0
+2025-05-26 00:07:24,106 - DEBUG - Remote response: status=200 | data={"value":"https://www.tiktok.com/@infipop.id/video/7507549213853601080"} | headers=HTTPHeaderDict({'Content-Length': '72', 'Content-Type': 'application/json; charset=utf-8', 'cache-control': 'no-cache'})
+2025-05-26 00:07:24,106 - DEBUG - Finished Request
+2025-05-26 00:07:24,164 - DEBUG - POST http://localhost:8004/session/776d699eb557663f57e6bc1e20625841/execute/sync {'script': '/* getAttribute */return (function(){return (function(){var d=this||self;function f(a,b){function c(...', 'args': [{'element-6066-11e4-a52e-4f735466cecf': '8063b418-f658-44a2-bfc6-ac873c8e182d'}, 'href']}
+2025-05-26 00:07:24,172 - DEBUG - http://localhost:8004 "POST /session/776d699eb557663f57e6bc1e20625841/execute/sync HTTP/11" 200 0
+2025-05-26 00:07:24,172 - DEBUG - Remote response: status=200 | data={"value":"https://www.tiktok.com/@jaksapedia/video/7507554036997049656"} | headers=HTTPHeaderDict({'Content-Length': '72', 'Content-Type': 'application/json; charset=utf-8', 'cache-control': 'no-cache'})
+2025-05-26 00:07:24,172 - DEBUG - Finished Request
+2025-05-26 00:07:24,176 - DEBUG - POST http://localhost:8004/session/776d699eb557663f57e6bc1e20625841/execute/sync {'script': '/* getAttribute */return (function(){return (function(){var d=this||self;function f(a,b){function c(...', 'args': [{'element-6066-11e4-a52e-4f735466cecf': '00695999-687c-4bea-b3e9-7bd514067928'}, 'href']}
+2025-05-26 00:07:24,183 - DEBUG - http://localhost:8004 "POST /session/776d699eb557663f57e6bc1e20625841/execute/sync HTTP/11" 200 0
+2025-05-26 00:07:24,183 - DEBUG - Remote response: status=200 | data={"value":"https://www.tiktok.com/@officialinews/video/7507233044546194709"} | headers=HTTPHeaderDict({'Content-Length': '75', 'Content-Type': 'application/json; charset=utf-8', 'cache-control': 'no-cache'})
+2025-05-26 00:07:24,183 - DEBUG - Finished Request
+2025-05-26 00:07:24,187 - DEBUG - POST http://localhost:8004/session/776d699eb557663f57e6bc1e20625841/execute/sync {'script': '/* getAttribute */return (function(){return (function(){var d=this||self;function f(a,b){function c(...', 'args': [{'element-6066-11e4-a52e-4f735466cecf': 'a89a1219-003a-4605-a4c9-27fa31149a2d'}, 'href']}
+2025-05-26 00:07:24,193 - DEBUG - http://localhost:8004 "POST /session/776d699eb557663f57e6bc1e20625841/execute/sync HTTP/11" 200 0
+2025-05-26 00:07:24,193 - DEBUG - Remote response: status=200 | data={"value":"https://www.tiktok.com/@adhyaksa.online/video/7508400501520731397"} | headers=HTTPHeaderDict({'Content-Length': '77', 'Content-Type': 'application/json; charset=utf-8', 'cache-control': 'no-cache'})
+2025-05-26 00:07:24,193 - DEBUG - Finished Request
+2025-05-26 00:07:24,197 - DEBUG - POST http://localhost:8004/session/776d699eb557663f57e6bc1e20625841/execute/sync {'script': '/* getAttribute */return (function(){return (function(){var d=this||self;function f(a,b){function c(...', 'args': [{'element-6066-11e4-a52e-4f735466cecf': 'e4964255-0911-49da-a1b2-27f755d34817'}, 'href']}
+2025-05-26 00:07:24,204 - DEBUG - http://localhost:8004 "POST /session/776d699eb557663f57e6bc1e20625841/execute/sync HTTP/11" 200 0
+2025-05-26 00:07:24,204 - DEBUG - Remote response: status=200 | data={"value":"https://www.tiktok.com/@patriotsejati1/video/7508408163029257477"} | headers=HTTPHeaderDict({'Content-Length': '76', 'Content-Type': 'application/json; charset=utf-8', 'cache-control': 'no-cache'})
+2025-05-26 00:07:24,204 - DEBUG - Finished Request
+2025-05-26 00:07:24,208 - DEBUG - POST http://localhost:8004/session/776d699eb557663f57e6bc1e20625841/execute/sync {'script': '/* getAttribute */return (function(){return (function(){var d=this||self;function f(a,b){function c(...', 'args': [{'element-6066-11e4-a52e-4f735466cecf': 'f2790968-5669-454f-bf57-e8bfb233c664'}, 'href']}
+2025-05-26 00:07:24,214 - DEBUG - http://localhost:8004 "POST /session/776d699eb557663f57e6bc1e20625841/execute/sync HTTP/11" 200 0
+2025-05-26 00:07:24,214 - DEBUG - Remote response: status=200 | data={"value":"https://www.tiktok.com/@metro_tv/video/7507215986714512658"} | headers=HTTPHeaderDict({'Content-Length': '70', 'Content-Type': 'application/json; charset=utf-8', 'cache-control': 'no-cache'})
+2025-05-26 00:07:24,214 - DEBUG - Finished Request
+2025-05-26 00:07:24,219 - DEBUG - \U0001f3a5 Memproses: https://www.tiktok.com/@jaksapedia/video/7507554036997049656
+2025-05-26 00:07:24,220 - DEBUG - Starting new HTTPS connection (1): www.tiktok.com:443
+2025-05-26 00:07:24,950 - DEBUG - https://www.tiktok.com:443 "GET /api/comment/list/?aid=1988&aweme_id=7507554036997049656&cursor=0&count=100 HTTP/11" 200 None
+2025-05-26 00:07:25,313 - DEBUG - \u2705 Data berhasil disimpan untuk video_id: https://www.tiktok.com/@jaksapedia/video/7507554036997049656
+2025-05-26 00:07:25,390 - DEBUG - \u2705 Data berhasil disimpan untuk video_id: https://www.tiktok.com/@jaksapedia/video/7507554036997049656
+2025-05-26 00:07:25,458 - DEBUG - \u2705 Data berhasil disimpan untuk video_id: https://www.tiktok.com/@jaksapedia/video/7507554036997049656
+2025-05-26 00:07:25,513 - DEBUG - \u2705 Data berhasil disimpan untuk video_id: https://www.tiktok.com/@jaksapedia/video/7507554036997049656
+2025-05-26 00:07:25,545 - DEBUG - \u2705 Data berhasil disimpan untuk video_id: https://www.tiktok.com/@jaksapedia/video/7507554036997049656
+2025-05-26 00:07:25,602 - DEBUG - \u2705 Data berhasil disimpan untuk video_id: https://www.tiktok.com/@jaksapedia/video/7507554036997049656
+2025-05-26 00:07:25,657 - DEBUG - \u2705 Data berhasil disimpan untuk video_id: https://www.tiktok.com/@jaksapedia/video/7507554036997049656
+2025-05-26 00:07:25,737 - DEBUG - \u2705 Data berhasil disimpan untuk video_id: https://www.tiktok.com/@jaksapedia/video/7507554036997049656
+2025-05-26 00:07:25,828 - DEBUG - \u2705 Data berhasil disimpan untuk video_id: https://www.tiktok.com/@jaksapedia/video/7507554036997049656
+2025-05-26 00:07:25,948 - DEBUG - \u2705 Data berhasil disimpan untuk video_id: https://www.tiktok.com/@jaksapedia/video/7507554036997049656
+2025-05-26 00:07:26,023 - DEBUG - \u2705 Data berhasil disimpan untuk video_id: https://www.tiktok.com/@jaksapedia/video/7507554036997049656
+2025-05-26 00:07:26,091 - DEBUG - \u2705 Data berhasil disimpan untuk video_id: https://www.tiktok.com/@jaksapedia/video/7507554036997049656
+2025-05-26 00:07:26,334 - DEBUG - \u2705 Data berhasil disimpan untuk video_id: https://www.tiktok.com/@jaksapedia/video/7507554036997049656
+2025-05-26 00:07:26,567 - DEBUG - \u2705 Data berhasil disimpan untuk video_id: https://www.tiktok.com/@jaksapedia/video/7507554036997049656
+2025-05-26 00:07:26,622 - DEBUG - \u2705 Data berhasil disimpan untuk video_id: https://www.tiktok.com/@jaksapedia/video/7507554036997049656
+2025-05-26 00:07:26,689 - DEBUG - \u2705 Data berhasil disimpan untuk video_id: https://www.tiktok.com/@jaksapedia/video/7507554036997049656
+2025-05-26 00:07:26,689 - DEBUG - \u23e9 Komentar tidak valid: 'King'
+2025-05-26 00:07:26,745 - DEBUG - \u2705 Data berhasil disimpan untuk video_id: https://www.tiktok.com/@jaksapedia/video/7507554036997049656
+2025-05-26 00:07:26,788 - DEBUG - \u2705 Data berhasil disimpan untuk video_id: https://www.tiktok.com/@jaksapedia/video/7507554036997049656
+2025-05-26 00:07:26,845 - DEBUG - \u2705 Data berhasil disimpan untuk video_id: https://www.tiktok.com/@jaksapedia/video/7507554036997049656
+2025-05-26 00:07:26,889 - DEBUG - \u2705 Data berhasil disimpan untuk video_id: https://www.tiktok.com/@jaksapedia/video/7507554036997049656
+2025-05-26 00:07:26,933 - DEBUG - \u2705 Data berhasil disimpan untuk video_id: https://www.tiktok.com/@jaksapedia/video/7507554036997049656
+2025-05-26 00:07:27,114 - DEBUG - \u2705 Data berhasil disimpan untuk video_id: https://www.tiktok.com/@jaksapedia/video/7507554036997049656
+2025-05-26 00:07:27,324 - DEBUG - \u2705 Data berhasil disimpan untuk video_id: https://www.tiktok.com/@jaksapedia/video/7507554036997049656
+2025-05-26 00:07:27,600 - DEBUG - \u2705 Data berhasil disimpan untuk video_id: https://www.tiktok.com/@jaksapedia/video/7507554036997049656
+2025-05-26 00:07:27,953 - DEBUG - \u2705 Data berhasil disimpan untuk video_id: https://www.tiktok.com/@jaksapedia/video/7507554036997049656
+2025-05-26 00:07:28,020 - DEBUG - \u2705 Data berhasil disimpan untuk video_id: https://www.tiktok.com/@jaksapedia/video/7507554036997049656
+2025-05-26 00:07:28,153 - DEBUG - \u2705 Data berhasil disimpan untuk video_id: https://www.tiktok.com/@jaksapedia/video/7507554036997049656
+2025-05-26 00:07:28,264 - DEBUG - \u2705 Data berhasil disimpan untuk video_id: https://www.tiktok.com/@jaksapedia/video/7507554036997049656
+2025-05-26 00:07:28,342 - DEBUG - \u2705 Data berhasil disimpan untuk video_id: https://www.tiktok.com/@jaksapedia/video/7507554036997049656
+2025-05-26 00:07:28,387 - DEBUG - \u2705 Data berhasil disimpan untuk video_id: https://www.tiktok.com/@jaksapedia/video/7507554036997049656
+2025-05-26 00:07:28,487 - DEBUG - \u2705 Data berhasil disimpan untuk video_id: https://www.tiktok.com/@jaksapedia/video/7507554036997049656
+2025-05-26 00:07:28,598 - DEBUG - \u2705 Data berhasil disimpan untuk video_id: https://www.tiktok.com/@jaksapedia/video/7507554036997049656
+2025-05-26 00:07:28,653 - DEBUG - \u2705 Data berhasil disimpan untuk video_id: https://www.tiktok.com/@jaksapedia/video/7507554036997049656
+2025-05-26 00:07:28,685 - DEBUG - \u2705 Data berhasil disimpan untuk video_id: https://www.tiktok.com/@jaksapedia/video/7507554036997049656
+2025-05-26 00:07:28,819 - DEBUG - \u2705 Data berhasil disimpan untuk video_id: https://www.tiktok.com/@jaksapedia/video/7507554036997049656
+2025-05-26 00:07:28,899 - DEBUG - \u2705 Data berhasil disimpan untuk video_id: https://www.tiktok.com/@jaksapedia/video/7507554036997049656
+2025-05-26 00:07:28,952 - DEBUG - \u2705 Data berhasil disimpan untuk video_id: https://www.tiktok.com/@jaksapedia/video/7507554036997049656
+2025-05-26 00:07:28,953 - DEBUG - \u23e9 Komentar tidak valid: 'mantap\U0001f44d'
+2025-05-26 00:07:29,023 - DEBUG - \u2705 Data berhasil disimpan untuk video_id: https://www.tiktok.com/@jaksapedia/video/7507554036997049656
+2025-05-26 00:07:29,086 - DEBUG - \u2705 Data berhasil disimpan untuk video_id: https://www.tiktok.com/@jaksapedia/video/7507554036997049656
+2025-05-26 00:07:29,230 - DEBUG - \u2705 Data berhasil disimpan untuk video_id: https://www.tiktok.com/@jaksapedia/video/7507554036997049656
+2025-05-26 00:07:29,308 - DEBUG - \u2705 Data berhasil disimpan untuk video_id: https://www.tiktok.com/@jaksapedia/video/7507554036997049656
+2025-05-26 00:07:29,308 - DEBUG - \u23e9 Komentar tidak valid: 'Sehat2'
+2025-05-26 00:07:29,452 - DEBUG - \u2705 Data berhasil disimpan untuk video_id: https://www.tiktok.com/@jaksapedia/video/7507554036997049656
+2025-05-26 00:07:29,497 - DEBUG - \u2705 Data berhasil disimpan untuk video_id: https://www.tiktok.com/@jaksapedia/video/7507554036997049656
+2025-05-26 00:07:29,563 - DEBUG - \u2705 Data berhasil disimpan untuk video_id: https://www.tiktok.com/@jaksapedia/video/7507554036997049656
+2025-05-26 00:07:29,641 - DEBUG - \u2705 Data berhasil disimpan untuk video_id: https://www.tiktok.com/@jaksapedia/video/7507554036997049656
+2025-05-26 00:07:29,759 - DEBUG - \u2705 Data berhasil disimpan untuk video_id: https://www.tiktok.com/@jaksapedia/video/7507554036997049656
+2025-05-26 00:07:29,760 - DEBUG - \u23e9 Komentar tidak valid: '\U0001f929\U0001f929\U0001f929\U0001f970'
+2025-05-26 00:07:29,760 - DEBUG - \U0001f3a5 Memproses: https://www.tiktok.com/@metro_tv/video/7507215986714512658
+2025-05-26 00:07:29,764 - DEBUG - Starting new HTTPS connection (1): www.tiktok.com:443
+2025-05-26 00:07:30,491 - DEBUG - https://www.tiktok.com:443 "GET /api/comment/list/?aid=1988&aweme_id=7507215986714512658&cursor=0&count=100 HTTP/11" 200 None
+2025-05-26 00:07:30,808 - DEBUG - \u2705 Data berhasil disimpan untuk video_id: https://www.tiktok.com/@metro_tv/video/7507215986714512658
+2025-05-26 00:07:31,161 - DEBUG - \u2705 Data berhasil disimpan untuk video_id: https://www.tiktok.com/@metro_tv/video/7507215986714512658
+2025-05-26 00:07:31,336 - DEBUG - \u2705 Data berhasil disimpan untuk video_id: https://www.tiktok.com/@metro_tv/video/7507215986714512658
+2025-05-26 00:07:31,482 - DEBUG - \u2705 Data berhasil disimpan untuk video_id: https://www.tiktok.com/@metro_tv/video/7507215986714512658
+2025-05-26 00:07:31,561 - DEBUG - \u2705 Data berhasil disimpan untuk video_id: https://www.tiktok.com/@metro_tv/video/7507215986714512658
+2025-05-26 00:07:31,616 - DEBUG - \u2705 Data berhasil disimpan untuk video_id: https://www.tiktok.com/@metro_tv/video/7507215986714512658
+2025-05-26 00:07:31,694 - DEBUG - \u2705 Data berhasil disimpan untuk video_id: https://www.tiktok.com/@metro_tv/video/7507215986714512658
+2025-05-26 00:07:31,694 - DEBUG - \u23e9 Komentar tidak valid: 'hayooo'
+2025-05-26 00:07:31,816 - DEBUG - \u2705 Data berhasil disimpan untuk video_id: https://www.tiktok.com/@metro_tv/video/7507215986714512658
+2025-05-26 00:07:31,884 - DEBUG - \u2705 Data berhasil disimpan untuk video_id: https://www.tiktok.com/@metro_tv/video/7507215986714512658
+2025-05-26 00:07:31,945 - DEBUG - \u2705 Data berhasil disimpan untuk video_id: https://www.tiktok.com/@metro_tv/video/7507215986714512658
+2025-05-26 00:07:32,003 - DEBUG - \u2705 Data berhasil disimpan untuk video_id: https://www.tiktok.com/@metro_tv/video/7507215986714512658
+2025-05-26 00:07:32,071 - DEBUG - \u2705 Data berhasil disimpan untuk video_id: https://www.tiktok.com/@metro_tv/video/7507215986714512658
+2025-05-26 00:07:32,147 - DEBUG - \u2705 Data berhasil disimpan untuk video_id: https://www.tiktok.com/@metro_tv/video/7507215986714512658
+2025-05-26 00:07:32,281 - DEBUG - \u2705 Data berhasil disimpan untuk video_id: https://www.tiktok.com/@metro_tv/video/7507215986714512658
+2025-05-26 00:07:32,370 - DEBUG - \u2705 Data berhasil disimpan untuk video_id: https://www.tiktok.com/@metro_tv/video/7507215986714512658
+2025-05-26 00:07:32,371 - DEBUG - \u23e9 Komentar tidak valid: 'waduuhh'
+2025-05-26 00:07:32,371 - DEBUG - \u23e9 Komentar tidak valid: 'hi'
+2025-05-26 00:07:32,426 - DEBUG - \u2705 Data berhasil disimpan untuk video_id: https://www.tiktok.com/@metro_tv/video/7507215986714512658
+2025-05-26 00:07:32,426 - DEBUG - \u23e9 Komentar tidak valid: 'hai'
+2025-05-26 00:07:32,426 - DEBUG - \u23e9 Komentar tidak valid: 'pertama'
+2025-05-26 00:07:32,470 - DEBUG - \u2705 Data berhasil disimpan untuk video_id: https://www.tiktok.com/@metro_tv/video/7507215986714512658
+2025-05-26 00:07:32,513 - DEBUG - \u2705 Data berhasil disimpan untuk video_id: https://www.tiktok.com/@metro_tv/video/7507215986714512658
+2025-05-26 00:07:32,559 - DEBUG - \u2705 Data berhasil disimpan untuk video_id: https://www.tiktok.com/@metro_tv/video/7507215986714512658
+2025-05-26 00:07:32,559 - DEBUG - \u23e9 Komentar tidak valid: 'ketiga'
+2025-05-26 00:07:32,626 - DEBUG - \u2705 Data berhasil disimpan untuk video_id: https://www.tiktok.com/@metro_tv/video/7507215986714512658
+2025-05-26 00:07:32,691 - DEBUG - \u2705 Data berhasil disimpan untuk video_id: https://www.tiktok.com/@metro_tv/video/7507215986714512658
+2025-05-26 00:07:32,691 - DEBUG - \u23e9 Komentar tidak valid: 'nyimak'
+2025-05-26 00:07:32,736 - DEBUG - \u2705 Data berhasil disimpan untuk video_id: https://www.tiktok.com/@metro_tv/video/7507215986714512658
+2025-05-26 00:07:32,737 - DEBUG - \u23e9 Komentar tidak valid: 'mantap'
+2025-05-26 00:07:32,928 - DEBUG - \u2705 Data berhasil disimpan untuk video_id: https://www.tiktok.com/@metro_tv/video/7507215986714512658
+2025-05-26 00:07:33,136 - DEBUG - \u2705 Data berhasil disimpan untuk video_id: https://www.tiktok.com/@metro_tv/video/7507215986714512658
+2025-05-26 00:07:33,136 - DEBUG - \u23e9 Komentar tidak valid: '\U0001f970'
+2025-05-26 00:07:33,136 - DEBUG - \u23e9 Komentar tidak valid: '\U0001f970\U0001f970\U0001f970'
+2025-05-26 00:07:33,136 - DEBUG - \u23e9 Komentar tidak valid: '\U0001f970'
+2025-05-26 00:07:33,137 - DEBUG - \u23e9 Komentar tidak valid: '\U0001f602'
+2025-05-26 00:07:33,137 - DEBUG - \u23e9 Komentar tidak valid: '\U0001f970'
+2025-05-26 00:07:33,202 - DEBUG - \u2705 Data berhasil disimpan untuk video_id: https://www.tiktok.com/@metro_tv/video/7507215986714512658
+2025-05-26 00:07:33,202 - DEBUG - \u23e9 Komentar tidak valid: '\U0001f602\U0001f602\U0001f602'
+2025-05-26 00:07:33,203 - DEBUG - \u23e9 Komentar tidak valid: '\U0001f970\U0001f970\U0001f970'
+2025-05-26 00:07:33,203 - DEBUG - \u23e9 Komentar tidak valid: '\u2764'
+2025-05-26 00:07:33,203 - DEBUG - \u23e9 Komentar tidak valid: '\U0001f602'
+2025-05-26 00:07:33,203 - DEBUG - \u23e9 Komentar tidak valid: '\U0001f923'
+2025-05-26 00:07:33,204 - DEBUG - \u23e9 Komentar tidak valid: '\U0001f602'
+2025-05-26 00:07:33,204 - DEBUG - \u23e9 Komentar tidak valid: '\U0001f601'
+2025-05-26 00:07:33,204 - DEBUG - \u23e9 Komentar tidak valid: '\U0001f601'
+2025-05-26 00:07:33,204 - DEBUG - \u23e9 Komentar tidak valid: '\U0001f601'
+2025-05-26 00:07:33,205 - DEBUG - \u23e9 Komentar tidak valid: '\U0001f970'
+2025-05-26 00:07:33,205 - DEBUG - \u23e9 Komentar tidak valid: '\U0001f601'
+2025-05-26 00:07:33,205 - DEBUG - \u23e9 Komentar tidak valid: '\U0001f4aa'
+2025-05-26 00:07:33,205 - DEBUG - \U0001f3a5 Memproses: https://www.tiktok.com/@officialinews/video/7507233044546194709
+2025-05-26 00:07:33,209 - DEBUG - Starting new HTTPS connection (1): www.tiktok.com:443
+2025-05-26 00:07:33,866 - DEBUG - https://www.tiktok.com:443 "GET /api/comment/list/?aid=1988&aweme_id=7507233044546194709&cursor=0&count=100 HTTP/11" 200 20908
+2025-05-26 00:07:34,146 - DEBUG - \u2705 Data berhasil disimpan untuk video_id: https://www.tiktok.com/@officialinews/video/7507233044546194709
+2025-05-26 00:07:34,268 - DEBUG - \u2705 Data berhasil disimpan untuk video_id: https://www.tiktok.com/@officialinews/video/7507233044546194709
+2025-05-26 00:07:34,323 - DEBUG - \u2705 Data berhasil disimpan untuk video_id: https://www.tiktok.com/@officialinews/video/7507233044546194709
+2025-05-26 00:07:34,401 - DEBUG - \u2705 Data berhasil disimpan untuk video_id: https://www.tiktok.com/@officialinews/video/7507233044546194709
+2025-05-26 00:07:34,478 - DEBUG - \u2705 Data berhasil disimpan untuk video_id: https://www.tiktok.com/@officialinews/video/7507233044546194709
+2025-05-26 00:07:34,534 - DEBUG - \u2705 Data berhasil disimpan untuk video_id: https://www.tiktok.com/@officialinews/video/7507233044546194709
+2025-05-26 00:07:34,600 - DEBUG - \u2705 Data berhasil disimpan untuk video_id: https://www.tiktok.com/@officialinews/video/7507233044546194709
+2025-05-26 00:07:34,601 - DEBUG - \u23e9 Komentar tidak valid: 'kejagung\U0001f60e\U0001f60e\U0001f60e'
+2025-05-26 00:07:34,633 - DEBUG - \u2705 Data berhasil disimpan untuk video_id: https://www.tiktok.com/@officialinews/video/7507233044546194709
+2025-05-26 00:07:34,722 - DEBUG - \u2705 Data berhasil disimpan untuk video_id: https://www.tiktok.com/@officialinews/video/7507233044546194709
+2025-05-26 00:07:34,723 - DEBUG - \u23e9 Komentar tidak valid: 'mulkidi?'
+2025-05-26 00:07:34,778 - DEBUG - \u2705 Data berhasil disimpan untuk video_id: https://www.tiktok.com/@officialinews/video/7507233044546194709
+2025-05-26 00:07:34,822 - DEBUG - \u2705 Data berhasil disimpan untuk video_id: https://www.tiktok.com/@officialinews/video/7507233044546194709
+2025-05-26 00:07:34,877 - DEBUG - \u2705 Data berhasil disimpan untuk video_id: https://www.tiktok.com/@officialinews/video/7507233044546194709
+2025-05-26 00:07:34,945 - DEBUG - \u2705 Data berhasil disimpan untuk video_id: https://www.tiktok.com/@officialinews/video/7507233044546194709
+2025-05-26 00:07:34,999 - DEBUG - \u2705 Data berhasil disimpan untuk video_id: https://www.tiktok.com/@officialinews/video/7507233044546194709
+2025-05-26 00:07:35,047 - DEBUG - \u2705 Data berhasil disimpan untuk video_id: https://www.tiktok.com/@officialinews/video/7507233044546194709
+2025-05-26 00:07:35,123 - DEBUG - \u2705 Data berhasil disimpan untuk video_id: https://www.tiktok.com/@officialinews/video/7507233044546194709
+2025-05-26 00:07:35,180 - DEBUG - \u2705 Data berhasil disimpan untuk video_id: https://www.tiktok.com/@officialinews/video/7507233044546194709
+2025-05-26 00:07:35,258 - DEBUG - \u2705 Data berhasil disimpan untuk video_id: https://www.tiktok.com/@officialinews/video/7507233044546194709
+2025-05-26 00:07:35,413 - DEBUG - \u2705 Data berhasil disimpan untuk video_id: https://www.tiktok.com/@officialinews/video/7507233044546194709
+2025-05-26 00:07:35,466 - DEBUG - \u2705 Data berhasil disimpan untuk video_id: https://www.tiktok.com/@officialinews/video/7507233044546194709
+2025-05-26 00:07:35,654 - DEBUG - \u2705 Data berhasil disimpan untuk video_id: https://www.tiktok.com/@officialinews/video/7507233044546194709
+2025-05-26 00:07:35,721 - DEBUG - \u2705 Data berhasil disimpan untuk video_id: https://www.tiktok.com/@officialinews/video/7507233044546194709
+2025-05-26 00:07:35,790 - DEBUG - \u2705 Data berhasil disimpan untuk video_id: https://www.tiktok.com/@officialinews/video/7507233044546194709
+2025-05-26 00:07:35,854 - DEBUG - \u2705 Data berhasil disimpan untuk video_id: https://www.tiktok.com/@officialinews/video/7507233044546194709
+2025-05-26 00:07:35,913 - DEBUG - \u2705 Data berhasil disimpan untuk video_id: https://www.tiktok.com/@officialinews/video/7507233044546194709
+2025-05-26 00:07:35,965 - DEBUG - \u2705 Data berhasil disimpan untuk video_id: https://www.tiktok.com/@officialinews/video/7507233044546194709
+2025-05-26 00:07:36,020 - DEBUG - \u2705 Data berhasil disimpan untuk video_id: https://www.tiktok.com/@officialinews/video/7507233044546194709
+2025-05-26 00:07:36,086 - DEBUG - \u2705 Data berhasil disimpan untuk video_id: https://www.tiktok.com/@officialinews/video/7507233044546194709
+2025-05-26 00:07:36,187 - DEBUG - \u2705 Data berhasil disimpan untuk video_id: https://www.tiktok.com/@officialinews/video/7507233044546194709
+2025-05-26 00:07:36,298 - DEBUG - \u2705 Data berhasil disimpan untuk video_id: https://www.tiktok.com/@officialinews/video/7507233044546194709
+2025-05-26 00:07:36,345 - DEBUG - \u2705 Data berhasil disimpan untuk video_id: https://www.tiktok.com/@officialinews/video/7507233044546194709
+2025-05-26 00:07:36,457 - DEBUG - \u2705 Data berhasil disimpan untuk video_id: https://www.tiktok.com/@officialinews/video/7507233044546194709
+2025-05-26 00:07:36,521 - DEBUG - \u2705 Data berhasil disimpan untuk video_id: https://www.tiktok.com/@officialinews/video/7507233044546194709
+2025-05-26 00:07:36,642 - DEBUG - \u2705 Data berhasil disimpan untuk video_id: https://www.tiktok.com/@officialinews/video/7507233044546194709
+2025-05-26 00:07:36,819 - DEBUG - \u2705 Data berhasil disimpan untuk video_id: https://www.tiktok.com/@officialinews/video/7507233044546194709
+2025-05-26 00:07:36,874 - DEBUG - \u2705 Data berhasil disimpan untuk video_id: https://www.tiktok.com/@officialinews/video/7507233044546194709
+2025-05-26 00:07:36,874 - DEBUG - \u23e9 Komentar tidak valid: 'bagus'
+2025-05-26 00:07:36,919 - DEBUG - \u2705 Data berhasil disimpan untuk video_id: https://www.tiktok.com/@officialinews/video/7507233044546194709
+2025-05-26 00:07:36,975 - DEBUG - \u2705 Data berhasil disimpan untuk video_id: https://www.tiktok.com/@officialinews/video/7507233044546194709
+2025-05-26 00:07:36,975 - DEBUG - \u23e9 Komentar tidak valid: '\U0001f970\U0001f970\U0001f970'
+2025-05-26 00:07:36,975 - DEBUG - \u23e9 Komentar tidak valid: '\U0001f601\U0001f601\U0001f601'
+2025-05-26 00:07:37,062 - DEBUG - \u2705 Data berhasil disimpan untuk video_id: https://www.tiktok.com/@officialinews/video/7507233044546194709
+2025-05-26 00:07:37,062 - DEBUG - \u23e9 Komentar tidak valid: '\U0001f602'
+2025-05-26 00:07:37,063 - DEBUG - \u23e9 Komentar tidak valid: '\U0001f602'
+2025-05-26 00:07:37,063 - DEBUG - \u23e9 Komentar tidak valid: '\U0001f601'
+2025-05-26 00:07:37,063 - DEBUG - \u23e9 Komentar tidak valid: '\U0001f601'
+2025-05-26 00:07:37,130 - DEBUG - \u2705 Data berhasil disimpan untuk video_id: https://www.tiktok.com/@officialinews/video/7507233044546194709
+2025-05-26 00:07:37,130 - DEBUG - \u23e9 Komentar tidak valid: '\U0001f60c'
+2025-05-26 00:07:37,131 - DEBUG - \U0001f3a5 Memproses: https://www.tiktok.com/@infipop.id/video/7507549213853601080
+2025-05-26 00:07:37,134 - DEBUG - Starting new HTTPS connection (1): www.tiktok.com:443
+2025-05-26 00:07:37,789 - DEBUG - https://www.tiktok.com:443 "GET /api/comment/list/?aid=1988&aweme_id=7507549213853601080&cursor=0&count=100 HTTP/11" 200 19588
+2025-05-26 00:07:37,907 - DEBUG - \u2705 Data berhasil disimpan untuk video_id: https://www.tiktok.com/@infipop.id/video/7507549213853601080
+2025-05-26 00:07:37,969 - DEBUG - \u2705 Data berhasil disimpan untuk video_id: https://www.tiktok.com/@infipop.id/video/7507549213853601080
+2025-05-26 00:07:38,040 - DEBUG - \u2705 Data berhasil disimpan untuk video_id: https://www.tiktok.com/@infipop.id/video/7507549213853601080
+2025-05-26 00:07:38,106 - DEBUG - \u2705 Data berhasil disimpan untuk video_id: https://www.tiktok.com/@infipop.id/video/7507549213853601080
+2025-05-26 00:07:38,183 - DEBUG - \u2705 Data berhasil disimpan untuk video_id: https://www.tiktok.com/@infipop.id/video/7507549213853601080
+2025-05-26 00:07:38,251 - DEBUG - \u2705 Data berhasil disimpan untuk video_id: https://www.tiktok.com/@infipop.id/video/7507549213853601080
+2025-05-26 00:07:38,284 - DEBUG - \u2705 Data berhasil disimpan untuk video_id: https://www.tiktok.com/@infipop.id/video/7507549213853601080
+2025-05-26 00:07:38,317 - DEBUG - \u2705 Data berhasil disimpan untuk video_id: https://www.tiktok.com/@infipop.id/video/7507549213853601080
+2025-05-26 00:07:38,407 - DEBUG - \u2705 Data berhasil disimpan untuk video_id: https://www.tiktok.com/@infipop.id/video/7507549213853601080
+2025-05-26 00:07:38,451 - DEBUG - \u2705 Data berhasil disimpan untuk video_id: https://www.tiktok.com/@infipop.id/video/7507549213853601080
+2025-05-26 00:07:38,506 - DEBUG - \u2705 Data berhasil disimpan untuk video_id: https://www.tiktok.com/@infipop.id/video/7507549213853601080
+2025-05-26 00:07:38,573 - DEBUG - \u2705 Data berhasil disimpan untuk video_id: https://www.tiktok.com/@infipop.id/video/7507549213853601080
+2025-05-26 00:07:38,605 - DEBUG - \u2705 Data berhasil disimpan untuk video_id: https://www.tiktok.com/@infipop.id/video/7507549213853601080
+2025-05-26 00:07:38,661 - DEBUG - \u2705 Data berhasil disimpan untuk video_id: https://www.tiktok.com/@infipop.id/video/7507549213853601080
+2025-05-26 00:07:38,704 - DEBUG - \u2705 Data berhasil disimpan untuk video_id: https://www.tiktok.com/@infipop.id/video/7507549213853601080
+2025-05-26 00:07:38,739 - DEBUG - \u2705 Data berhasil disimpan untuk video_id: https://www.tiktok.com/@infipop.id/video/7507549213853601080
+2025-05-26 00:07:38,772 - DEBUG - \u2705 Data berhasil disimpan untuk video_id: https://www.tiktok.com/@infipop.id/video/7507549213853601080
+2025-05-26 00:07:38,806 - DEBUG - \u2705 Data berhasil disimpan untuk video_id: https://www.tiktok.com/@infipop.id/video/7507549213853601080
+2025-05-26 00:07:38,838 - DEBUG - \u2705 Data berhasil disimpan untuk video_id: https://www.tiktok.com/@infipop.id/video/7507549213853601080
+2025-05-26 00:07:38,873 - DEBUG - \u2705 Data berhasil disimpan untuk video_id: https://www.tiktok.com/@infipop.id/video/7507549213853601080
+2025-05-26 00:07:38,905 - DEBUG - \u2705 Data berhasil disimpan untuk video_id: https://www.tiktok.com/@infipop.id/video/7507549213853601080
+2025-05-26 00:07:38,939 - DEBUG - \u2705 Data berhasil disimpan untuk video_id: https://www.tiktok.com/@infipop.id/video/7507549213853601080
+2025-05-26 00:07:38,971 - DEBUG - \u2705 Data berhasil disimpan untuk video_id: https://www.tiktok.com/@infipop.id/video/7507549213853601080
+2025-05-26 00:07:39,006 - DEBUG - \u2705 Data berhasil disimpan untuk video_id: https://www.tiktok.com/@infipop.id/video/7507549213853601080
+2025-05-26 00:07:39,038 - DEBUG - \u2705 Data berhasil disimpan untuk video_id: https://www.tiktok.com/@infipop.id/video/7507549213853601080
+2025-05-26 00:07:39,072 - DEBUG - \u2705 Data berhasil disimpan untuk video_id: https://www.tiktok.com/@infipop.id/video/7507549213853601080
+2025-05-26 00:07:39,104 - DEBUG - \u2705 Data berhasil disimpan untuk video_id: https://www.tiktok.com/@infipop.id/video/7507549213853601080
+2025-05-26 00:07:39,139 - DEBUG - \u2705 Data berhasil disimpan untuk video_id: https://www.tiktok.com/@infipop.id/video/7507549213853601080
+2025-05-26 00:07:39,172 - DEBUG - \u2705 Data berhasil disimpan untuk video_id: https://www.tiktok.com/@infipop.id/video/7507549213853601080
+2025-05-26 00:07:39,206 - DEBUG - \u2705 Data berhasil disimpan untuk video_id: https://www.tiktok.com/@infipop.id/video/7507549213853601080
+2025-05-26 00:07:39,206 - DEBUG - \u23e9 Komentar tidak valid: 'anjay'
+2025-05-26 00:07:39,248 - DEBUG - \u2705 Data berhasil disimpan untuk video_id: https://www.tiktok.com/@infipop.id/video/7507549213853601080
+2025-05-26 00:07:39,294 - DEBUG - \u2705 Data berhasil disimpan untuk video_id: https://www.tiktok.com/@infipop.id/video/7507549213853601080
+2025-05-26 00:07:39,338 - DEBUG - \u2705 Data berhasil disimpan untuk video_id: https://www.tiktok.com/@infipop.id/video/7507549213853601080
+2025-05-26 00:07:39,399 - DEBUG - \u2705 Data berhasil disimpan untuk video_id: https://www.tiktok.com/@infipop.id/video/7507549213853601080
+2025-05-26 00:07:39,477 - DEBUG - \u2705 Data berhasil disimpan untuk video_id: https://www.tiktok.com/@infipop.id/video/7507549213853601080
+2025-05-26 00:07:39,536 - DEBUG - \u2705 Data berhasil disimpan untuk video_id: https://www.tiktok.com/@infipop.id/video/7507549213853601080
+2025-05-26 00:07:39,582 - DEBUG - \u2705 Data berhasil disimpan untuk video_id: https://www.tiktok.com/@infipop.id/video/7507549213853601080
+2025-05-26 00:07:39,688 - DEBUG - \u2705 Data berhasil disimpan untuk video_id: https://www.tiktok.com/@infipop.id/video/7507549213853601080
+2025-05-26 00:07:39,793 - DEBUG - \u2705 Data berhasil disimpan untuk video_id: https://www.tiktok.com/@infipop.id/video/7507549213853601080
+2025-05-26 00:07:39,871 - DEBUG - \u2705 Data berhasil disimpan untuk video_id: https://www.tiktok.com/@infipop.id/video/7507549213853601080
+2025-05-26 00:07:39,915 - DEBUG - \u2705 Data berhasil disimpan untuk video_id: https://www.tiktok.com/@infipop.id/video/7507549213853601080
+2025-05-26 00:07:39,999 - DEBUG - \u2705 Data berhasil disimpan untuk video_id: https://www.tiktok.com/@infipop.id/video/7507549213853601080
+2025-05-26 00:07:40,136 - DEBUG - \u2705 Data berhasil disimpan untuk video_id: https://www.tiktok.com/@infipop.id/video/7507549213853601080
+2025-05-26 00:07:40,182 - DEBUG - \u2705 Data berhasil disimpan untuk video_id: https://www.tiktok.com/@infipop.id/video/7507549213853601080
+2025-05-26 00:07:40,214 - DEBUG - \u2705 Data berhasil disimpan untuk video_id: https://www.tiktok.com/@infipop.id/video/7507549213853601080
+2025-05-26 00:07:40,248 - DEBUG - \u2705 Data berhasil disimpan untuk video_id: https://www.tiktok.com/@infipop.id/video/7507549213853601080
+2025-05-26 00:07:40,303 - DEBUG - \u2705 Data berhasil disimpan untuk video_id: https://www.tiktok.com/@infipop.id/video/7507549213853601080
+2025-05-26 00:07:40,337 - DEBUG - \u2705 Data berhasil disimpan untuk video_id: https://www.tiktok.com/@infipop.id/video/7507549213853601080
+2025-05-26 00:07:40,370 - DEBUG - \u2705 Data berhasil disimpan untuk video_id: https://www.tiktok.com/@infipop.id/video/7507549213853601080
+2025-05-26 00:07:40,371 - DEBUG - \U0001f3a5 Memproses: https://www.tiktok.com/@patriotsejati1/video/7508408163029257477
+2025-05-26 00:07:40,374 - DEBUG - Starting new HTTPS connection (1): www.tiktok.com:443
+2025-05-26 00:07:40,992 - DEBUG - https://www.tiktok.com:443 "GET /api/comment/list/?aid=1988&aweme_id=7508408163029257477&cursor=0&count=100 HTTP/11" 200 1771
+2025-05-26 00:07:40,999 - DEBUG - \u23e9 Komentar tidak valid: 'wauuu'
+2025-05-26 00:07:40,999 - DEBUG - \u23e9 Komentar tidak valid: '\U0001f525\U0001f525\U0001f525\U0001f525\U0001f60e\U0001f60e\U0001f60e\U0001f60e\U0001f44d\U0001f44d\U0001f44d\U0001f44d'
+2025-05-26 00:07:41,000 - DEBUG - \U0001f3a5 Memproses: https://www.tiktok.com/@adhyaksa.online/video/7508400501520731397
+2025-05-26 00:07:41,003 - DEBUG - Starting new HTTPS connection (1): www.tiktok.com:443
+2025-05-26 00:07:41,642 - DEBUG - https://www.tiktok.com:443 "GET /api/comment/list/?aid=1988&aweme_id=7508400501520731397&cursor=0&count=100 HTTP/11" 200 2268
+2025-05-26 00:07:41,734 - DEBUG - \u2705 Data berhasil disimpan untuk video_id: https://www.tiktok.com/@adhyaksa.online/video/7508400501520731397
+2025-05-26 00:07:41,790 - DEBUG - \u2705 Data berhasil disimpan untuk video_id: https://www.tiktok.com/@adhyaksa.online/video/7508400501520731397
+2025-05-26 00:07:41,845 - DEBUG - \u2705 Data berhasil disimpan untuk video_id: https://www.tiktok.com/@adhyaksa.online/video/7508400501520731397
+2025-05-26 00:07:41,845 - DEBUG - DELETE http://localhost:8004/session/776d699eb557663f57e6bc1e20625841 {}
+2025-05-26 00:07:41,882 - DEBUG - http://localhost:8004 "DELETE /session/776d699eb557663f57e6bc1e20625841 HTTP/11" 200 0
+2025-05-26 00:07:41,882 - DEBUG - Remote response: status=200 | data={"value":null} | headers=HTTPHeaderDict({'Content-Length': '14', 'Content-Type': 'application/json; charset=utf-8', 'cache-control': 'no-cache'})
+2025-05-26 00:07:41,882 - DEBUG - Finished Request
+2025-05-26 00:07:46,555 - DEBUG - 
+\U0001f50d Scraping untuk tagar: #kejagung
+2025-05-26 00:07:46,555 - DEBUG - Skipping Selenium Manager; path to chrome driver specified in Service class: C:\WebDriver\chromedriver.exe
+2025-05-26 00:07:46,570 - DEBUG - Started executable: `C:\WebDriver\chromedriver.exe` in a child process with pid: 7160 using 0 to output -3
+2025-05-26 00:07:47,095 - DEBUG - POST http://localhost:8093/session {'capabilities': {'firstMatch': [{}], 'alwaysMatch': {'browserName': 'chrome', 'pageLoadStrategy': <PageLoadStrategy.normal: 'normal'>, 'goog:chromeOptions': {'extensions': [], 'args': ['--headless', '--no-sandbox', '--disable-dev-shm-usage', '--disable-gpu', '--window-size=1920,1080']}}}}
+2025-05-26 00:07:47,095 - DEBUG - Starting new HTTP connection (1): localhost:8093
+2025-05-26 00:07:47,791 - DEBUG - http://localhost:8093 "POST /session HTTP/11" 200 0
+2025-05-26 00:07:47,791 - DEBUG - Remote response: status=200 | data={"value":{"capabilities":{"acceptInsecureCerts":false,"browserName":"chrome","browserVersion":"109.0.5414.168","chrome":{"chromedriverVersion":"109.0.5414.74 (e7c5703604daa9cc128ccf5a5d3e993513758913-refs/branch-heads/5414@{#1172})","userDataDir":"C:\\Program Files (x86)\\scoped_dir7160_826246600"},"goog:chromeOptions":{"debuggerAddress":"localhost:8096"},"networkConnectionEnabled":false,"pageLoadStrategy":"normal","platformName":"windows","proxy":{},"setWindowRect":true,"strictFileInteractability":false,"timeouts":{"implicit":0,"pageLoad":300000,"script":30000},"unhandledPromptBehavior":"dismiss and notify","webauthn:extension:credBlob":true,"webauthn:extension:largeBlob":true,"webauthn:virtualAuthenticators":true},"sessionId":"2b9ff668ceb20556c9dee144ae0cf2e9"}} | headers=HTTPHeaderDict({'Content-Length': '774', 'Content-Type': 'application/json; charset=utf-8', 'cache-control': 'no-cache'})
+2025-05-26 00:07:47,791 - DEBUG - Finished Request
+2025-05-26 00:07:47,791 - DEBUG - POST http://localhost:8093/session/2b9ff668ceb20556c9dee144ae0cf2e9/url {'url': 'https://www.tiktok.com'}
+2025-05-26 00:07:59,360 - DEBUG - http://localhost:8093 "POST /session/2b9ff668ceb20556c9dee144ae0cf2e9/url HTTP/11" 200 0
+2025-05-26 00:07:59,360 - DEBUG - Remote response: status=200 | data={"value":null} | headers=HTTPHeaderDict({'Content-Length': '14', 'Content-Type': 'application/json; charset=utf-8', 'cache-control': 'no-cache'})
+2025-05-26 00:07:59,360 - DEBUG - Finished Request
+2025-05-26 00:08:04,361 - ERROR - \u274c Gagal memuat cookies: [Errno 2] No such file or directory: 'tiktok_cookies.json'
+2025-05-26 00:08:04,362 - DEBUG - POST http://localhost:8093/session/2b9ff668ceb20556c9dee144ae0cf2e9/url {'url': 'https://www.tiktok.com/search?q=%23kejagung'}
+2025-05-26 00:08:05,916 - DEBUG - http://localhost:8093 "POST /session/2b9ff668ceb20556c9dee144ae0cf2e9/url HTTP/11" 200 0
+2025-05-26 00:08:05,917 - DEBUG - Remote response: status=200 | data={"value":null} | headers=HTTPHeaderDict({'Content-Length': '14', 'Content-Type': 'application/json; charset=utf-8', 'cache-control': 'no-cache'})
+2025-05-26 00:08:05,917 - DEBUG - Finished Request
+2025-05-26 00:08:10,917 - DEBUG - POST http://localhost:8093/session/2b9ff668ceb20556c9dee144ae0cf2e9/element {'using': 'tag name', 'value': 'body'}
+2025-05-26 00:08:11,241 - DEBUG - http://localhost:8093 "POST /session/2b9ff668ceb20556c9dee144ae0cf2e9/element HTTP/11" 200 0
+2025-05-26 00:08:11,241 - DEBUG - Remote response: status=200 | data={"value":{"element-6066-11e4-a52e-4f735466cecf":"396b2afd-6848-4d7e-82f9-7b4cc3608da3"}} | headers=HTTPHeaderDict({'Content-Length': '88', 'Content-Type': 'application/json; charset=utf-8', 'cache-control': 'no-cache'})
+2025-05-26 00:08:11,241 - DEBUG - Finished Request
+2025-05-26 00:08:11,242 - DEBUG - POST http://localhost:8093/session/2b9ff668ceb20556c9dee144ae0cf2e9/element/396b2afd-6848-4d7e-82f9-7b4cc3608da3/value {'text': '\ue010', 'value': ['\ue010']}
+2025-05-26 00:08:11,551 - DEBUG - http://localhost:8093 "POST /session/2b9ff668ceb20556c9dee144ae0cf2e9/element/396b2afd-6848-4d7e-82f9-7b4cc3608da3/value HTTP/11" 200 0
+2025-05-26 00:08:11,551 - DEBUG - Remote response: status=200 | data={"value":null} | headers=HTTPHeaderDict({'Content-Length': '14', 'Content-Type': 'application/json; charset=utf-8', 'cache-control': 'no-cache'})
+2025-05-26 00:08:11,551 - DEBUG - Finished Request
+2025-05-26 00:08:13,552 - DEBUG - POST http://localhost:8093/session/2b9ff668ceb20556c9dee144ae0cf2e9/element {'using': 'tag name', 'value': 'body'}
+2025-05-26 00:08:13,562 - DEBUG - http://localhost:8093 "POST /session/2b9ff668ceb20556c9dee144ae0cf2e9/element HTTP/11" 200 0
+2025-05-26 00:08:13,562 - DEBUG - Remote response: status=200 | data={"value":{"element-6066-11e4-a52e-4f735466cecf":"396b2afd-6848-4d7e-82f9-7b4cc3608da3"}} | headers=HTTPHeaderDict({'Content-Length': '88', 'Content-Type': 'application/json; charset=utf-8', 'cache-control': 'no-cache'})
+2025-05-26 00:08:13,562 - DEBUG - Finished Request
+2025-05-26 00:08:13,562 - DEBUG - POST http://localhost:8093/session/2b9ff668ceb20556c9dee144ae0cf2e9/element/396b2afd-6848-4d7e-82f9-7b4cc3608da3/value {'text': '\ue010', 'value': ['\ue010']}
+2025-05-26 00:08:13,639 - DEBUG - http://localhost:8093 "POST /session/2b9ff668ceb20556c9dee144ae0cf2e9/element/396b2afd-6848-4d7e-82f9-7b4cc3608da3/value HTTP/11" 200 0
+2025-05-26 00:08:13,639 - DEBUG - Remote response: status=200 | data={"value":null} | headers=HTTPHeaderDict({'Content-Length': '14', 'Content-Type': 'application/json; charset=utf-8', 'cache-control': 'no-cache'})
+2025-05-26 00:08:13,639 - DEBUG - Finished Request
+2025-05-26 00:08:15,640 - DEBUG - POST http://localhost:8093/session/2b9ff668ceb20556c9dee144ae0cf2e9/element {'using': 'tag name', 'value': 'body'}
+2025-05-26 00:08:15,648 - DEBUG - http://localhost:8093 "POST /session/2b9ff668ceb20556c9dee144ae0cf2e9/element HTTP/11" 200 0
+2025-05-26 00:08:15,649 - DEBUG - Remote response: status=200 | data={"value":{"element-6066-11e4-a52e-4f735466cecf":"396b2afd-6848-4d7e-82f9-7b4cc3608da3"}} | headers=HTTPHeaderDict({'Content-Length': '88', 'Content-Type': 'application/json; charset=utf-8', 'cache-control': 'no-cache'})
+2025-05-26 00:08:15,649 - DEBUG - Finished Request
+2025-05-26 00:08:15,649 - DEBUG - POST http://localhost:8093/session/2b9ff668ceb20556c9dee144ae0cf2e9/element/396b2afd-6848-4d7e-82f9-7b4cc3608da3/value {'text': '\ue010', 'value': ['\ue010']}
+2025-05-26 00:08:15,822 - DEBUG - http://localhost:8093 "POST /session/2b9ff668ceb20556c9dee144ae0cf2e9/element/396b2afd-6848-4d7e-82f9-7b4cc3608da3/value HTTP/11" 200 0
+2025-05-26 00:08:15,822 - DEBUG - Remote response: status=200 | data={"value":null} | headers=HTTPHeaderDict({'Content-Length': '14', 'Content-Type': 'application/json; charset=utf-8', 'cache-control': 'no-cache'})
+2025-05-26 00:08:15,822 - DEBUG - Finished Request
+2025-05-26 00:08:17,822 - DEBUG - POST http://localhost:8093/session/2b9ff668ceb20556c9dee144ae0cf2e9/elements {'using': 'css selector', 'value': 'a[href*="/video/"]'}
+2025-05-26 00:08:17,869 - DEBUG - http://localhost:8093 "POST /session/2b9ff668ceb20556c9dee144ae0cf2e9/elements HTTP/11" 200 0
+2025-05-26 00:08:17,869 - DEBUG - Remote response: status=200 | data={"value":[{"element-6066-11e4-a52e-4f735466cecf":"d2b8d751-49b9-4fc2-a6e0-6e3cd49cf430"},{"element-6066-11e4-a52e-4f735466cecf":"b075a271-db0e-4cf4-b7cf-e7d02bc817ef"},{"element-6066-11e4-a52e-4f735466cecf":"e2199dc2-18a3-42c4-bb26-5d6cfe7c873f"},{"element-6066-11e4-a52e-4f735466cecf":"bcca3aed-cd8b-47a3-b94c-3c3bb0dc4f22"},{"element-6066-11e4-a52e-4f735466cecf":"e44f83a1-decc-4b16-ac86-faee7d856eed"},{"element-6066-11e4-a52e-4f735466cecf":"55301f0f-dedd-4474-8d0d-74c46e104fb4"},{"element-6066-11e4-a52e-4f735466cecf":"9fbe9ec7-0701-4bc9-967d-599b5c8c4a8d"},{"element-6066-11e4-a52e-4f735466cecf":"1a59c969-6859-40c4-ac11-39541f296391"},{"element-6066-11e4-a52e-4f735466cecf":"06d16ce7-4652-4d54-828a-66fc6f92d583"},{"element-6066-11e4-a52e-4f735466cecf":"766bbaab-9482-47d5-8db2-5eb975de4b7c"},{"element-6066-11e4-a52e-4f735466cecf":"be2a37bc-3fb5-49cf-9b26-ac9342d46a88"},{"element-6066-11e4-a52e-4f735466cecf":"5cd4bef5-2035-4c79-be8e-55128d2a3c9c"},{"element-6066-11e4-a52e-4f735466cecf":"85c97f6f-4024-44d1-8640-d560d33ba10b"},{"element-6066-11e4-a52e-4f735466cecf":"b68b3f6b-e683-485c-9a7a-c5a620125127"},{"element-6066-11e4-a52e-4f735466cecf":"961a969d-2c38-4948-b6ea-f1b0662c8f46"},{"element-6066-11e4-a52e-4f735466cecf":"59696c89-6888-4a6d-a28a-7d1d0f3c87cd"},{"element-6066-11e4-a52e-4f735466cecf":"9e489a66-9512-4ff0-8e23-e7c054a0d25c"},{"element-6066-11e4-a52e-4f735466cecf":"4e9e5065-8f3a-42ae-9c95-77eb0ce5df81"},{"element-6066-11e4-a52e-4f735466cecf":"4b966d48-d187-46f4-9c2b-ded2c411f663"},{"element-6066-11e4-a52e-4f735466cecf":"6432c503-8db1-4cd6-856b-2d3823e86f2e"},{"element-6066-11e4-a52e-4f735466cecf":"9847a2e1-372d-4ee1-99c3-d84662412e82"},{"element-6066-11e4-a52e-4f735466cecf":"e7479842-1799-4806-99ed-138e55e11ccb"},{"element-6066-11e4-a52e-4f735466cecf":"510c5930-0448-4c2a-a66c-85e0b934c593"},{"element-6066-11e4-a52e-4f735466cecf":"e31f9db2-f831-4af4-abba-979e0d2a6f74"},{"element-6066-11e4-a52e-4f735466cecf":"854379b6-2d5a-49a9-869e-999a729c8394"},{"element-6066-11e4-a52e-4f735466cecf":"1cac9a32-5aa9-4b50-8020-2a10eada8ad7"},{"element-6066-11e4-a52e-4f735466cecf":"4cd15678-4faa-4d53-8377-62497d3e0a84"},{"element-6066-11e4-a52e-4f735466cecf":"2f3f2506-ffe9-4277-82ca-10aa4a79aadb"},{"element-6066-11e4-a52e-4f735466cecf":"b3ea974a-bff9-4292-aaff-485a4a017724"},{"element-6066-11e4-a52e-4f735466cecf":"7e3922f6-c165-40cb-8295-4e22ee56027a"},{"element-6066-11e4-a52e-4f735466cecf":"fbd64e50-7e94-4a83-8c4f-0dde52860130"},{"element-6066-11e4-a52e-4f735466cecf":"cccd99d8-af3c-4f5d-b003-bf9c60dc2924"},{"element-6066-11e4-a52e-4f735466cecf":"b07456b6-9804-4dc5-bdba-d0b9bf26e24d"},{"element-6066-11e4-a52e-4f735466cecf":"d3b33b32-4540-408b-8d8a-38f143662060"},{"element-6066-11e4-a52e-4f735466cecf":"21a18daa-59a7-4713-bdf6-d23822bc4074"},{"element-6066-11e4-a52e-4f735466cecf":"246b5baf-c423-4b08-8108-2ae4439cd861"},{"element-6066-11e4-a52e-4f735466cecf":"c7e3bbbf-52a2-4e58-973a-a7d4d85d5d27"},{"element-6066-11e4-a52e-4f735466cecf":"28f87b6b-f4ff-4062-9d46-c16046aa5a74"},{"element-6066-11e4-a52e-4f735466cecf":"80c41c56-49cd-49d8-9691-63b1812239bb"},{"element-6066-11e4-a52e-4f735466cecf":"7e079273-e25c-4275-afeb-cef51e80ecef"},{"element-6066-11e4-a52e-4f735466cecf":"cee2dd53-8813-4cdb-8400-80f8b72b8ef9"},{"element-6066-11e4-a52e-4f735466cecf":"ee9ba345-7f8e-40ca-ba4e-b87f67d85504"},{"element-6066-11e4-a52e-4f735466cecf":"c278ce7f-d441-435b-b2b4-2845c2d1683f"},{"element-6066-11e4-a52e-4f735466cecf":"93dfa772-44ea-4800-aa84-d7243afbaeb6"},{"element-6066-11e4-a52e-4f735466cecf":"8e5a3113-14f2-4389-826c-f1dc3b6f3fe2"},{"element-6066-11e4-a52e-4f735466cecf":"1f01b61e-fb26-4f6c-bb2d-146f816759b2"},{"element-6066-11e4-a52e-4f735466cecf":"b667efa7-4064-47b9-b9cf-a30b933c8e9f"},{"element-6066-11e4-a52e-4f735466cecf":"f14e95e7-7b8c-4bc5-af18-c47438c4c4ea"}]} | headers=HTTPHeaderDict({'Content-Length': '3803', 'Content-Type': 'application/json; charset=utf-8', 'cache-control': 'no-cache'})
+2025-05-26 00:08:17,870 - DEBUG - Finished Request
+2025-05-26 00:08:17,871 - DEBUG - POST http://localhost:8093/session/2b9ff668ceb20556c9dee144ae0cf2e9/execute/sync {'script': '/* getAttribute */return (function(){return (function(){var d=this||self;function f(a,b){function c(...', 'args': [{'element-6066-11e4-a52e-4f735466cecf': 'd2b8d751-49b9-4fc2-a6e0-6e3cd49cf430'}, 'href']}
+2025-05-26 00:08:17,883 - DEBUG - http://localhost:8093 "POST /session/2b9ff668ceb20556c9dee144ae0cf2e9/execute/sync HTTP/11" 200 0
+2025-05-26 00:08:17,884 - DEBUG - Remote response: status=200 | data={"value":"https://www.tiktok.com/@maoinfoindonesia/video/7482826963111988487"} | headers=HTTPHeaderDict({'Content-Length': '78', 'Content-Type': 'application/json; charset=utf-8', 'cache-control': 'no-cache'})
+2025-05-26 00:08:17,884 - DEBUG - Finished Request
+2025-05-26 00:08:17,947 - DEBUG - POST http://localhost:8093/session/2b9ff668ceb20556c9dee144ae0cf2e9/execute/sync {'script': '/* getAttribute */return (function(){return (function(){var d=this||self;function f(a,b){function c(...', 'args': [{'element-6066-11e4-a52e-4f735466cecf': 'b075a271-db0e-4cf4-b7cf-e7d02bc817ef'}, 'href']}
+2025-05-26 00:08:17,960 - DEBUG - http://localhost:8093 "POST /session/2b9ff668ceb20556c9dee144ae0cf2e9/execute/sync HTTP/11" 200 0
+2025-05-26 00:08:17,960 - DEBUG - Remote response: status=200 | data={"value":"https://www.tiktok.com/@monitorinddotcom/video/7372956268006264072"} | headers=HTTPHeaderDict({'Content-Length': '78', 'Content-Type': 'application/json; charset=utf-8', 'cache-control': 'no-cache'})
+2025-05-26 00:08:17,961 - DEBUG - Finished Request
+2025-05-26 00:08:17,965 - DEBUG - POST http://localhost:8093/session/2b9ff668ceb20556c9dee144ae0cf2e9/execute/sync {'script': '/* getAttribute */return (function(){return (function(){var d=this||self;function f(a,b){function c(...', 'args': [{'element-6066-11e4-a52e-4f735466cecf': 'e2199dc2-18a3-42c4-bb26-5d6cfe7c873f'}, 'href']}
+2025-05-26 00:08:17,973 - DEBUG - http://localhost:8093 "POST /session/2b9ff668ceb20556c9dee144ae0cf2e9/execute/sync HTTP/11" 200 0
+2025-05-26 00:08:17,973 - DEBUG - Remote response: status=200 | data={"value":"https://www.tiktok.com/@metro_tv/video/7486016864448007442"} | headers=HTTPHeaderDict({'Content-Length': '70', 'Content-Type': 'application/json; charset=utf-8', 'cache-control': 'no-cache'})
+2025-05-26 00:08:17,973 - DEBUG - Finished Request
+2025-05-26 00:08:17,978 - DEBUG - POST http://localhost:8093/session/2b9ff668ceb20556c9dee144ae0cf2e9/execute/sync {'script': '/* getAttribute */return (function(){return (function(){var d=this||self;function f(a,b){function c(...', 'args': [{'element-6066-11e4-a52e-4f735466cecf': 'bcca3aed-cd8b-47a3-b94c-3c3bb0dc4f22'}, 'href']}
+2025-05-26 00:08:17,985 - DEBUG - http://localhost:8093 "POST /session/2b9ff668ceb20556c9dee144ae0cf2e9/execute/sync HTTP/11" 200 0
+2025-05-26 00:08:17,985 - DEBUG - Remote response: status=200 | data={"value":"https://www.tiktok.com/@art.6672/video/7496542487973055762"} | headers=HTTPHeaderDict({'Content-Length': '70', 'Content-Type': 'application/json; charset=utf-8', 'cache-control': 'no-cache'})
+2025-05-26 00:08:17,985 - DEBUG - Finished Request
+2025-05-26 00:08:17,990 - DEBUG - POST http://localhost:8093/session/2b9ff668ceb20556c9dee144ae0cf2e9/execute/sync {'script': '/* getAttribute */return (function(){return (function(){var d=this||self;function f(a,b){function c(...', 'args': [{'element-6066-11e4-a52e-4f735466cecf': 'e44f83a1-decc-4b16-ac86-faee7d856eed'}, 'href']}
+2025-05-26 00:08:17,997 - DEBUG - http://localhost:8093 "POST /session/2b9ff668ceb20556c9dee144ae0cf2e9/execute/sync HTTP/11" 200 0
+2025-05-26 00:08:17,997 - DEBUG - Remote response: status=200 | data={"value":"https://www.tiktok.com/@jejak_viral/video/7481432639275093256"} | headers=HTTPHeaderDict({'Content-Length': '73', 'Content-Type': 'application/json; charset=utf-8', 'cache-control': 'no-cache'})
+2025-05-26 00:08:17,997 - DEBUG - Finished Request
+2025-05-26 00:08:18,002 - DEBUG - POST http://localhost:8093/session/2b9ff668ceb20556c9dee144ae0cf2e9/execute/sync {'script': '/* getAttribute */return (function(){return (function(){var d=this||self;function f(a,b){function c(...', 'args': [{'element-6066-11e4-a52e-4f735466cecf': '55301f0f-dedd-4474-8d0d-74c46e104fb4'}, 'href']}
+2025-05-26 00:08:18,009 - DEBUG - http://localhost:8093 "POST /session/2b9ff668ceb20556c9dee144ae0cf2e9/execute/sync HTTP/11" 200 0
+2025-05-26 00:08:18,010 - DEBUG - Remote response: status=200 | data={"value":"https://www.tiktok.com/@hendriaprila/video/7502088835334016262"} | headers=HTTPHeaderDict({'Content-Length': '74', 'Content-Type': 'application/json; charset=utf-8', 'cache-control': 'no-cache'})
+2025-05-26 00:08:18,010 - DEBUG - Finished Request
+2025-05-26 00:08:18,014 - DEBUG - \U0001f3a5 Memproses: https://www.tiktok.com/@metro_tv/video/7486016864448007442
+2025-05-26 00:08:18,016 - DEBUG - Starting new HTTPS connection (1): www.tiktok.com:443
+2025-05-26 00:08:19,312 - DEBUG - https://www.tiktok.com:443 "GET /api/comment/list/?aid=1988&aweme_id=7486016864448007442&cursor=0&count=100 HTTP/11" 200 21040
+2025-05-26 00:08:20,194 - DEBUG - \u2705 Data berhasil disimpan untuk video_id: https://www.tiktok.com/@metro_tv/video/7486016864448007442
+2025-05-26 00:08:20,570 - DEBUG - \u2705 Data berhasil disimpan untuk video_id: https://www.tiktok.com/@metro_tv/video/7486016864448007442
+2025-05-26 00:08:20,625 - DEBUG - \u2705 Data berhasil disimpan untuk video_id: https://www.tiktok.com/@metro_tv/video/7486016864448007442
+2025-05-26 00:08:20,658 - DEBUG - \u2705 Data berhasil disimpan untuk video_id: https://www.tiktok.com/@metro_tv/video/7486016864448007442
+2025-05-26 00:08:20,725 - DEBUG - \u2705 Data berhasil disimpan untuk video_id: https://www.tiktok.com/@metro_tv/video/7486016864448007442
+2025-05-26 00:08:20,816 - DEBUG - \u2705 Data berhasil disimpan untuk video_id: https://www.tiktok.com/@metro_tv/video/7486016864448007442
+2025-05-26 00:08:20,847 - DEBUG - \u2705 Data berhasil disimpan untuk video_id: https://www.tiktok.com/@metro_tv/video/7486016864448007442
+2025-05-26 00:08:21,104 - DEBUG - \u2705 Data berhasil disimpan untuk video_id: https://www.tiktok.com/@metro_tv/video/7486016864448007442
+2025-05-26 00:08:21,191 - DEBUG - \u2705 Data berhasil disimpan untuk video_id: https://www.tiktok.com/@metro_tv/video/7486016864448007442
+2025-05-26 00:08:21,248 - DEBUG - \u2705 Data berhasil disimpan untuk video_id: https://www.tiktok.com/@metro_tv/video/7486016864448007442
+2025-05-26 00:08:21,302 - DEBUG - \u2705 Data berhasil disimpan untuk video_id: https://www.tiktok.com/@metro_tv/video/7486016864448007442
+2025-05-26 00:08:21,391 - DEBUG - \u2705 Data berhasil disimpan untuk video_id: https://www.tiktok.com/@metro_tv/video/7486016864448007442
+2025-05-26 00:08:21,610 - DEBUG - \u2705 Data berhasil disimpan untuk video_id: https://www.tiktok.com/@metro_tv/video/7486016864448007442
+2025-05-26 00:08:21,705 - DEBUG - \u2705 Data berhasil disimpan untuk video_id: https://www.tiktok.com/@metro_tv/video/7486016864448007442
+2025-05-26 00:08:21,780 - DEBUG - \u2705 Data berhasil disimpan untuk video_id: https://www.tiktok.com/@metro_tv/video/7486016864448007442
+2025-05-26 00:08:21,813 - DEBUG - \u2705 Data berhasil disimpan untuk video_id: https://www.tiktok.com/@metro_tv/video/7486016864448007442
+2025-05-26 00:08:21,869 - DEBUG - \u2705 Data berhasil disimpan untuk video_id: https://www.tiktok.com/@metro_tv/video/7486016864448007442
+2025-05-26 00:08:21,970 - DEBUG - \u2705 Data berhasil disimpan untuk video_id: https://www.tiktok.com/@metro_tv/video/7486016864448007442
+2025-05-26 00:08:22,423 - DEBUG - \u2705 Data berhasil disimpan untuk video_id: https://www.tiktok.com/@metro_tv/video/7486016864448007442
+2025-05-26 00:08:22,523 - DEBUG - \u2705 Data berhasil disimpan untuk video_id: https://www.tiktok.com/@metro_tv/video/7486016864448007442
+2025-05-26 00:08:22,634 - DEBUG - \u2705 Data berhasil disimpan untuk video_id: https://www.tiktok.com/@metro_tv/video/7486016864448007442
+2025-05-26 00:08:22,734 - DEBUG - \u2705 Data berhasil disimpan untuk video_id: https://www.tiktok.com/@metro_tv/video/7486016864448007442
+2025-05-26 00:08:22,844 - DEBUG - \u2705 Data berhasil disimpan untuk video_id: https://www.tiktok.com/@metro_tv/video/7486016864448007442
+2025-05-26 00:08:22,889 - DEBUG - \u2705 Data berhasil disimpan untuk video_id: https://www.tiktok.com/@metro_tv/video/7486016864448007442
+2025-05-26 00:08:22,967 - DEBUG - \u2705 Data berhasil disimpan untuk video_id: https://www.tiktok.com/@metro_tv/video/7486016864448007442
+2025-05-26 00:08:23,056 - DEBUG - \u2705 Data berhasil disimpan untuk video_id: https://www.tiktok.com/@metro_tv/video/7486016864448007442
+2025-05-26 00:08:23,256 - DEBUG - \u2705 Data berhasil disimpan untuk video_id: https://www.tiktok.com/@metro_tv/video/7486016864448007442
+2025-05-26 00:08:23,300 - DEBUG - \u2705 Data berhasil disimpan untuk video_id: https://www.tiktok.com/@metro_tv/video/7486016864448007442
+2025-05-26 00:08:23,477 - DEBUG - \u2705 Data berhasil disimpan untuk video_id: https://www.tiktok.com/@metro_tv/video/7486016864448007442
+2025-05-26 00:08:23,592 - DEBUG - \u2705 Data berhasil disimpan untuk video_id: https://www.tiktok.com/@metro_tv/video/7486016864448007442
+2025-05-26 00:08:23,699 - DEBUG - \u2705 Data berhasil disimpan untuk video_id: https://www.tiktok.com/@metro_tv/video/7486016864448007442
+2025-05-26 00:08:23,777 - DEBUG - \u2705 Data berhasil disimpan untuk video_id: https://www.tiktok.com/@metro_tv/video/7486016864448007442
+2025-05-26 00:08:23,833 - DEBUG - \u2705 Data berhasil disimpan untuk video_id: https://www.tiktok.com/@metro_tv/video/7486016864448007442
+2025-05-26 00:08:23,888 - DEBUG - \u2705 Data berhasil disimpan untuk video_id: https://www.tiktok.com/@metro_tv/video/7486016864448007442
+2025-05-26 00:08:23,932 - DEBUG - \u2705 Data berhasil disimpan untuk video_id: https://www.tiktok.com/@metro_tv/video/7486016864448007442
+2025-05-26 00:08:23,976 - DEBUG - \u2705 Data berhasil disimpan untuk video_id: https://www.tiktok.com/@metro_tv/video/7486016864448007442
+2025-05-26 00:08:24,044 - DEBUG - \u2705 Data berhasil disimpan untuk video_id: https://www.tiktok.com/@metro_tv/video/7486016864448007442
+2025-05-26 00:08:24,098 - DEBUG - \u2705 Data berhasil disimpan untuk video_id: https://www.tiktok.com/@metro_tv/video/7486016864448007442
+2025-05-26 00:08:24,154 - DEBUG - \u2705 Data berhasil disimpan untuk video_id: https://www.tiktok.com/@metro_tv/video/7486016864448007442
+2025-05-26 00:08:24,276 - DEBUG - \u2705 Data berhasil disimpan untuk video_id: https://www.tiktok.com/@metro_tv/video/7486016864448007442
+2025-05-26 00:08:24,320 - DEBUG - \u2705 Data berhasil disimpan untuk video_id: https://www.tiktok.com/@metro_tv/video/7486016864448007442
+2025-05-26 00:08:24,390 - DEBUG - \u2705 Data berhasil disimpan untuk video_id: https://www.tiktok.com/@metro_tv/video/7486016864448007442
+2025-05-26 00:08:24,554 - DEBUG - \u2705 Data berhasil disimpan untuk video_id: https://www.tiktok.com/@metro_tv/video/7486016864448007442
+2025-05-26 00:08:24,609 - DEBUG - \u2705 Data berhasil disimpan untuk video_id: https://www.tiktok.com/@metro_tv/video/7486016864448007442
+2025-05-26 00:08:24,642 - DEBUG - \u2705 Data berhasil disimpan untuk video_id: https://www.tiktok.com/@metro_tv/video/7486016864448007442
+2025-05-26 00:08:24,940 - DEBUG - \u2705 Data berhasil disimpan untuk video_id: https://www.tiktok.com/@metro_tv/video/7486016864448007442
+2025-05-26 00:08:24,986 - DEBUG - \u2705 Data berhasil disimpan untuk video_id: https://www.tiktok.com/@metro_tv/video/7486016864448007442
+2025-05-26 00:08:25,030 - DEBUG - \u2705 Data berhasil disimpan untuk video_id: https://www.tiktok.com/@metro_tv/video/7486016864448007442
+2025-05-26 00:08:25,097 - DEBUG - \u2705 Data berhasil disimpan untuk video_id: https://www.tiktok.com/@metro_tv/video/7486016864448007442
+2025-05-26 00:08:25,130 - DEBUG - \u2705 Data berhasil disimpan untuk video_id: https://www.tiktok.com/@metro_tv/video/7486016864448007442
+2025-05-26 00:08:25,130 - DEBUG - \U0001f3a5 Memproses: https://www.tiktok.com/@jejak_viral/video/7481432639275093256
+2025-05-26 00:08:25,132 - DEBUG - Starting new HTTPS connection (1): www.tiktok.com:443
+2025-05-26 00:08:25,762 - DEBUG - https://www.tiktok.com:443 "GET /api/comment/list/?aid=1988&aweme_id=7481432639275093256&cursor=0&count=100 HTTP/11" 200 22018
+2025-05-26 00:08:26,064 - DEBUG - \u2705 Data berhasil disimpan untuk video_id: https://www.tiktok.com/@jejak_viral/video/7481432639275093256
+2025-05-26 00:08:26,206 - DEBUG - \u2705 Data berhasil disimpan untuk video_id: https://www.tiktok.com/@jejak_viral/video/7481432639275093256
+2025-05-26 00:08:26,262 - DEBUG - \u2705 Data berhasil disimpan untuk video_id: https://www.tiktok.com/@jejak_viral/video/7481432639275093256
+2025-05-26 00:08:26,295 - DEBUG - \u2705 Data berhasil disimpan untuk video_id: https://www.tiktok.com/@jejak_viral/video/7481432639275093256
+2025-05-26 00:08:26,328 - DEBUG - \u2705 Data berhasil disimpan untuk video_id: https://www.tiktok.com/@jejak_viral/video/7481432639275093256
+2025-05-26 00:08:26,373 - DEBUG - \u2705 Data berhasil disimpan untuk video_id: https://www.tiktok.com/@jejak_viral/video/7481432639275093256
+2025-05-26 00:08:26,418 - DEBUG - \u2705 Data berhasil disimpan untuk video_id: https://www.tiktok.com/@jejak_viral/video/7481432639275093256
+2025-05-26 00:08:26,451 - DEBUG - \u2705 Data berhasil disimpan untuk video_id: https://www.tiktok.com/@jejak_viral/video/7481432639275093256
+2025-05-26 00:08:26,485 - DEBUG - \u2705 Data berhasil disimpan untuk video_id: https://www.tiktok.com/@jejak_viral/video/7481432639275093256
+2025-05-26 00:08:26,540 - DEBUG - \u2705 Data berhasil disimpan untuk video_id: https://www.tiktok.com/@jejak_viral/video/7481432639275093256
+2025-05-26 00:08:26,573 - DEBUG - \u2705 Data berhasil disimpan untuk video_id: https://www.tiktok.com/@jejak_viral/video/7481432639275093256
+2025-05-26 00:08:26,673 - DEBUG - \u2705 Data berhasil disimpan untuk video_id: https://www.tiktok.com/@jejak_viral/video/7481432639275093256
+2025-05-26 00:08:26,740 - DEBUG - \u2705 Data berhasil disimpan untuk video_id: https://www.tiktok.com/@jejak_viral/video/7481432639275093256
+2025-05-26 00:08:26,847 - DEBUG - \u2705 Data berhasil disimpan untuk video_id: https://www.tiktok.com/@jejak_viral/video/7481432639275093256
+2025-05-26 00:08:26,917 - DEBUG - \u2705 Data berhasil disimpan untuk video_id: https://www.tiktok.com/@jejak_viral/video/7481432639275093256
+2025-05-26 00:08:26,994 - DEBUG - \u2705 Data berhasil disimpan untuk video_id: https://www.tiktok.com/@jejak_viral/video/7481432639275093256
+2025-05-26 00:08:27,050 - DEBUG - \u2705 Data berhasil disimpan untuk video_id: https://www.tiktok.com/@jejak_viral/video/7481432639275093256
+2025-05-26 00:08:27,128 - DEBUG - \u2705 Data berhasil disimpan untuk video_id: https://www.tiktok.com/@jejak_viral/video/7481432639275093256
+2025-05-26 00:08:27,217 - DEBUG - \u2705 Data berhasil disimpan untuk video_id: https://www.tiktok.com/@jejak_viral/video/7481432639275093256
+2025-05-26 00:08:27,289 - DEBUG - \u2705 Data berhasil disimpan untuk video_id: https://www.tiktok.com/@jejak_viral/video/7481432639275093256
+2025-05-26 00:08:27,371 - DEBUG - \u2705 Data berhasil disimpan untuk video_id: https://www.tiktok.com/@jejak_viral/video/7481432639275093256
+2025-05-26 00:08:27,449 - DEBUG - \u2705 Data berhasil disimpan untuk video_id: https://www.tiktok.com/@jejak_viral/video/7481432639275093256
+2025-05-26 00:08:27,509 - DEBUG - \u2705 Data berhasil disimpan untuk video_id: https://www.tiktok.com/@jejak_viral/video/7481432639275093256
+2025-05-26 00:08:27,571 - DEBUG - \u2705 Data berhasil disimpan untuk video_id: https://www.tiktok.com/@jejak_viral/video/7481432639275093256
+2025-05-26 00:08:27,621 - DEBUG - \u2705 Data berhasil disimpan untuk video_id: https://www.tiktok.com/@jejak_viral/video/7481432639275093256
+2025-05-26 00:08:27,697 - DEBUG - \u2705 Data berhasil disimpan untuk video_id: https://www.tiktok.com/@jejak_viral/video/7481432639275093256
+2025-05-26 00:08:27,750 - DEBUG - \u2705 Data berhasil disimpan untuk video_id: https://www.tiktok.com/@jejak_viral/video/7481432639275093256
+2025-05-26 00:08:27,816 - DEBUG - \u2705 Data berhasil disimpan untuk video_id: https://www.tiktok.com/@jejak_viral/video/7481432639275093256
+2025-05-26 00:08:27,904 - DEBUG - \u2705 Data berhasil disimpan untuk video_id: https://www.tiktok.com/@jejak_viral/video/7481432639275093256
+2025-05-26 00:08:27,960 - DEBUG - \u2705 Data berhasil disimpan untuk video_id: https://www.tiktok.com/@jejak_viral/video/7481432639275093256
+2025-05-26 00:08:28,060 - DEBUG - \u2705 Data berhasil disimpan untuk video_id: https://www.tiktok.com/@jejak_viral/video/7481432639275093256
+2025-05-26 00:08:28,116 - DEBUG - \u2705 Data berhasil disimpan untuk video_id: https://www.tiktok.com/@jejak_viral/video/7481432639275093256
+2025-05-26 00:08:28,160 - DEBUG - \u2705 Data berhasil disimpan untuk video_id: https://www.tiktok.com/@jejak_viral/video/7481432639275093256
+2025-05-26 00:08:28,216 - DEBUG - \u2705 Data berhasil disimpan untuk video_id: https://www.tiktok.com/@jejak_viral/video/7481432639275093256
+2025-05-26 00:08:28,370 - DEBUG - \u2705 Data berhasil disimpan untuk video_id: https://www.tiktok.com/@jejak_viral/video/7481432639275093256
+2025-05-26 00:08:28,437 - DEBUG - \u2705 Data berhasil disimpan untuk video_id: https://www.tiktok.com/@jejak_viral/video/7481432639275093256
+2025-05-26 00:08:28,492 - DEBUG - \u2705 Data berhasil disimpan untuk video_id: https://www.tiktok.com/@jejak_viral/video/7481432639275093256
+2025-05-26 00:08:28,658 - DEBUG - \u2705 Data berhasil disimpan untuk video_id: https://www.tiktok.com/@jejak_viral/video/7481432639275093256
+2025-05-26 00:08:28,703 - DEBUG - \u2705 Data berhasil disimpan untuk video_id: https://www.tiktok.com/@jejak_viral/video/7481432639275093256
+2025-05-26 00:08:28,747 - DEBUG - \u2705 Data berhasil disimpan untuk video_id: https://www.tiktok.com/@jejak_viral/video/7481432639275093256
+2025-05-26 00:08:28,803 - DEBUG - \u2705 Data berhasil disimpan untuk video_id: https://www.tiktok.com/@jejak_viral/video/7481432639275093256
+2025-05-26 00:08:28,892 - DEBUG - \u2705 Data berhasil disimpan untuk video_id: https://www.tiktok.com/@jejak_viral/video/7481432639275093256
+2025-05-26 00:08:28,936 - DEBUG - \u2705 Data berhasil disimpan untuk video_id: https://www.tiktok.com/@jejak_viral/video/7481432639275093256
+2025-05-26 00:08:29,003 - DEBUG - \u2705 Data berhasil disimpan untuk video_id: https://www.tiktok.com/@jejak_viral/video/7481432639275093256
+2025-05-26 00:08:29,037 - DEBUG - \u2705 Data berhasil disimpan untuk video_id: https://www.tiktok.com/@jejak_viral/video/7481432639275093256
+2025-05-26 00:08:29,170 - DEBUG - \u2705 Data berhasil disimpan untuk video_id: https://www.tiktok.com/@jejak_viral/video/7481432639275093256
+2025-05-26 00:08:29,214 - DEBUG - \u2705 Data berhasil disimpan untuk video_id: https://www.tiktok.com/@jejak_viral/video/7481432639275093256
+2025-05-26 00:08:29,280 - DEBUG - \u2705 Data berhasil disimpan untuk video_id: https://www.tiktok.com/@jejak_viral/video/7481432639275093256
+2025-05-26 00:08:29,334 - DEBUG - \u2705 Data berhasil disimpan untuk video_id: https://www.tiktok.com/@jejak_viral/video/7481432639275093256
+2025-05-26 00:08:29,334 - DEBUG - \U0001f3a5 Memproses: https://www.tiktok.com/@monitorinddotcom/video/7372956268006264072
+2025-05-26 00:08:29,338 - DEBUG - Starting new HTTPS connection (1): www.tiktok.com:443
+2025-05-26 00:08:29,991 - DEBUG - https://www.tiktok.com:443 "GET /api/comment/list/?aid=1988&aweme_id=7372956268006264072&cursor=0&count=100 HTTP/11" 200 20310
+2025-05-26 00:08:30,279 - DEBUG - \u2705 Data berhasil disimpan untuk video_id: https://www.tiktok.com/@monitorinddotcom/video/7372956268006264072
+2025-05-26 00:08:30,446 - DEBUG - \u2705 Data berhasil disimpan untuk video_id: https://www.tiktok.com/@monitorinddotcom/video/7372956268006264072
+2025-05-26 00:08:30,608 - DEBUG - \u2705 Data berhasil disimpan untuk video_id: https://www.tiktok.com/@monitorinddotcom/video/7372956268006264072
+2025-05-26 00:08:30,723 - DEBUG - \u2705 Data berhasil disimpan untuk video_id: https://www.tiktok.com/@monitorinddotcom/video/7372956268006264072
+2025-05-26 00:08:30,779 - DEBUG - \u2705 Data berhasil disimpan untuk video_id: https://www.tiktok.com/@monitorinddotcom/video/7372956268006264072
+2025-05-26 00:08:31,058 - DEBUG - \u2705 Data berhasil disimpan untuk video_id: https://www.tiktok.com/@monitorinddotcom/video/7372956268006264072
+2025-05-26 00:08:31,100 - DEBUG - \u2705 Data berhasil disimpan untuk video_id: https://www.tiktok.com/@monitorinddotcom/video/7372956268006264072
+2025-05-26 00:08:31,133 - DEBUG - \u2705 Data berhasil disimpan untuk video_id: https://www.tiktok.com/@monitorinddotcom/video/7372956268006264072
+2025-05-26 00:08:31,189 - DEBUG - \u2705 Data berhasil disimpan untuk video_id: https://www.tiktok.com/@monitorinddotcom/video/7372956268006264072
+2025-05-26 00:08:31,233 - DEBUG - \u2705 Data berhasil disimpan untuk video_id: https://www.tiktok.com/@monitorinddotcom/video/7372956268006264072
+2025-05-26 00:08:31,300 - DEBUG - \u2705 Data berhasil disimpan untuk video_id: https://www.tiktok.com/@monitorinddotcom/video/7372956268006264072
+2025-05-26 00:08:31,388 - DEBUG - \u2705 Data berhasil disimpan untuk video_id: https://www.tiktok.com/@monitorinddotcom/video/7372956268006264072
+2025-05-26 00:08:31,444 - DEBUG - \u2705 Data berhasil disimpan untuk video_id: https://www.tiktok.com/@monitorinddotcom/video/7372956268006264072
+2025-05-26 00:08:31,500 - DEBUG - \u2705 Data berhasil disimpan untuk video_id: https://www.tiktok.com/@monitorinddotcom/video/7372956268006264072
+2025-05-26 00:08:31,589 - DEBUG - \u2705 Data berhasil disimpan untuk video_id: https://www.tiktok.com/@monitorinddotcom/video/7372956268006264072
+2025-05-26 00:08:31,666 - DEBUG - \u2705 Data berhasil disimpan untuk video_id: https://www.tiktok.com/@monitorinddotcom/video/7372956268006264072
+2025-05-26 00:08:31,799 - DEBUG - \u2705 Data berhasil disimpan untuk video_id: https://www.tiktok.com/@monitorinddotcom/video/7372956268006264072
+2025-05-26 00:08:31,867 - DEBUG - \u2705 Data berhasil disimpan untuk video_id: https://www.tiktok.com/@monitorinddotcom/video/7372956268006264072
+2025-05-26 00:08:31,943 - DEBUG - \u2705 Data berhasil disimpan untuk video_id: https://www.tiktok.com/@monitorinddotcom/video/7372956268006264072
+2025-05-26 00:08:31,989 - DEBUG - \u2705 Data berhasil disimpan untuk video_id: https://www.tiktok.com/@monitorinddotcom/video/7372956268006264072
+2025-05-26 00:08:32,188 - DEBUG - \u2705 Data berhasil disimpan untuk video_id: https://www.tiktok.com/@monitorinddotcom/video/7372956268006264072
+2025-05-26 00:08:32,265 - DEBUG - \u2705 Data berhasil disimpan untuk video_id: https://www.tiktok.com/@monitorinddotcom/video/7372956268006264072
+2025-05-26 00:08:32,339 - DEBUG - \u2705 Data berhasil disimpan untuk video_id: https://www.tiktok.com/@monitorinddotcom/video/7372956268006264072
+2025-05-26 00:08:32,409 - DEBUG - \u2705 Data berhasil disimpan untuk video_id: https://www.tiktok.com/@monitorinddotcom/video/7372956268006264072
+2025-05-26 00:08:32,464 - DEBUG - \u2705 Data berhasil disimpan untuk video_id: https://www.tiktok.com/@monitorinddotcom/video/7372956268006264072
+2025-05-26 00:08:32,522 - DEBUG - \u2705 Data berhasil disimpan untuk video_id: https://www.tiktok.com/@monitorinddotcom/video/7372956268006264072
+2025-05-26 00:08:32,576 - DEBUG - \u2705 Data berhasil disimpan untuk video_id: https://www.tiktok.com/@monitorinddotcom/video/7372956268006264072
+2025-05-26 00:08:32,687 - DEBUG - \u2705 Data berhasil disimpan untuk video_id: https://www.tiktok.com/@monitorinddotcom/video/7372956268006264072
+2025-05-26 00:08:32,750 - DEBUG - \u2705 Data berhasil disimpan untuk video_id: https://www.tiktok.com/@monitorinddotcom/video/7372956268006264072
+2025-05-26 00:08:32,942 - DEBUG - \u2705 Data berhasil disimpan untuk video_id: https://www.tiktok.com/@monitorinddotcom/video/7372956268006264072
+2025-05-26 00:08:32,986 - DEBUG - \u2705 Data berhasil disimpan untuk video_id: https://www.tiktok.com/@monitorinddotcom/video/7372956268006264072
+2025-05-26 00:08:33,064 - DEBUG - \u2705 Data berhasil disimpan untuk video_id: https://www.tiktok.com/@monitorinddotcom/video/7372956268006264072
+2025-05-26 00:08:33,137 - DEBUG - \u2705 Data berhasil disimpan untuk video_id: https://www.tiktok.com/@monitorinddotcom/video/7372956268006264072
+2025-05-26 00:08:33,196 - DEBUG - \u2705 Data berhasil disimpan untuk video_id: https://www.tiktok.com/@monitorinddotcom/video/7372956268006264072
+2025-05-26 00:08:33,286 - DEBUG - \u2705 Data berhasil disimpan untuk video_id: https://www.tiktok.com/@monitorinddotcom/video/7372956268006264072
+2025-05-26 00:08:33,342 - DEBUG - \u2705 Data berhasil disimpan untuk video_id: https://www.tiktok.com/@monitorinddotcom/video/7372956268006264072
+2025-05-26 00:08:33,435 - DEBUG - \u2705 Data berhasil disimpan untuk video_id: https://www.tiktok.com/@monitorinddotcom/video/7372956268006264072
+2025-05-26 00:08:33,486 - DEBUG - \u2705 Data berhasil disimpan untuk video_id: https://www.tiktok.com/@monitorinddotcom/video/7372956268006264072
+2025-05-26 00:08:33,530 - DEBUG - \u2705 Data berhasil disimpan untuk video_id: https://www.tiktok.com/@monitorinddotcom/video/7372956268006264072
+2025-05-26 00:08:33,599 - DEBUG - \u2705 Data berhasil disimpan untuk video_id: https://www.tiktok.com/@monitorinddotcom/video/7372956268006264072
+2025-05-26 00:08:33,663 - DEBUG - \u2705 Data berhasil disimpan untuk video_id: https://www.tiktok.com/@monitorinddotcom/video/7372956268006264072
+2025-05-26 00:08:33,763 - DEBUG - \u2705 Data berhasil disimpan untuk video_id: https://www.tiktok.com/@monitorinddotcom/video/7372956268006264072
+2025-05-26 00:08:33,852 - DEBUG - \u2705 Data berhasil disimpan untuk video_id: https://www.tiktok.com/@monitorinddotcom/video/7372956268006264072
+2025-05-26 00:08:33,896 - DEBUG - \u2705 Data berhasil disimpan untuk video_id: https://www.tiktok.com/@monitorinddotcom/video/7372956268006264072
+2025-05-26 00:08:34,040 - DEBUG - \u2705 Data berhasil disimpan untuk video_id: https://www.tiktok.com/@monitorinddotcom/video/7372956268006264072
+2025-05-26 00:08:34,107 - DEBUG - \u2705 Data berhasil disimpan untuk video_id: https://www.tiktok.com/@monitorinddotcom/video/7372956268006264072
+2025-05-26 00:08:34,319 - DEBUG - \u2705 Data berhasil disimpan untuk video_id: https://www.tiktok.com/@monitorinddotcom/video/7372956268006264072
+2025-05-26 00:08:34,397 - DEBUG - \u2705 Data berhasil disimpan untuk video_id: https://www.tiktok.com/@monitorinddotcom/video/7372956268006264072
+2025-05-26 00:08:34,462 - DEBUG - \u2705 Data berhasil disimpan untuk video_id: https://www.tiktok.com/@monitorinddotcom/video/7372956268006264072
+2025-05-26 00:08:34,462 - DEBUG - \U0001f3a5 Memproses: https://www.tiktok.com/@art.6672/video/7496542487973055762
+2025-05-26 00:08:34,466 - DEBUG - Starting new HTTPS connection (1): www.tiktok.com:443
+2025-05-26 00:08:35,163 - DEBUG - https://www.tiktok.com:443 "GET /api/comment/list/?aid=1988&aweme_id=7496542487973055762&cursor=0&count=100 HTTP/11" 200 6090
+2025-05-26 00:08:35,505 - DEBUG - \u2705 Data berhasil disimpan untuk video_id: https://www.tiktok.com/@art.6672/video/7496542487973055762
+2025-05-26 00:08:35,572 - DEBUG - \u2705 Data berhasil disimpan untuk video_id: https://www.tiktok.com/@art.6672/video/7496542487973055762
+2025-05-26 00:08:35,605 - DEBUG - \u2705 Data berhasil disimpan untuk video_id: https://www.tiktok.com/@art.6672/video/7496542487973055762
+2025-05-26 00:08:35,605 - DEBUG - \u23e9 Komentar tidak valid: '\U0001f633'
+2025-05-26 00:08:35,606 - DEBUG - \u23e9 Komentar tidak valid: '\U0001f601'
+2025-05-26 00:08:35,606 - DEBUG - \u23e9 Komentar tidak valid: '\U0001f625\U0001f625\U0001f625'
+2025-05-26 00:08:35,606 - DEBUG - \u23e9 Komentar tidak valid: '\U0001f633\U0001f633\U0001f633'
+2025-05-26 00:08:35,606 - DEBUG - \u23e9 Komentar tidak valid: '\U0001f633\U0001f633\U0001f633\U0001f633\U0001f633\U0001f633\U0001f633\U0001f633\U0001f633\U0001f633\U0001f633\U0001f633'
+2025-05-26 00:08:35,607 - DEBUG - \u23e9 Komentar tidak valid: '\U0001f5ff'
+2025-05-26 00:08:35,607 - DEBUG - \u23e9 Komentar tidak valid: '\U0001f633'
+2025-05-26 00:08:35,607 - DEBUG - \u23e9 Komentar tidak valid: '\U0001f602'
+2025-05-26 00:08:35,660 - DEBUG - \u2705 Data berhasil disimpan untuk video_id: https://www.tiktok.com/@art.6672/video/7496542487973055762
+2025-05-26 00:08:35,694 - DEBUG - \u2705 Data berhasil disimpan untuk video_id: https://www.tiktok.com/@art.6672/video/7496542487973055762
+2025-05-26 00:08:35,727 - DEBUG - \u2705 Data berhasil disimpan untuk video_id: https://www.tiktok.com/@art.6672/video/7496542487973055762
+2025-05-26 00:08:35,760 - DEBUG - \u2705 Data berhasil disimpan untuk video_id: https://www.tiktok.com/@art.6672/video/7496542487973055762
+2025-05-26 00:08:35,793 - DEBUG - \u2705 Data berhasil disimpan untuk video_id: https://www.tiktok.com/@art.6672/video/7496542487973055762
+2025-05-26 00:08:35,793 - DEBUG - \U0001f3a5 Memproses: https://www.tiktok.com/@maoinfoindonesia/video/7482826963111988487
+2025-05-26 00:08:35,798 - DEBUG - Starting new HTTPS connection (1): www.tiktok.com:443
+2025-05-26 00:08:36,549 - DEBUG - https://www.tiktok.com:443 "GET /api/comment/list/?aid=1988&aweme_id=7482826963111988487&cursor=0&count=100 HTTP/11" 200 20344
+2025-05-26 00:08:36,748 - DEBUG - \u2705 Data berhasil disimpan untuk video_id: https://www.tiktok.com/@maoinfoindonesia/video/7482826963111988487
+2025-05-26 00:08:36,815 - DEBUG - \u2705 Data berhasil disimpan untuk video_id: https://www.tiktok.com/@maoinfoindonesia/video/7482826963111988487
+2025-05-26 00:08:36,904 - DEBUG - \u2705 Data berhasil disimpan untuk video_id: https://www.tiktok.com/@maoinfoindonesia/video/7482826963111988487
+2025-05-26 00:08:36,936 - DEBUG - \u2705 Data berhasil disimpan untuk video_id: https://www.tiktok.com/@maoinfoindonesia/video/7482826963111988487
+2025-05-26 00:08:36,992 - DEBUG - \u2705 Data berhasil disimpan untuk video_id: https://www.tiktok.com/@maoinfoindonesia/video/7482826963111988487
+2025-05-26 00:08:37,025 - DEBUG - \u2705 Data berhasil disimpan untuk video_id: https://www.tiktok.com/@maoinfoindonesia/video/7482826963111988487
+2025-05-26 00:08:37,103 - DEBUG - \u2705 Data berhasil disimpan untuk video_id: https://www.tiktok.com/@maoinfoindonesia/video/7482826963111988487
+2025-05-26 00:08:37,126 - DEBUG - \u2705 Data berhasil disimpan untuk video_id: https://www.tiktok.com/@maoinfoindonesia/video/7482826963111988487
+2025-05-26 00:08:37,159 - DEBUG - \u2705 Data berhasil disimpan untuk video_id: https://www.tiktok.com/@maoinfoindonesia/video/7482826963111988487
+2025-05-26 00:08:37,192 - DEBUG - \u2705 Data berhasil disimpan untuk video_id: https://www.tiktok.com/@maoinfoindonesia/video/7482826963111988487
+2025-05-26 00:08:37,225 - DEBUG - \u2705 Data berhasil disimpan untuk video_id: https://www.tiktok.com/@maoinfoindonesia/video/7482826963111988487
+2025-05-26 00:08:37,258 - DEBUG - \u2705 Data berhasil disimpan untuk video_id: https://www.tiktok.com/@maoinfoindonesia/video/7482826963111988487
+2025-05-26 00:08:37,291 - DEBUG - \u2705 Data berhasil disimpan untuk video_id: https://www.tiktok.com/@maoinfoindonesia/video/7482826963111988487
+2025-05-26 00:08:37,386 - DEBUG - \u2705 Data berhasil disimpan untuk video_id: https://www.tiktok.com/@maoinfoindonesia/video/7482826963111988487
+2025-05-26 00:08:37,446 - DEBUG - \u2705 Data berhasil disimpan untuk video_id: https://www.tiktok.com/@maoinfoindonesia/video/7482826963111988487
+2025-05-26 00:08:37,514 - DEBUG - \u2705 Data berhasil disimpan untuk video_id: https://www.tiktok.com/@maoinfoindonesia/video/7482826963111988487
+2025-05-26 00:08:37,592 - DEBUG - \u2705 Data berhasil disimpan untuk video_id: https://www.tiktok.com/@maoinfoindonesia/video/7482826963111988487
+2025-05-26 00:08:37,670 - DEBUG - \u2705 Data berhasil disimpan untuk video_id: https://www.tiktok.com/@maoinfoindonesia/video/7482826963111988487
+2025-05-26 00:08:37,736 - DEBUG - \u2705 Data berhasil disimpan untuk video_id: https://www.tiktok.com/@maoinfoindonesia/video/7482826963111988487
+2025-05-26 00:08:37,791 - DEBUG - \u2705 Data berhasil disimpan untuk video_id: https://www.tiktok.com/@maoinfoindonesia/video/7482826963111988487
+2025-05-26 00:08:37,846 - DEBUG - \u2705 Data berhasil disimpan untuk video_id: https://www.tiktok.com/@maoinfoindonesia/video/7482826963111988487
+2025-05-26 00:08:37,902 - DEBUG - \u2705 Data berhasil disimpan untuk video_id: https://www.tiktok.com/@maoinfoindonesia/video/7482826963111988487
+2025-05-26 00:08:38,080 - DEBUG - \u2705 Data berhasil disimpan untuk video_id: https://www.tiktok.com/@maoinfoindonesia/video/7482826963111988487
+2025-05-26 00:08:38,143 - DEBUG - \u2705 Data berhasil disimpan untuk video_id: https://www.tiktok.com/@maoinfoindonesia/video/7482826963111988487
+2025-05-26 00:08:38,191 - DEBUG - \u2705 Data berhasil disimpan untuk video_id: https://www.tiktok.com/@maoinfoindonesia/video/7482826963111988487
+2025-05-26 00:08:38,246 - DEBUG - \u2705 Data berhasil disimpan untuk video_id: https://www.tiktok.com/@maoinfoindonesia/video/7482826963111988487
+2025-05-26 00:08:38,280 - DEBUG - \u2705 Data berhasil disimpan untuk video_id: https://www.tiktok.com/@maoinfoindonesia/video/7482826963111988487
+2025-05-26 00:08:38,324 - DEBUG - \u2705 Data berhasil disimpan untuk video_id: https://www.tiktok.com/@maoinfoindonesia/video/7482826963111988487
+2025-05-26 00:08:38,396 - DEBUG - \u2705 Data berhasil disimpan untuk video_id: https://www.tiktok.com/@maoinfoindonesia/video/7482826963111988487
+2025-05-26 00:08:38,512 - DEBUG - \u2705 Data berhasil disimpan untuk video_id: https://www.tiktok.com/@maoinfoindonesia/video/7482826963111988487
+2025-05-26 00:08:38,569 - DEBUG - \u2705 Data berhasil disimpan untuk video_id: https://www.tiktok.com/@maoinfoindonesia/video/7482826963111988487
+2025-05-26 00:08:38,654 - DEBUG - \u2705 Data berhasil disimpan untuk video_id: https://www.tiktok.com/@maoinfoindonesia/video/7482826963111988487
+2025-05-26 00:08:38,845 - DEBUG - \u2705 Data berhasil disimpan untuk video_id: https://www.tiktok.com/@maoinfoindonesia/video/7482826963111988487
+2025-05-26 00:08:38,912 - DEBUG - \u2705 Data berhasil disimpan untuk video_id: https://www.tiktok.com/@maoinfoindonesia/video/7482826963111988487
+2025-05-26 00:08:38,975 - DEBUG - \u2705 Data berhasil disimpan untuk video_id: https://www.tiktok.com/@maoinfoindonesia/video/7482826963111988487
+2025-05-26 00:08:39,058 - DEBUG - \u2705 Data berhasil disimpan untuk video_id: https://www.tiktok.com/@maoinfoindonesia/video/7482826963111988487
+2025-05-26 00:08:39,167 - DEBUG - \u2705 Data berhasil disimpan untuk video_id: https://www.tiktok.com/@maoinfoindonesia/video/7482826963111988487
+2025-05-26 00:08:39,222 - DEBUG - \u2705 Data berhasil disimpan untuk video_id: https://www.tiktok.com/@maoinfoindonesia/video/7482826963111988487
+2025-05-26 00:08:39,271 - DEBUG - \u2705 Data berhasil disimpan untuk video_id: https://www.tiktok.com/@maoinfoindonesia/video/7482826963111988487
+2025-05-26 00:08:39,322 - DEBUG - \u2705 Data berhasil disimpan untuk video_id: https://www.tiktok.com/@maoinfoindonesia/video/7482826963111988487
+2025-05-26 00:08:39,397 - DEBUG - \u2705 Data berhasil disimpan untuk video_id: https://www.tiktok.com/@maoinfoindonesia/video/7482826963111988487
+2025-05-26 00:08:39,533 - DEBUG - \u2705 Data berhasil disimpan untuk video_id: https://www.tiktok.com/@maoinfoindonesia/video/7482826963111988487
+2025-05-26 00:08:39,605 - DEBUG - \u2705 Data berhasil disimpan untuk video_id: https://www.tiktok.com/@maoinfoindonesia/video/7482826963111988487
+2025-05-26 00:08:39,673 - DEBUG - \u2705 Data berhasil disimpan untuk video_id: https://www.tiktok.com/@maoinfoindonesia/video/7482826963111988487
+2025-05-26 00:08:39,738 - DEBUG - \u2705 Data berhasil disimpan untuk video_id: https://www.tiktok.com/@maoinfoindonesia/video/7482826963111988487
+2025-05-26 00:08:39,866 - DEBUG - \u2705 Data berhasil disimpan untuk video_id: https://www.tiktok.com/@maoinfoindonesia/video/7482826963111988487
+2025-05-26 00:08:39,944 - DEBUG - \u2705 Data berhasil disimpan untuk video_id: https://www.tiktok.com/@maoinfoindonesia/video/7482826963111988487
+2025-05-26 00:08:40,004 - DEBUG - \u2705 Data berhasil disimpan untuk video_id: https://www.tiktok.com/@maoinfoindonesia/video/7482826963111988487
+2025-05-26 00:08:40,058 - DEBUG - \u2705 Data berhasil disimpan untuk video_id: https://www.tiktok.com/@maoinfoindonesia/video/7482826963111988487
+2025-05-26 00:08:40,135 - DEBUG - \u2705 Data berhasil disimpan untuk video_id: https://www.tiktok.com/@maoinfoindonesia/video/7482826963111988487
+2025-05-26 00:08:40,136 - DEBUG - \U0001f3a5 Memproses: https://www.tiktok.com/@hendriaprila/video/7502088835334016262
+2025-05-26 00:08:40,138 - DEBUG - Starting new HTTPS connection (1): www.tiktok.com:443
+2025-05-26 00:08:40,893 - DEBUG - https://www.tiktok.com:443 "GET /api/comment/list/?aid=1988&aweme_id=7502088835334016262&cursor=0&count=100 HTTP/11" 200 18931
+2025-05-26 00:08:41,153 - DEBUG - \u2705 Data berhasil disimpan untuk video_id: https://www.tiktok.com/@hendriaprila/video/7502088835334016262
+2025-05-26 00:08:41,253 - DEBUG - \u2705 Data berhasil disimpan untuk video_id: https://www.tiktok.com/@hendriaprila/video/7502088835334016262
+2025-05-26 00:08:41,397 - DEBUG - \u2705 Data berhasil disimpan untuk video_id: https://www.tiktok.com/@hendriaprila/video/7502088835334016262
+2025-05-26 00:08:41,497 - DEBUG - \u2705 Data berhasil disimpan untuk video_id: https://www.tiktok.com/@hendriaprila/video/7502088835334016262
+2025-05-26 00:08:41,542 - DEBUG - \u2705 Data berhasil disimpan untuk video_id: https://www.tiktok.com/@hendriaprila/video/7502088835334016262
+2025-05-26 00:08:41,691 - DEBUG - \u2705 Data berhasil disimpan untuk video_id: https://www.tiktok.com/@hendriaprila/video/7502088835334016262
+2025-05-26 00:08:41,797 - DEBUG - \u2705 Data berhasil disimpan untuk video_id: https://www.tiktok.com/@hendriaprila/video/7502088835334016262
+2025-05-26 00:08:41,890 - DEBUG - \u2705 Data berhasil disimpan untuk video_id: https://www.tiktok.com/@hendriaprila/video/7502088835334016262
+2025-05-26 00:08:41,966 - DEBUG - \u2705 Data berhasil disimpan untuk video_id: https://www.tiktok.com/@hendriaprila/video/7502088835334016262
+2025-05-26 00:08:42,029 - DEBUG - \u2705 Data berhasil disimpan untuk video_id: https://www.tiktok.com/@hendriaprila/video/7502088835334016262
+2025-05-26 00:08:42,063 - DEBUG - \u2705 Data berhasil disimpan untuk video_id: https://www.tiktok.com/@hendriaprila/video/7502088835334016262
+2025-05-26 00:08:42,096 - DEBUG - \u2705 Data berhasil disimpan untuk video_id: https://www.tiktok.com/@hendriaprila/video/7502088835334016262
+2025-05-26 00:08:42,118 - DEBUG - \u2705 Data berhasil disimpan untuk video_id: https://www.tiktok.com/@hendriaprila/video/7502088835334016262
+2025-05-26 00:08:42,151 - DEBUG - \u2705 Data berhasil disimpan untuk video_id: https://www.tiktok.com/@hendriaprila/video/7502088835334016262
+2025-05-26 00:08:42,185 - DEBUG - \u2705 Data berhasil disimpan untuk video_id: https://www.tiktok.com/@hendriaprila/video/7502088835334016262
+2025-05-26 00:08:42,217 - DEBUG - \u2705 Data berhasil disimpan untuk video_id: https://www.tiktok.com/@hendriaprila/video/7502088835334016262
+2025-05-26 00:08:42,251 - DEBUG - \u2705 Data berhasil disimpan untuk video_id: https://www.tiktok.com/@hendriaprila/video/7502088835334016262
+2025-05-26 00:08:42,307 - DEBUG - \u2705 Data berhasil disimpan untuk video_id: https://www.tiktok.com/@hendriaprila/video/7502088835334016262
+2025-05-26 00:08:42,340 - DEBUG - \u2705 Data berhasil disimpan untuk video_id: https://www.tiktok.com/@hendriaprila/video/7502088835334016262
+2025-05-26 00:08:42,373 - DEBUG - \u2705 Data berhasil disimpan untuk video_id: https://www.tiktok.com/@hendriaprila/video/7502088835334016262
+2025-05-26 00:08:42,461 - DEBUG - \u2705 Data berhasil disimpan untuk video_id: https://www.tiktok.com/@hendriaprila/video/7502088835334016262
+2025-05-26 00:08:42,840 - DEBUG - \u2705 Data berhasil disimpan untuk video_id: https://www.tiktok.com/@hendriaprila/video/7502088835334016262
+2025-05-26 00:08:43,062 - DEBUG - \u2705 Data berhasil disimpan untuk video_id: https://www.tiktok.com/@hendriaprila/video/7502088835334016262
+2025-05-26 00:08:43,124 - DEBUG - \u2705 Data berhasil disimpan untuk video_id: https://www.tiktok.com/@hendriaprila/video/7502088835334016262
+2025-05-26 00:08:43,217 - DEBUG - \u2705 Data berhasil disimpan untuk video_id: https://www.tiktok.com/@hendriaprila/video/7502088835334016262
+2025-05-26 00:08:44,626 - DEBUG - \u2705 Data berhasil disimpan untuk video_id: https://www.tiktok.com/@hendriaprila/video/7502088835334016262
+2025-05-26 00:08:44,858 - DEBUG - \u2705 Data berhasil disimpan untuk video_id: https://www.tiktok.com/@hendriaprila/video/7502088835334016262
+2025-05-26 00:08:44,914 - DEBUG - \u2705 Data berhasil disimpan untuk video_id: https://www.tiktok.com/@hendriaprila/video/7502088835334016262
+2025-05-26 00:08:44,947 - DEBUG - \u2705 Data berhasil disimpan untuk video_id: https://www.tiktok.com/@hendriaprila/video/7502088835334016262
+2025-05-26 00:08:44,981 - DEBUG - \u2705 Data berhasil disimpan untuk video_id: https://www.tiktok.com/@hendriaprila/video/7502088835334016262
+2025-05-26 00:08:45,037 - DEBUG - \u2705 Data berhasil disimpan untuk video_id: https://www.tiktok.com/@hendriaprila/video/7502088835334016262
+2025-05-26 00:08:45,092 - DEBUG - \u2705 Data berhasil disimpan untuk video_id: https://www.tiktok.com/@hendriaprila/video/7502088835334016262
+2025-05-26 00:08:45,125 - DEBUG - \u2705 Data berhasil disimpan untuk video_id: https://www.tiktok.com/@hendriaprila/video/7502088835334016262
+2025-05-26 00:08:45,158 - DEBUG - \u2705 Data berhasil disimpan untuk video_id: https://www.tiktok.com/@hendriaprila/video/7502088835334016262
+2025-05-26 00:08:45,203 - DEBUG - \u2705 Data berhasil disimpan untuk video_id: https://www.tiktok.com/@hendriaprila/video/7502088835334016262
+2025-05-26 00:08:45,270 - DEBUG - \u2705 Data berhasil disimpan untuk video_id: https://www.tiktok.com/@hendriaprila/video/7502088835334016262
+2025-05-26 00:08:45,302 - DEBUG - \u2705 Data berhasil disimpan untuk video_id: https://www.tiktok.com/@hendriaprila/video/7502088835334016262
+2025-05-26 00:08:45,348 - DEBUG - \u2705 Data berhasil disimpan untuk video_id: https://www.tiktok.com/@hendriaprila/video/7502088835334016262
+2025-05-26 00:08:45,380 - DEBUG - \u2705 Data berhasil disimpan untuk video_id: https://www.tiktok.com/@hendriaprila/video/7502088835334016262
+2025-05-26 00:08:45,414 - DEBUG - \u2705 Data berhasil disimpan untuk video_id: https://www.tiktok.com/@hendriaprila/video/7502088835334016262
+2025-05-26 00:08:45,446 - DEBUG - \u2705 Data berhasil disimpan untuk video_id: https://www.tiktok.com/@hendriaprila/video/7502088835334016262
+2025-05-26 00:08:45,481 - DEBUG - \u2705 Data berhasil disimpan untuk video_id: https://www.tiktok.com/@hendriaprila/video/7502088835334016262
+2025-05-26 00:08:45,536 - DEBUG - \u2705 Data berhasil disimpan untuk video_id: https://www.tiktok.com/@hendriaprila/video/7502088835334016262
+2025-05-26 00:08:45,691 - DEBUG - \u2705 Data berhasil disimpan untuk video_id: https://www.tiktok.com/@hendriaprila/video/7502088835334016262
+2025-05-26 00:08:45,847 - DEBUG - \u2705 Data berhasil disimpan untuk video_id: https://www.tiktok.com/@hendriaprila/video/7502088835334016262
+2025-05-26 00:08:45,880 - DEBUG - \u2705 Data berhasil disimpan untuk video_id: https://www.tiktok.com/@hendriaprila/video/7502088835334016262
+2025-05-26 00:08:45,913 - DEBUG - \u2705 Data berhasil disimpan untuk video_id: https://www.tiktok.com/@hendriaprila/video/7502088835334016262
+2025-05-26 00:08:45,936 - DEBUG - \u2705 Data berhasil disimpan untuk video_id: https://www.tiktok.com/@hendriaprila/video/7502088835334016262
+2025-05-26 00:08:45,969 - DEBUG - \u2705 Data berhasil disimpan untuk video_id: https://www.tiktok.com/@hendriaprila/video/7502088835334016262
+2025-05-26 00:08:45,969 - DEBUG - DELETE http://localhost:8093/session/2b9ff668ceb20556c9dee144ae0cf2e9 {}
+2025-05-26 00:08:45,991 - DEBUG - http://localhost:8093 "DELETE /session/2b9ff668ceb20556c9dee144ae0cf2e9 HTTP/11" 200 0
+2025-05-26 00:08:45,991 - DEBUG - Remote response: status=200 | data={"value":null} | headers=HTTPHeaderDict({'Content-Length': '14', 'Content-Type': 'application/json; charset=utf-8', 'cache-control': 'no-cache'})
+2025-05-26 00:08:45,991 - DEBUG - Finished Request

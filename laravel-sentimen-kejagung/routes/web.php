@@ -8,12 +8,13 @@ use App\Http\Controllers\Admin\ResultController;
 use App\Http\Controllers\Admin\ScrapeController;
 // use App\Http\Controllers\Admin\LabelingController;
 // use App\Http\Controllers\Admin\SentimentController;
+use App\Http\Controllers\Admin\MLAnalysisController;
 // use App\Http\Controllers\Admin\VaderLabelingController;
 use App\Http\Middleware\AdminMiddleware; // ⬅️ Tambahkan ini
 
-Route::get('/', function () {
-    return view('dashboard');
-})->name('dashboard');
+// Route::get('/', function () {
+//     return view('dashboard');
+// })
 
 // Semua route ini hanya bisa diakses jika sudah login
 Route::middleware(['auth'])->group(function () {
@@ -24,12 +25,12 @@ Route::middleware(['auth'])->group(function () {
     // Route::post('/admin/vader-labeling/update', [VaderLabelingController::class, 'update'])->name('vader.labeling.update');
 
     // 🏠 Halaman Dashboard untuk semua user
-    Route::get('/dashboard', [DashboardController::class, 'index'])->name('dashboard');
+    Route::get('/', [DashboardController::class, 'index'])->name('dashboard');
 
     Route::middleware([AdminMiddleware::class])->group(function () {
         Route::post('/scrape', [ScrapeController::class, 'scrape'])->name('scrape');
         Route::get('/result', [ResultController::class, 'index'])->name('scraping.result');
-        Route::post('/analisis-ml', [App\Http\Controllers\Admin\MLAnalysisController::class, 'analyzeML'])
+        Route::post('/admin/analyze/analisis-ml', [MLAnalysisController::class, 'analyze_ml'])
             ->name('admin.analyze.ml');
 
 

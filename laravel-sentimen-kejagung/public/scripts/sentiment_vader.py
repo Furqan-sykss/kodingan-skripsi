@@ -5,6 +5,9 @@ from nltk.sentiment.vader import SentimentIntensityAnalyzer
 from datetime import datetime
 import nltk
 import logging
+import json
+import re
+import os
 
 # 🔄 Setup logging
 logging.basicConfig(filename='vader_analysis_log.txt', level=logging.DEBUG,
@@ -14,6 +17,11 @@ logging.info("🚀 Memulai proses analisis VADER...")
 # 🔄 Unduh lexicon VADER jika belum ada
 nltk.download("vader_lexicon")
 analyzer = SentimentIntensityAnalyzer()
+
+# ✅ Load kamus normalisasi dari JSON
+kamus_path = os.path.join(os.getcwd(), "public/scripts/kamus_normalisasi.json")
+with open(kamus_path, "r", encoding="utf-8") as file:
+    normalization_dict = json.load(file)
 
 # 🔄 Konfigurasi koneksi database
 db_config = {
@@ -31,22 +39,27 @@ Session = sessionmaker(bind=engine)
 select_query = """
     SELECT id, video_id, username, comment, tanggal_komentar
     FROM komentar_mentah
-    WHERE is_processed_vader = 0
-    LIMIT 300
+    WHERE is_processed_vader = 0 AND is_processed_ml = 0
+    LIMIT 50
 """
 
 # ✅ Fungsi untuk membersihkan teks
 
 
 def bersihkan_teks(teks):
-    import re
     teks = re.sub(r"http\S+|@\S+|#[A-Za-z0-9_]+", "", teks)
     teks = re.sub(r"[^a-zA-Z\s]", " ", teks)
     return teks.lower().strip()
 
+
+# ✅ Fungsi untuk menormalkan kata-kata
+def normalisasi_kata(teks):
+    kata_list = teks.split()
+    hasil = [normalization_dict.get(kata, kata) for kata in kata_list]
+    return " ".join(hasil)
+
+
 # ✅ Fungsi untuk menterjemahkan komentar ke Bahasa Inggris
-
-
 def translate_comment(teks):
     try:
         translated = GoogleTranslator(
@@ -55,11 +68,10 @@ def translate_comment(teks):
         return translated
     except Exception as e:
         logging.error(f"❌ Terjadi kesalahan saat translate: {e}")
-        return teks
+        return teks  # fallback ke teks asli jika gagal
+
 
 # ✅ Fungsi untuk melakukan analisis sentimen
-
-
 def analyze_sentiment(teks):
     scores = analyzer.polarity_scores(teks)
     compound = scores['compound']
@@ -76,9 +88,8 @@ def analyze_sentiment(teks):
         "label": label
     }
 
+
 # ✅ Fungsi untuk menyimpan hasil analisis ke database
-
-
 def save_to_database(session, data):
     insert_query = """
         INSERT INTO komentar_sentimen_vader (
@@ -98,9 +109,8 @@ def save_to_database(session, data):
         logging.error(f"❌ Gagal menyimpan ke database: {e}")
         raise
 
+
 # ✅ Fungsi untuk mengupdate status di database
-
-
 def update_status(session, mentah_id):
     update_query = """
         UPDATE komentar_mentah
@@ -118,14 +128,12 @@ def update_status(session, mentah_id):
         logging.error(f"❌ Gagal update status: {e}")
         raise
 
+
 # ✅ Fungsi utama yang akan dipanggil oleh Flask API
-
-
 def run_vader_analysis():
     print("🚀 Memulai Analisis VADER...")
     logging.info("🚀 Memulai Analisis VADER...")
 
-    # ✅ Mulai sesi SQLAlchemy
     session = Session()
 
     try:
@@ -140,9 +148,10 @@ def run_vader_analysis():
                 original_comment = row.comment
                 tanggal_komentar = row.tanggal_komentar
 
-                # Preprocessing dan Translate
+                # Preprocessing → Normalisasi → Translasi
                 cleaned_comment = bersihkan_teks(original_comment)
-                translated_comment = translate_comment(cleaned_comment)
+                normalized_comment = normalisasi_kata(cleaned_comment)
+                translated_comment = translate_comment(normalized_comment)
 
                 # Analisis Sentimen
                 sentiment_result = analyze_sentiment(translated_comment)
@@ -164,13 +173,13 @@ def run_vader_analysis():
                     "created_at": datetime.now()
                 }
 
-                # ✅ Simpan hasil analisis
+                # Simpan hasil analisis
                 save_to_database(session, data_to_save)
 
-                # ✅ Update status komentar
+                # Update status komentar
                 update_status(session, mentah_id)
 
-                # ✅ Commit setelah selesai per baris
+                # Commit per baris
                 session.commit()
 
                 logging.info(f"✅ Berhasil memproses komentar ID {mentah_id}")
