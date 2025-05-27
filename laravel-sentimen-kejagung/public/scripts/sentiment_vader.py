@@ -14,14 +14,16 @@ logging.basicConfig(filename='vader_analysis_log.txt', level=logging.DEBUG,
                     format='%(asctime)s - %(levelname)s - %(message)s')
 logging.info("🚀 Memulai proses analisis VADER...")
 
-# 🔄 Unduh lexicon VADER jika belum ada
 nltk.download("vader_lexicon")
 analyzer = SentimentIntensityAnalyzer()
 
-# ✅ Load kamus normalisasi dari JSON
-kamus_path = os.path.join(os.getcwd(), "public/scripts/kamus_normalisasi.json")
-with open(kamus_path, "r", encoding="utf-8") as file:
+# ✅ Load kamus normalisasi
+with open("public/scripts/kamus_normalisasi.json", "r", encoding="utf-8") as file:
     normalization_dict = json.load(file)
+
+# ✅ Load kamus sentimen manual
+with open("public/scripts/kamus_sentimen_manual.json", "r", encoding="utf-8") as f:
+    manual_sentiment_dict = json.load(f)
 
 # 🔄 Konfigurasi koneksi database
 db_config = {
@@ -35,7 +37,6 @@ db_url = f"mysql+pymysql://{db_config['user']}:{db_config['password']}@{db_confi
 engine = create_engine(db_url)
 Session = sessionmaker(bind=engine)
 
-# 🔄 Query untuk mengambil komentar yang belum dianalisis
 select_query = """
     SELECT id, video_id, username, comment, tanggal_komentar
     FROM komentar_mentah
@@ -43,23 +44,22 @@ select_query = """
     LIMIT 50
 """
 
-# ✅ Fungsi untuk membersihkan teks
+# ✅ Preprocessing
 
 
 def bersihkan_teks(teks):
     teks = re.sub(r"http\S+|@\S+|#[A-Za-z0-9_]+", "", teks)
     teks = re.sub(r"[^a-zA-Z\s]", " ", teks)
+    teks = re.sub(r'\s+', ' ', teks)
     return teks.lower().strip()
 
 
-# ✅ Fungsi untuk menormalkan kata-kata
 def normalisasi_kata(teks):
     kata_list = teks.split()
     hasil = [normalization_dict.get(kata, kata) for kata in kata_list]
     return " ".join(hasil)
 
 
-# ✅ Fungsi untuk menterjemahkan komentar ke Bahasa Inggris
 def translate_comment(teks):
     try:
         translated = GoogleTranslator(
@@ -68,18 +68,37 @@ def translate_comment(teks):
         return translated
     except Exception as e:
         logging.error(f"❌ Terjadi kesalahan saat translate: {e}")
-        return teks  # fallback ke teks asli jika gagal
+        return teks
+
+# ✅ Penyesuaian skor berdasarkan kamus manual (DILAKUKAN SEBELUM TRANSLASI)
 
 
-# ✅ Fungsi untuk melakukan analisis sentimen
-def analyze_sentiment(teks):
+def penyesuaian_skor_manual(teks):
+    total_adjustment = 0.0
+    teks_lower = teks.lower()
+    sorted_items = sorted(manual_sentiment_dict.items(),
+                          key=lambda x: len(x[0]), reverse=True)
+    for frasa, skor in sorted_items:
+        if frasa in teks_lower:
+            total_adjustment += skor
+            logging.info(
+                f"📌 Frasa '{frasa}' ditemukan, penyesuaian skor: {skor}")
+    return total_adjustment
+
+# ✅ Analisis Sentimen dengan VADER + penyesuaian skor dari kamus manual
+
+
+def analyze_sentiment(teks, adjustment=0.0):
     scores = analyzer.polarity_scores(teks)
-    compound = scores['compound']
+    compound = scores['compound'] + adjustment
+    compound = max(min(compound, 1.0), -1.0)  # Clamp -1 to 1
+
     label = 'netral'
     if compound >= 0.05:
         label = 'positif'
     elif compound <= -0.05:
         label = 'negatif'
+
     return {
         "positif": scores['pos'],
         "netral": scores['neu'],
@@ -88,8 +107,9 @@ def analyze_sentiment(teks):
         "label": label
     }
 
+# ✅ Simpan ke database
 
-# ✅ Fungsi untuk menyimpan hasil analisis ke database
+
 def save_to_database(session, data):
     insert_query = """
         INSERT INTO komentar_sentimen_vader (
@@ -109,8 +129,9 @@ def save_to_database(session, data):
         logging.error(f"❌ Gagal menyimpan ke database: {e}")
         raise
 
+# ✅ Update status
 
-# ✅ Fungsi untuk mengupdate status di database
+
 def update_status(session, mentah_id):
     update_query = """
         UPDATE komentar_mentah
@@ -123,13 +144,14 @@ def update_status(session, mentah_id):
             logging.info(
                 f"✅ Status is_processed_vader = 1 untuk ID {mentah_id}")
         else:
-            logging.warning(f"⚠️ ID {mentah_id} tidak ditemukan untuk update.")
+            logging.warning(f"⚠️ ID {mentah_id} tidak ditemukan.")
     except Exception as e:
         logging.error(f"❌ Gagal update status: {e}")
         raise
 
+# ✅ Fungsi utama
 
-# ✅ Fungsi utama yang akan dipanggil oleh Flask API
+
 def run_vader_analysis():
     print("🚀 Memulai Analisis VADER...")
     logging.info("🚀 Memulai Analisis VADER...")
@@ -141,22 +163,20 @@ def run_vader_analysis():
 
         for row in rows:
             try:
-                # Ambil data komentar
                 mentah_id = row.id
                 video_id = row.video_id
                 username = row.username
                 original_comment = row.comment
                 tanggal_komentar = row.tanggal_komentar
 
-                # Preprocessing → Normalisasi → Translasi
                 cleaned_comment = bersihkan_teks(original_comment)
                 normalized_comment = normalisasi_kata(cleaned_comment)
+                adjustment_score = penyesuaian_skor_manual(
+                    normalized_comment)  # ⬅️ Cek sebelum translate
                 translated_comment = translate_comment(normalized_comment)
+                sentiment_result = analyze_sentiment(
+                    translated_comment, adjustment_score)
 
-                # Analisis Sentimen
-                sentiment_result = analyze_sentiment(translated_comment)
-
-                # Data untuk disimpan ke database
                 data_to_save = {
                     "mentah_id": mentah_id,
                     "video_id": video_id,
@@ -173,23 +193,17 @@ def run_vader_analysis():
                     "created_at": datetime.now()
                 }
 
-                # Simpan hasil analisis
                 save_to_database(session, data_to_save)
-
-                # Update status komentar
                 update_status(session, mentah_id)
-
-                # Commit per baris
                 session.commit()
 
-                logging.info(f"✅ Berhasil memproses komentar ID {mentah_id}")
                 print(f"✅ Berhasil memproses komentar ID {mentah_id}")
+                logging.info(f"✅ Berhasil memproses komentar ID {mentah_id}")
 
             except Exception as e:
-                logging.error(
-                    f"❌ Error saat memproses komentar ID {row.id}: {e}")
+                logging.error(f"❌ Error komentar ID {row.id}: {e}")
                 session.rollback()
-                print(f"❌ Error saat memproses komentar ID {row.id}: {e}")
+                print(f"❌ Error komentar ID {row.id}: {e}")
 
     finally:
         session.close()
