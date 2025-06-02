@@ -14,16 +14,13 @@ logging.basicConfig(filename='vader_analysis_log.txt', level=logging.DEBUG,
                     format='%(asctime)s - %(levelname)s - %(message)s')
 logging.info("🚀 Memulai proses analisis VADER...")
 
+# 🔄 Unduh lexicon VADER
 nltk.download("vader_lexicon")
 analyzer = SentimentIntensityAnalyzer()
 
 # ✅ Load kamus normalisasi
 with open("public/scripts/kamus_normalisasi.json", "r", encoding="utf-8") as file:
     normalization_dict = json.load(file)
-
-# ✅ Load kamus sentimen manual
-with open("public/scripts/kamus_sentimen_manual.json", "r", encoding="utf-8") as f:
-    manual_sentiment_dict = json.load(f)
 
 # 🔄 Konfigurasi koneksi database
 db_config = {
@@ -37,14 +34,15 @@ db_url = f"mysql+pymysql://{db_config['user']}:{db_config['password']}@{db_confi
 engine = create_engine(db_url)
 Session = sessionmaker(bind=engine)
 
+# 🔄 Query komentar mentah
 select_query = """
     SELECT id, video_id, username, comment, tanggal_komentar
     FROM komentar_mentah
     WHERE is_processed_vader = 0 AND is_processed_ml = 0
-    LIMIT 50
+    LIMIT 300
 """
 
-# ✅ Preprocessing
+# ✅ Fungsi pembersihan teks
 
 
 def bersihkan_teks(teks):
@@ -53,45 +51,33 @@ def bersihkan_teks(teks):
     teks = re.sub(r'\s+', ' ', teks)
     return teks.lower().strip()
 
+# ✅ Fungsi normalisasi dengan kamus
+
 
 def normalisasi_kata(teks):
     kata_list = teks.split()
     hasil = [normalization_dict.get(kata, kata) for kata in kata_list]
     return " ".join(hasil)
 
+# ✅ Fungsi translasi
+
 
 def translate_comment(teks):
     try:
         translated = GoogleTranslator(
             source='auto', target='en').translate(teks)
-        logging.info(f"📝 Terjemahan berhasil: {translated}")
+        logging.info(f"📝 Translasi berhasil: {translated}")
         return translated
     except Exception as e:
-        logging.error(f"❌ Terjadi kesalahan saat translate: {e}")
+        logging.error(f"❌ Gagal translasi: {e}")
         return teks
 
-# ✅ Penyesuaian skor berdasarkan kamus manual (DILAKUKAN SEBELUM TRANSLASI)
+# ✅ Fungsi analisis sentimen dengan VADER
 
 
-def penyesuaian_skor_manual(teks):
-    total_adjustment = 0.0
-    teks_lower = teks.lower()
-    sorted_items = sorted(manual_sentiment_dict.items(),
-                          key=lambda x: len(x[0]), reverse=True)
-    for frasa, skor in sorted_items:
-        if frasa in teks_lower:
-            total_adjustment += skor
-            logging.info(
-                f"📌 Frasa '{frasa}' ditemukan, penyesuaian skor: {skor}")
-    return total_adjustment
-
-# ✅ Analisis Sentimen dengan VADER + penyesuaian skor dari kamus manual
-
-
-def analyze_sentiment(teks, adjustment=0.0):
+def analyze_sentiment(teks):
     scores = analyzer.polarity_scores(teks)
-    compound = scores['compound'] + adjustment
-    compound = max(min(compound, 1.0), -1.0)  # Clamp -1 to 1
+    compound = scores['compound']
 
     label = 'netral'
     if compound >= 0.05:
@@ -129,7 +115,7 @@ def save_to_database(session, data):
         logging.error(f"❌ Gagal menyimpan ke database: {e}")
         raise
 
-# ✅ Update status
+# ✅ Update status komentar
 
 
 def update_status(session, mentah_id):
@@ -157,10 +143,8 @@ def run_vader_analysis():
     logging.info("🚀 Memulai Analisis VADER...")
 
     session = Session()
-
     try:
         rows = session.execute(text(select_query)).fetchall()
-
         for row in rows:
             try:
                 mentah_id = row.id
@@ -171,11 +155,8 @@ def run_vader_analysis():
 
                 cleaned_comment = bersihkan_teks(original_comment)
                 normalized_comment = normalisasi_kata(cleaned_comment)
-                adjustment_score = penyesuaian_skor_manual(
-                    normalized_comment)  # ⬅️ Cek sebelum translate
                 translated_comment = translate_comment(normalized_comment)
-                sentiment_result = analyze_sentiment(
-                    translated_comment, adjustment_score)
+                sentiment_result = analyze_sentiment(translated_comment)
 
                 data_to_save = {
                     "mentah_id": mentah_id,
@@ -198,13 +179,12 @@ def run_vader_analysis():
                 session.commit()
 
                 print(f"✅ Berhasil memproses komentar ID {mentah_id}")
-                logging.info(f"✅ Berhasil memproses komentar ID {mentah_id}")
+                logging.info(f"✅ Komentar ID {mentah_id} selesai")
 
             except Exception as e:
                 logging.error(f"❌ Error komentar ID {row.id}: {e}")
                 session.rollback()
                 print(f"❌ Error komentar ID {row.id}: {e}")
-
     finally:
         session.close()
         print("✅ Analisis VADER selesai.")
