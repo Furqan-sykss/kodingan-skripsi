@@ -37,7 +37,7 @@ print("🔁 Melakukan training model...")
 model.fit(X_train, y_train)
 print("✅ Model berhasil dilatih.")
 
-# === 6️⃣ Simpan model dan vectorizer ===
+# === 6️⃣ Simpan model dan vectorizer ==
 with open('public/scripts/tfidf_model.pkl', 'wb') as f:
     pickle.dump(vectorizer, f)
 
