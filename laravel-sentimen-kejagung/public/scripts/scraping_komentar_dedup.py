@@ -75,7 +75,7 @@ def simpan_komentar(data):
         sql = """
             INSERT INTO komentar_mentah (
                 video_id, kata_kunci, username, comment, likes, replies, tanggal_komentar,
-                is_processed_vader, is_processed_indobert, created_at
+                is_processed_vader, is_processed_ml, created_at
             ) VALUES (%s, %s, %s, %s, %s, %s, %s, 0, 0, NOW())
         """
         cursor.execute(sql, (
@@ -114,7 +114,7 @@ def load_cookies(driver, cookie_file):
 # ✅ Fungsi scraping menggunakan Selenium
 
 
-def scraping_by_hashtag(tagar, max_videos=6, max_comments=100):
+def scraping_by_hashtag(tagar, max_videos=10, max_comments=100):
     logging.debug(f"\n🔍 Scraping untuk tagar: #{tagar}")
 
     # ✅ Opsi Selenium
@@ -211,6 +211,10 @@ def scraping_by_hashtag(tagar, max_videos=6, max_comments=100):
 
 # ✅ Jalankan Program
 if __name__ == '__main__':
-    hashtags = ["kinerja kejaksaan agung", "kejaksaan agung", "kejagung"]
+    hashtags = [
+        "kejaksaan agung",
+        "kinerja kejaksaan agung",
+        "kejagung"
+    ]
     for tag in hashtags:
         scraping_by_hashtag(tag)

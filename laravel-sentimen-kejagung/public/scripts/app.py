@@ -5,8 +5,6 @@ import os
 
 # ✅ Import file analisis_sentimen
 from sentiment_vader import run_vader_analysis
-# from sentiment_indobert import run_indobert_analysis  # ⬅️ Tambahkan ini nanti
-# from sentiment_hybrid import run_hybrid_analysis  # ⬅️ tambahkan ini
 from ml_predict import run_ML_analysis
 
 
@@ -36,6 +34,7 @@ def scrape():
         return jsonify({"error": str(e)}), 500
 
 
+# curl -X POST http://127.0.0.1:5000/analyze/vader
 @app.route('/analyze/analisis-ml', methods=['POST'])
 def analyze_ml():
     try:
@@ -50,33 +49,17 @@ def analyze_ml():
 @app.route('/analyze/vader', methods=['POST'])
 def analyze_vader():
     try:
-        # Menjalankan script sentiment_vader.py secara langsung
-        run_vader_analysis()
-        return jsonify({"message": "Analisis VADER berhasil!"}), 200
+        result = run_vader_analysis()
+        return jsonify({
+            "status": "success",
+            "message": f"Processed {result['processed']} comments, skipped {result['skipped']}",
+            "data": result
+        }), 200
     except Exception as e:
-        return jsonify({"error": str(e)}), 500
-
-# ✅ Route Baru untuk Analisis IndoBERT
-
-
-# @app.route('/analyze/indobert', methods=['POST'])
-# def analyze_indobert():
-#     try:
-#         run_indobert_analysis()
-#         return jsonify({"message": "Analisis IndoBERT berhasil!"}), 200
-#     except Exception as e:
-#         return jsonify({"error": str(e)}), 500
-
-# ✅ Route baru untuk Analisis Hybrid
-
-
-# @app.route('/analyze/hybrid', methods=['POST'])
-# def analyze_hybrid():
-#     try:
-#         run_hybrid_analysis()
-#         return jsonify({"message": "Analisis Hybrid berhasil!"}), 200
-#     except Exception as e:
-#         return jsonify({"error": str(e)}), 500
+        return jsonify({
+            "status": "error",
+            "message": f"Analysis failed: {str(e)}"
+        }), 500
 
 
 if __name__ == '__main__':
