@@ -655,7 +655,7 @@
         // ML Analysis Process
         $('#btn-analisis-ml').click(function(event) {
             event.preventDefault();
-            if (confirm("Yakin ingin melakukan analisis ML pada 400 data terbaru?")) {
+            if (confirm("Yakin ingin melakukan analisis ML pada 200 data terbaru?")) {
                 showLoading(
                     'Sedang menganalisis sentimen...',
                     'Proses machine learning sedang berjalan'

@@ -13,6 +13,41 @@ kamus_path = os.path.join(os.getcwd(), "public/scripts/kamus_normalisasi.json")
 with open(kamus_path, 'r', encoding='utf-8') as f:
     normalization_dict = json.load(f)
 
+# === Fungsi preprocessing (gabungan dari sentiment_vader.py) ===
+
+
+def bersihkan_teks(teks):
+    teks = re.sub(r"http\S+|@\S+|#[A-Za-z0-9_]+", "", teks)
+    teks = re.sub(r"\d+", "", teks)
+    teks = re.sub(r"[^a-zA-Z\s]", " ", teks)
+    teks = teks.lower().strip()
+    teks = re.sub(r'\s+', ' ', teks)
+    return teks
+
+
+def normalisasi_kata(teks):
+    kata_list = teks.split()
+    hasil = [normalization_dict.get(kata, kata) for kata in kata_list]
+    return " ".join(hasil)
+
+
+def apply_idioms(teks):
+    idiom_dict = {
+        "maung": "hero", "jos": "awesome", "gass": "go",
+        "mantap": "great", "di tangan": "in the hands of"
+    }
+    for k, v in idiom_dict.items():
+        teks = teks.replace(k, v)
+    return teks
+
+
+def translate(teks):
+    try:
+        teks = apply_idioms(teks)
+        return GoogleTranslator(source='auto', target='en').translate(teks)
+    except:
+        return teks
+
 # === Fungsi utama untuk Flask/API atau manual run ===
 
 
@@ -43,15 +78,14 @@ def run_ML_analysis():
 
 def exec_main_script():
     engine = create_engine(
-        "mysql+pymysql://root:@localhost/analisis_sentimen_kejagung_db"
-    )
+        "mysql+pymysql://root:@localhost/analisis_sentimen_kejagung_db")
 
     # 1️⃣ Ambil data komentar mentah
     query = """
         SELECT id, video_id, username, comment, tanggal_komentar 
         FROM komentar_mentah
         WHERE is_processed_ml = 0 AND is_processed_vader = 0
-        LIMIT 200
+        LIMIT 800
     """
     data_mentah = pd.read_sql(query, engine)
 
@@ -61,24 +95,6 @@ def exec_main_script():
         exit()
 
     # 2️⃣ Preprocessing
-    def bersihkan_teks(teks):
-        teks = re.sub(r"http\S+|@\S+|#[A-Za-z0-9_]+", "", teks)
-        teks = re.sub(r"[^a-zA-Z\s]", " ", teks)
-        teks = teks.lower().strip()
-        teks = re.sub(r'\s+', ' ', teks)
-        return teks
-
-    def normalisasi_kata(teks):
-        kata_list = teks.split()
-        hasil = [normalization_dict.get(kata, kata) for kata in kata_list]
-        return " ".join(hasil)
-
-    def translate(teks):
-        try:
-            return GoogleTranslator(source='auto', target='en').translate(teks)
-        except:
-            return teks
-
     data_mentah['cleaned_comment'] = data_mentah['comment'].apply(
         bersihkan_teks)
     data_mentah['normalized_comment'] = data_mentah['cleaned_comment'].apply(
