@@ -114,7 +114,7 @@ def load_cookies(driver, cookie_file):
 # ✅ Fungsi scraping menggunakan Selenium
 
 
-def scraping_by_hashtag(tagar, max_videos=10, max_comments=100):
+def scraping_by_hashtag(tagar, max_videos=5, max_comments=100):
     logging.debug(f"\n🔍 Scraping untuk tagar: #{tagar}")
 
     # ✅ Opsi Selenium

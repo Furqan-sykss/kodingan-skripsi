@@ -14,7 +14,7 @@ class ResultController extends Controller
             // Ambil data dari tabel komentar_mentah
             $komentar = DB::table('komentar_mentah')
                 ->orderBy('created_at', 'desc')
-                ->get();
+                ->paginate(10);
 
             // Redirect ke view dengan data
             return view('admin.scraping.result', compact('komentar'));

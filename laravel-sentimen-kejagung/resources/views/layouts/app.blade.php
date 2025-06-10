@@ -14,23 +14,31 @@
 
     <!-- Scripts -->
     @vite(['resources/css/app.css', 'resources/js/app.js'])
+
+    <style>
+        :root {
+            --primary-color: #4f46e5;
+            --secondary-color: #7c3aed;
+            --dark-bg: #1a1a2e;
+            --content-bg: #f8fafc;
+        }
+
+        body {
+            background-color: var(--dark-bg);
+        }
+
+        .min-h-screen {
+            background: linear-gradient(135deg, var(--dark-bg) 0%, #16213e 100%);
+        }
+    </style>
 </head>
 
 <body class="font-sans antialiased">
-    <div class="min-h-screen" style="background-color: #4B2530;">
+    <div class="min-h-screen">
         @include('layouts.navigation')
 
-        <!-- Page Heading -->
-        @isset($header)
-            <header class="bg-white shadow">
-                <div class="max-w-7xl mx-auto py-6 px-4 sm:px-6 lg:px-8">
-                    {{ $header }}
-                </div>
-            </header>
-        @endisset
-
         <!-- Page Content -->
-        <main>
+        <main class="pb-10">
             {{ $slot }}
         </main>
     </div>
