@@ -1,0 +1,46 @@
+2025-06-05 13:33:15,898 - ERROR - File stop_words.json tidak ditemukan
+2025-06-05 13:33:15,898 - ERROR - File kamus_normalisasi.json tidak ditemukan
+2025-06-05 13:40:03,447 - INFO - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on http://127.0.0.1:5000
+2025-06-05 13:40:03,542 - INFO - [33mPress CTRL+C to quit[0m
+2025-06-05 13:40:03,894 - INFO -  * Restarting with stat
+2025-06-05 13:41:32,102 - ERROR - File stop_words.json tidak ditemukan
+2025-06-05 13:41:32,137 - ERROR - File kamus_normalisasi.json tidak ditemukan
+2025-06-05 14:04:00,530 - INFO - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on http://127.0.0.1:5000
+2025-06-05 14:04:01,099 - INFO - [33mPress CTRL+C to quit[0m
+2025-06-05 14:04:02,973 - INFO -  * Restarting with stat
+2025-06-05 14:08:33,959 - WARNING -  * Debugger is active!
+2025-06-05 14:08:39,403 - INFO -  * Debugger PIN: 890-129-937
+2025-06-05 14:09:43,194 - INFO - 127.0.0.1 - - [05/Jun/2025 14:09:43] "[35m[1mPOST /analyze/vader HTTP/1.1[0m" 500 -
+2025-06-05 16:29:04,584 - INFO - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on http://127.0.0.1:5000
+2025-06-05 16:29:04,615 - INFO - [33mPress CTRL+C to quit[0m
+2025-06-05 16:29:04,638 - INFO -  * Restarting with stat
+2025-06-05 16:29:09,640 - WARNING -  * Debugger is active!
+2025-06-05 16:29:09,655 - INFO -  * Debugger PIN: 145-095-061
+2025-06-05 16:51:01,577 - INFO - 127.0.0.1 - - [05/Jun/2025 16:51:01] "[35m[1mPOST /analyze/vader HTTP/1.1[0m" 500 -
+2025-06-05 16:59:23,405 - INFO -  * Detected change in 'C:\\ALMOST\\kodingan skripsi\\laravel-sentimen-kejagung\\public\\scripts\\sentiment_vader.py', reloading
+2025-06-05 16:59:55,116 - INFO -  * Restarting with stat
+2025-06-05 17:00:53,687 - WARNING -  * Debugger is active!
+2025-06-05 17:00:53,715 - INFO -  * Debugger PIN: 145-095-061
+2025-06-05 17:00:53,993 - INFO - 127.0.0.1 - - [05/Jun/2025 17:00:53] "[35m[1mPOST /analyze/vader HTTP/1.1[0m" 500 -
+2025-06-05 19:09:48,663 - INFO -  * Detected change in 'C:\\ALMOST\\kodingan skripsi\\laravel-sentimen-kejagung\\public\\scripts\\sentiment_vader.py', reloading
+2025-06-05 19:11:29,528 - INFO - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on http://127.0.0.1:5000
+2025-06-05 19:11:29,529 - INFO - [33mPress CTRL+C to quit[0m
+2025-06-05 19:11:29,540 - INFO -  * Restarting with stat
+2025-06-05 19:11:32,958 - WARNING -  * Debugger is active!
+2025-06-05 19:11:32,962 - INFO -  * Debugger PIN: 145-095-061
+2025-06-05 19:15:46,591 - INFO - 127.0.0.1 - - [05/Jun/2025 19:15:46] "[35m[1mPOST /analyze/vader HTTP/1.1[0m" 500 -
+2025-06-05 19:24:20,712 - INFO -  * Detected change in 'C:\\ALMOST\\kodingan skripsi\\laravel-sentimen-kejagung\\public\\scripts\\sentiment_vader.py', reloading
+2025-06-05 19:24:21,469 - INFO -  * Restarting with stat
+2025-06-05 19:24:37,868 - WARNING -  * Debugger is active!
+2025-06-05 19:24:37,873 - INFO -  * Debugger PIN: 145-095-061
+2025-06-05 19:25:03,318 - INFO - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on http://127.0.0.1:5000
+2025-06-05 19:25:03,319 - INFO - [33mPress CTRL+C to quit[0m
+2025-06-05 19:25:03,321 - INFO -  * Restarting with stat
+2025-06-05 19:25:07,237 - WARNING -  * Debugger is active!
+2025-06-05 19:25:07,240 - INFO -  * Debugger PIN: 145-095-061
+2025-06-05 19:31:24,961 - INFO - 127.0.0.1 - - [05/Jun/2025 19:31:24] "[35m[1mPOST /analyze/vader HTTP/1.1[0m" 500 -
