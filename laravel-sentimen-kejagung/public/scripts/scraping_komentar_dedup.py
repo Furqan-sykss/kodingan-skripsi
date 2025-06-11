@@ -6,15 +6,15 @@ import datetime
 import requests
 import pymysql
 import os
+import logging
 from selenium import webdriver
 from selenium.webdriver.chrome.options import Options
 from selenium.webdriver.common.by import By
 from selenium.webdriver.common.keys import Keys
 from selenium.webdriver.chrome.service import Service
 from dotenv import load_dotenv
-import logging
 
-# ✅ Setup logging
+# ========== ✅ Logging ==========
 logging.basicConfig(
     filename='scraping_log.txt',
     level=logging.DEBUG,
@@ -22,13 +22,16 @@ logging.basicConfig(
 )
 logging.debug("🚀 Memulai proses scraping...")
 
-# Load environment Laravel
-load_dotenv()
+# ========== ✅ Load .env ==========
+load_dotenv(dotenv_path=os.path.join(
+    os.path.dirname(os.path.dirname(__file__)), '.env'))
 
-# ✅ PATH DRIVER
-CHROMEDRIVER_PATH = r"C:\WebDriver\chromedriver.exe"
+# ========== ✅ Path Konfigurasi ==========
+SCRIPT_DIR = os.path.dirname(os.path.abspath(__file__))
+CHROMEDRIVER_PATH = os.path.join(SCRIPT_DIR, 'chromedriver.exe')
+COOKIE_FILE_PATH = os.path.join(SCRIPT_DIR, 'tiktok_cookies.json')
 
-# ✅ Koneksi ke database menggunakan environment dari Laravel
+# ========== ✅ Koneksi DB ==========
 try:
     db = pymysql.connect(
         host=os.getenv("DB_HOST"),
@@ -44,7 +47,7 @@ except Exception as e:
     logging.error(f"❌ Koneksi database gagal: {e}")
     exit()
 
-# ✅ Fungsi validasi komentar
+# ========== ✅ Fungsi Validasi ==========
 
 
 def komentar_valid(teks):
@@ -55,8 +58,6 @@ def komentar_valid(teks):
         return False
     return True
 
-# ✅ Fungsi cek komentar duplikat
-
 
 def komentar_sudah_ada(video_id, comment_text):
     sql = "SELECT COUNT(*) FROM komentar_mentah WHERE video_id = %s AND comment = %s"
@@ -64,13 +65,8 @@ def komentar_sudah_ada(video_id, comment_text):
     result = cursor.fetchone()
     return result[0] > 0
 
-# ✅ Fungsi simpan komentar
-
 
 def simpan_komentar(data):
-    """
-    Fungsi untuk menyimpan komentar ke dalam tabel database 'komentar_mentah'
-    """
     try:
         sql = """
             INSERT INTO komentar_mentah (
@@ -89,16 +85,14 @@ def simpan_komentar(data):
         ))
         db.commit()
         logging.debug(
-            f"✅ Data berhasil disimpan untuk video_id: {data['video_id']}")
+            f"✅ Disimpan: {data['comment'][:40]}... ({data['video_id']})")
     except Exception as e:
-        logging.error(f"❌ Gagal menyimpan ke database: {e}")
-
-# ✅ Fungsi load cookies untuk Selenium
+        logging.error(f"❌ Gagal simpan DB: {e}")
 
 
-def load_cookies(driver, cookie_file):
+def load_cookies(driver, cookie_path):
     try:
-        with open(cookie_file, "r") as f:
+        with open(cookie_path, "r") as f:
             cookies = json.load(f)
             for cookie in cookies:
                 cookie.pop("storeId", None)
@@ -108,36 +102,33 @@ def load_cookies(driver, cookie_file):
                 if cookie.get("domain", "").startswith("."):
                     cookie["domain"] = cookie["domain"].lstrip(".")
                 driver.add_cookie(cookie)
+        logging.debug("✅ Cookies dimuat.")
     except Exception as e:
         logging.error(f"❌ Gagal memuat cookies: {e}")
 
-# ✅ Fungsi scraping menggunakan Selenium
+# ========== ✅ Fungsi Utama ==========
 
 
-def scraping_by_hashtag(tagar, max_videos=5, max_comments=100):
+def scraping_by_hashtag(tagar, max_videos=5, max_comments=50):
     logging.debug(f"\n🔍 Scraping untuk tagar: #{tagar}")
-
-    # ✅ Opsi Selenium
     options = Options()
     options.add_argument('--headless')
     options.add_argument('--no-sandbox')
     options.add_argument('--disable-dev-shm-usage')
     options.add_argument('--disable-gpu')
     options.add_argument('--window-size=1920,1080')
+    options.add_argument('--user-agent=Mozilla/5.0')
 
-    # ✅ Setting Path Driver
     service = Service(CHROMEDRIVER_PATH)
     driver = webdriver.Chrome(service=service, options=options)
 
-    # ✅ Proses akses TikTok
     try:
         driver.get("https://www.tiktok.com")
         time.sleep(5)
-        load_cookies(driver, "tiktok_cookies.json")
+        load_cookies(driver, COOKIE_FILE_PATH)
         driver.get(f"https://www.tiktok.com/search?q=%23{tagar}")
         time.sleep(5)
 
-        # ✅ Scroll ke bawah untuk load video
         for _ in range(3):
             driver.find_element(By.TAG_NAME, "body").send_keys(Keys.END)
             time.sleep(2)
@@ -146,44 +137,38 @@ def scraping_by_hashtag(tagar, max_videos=5, max_comments=100):
         collected = set()
         for link in links:
             href = link.get_attribute("href")
-            if "/video/" in href:
-                # Tambahkan pengecekan sebelum ditambahkan ke list
-                if not komentar_sudah_ada(href, ""):
-                    collected.add(href)
+            if "/video/" in href and not komentar_sudah_ada(href, ""):
+                collected.add(href)
             if len(collected) >= max_videos:
                 break
 
-        # ✅ Proses scraping data
         for video_url in collected:
             logging.debug(f"🎥 Memproses: {video_url}")
             parts = video_url.split("/video/")
-            username = parts[0].split("/@")[-1]
+            if len(parts) < 2:
+                continue
             aweme_id = parts[1]
 
-            # ✅ Memanfaatkan max_comments
-            url = f"https://www.tiktok.com/api/comment/list/?aid=1988&aweme_id={aweme_id}&cursor=0&count={max_comments}"
+            api_url = f"https://www.tiktok.com/api/comment/list/?aid=1988&aweme_id={aweme_id}&cursor=0&count={max_comments}"
             headers = {
                 "User-Agent": "Mozilla/5.0",
                 "Accept": "application/json",
                 "Referer": video_url
             }
 
-            response = requests.get(url, headers=headers, timeout=10)
+            response = requests.get(api_url, headers=headers, timeout=10)
             response.raise_for_status()
             data = response.json()
             comments = data.get('comments', [])
 
             if not comments:
-                logging.debug(f"❌ Tidak ada komentar pada {video_url}")
+                logging.debug(f"❌ Tidak ada komentar di: {video_url}")
                 continue
 
             for item in comments:
                 raw_comment = item.get('text', '')
                 if not komentar_valid(raw_comment):
-                    logging.debug(
-                        f"⏩ Komentar tidak valid: '{raw_comment.strip()}'")
                     continue
-
                 user_nickname = item.get('user', {}).get('nickname', 'unknown')
                 likes = item.get('digg_count', 0)
                 replies = item.get('reply_comment_total', 0)
@@ -192,7 +177,6 @@ def scraping_by_hashtag(tagar, max_videos=5, max_comments=100):
                 tanggal_komentar = datetime.datetime.fromtimestamp(unix_date).strftime(
                     '%Y-%m-%d %H:%M:%S') if unix_date else None
 
-                # ✅ Simpan ke database
                 simpan_komentar({
                     "video_id": video_url,
                     "kata_kunci": tagar,
@@ -203,18 +187,16 @@ def scraping_by_hashtag(tagar, max_videos=5, max_comments=100):
                     "tanggal_komentar": tanggal_komentar
                 })
 
-        driver.quit()
     except Exception as e:
         logging.error(f"❌ Gagal scraping: {e}")
+    finally:
         driver.quit()
+        db.close()
+        logging.debug("🛑 Driver & koneksi database ditutup")
 
 
-# ✅ Jalankan Program
+# ========== ✅ Main ==========
 if __name__ == '__main__':
-    hashtags = [
-        "kejaksaan agung",
-        "kinerja kejaksaan agung",
-        "kejagung"
-    ]
+    hashtags = ["kejaksaan agung", "kejagung", "kinerja kejaksaan agung"]
     for tag in hashtags:
         scraping_by_hashtag(tag)

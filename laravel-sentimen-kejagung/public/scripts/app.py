@@ -2,50 +2,69 @@ from flask import Flask, jsonify, request
 from flask_cors import CORS
 import subprocess
 import os
-
-# ✅ Import file analisis_sentimen
+import traceback
+import logging
+# curl -X POST http://127.0.0.1:5000/scrape
 from sentiment_vader import run_vader_analysis
 from ml_predict import run_ML_analysis
 
-
 app = Flask(__name__)
-CORS(app)  # <-- Aktifkan CORS di sini
+CORS(app)
 
+# Setup Logging
+logging.basicConfig(
+    filename='flask_log.txt',
+    level=logging.DEBUG,
+    format='%(asctime)s - %(levelname)s - %(message)s',
+)
 # Path ke script scraping
-SCRIPT_PATH = os.path.join(
-    os.getcwd(), 'public/scripts/scraping_komentar_dedup.py')
+SCRIPT_PATH = os.path.join(os.getcwd(), 'public',
+                           'scripts', 'scraping_komentar_dedup.py')
 
 
-# ✅ Route untuk Scraping
+# ✅ Endpoint untuk menjalankan scraping
+@app.route('/scrape', methods=['POST'])
 @app.route('/scrape', methods=['POST'])
 def scrape():
     try:
-        # Menjalankan script scraping langsung
-        process = subprocess.Popen(
-            ['python', SCRIPT_PATH], stdout=subprocess.PIPE, stderr=subprocess.PIPE)
-        stdout, stderr = process.communicate()
+        logging.info("📥 Memulai proses scraping dari endpoint /scrape...")
+        result = subprocess.run(
+            ['python', SCRIPT_PATH],
+            stdout=subprocess.PIPE,
+            stderr=subprocess.PIPE,
+            text=True
+        )
 
-        if process.returncode != 0:
-            return jsonify({"error": stderr.decode('utf-8')}), 500
+        if result.returncode != 0:
+            logging.error(f"❌ Scraping gagal: {result.stderr}")
+            return jsonify({
+                'status': 'error',
+                'message': f"Scraping gagal: {result.stderr}"
+            }), 500
 
-        return jsonify({"message": "Scraping berhasil!"}), 200
+        logging.info("✅ Scraping berhasil diselesaikan.")
+        return jsonify({
+            'status': 'success',
+            'message': 'Scraping berhasil diselesaikan.'
+        }), 200
 
     except Exception as e:
-        return jsonify({"error": str(e)}), 500
+        logging.error("❌ Exception saat scraping: " + traceback.format_exc())
+        return jsonify({
+            'status': 'error',
+            'message': f"Gagal menjalankan scraping: {str(e)}"
+        }), 500
 
 
-# curl -X POST http://127.0.0.1:5000/analyze/vader
 @app.route('/analyze/analisis-ml', methods=['POST'])
 def analyze_ml():
     try:
-        # Menjalankan script sentiment_vader.py secara langsung
         run_ML_analysis()
         return jsonify({"message": "Analisis ML berhasil!"}), 200
     except Exception as e:
         return jsonify({"error": str(e)}), 500
 
 
-# ✅ Route untuk Analisis VADER
 @app.route('/analyze/vader', methods=['POST'])
 def analyze_vader():
     try:
@@ -64,6 +83,3 @@ def analyze_vader():
 
 if __name__ == '__main__':
     app.run(port=5000, debug=True)
-# if __name__ == '__main__':
-#     # Tambahkan host='0.0.0.0' agar bisa menerima request lebih baik
-#     app.run(host='0.0.0.0', port=5000, debug=True)

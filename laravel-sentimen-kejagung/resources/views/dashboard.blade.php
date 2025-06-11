@@ -627,30 +627,25 @@
 
         // Scraping Process
         $('#scrapeButton').on('click', function() {
-            showLoading(
-                'Sedang melakukan scraping...',
-                'Proses ini mungkin memakan waktu beberapa menit'
-            );
+            showLoading('Scraping...', 'Harap tunggu, ini bisa memakan waktu beberapa menit');
 
             $.ajax({
                 url: "http://127.0.0.1:5000/scrape",
                 type: "POST",
-                headers: {
-                    'X-CSRF-TOKEN': '{{ csrf_token() }}'
-                },
                 success: function(response) {
                     hideLoading();
                     alert(response.message);
-                    if (confirm("Scraping berhasil! Ingin melihat hasil?")) {
+                    if (confirm("Lihat hasil sekarang?")) {
                         window.location.href = "{{ route('scraping.result') }}";
                     }
                 },
                 error: function(xhr, status, error) {
                     hideLoading();
-                    alert("Tidak dapat menghubungi server. Error: " + status);
+                    alert("Gagal: " + (xhr.responseJSON?.message || error));
                 }
             });
         });
+
 
         // ML Analysis Process
         $('#btn-analisis-ml').click(function(event) {
