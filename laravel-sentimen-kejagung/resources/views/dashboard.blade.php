@@ -342,6 +342,42 @@
         .btn-success:hover {
             background-color: #0d9f6e;
         }
+
+        .comment-text,
+        .video-id-text {
+            max-width: 150px;
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            transition: all 0.2s ease;
+        }
+
+        .comment-text:hover,
+        .video-id-text:hover {
+            color: #3b82f6;
+        }
+
+        .comment-text.expanded,
+        .video-id-text.expanded {
+            white-space: normal;
+            overflow: visible;
+            position: absolute;
+            background: white;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            padding: 0.75rem;
+            border-radius: 0.375rem;
+            z-index: 50;
+            max-width: 300px;
+            border: 1px solid #e5e7eb;
+            left: 1rem;
+            top: 50%;
+            transform: translateY(-50%);
+            word-break: break-all;
+        }
+
+        .video-id-text.expanded {
+            max-width: 200px;
+        }
     </style>
 
     <!-- Loading Overlay -->
@@ -542,64 +578,124 @@
 
         <!-- Comments Table -->
         <div class="card !p-0">
-            <div class="p-4 border-b border-gray-200">
-                <h2 class="text-lg font-semibold text-gray-800">Data Komentar</h2>
-                <p class="text-sm text-gray-600">Hasil analisis sentimen machine learning</p>
+            <div class="p-4 border-b border-gray-200 flex items-center justify-between">
+                <div>
+                    <h2 class="text-lg font-semibold text-gray-800">Data Komentar</h2>
+                    <p class="text-sm text-gray-600">Hasil analisis sentimen machine learning</p>
+                </div>
+                <a href="{{ route('export.komentar.ml') }}" class="btn btn-outline btn-info">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 inline-block mr-1" viewBox="0 0 20 20"
+                        fill="currentColor">
+                        <path
+                            d="M3 3a1 1 0 011-1h3a1 1 0 110 2H5v12h10V4h-2a1 1 0 110-2h3a1 1 0 011 1v14a1 1 0 01-1 1H4a1 1 0 01-1-1V3z" />
+                        <path
+                            d="M9 7a1 1 0 011 1v4.586l1.293-1.293a1 1 0 111.414 1.414l-3 3a1 1 0 01-1.414 0l-3-3a1 1 0 011.414-1.414L8 12.586V8a1 1 0 011-1z" />
+                    </svg>
+                    Export ke Excel
+                </a>
             </div>
 
-            <div class="table-container">
-                <table class="min-w-full">
-                    <thead>
-                        <tr>
-                            <th class="px-6 py-3">No</th>
-                            <th class="px-6 py-3">Username</th>
-                            <th class="px-6 py-3">Komentar</th>
-                            <th class="px-6 py-3">Tanggal</th>
-                            <th class="px-6 py-3">Label ML</th>
-                            <th class="px-6 py-3">Confidence</th>
-                        </tr>
-                    </thead>
-                    <tbody class="divide-y divide-gray-200">
-                        @foreach ($komentar as $item)
-                            <tr>
-                                <td class="px-6 py-4 whitespace-nowrap">
-                                    {{ ($komentar->currentPage() - 1) * $komentar->perPage() + $loop->iteration }}
-                                </td>
-                                <td class="px-6 py-4 whitespace-nowrap font-medium text-gray-900">
-                                    {{ $item->username }}
-                                </td>
-                                <td class="px-6 py-4">
-                                    <div class="max-w-xs truncate">{{ $item->comment }}</div>
-                                </td>
-                                <td class="px-6 py-4 whitespace-nowrap">
-                                    {{ $item->tanggal_komentar }}
-                                </td>
-                                <td class="px-6 py-4 whitespace-nowrap">
-                                    @if ($item->predicted_label === 'positif')
-                                        <span class="sentiment-badge sentiment-positif">Positif</span>
-                                    @elseif($item->predicted_label === 'negatif')
-                                        <span class="sentiment-badge sentiment-negatif">Negatif</span>
-                                    @else
-                                        <span class="sentiment-badge sentiment-netral">Netral</span>
-                                    @endif
-                                </td>
-                                <td class="px-6 py-4 whitespace-nowrap">
-                                    <div class="w-full bg-gray-200 rounded-full h-2.5">
-                                        <div class="bg-blue-600 h-2.5 rounded-full"
-                                            style="width: {{ $item->confidence_score * 100 }}%"></div>
-                                    </div>
-                                    <span
-                                        class="text-xs text-gray-500 mt-1">{{ number_format($item->confidence_score, 2) }}</span>
-                                </td>
-                            </tr>
-                        @endforeach
-                    </tbody>
-                </table>
 
-                <div class="pagination">
+            <div class="table-container p-2">
+                <!-- Table Container -->
+                <div class="overflow-x-auto">
+                    <table class="min-w-full divide-y divide-gray-200">
+                        <thead class="bg-gray-50">
+                            <tr>
+                                <th scope="col"
+                                    class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                                    No</th>
+                                <th scope="col"
+                                    class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                                    Video ID</th>
+
+                                @if (Auth::user()->role === 'admin')
+                                    <th scope="col"
+                                        class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                                        Username</th>
+                                @endif
+
+                                <th scope="col"
+                                    class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                                    Komentar</th>
+                                <th scope="col"
+                                    class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                                    Tanggal</th>
+                                <th scope="col"
+                                    class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                                    Label ML</th>
+                                <th scope="col"
+                                    class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                                    Confidence</th>
+                            </tr>
+                        </thead>
+                        <tbody class="bg-white divide-y divide-gray-200">
+                            @foreach ($komentar as $item)
+                                <tr class="hover:bg-gray-50 transition-colors duration-150">
+                                    <td class="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900">
+                                        {{ ($komentar->currentPage() - 1) * $komentar->perPage() + $loop->iteration }}
+                                    </td>
+
+                                    <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-900 relative">
+                                        <div class="video-id-text cursor-pointer"
+                                            data-full-id="{{ $item->video_id }}" title="Klik untuk melihat lengkap">
+                                            {{ Str::limit($item->video_id, 15) }}
+                                        </div>
+                                    </td>
+
+                                    @if (Auth::user()->role === 'admin')
+                                        <td class="px-6 py-4 whitespace-nowrap">
+                                            <div class="text-sm font-medium text-gray-900">{{ $item->username }}</div>
+                                        </td>
+                                    @endif
+
+                                    <td class="px-6 py-4 max-w-xs relative">
+                                        <div class="comment-text cursor-pointer"
+                                            data-full-comment="{{ $item->comment }}"
+                                            title="Klik untuk melihat lengkap">
+                                            {{ Str::limit($item->comment, 50) }}
+                                        </div>
+                                    </td>
+
+                                    <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
+                                        {{ $item->tanggal_komentar }}
+                                    </td>
+
+                                    <td class="px-6 py-4 whitespace-nowrap">
+                                        @if ($item->predicted_label === 'positif')
+                                            <span
+                                                class="px-3 py-1 inline-flex text-xs leading-5 font-semibold rounded-full bg-green-100 text-green-800">Positif</span>
+                                        @elseif($item->predicted_label === 'negatif')
+                                            <span
+                                                class="px-3 py-1 inline-flex text-xs leading-5 font-semibold rounded-full bg-red-100 text-red-800">Negatif</span>
+                                        @else
+                                            <span
+                                                class="px-3 py-1 inline-flex text-xs leading-5 font-semibold rounded-full bg-gray-100 text-gray-800">Netral</span>
+                                        @endif
+                                    </td>
+
+                                    <td class="px-6 py-4 whitespace-nowrap">
+                                        <div class="flex items-center gap-2">
+                                            <div class="w-24 bg-gray-200 rounded-full h-2">
+                                                <div class="bg-blue-600 h-2 rounded-full"
+                                                    style="width: {{ $item->confidence_score * 100 }}%"></div>
+                                            </div>
+                                            <span
+                                                class="text-xs font-medium text-gray-500">{{ number_format($item->confidence_score * 100, 0) }}%</span>
+                                        </div>
+                                    </td>
+                                </tr>
+                            @endforeach
+                        </tbody>
+                    </table>
+                </div>
+
+                <!-- Pagination -->
+                <div class="px-6 py-4 border-t border-gray-200">
                     {{ $komentar->links() }}
                 </div>
             </div>
+
         </div>
     </div>
 
@@ -626,41 +722,44 @@
         }
 
         // Scraping Process
-        $('#scrapeButton').on('click', function () {
-    showLoading(
-        'Sedang melakukan scraping...',
-        'Proses ini mungkin memakan waktu beberapa menit'
-    );
+        $('#scrapeButton').on('click', function() {
+            showLoading(
+                'Sedang melakukan scraping...',
+                'Proses ini mungkin memakan waktu beberapa menit'
+            );
 
-    $.ajax({
-        url: "http://127.0.0.1:5000/scrape",
-        type: "POST",
-        headers: {
-            'X-CSRF-TOKEN': '{{ csrf_token() }}'
-        },
-        success: function (response) {
-            hideLoading();
+            $.ajax({
+                url: "http://127.0.0.1:5000/scrape",
+                type: "POST",
+                headers: {
+                    'X-CSRF-TOKEN': '{{ csrf_token() }}'
+                },
+                success: function(response) {
+                    hideLoading();
 
-            if (response.status === "success") {
-                alert(`${response.message}\nJumlah komentar disimpan: ${response.total_saved}`);
-                if (confirm("Scraping berhasil! Ingin melihat hasil?")) {
-                    window.location.href = "{{ route('scraping.result') }}";
+                    if (response.status === "success") {
+                        alert(`${response.message}\nJumlah komentar disimpan: ${response.total_saved}`);
+                        if (confirm("Scraping berhasil! Ingin melihat hasil?")) {
+                            window.location.href = "{{ route('scraping.result') }}";
+                        }
+                    } else if (response.status === "partial") {
+                        alert(
+                            `Scraping sebagian berhasil.\n${response.message}\nKomentar disimpan: ${response.total_saved}`
+                        );
+                        if (confirm("Lihat data yang berhasil?")) {
+                            window.location.href = "{{ route('scraping.result') }}";
+                        }
+                    } else {
+                        alert(`Scraping gagal.\n${response.message}`);
+                    }
+                },
+                error: function(xhr, status, error) {
+                    hideLoading();
+                    alert("Tidak dapat menghubungi server Flask.\nStatus: " + status + "\nError: " +
+                        error);
                 }
-            } else if (response.status === "partial") {
-                alert(`Scraping sebagian berhasil.\n${response.message}\nKomentar disimpan: ${response.total_saved}`);
-                if (confirm("Lihat data yang berhasil?")) {
-                    window.location.href = "{{ route('scraping.result') }}";
-                }
-            } else {
-                alert(`Scraping gagal.\n${response.message}`);
-            }
-        },
-        error: function (xhr, status, error) {
-            hideLoading();
-            alert("Tidak dapat menghubungi server Flask.\nStatus: " + status + "\nError: " + error);
-        }
-    });
-});
+            });
+        });
 
 
 
@@ -738,6 +837,65 @@
                     }
                 }
             }
+        });
+    </script>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // Handle click for both comment and video ID elements
+            document.querySelectorAll('.comment-text, .video-id-text').forEach(el => {
+                el.addEventListener('click', function(e) {
+                    e.stopPropagation();
+
+                    // Close any other expanded elements
+                    document.querySelectorAll('.comment-text.expanded, .video-id-text.expanded')
+                        .forEach(expandedEl => {
+                            if (expandedEl !== this) {
+                                expandedEl.classList.remove('expanded');
+                                if (expandedEl.classList.contains('comment-text')) {
+                                    expandedEl.textContent = expandedEl.getAttribute(
+                                        'data-full-comment').substring(0, 50) + '...';
+                                } else {
+                                    expandedEl.textContent = expandedEl.getAttribute(
+                                        'data-full-id').substring(0, 15) + '...';
+                                }
+                            }
+                        });
+
+                    // Toggle current element
+                    this.classList.toggle('expanded');
+
+                    // Update content based on element type
+                    if (this.classList.contains('expanded')) {
+                        if (this.classList.contains('comment-text')) {
+                            this.textContent = this.getAttribute('data-full-comment');
+                        } else {
+                            this.textContent = this.getAttribute('data-full-id');
+                        }
+                    } else {
+                        if (this.classList.contains('comment-text')) {
+                            this.textContent = this.getAttribute('data-full-comment').substring(0,
+                                50) + '...';
+                        } else {
+                            this.textContent = this.getAttribute('data-full-id').substring(0, 15) +
+                                '...';
+                        }
+                    }
+                });
+            });
+
+            // Close expanded elements when clicking elsewhere
+            document.addEventListener('click', function() {
+                document.querySelectorAll('.comment-text.expanded, .video-id-text.expanded').forEach(el => {
+                    el.classList.remove('expanded');
+                    if (el.classList.contains('comment-text')) {
+                        el.textContent = el.getAttribute('data-full-comment').substring(0, 50) +
+                            '...';
+                    } else {
+                        el.textContent = el.getAttribute('data-full-id').substring(0, 15) + '...';
+                    }
+                });
+            });
         });
     </script>
 </x-app-layout>

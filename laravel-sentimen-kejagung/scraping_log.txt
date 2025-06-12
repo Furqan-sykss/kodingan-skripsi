@@ -13146,3 +13146,920 @@ setuju kebijakan presiden mengin...
 2025-06-12 12:57:58,630 - DEBUG - \U0001f6d1 Driver ditutup
 2025-06-12 12:57:58,644 - DEBUG - \U0001f6d1 Koneksi database ditutup
 2025-06-12 12:57:58,646 - INFO - 127.0.0.1 - - [12/Jun/2025 12:57:58] "POST /scrape HTTP/1.1" 200 -
+2025-06-12 13:23:14,406 - DEBUG - \U0001f680 Memulai proses scraping...
+2025-06-12 13:23:51,371 - INFO - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on http://127.0.0.1:5000
+2025-06-12 13:23:51,371 - INFO - [33mPress CTRL+C to quit[0m
+2025-06-12 13:23:51,396 - INFO -  * Restarting with stat
+2025-06-12 13:23:52,256 - DEBUG - \U0001f680 Memulai proses scraping...
+2025-06-12 13:23:55,888 - WARNING -  * Debugger is active!
+2025-06-12 13:23:55,892 - INFO -  * Debugger PIN: 145-095-061
+2025-06-12 13:29:31,932 - INFO - 127.0.0.1 - - [12/Jun/2025 13:29:31] "OPTIONS /scrape HTTP/1.1" 200 -
+2025-06-12 13:29:31,948 - INFO - \U0001f4e5 Memulai proses scraping dari endpoint /scrape...
+2025-06-12 13:29:31,982 - DEBUG - \u2705 Koneksi database berhasil.
+2025-06-12 13:29:31,983 - DEBUG - 
+\U0001f50d Scraping untuk tagar: #kejaksaan agung
+2025-06-12 13:29:31,985 - DEBUG - Skipping Selenium Manager; path to chrome driver specified in Service class: C:\ALMOST\kodingan skripsi\laravel-sentimen-kejagung\public\scripts\chromedriver.exe
+2025-06-12 13:29:33,700 - DEBUG - Started executable: `C:\ALMOST\kodingan skripsi\laravel-sentimen-kejagung\public\scripts\chromedriver.exe` in a child process with pid: 3576 using 0 to output -3
+2025-06-12 13:29:35,219 - DEBUG - POST http://localhost:46082/session {'capabilities': {'firstMatch': [{}], 'alwaysMatch': {'browserName': 'chrome', 'pageLoadStrategy': <PageLoadStrategy.normal: 'normal'>, 'goog:chromeOptions': {'extensions': [], 'args': ['--headless', '--no-sandbox', '--disable-dev-shm-usage', '--disable-gpu', '--window-size=1920,1080', '--user-agent=Mozilla/5.0']}}}}
+2025-06-12 13:29:35,223 - DEBUG - Starting new HTTP connection (1): localhost:46082
+2025-06-12 13:29:42,911 - DEBUG - http://localhost:46082 "POST /session HTTP/1.1" 200 0
+2025-06-12 13:29:42,912 - DEBUG - Remote response: status=200 | data={"value":{"capabilities":{"acceptInsecureCerts":false,"browserName":"chrome","browserVersion":"109.0.5414.168","chrome":{"chromedriverVersion":"109.0.5414.74 (e7c5703604daa9cc128ccf5a5d3e993513758913-refs/branch-heads/5414@{#1172})","userDataDir":"C:\\Program Files (x86)\\scoped_dir3576_1412412248"},"goog:chromeOptions":{"debuggerAddress":"localhost:46086"},"networkConnectionEnabled":false,"pageLoadStrategy":"normal","platformName":"windows","proxy":{},"setWindowRect":true,"strictFileInteractability":false,"timeouts":{"implicit":0,"pageLoad":300000,"script":30000},"unhandledPromptBehavior":"dismiss and notify","webauthn:extension:credBlob":true,"webauthn:extension:largeBlob":true,"webauthn:virtualAuthenticators":true},"sessionId":"04d71542d0a8e797d1da1224dfa322c9"}} | headers=HTTPHeaderDict({'Content-Length': '776', 'Content-Type': 'application/json; charset=utf-8', 'cache-control': 'no-cache'})
+2025-06-12 13:29:42,914 - DEBUG - Finished Request
+2025-06-12 13:29:42,982 - DEBUG - POST http://localhost:46082/session/04d71542d0a8e797d1da1224dfa322c9/timeouts {'pageLoad': 240000}
+2025-06-12 13:29:43,064 - DEBUG - http://localhost:46082 "POST /session/04d71542d0a8e797d1da1224dfa322c9/timeouts HTTP/1.1" 200 0
+2025-06-12 13:29:43,065 - DEBUG - Remote response: status=200 | data={"value":null} | headers=HTTPHeaderDict({'Content-Length': '14', 'Content-Type': 'application/json; charset=utf-8', 'cache-control': 'no-cache'})
+2025-06-12 13:29:43,065 - DEBUG - Finished Request
+2025-06-12 13:29:43,067 - DEBUG - POST http://localhost:46082/session/04d71542d0a8e797d1da1224dfa322c9/url {'url': 'https://www.tiktok.com'}
+2025-06-12 13:31:43,078 - ERROR - \u274c Gagal scraping: HTTPConnectionPool(host='localhost', port=46082): Read timed out. (read timeout=120)
+2025-06-12 13:31:43,108 - DEBUG - DELETE http://localhost:46082/session/04d71542d0a8e797d1da1224dfa322c9 {}
+2025-06-12 13:31:43,112 - DEBUG - Starting new HTTP connection (2): localhost:46082
+2025-06-12 13:33:21,943 - DEBUG - http://localhost:46082 "DELETE /session/04d71542d0a8e797d1da1224dfa322c9 HTTP/1.1" 200 0
+2025-06-12 13:33:21,945 - DEBUG - Remote response: status=200 | data={"value":null} | headers=HTTPHeaderDict({'Content-Length': '14', 'Content-Type': 'application/json; charset=utf-8', 'cache-control': 'no-cache'})
+2025-06-12 13:33:21,947 - DEBUG - Finished Request
+2025-06-12 13:33:25,660 - DEBUG - \U0001f6d1 Driver ditutup
+2025-06-12 13:33:25,662 - DEBUG - 
+\U0001f50d Scraping untuk tagar: #kejagung
+2025-06-12 13:33:25,666 - DEBUG - Skipping Selenium Manager; path to chrome driver specified in Service class: C:\ALMOST\kodingan skripsi\laravel-sentimen-kejagung\public\scripts\chromedriver.exe
+2025-06-12 13:33:25,763 - DEBUG - Started executable: `C:\ALMOST\kodingan skripsi\laravel-sentimen-kejagung\public\scripts\chromedriver.exe` in a child process with pid: 6516 using 0 to output -3
+2025-06-12 13:33:26,772 - DEBUG - POST http://localhost:46246/session {'capabilities': {'firstMatch': [{}], 'alwaysMatch': {'browserName': 'chrome', 'pageLoadStrategy': <PageLoadStrategy.normal: 'normal'>, 'goog:chromeOptions': {'extensions': [], 'args': ['--headless', '--no-sandbox', '--disable-dev-shm-usage', '--disable-gpu', '--window-size=1920,1080', '--user-agent=Mozilla/5.0']}}}}
+2025-06-12 13:33:26,775 - DEBUG - Starting new HTTP connection (1): localhost:46246
+2025-06-12 13:33:32,246 - DEBUG - http://localhost:46246 "POST /session HTTP/1.1" 200 0
+2025-06-12 13:33:32,246 - DEBUG - Remote response: status=200 | data={"value":{"capabilities":{"acceptInsecureCerts":false,"browserName":"chrome","browserVersion":"109.0.5414.168","chrome":{"chromedriverVersion":"109.0.5414.74 (e7c5703604daa9cc128ccf5a5d3e993513758913-refs/branch-heads/5414@{#1172})","userDataDir":"C:\\Program Files (x86)\\scoped_dir6516_72179"},"goog:chromeOptions":{"debuggerAddress":"localhost:46252"},"networkConnectionEnabled":false,"pageLoadStrategy":"normal","platformName":"windows","proxy":{},"setWindowRect":true,"strictFileInteractability":false,"timeouts":{"implicit":0,"pageLoad":300000,"script":30000},"unhandledPromptBehavior":"dismiss and notify","webauthn:extension:credBlob":true,"webauthn:extension:largeBlob":true,"webauthn:virtualAuthenticators":true},"sessionId":"086201883b2af1bafdeaf532fb52c529"}} | headers=HTTPHeaderDict({'Content-Length': '771', 'Content-Type': 'application/json; charset=utf-8', 'cache-control': 'no-cache'})
+2025-06-12 13:33:32,248 - DEBUG - Finished Request
+2025-06-12 13:33:32,249 - DEBUG - POST http://localhost:46246/session/086201883b2af1bafdeaf532fb52c529/timeouts {'pageLoad': 240000}
+2025-06-12 13:33:32,257 - DEBUG - http://localhost:46246 "POST /session/086201883b2af1bafdeaf532fb52c529/timeouts HTTP/1.1" 200 0
+2025-06-12 13:33:32,258 - DEBUG - Remote response: status=200 | data={"value":null} | headers=HTTPHeaderDict({'Content-Length': '14', 'Content-Type': 'application/json; charset=utf-8', 'cache-control': 'no-cache'})
+2025-06-12 13:33:32,259 - DEBUG - Finished Request
+2025-06-12 13:33:32,260 - DEBUG - POST http://localhost:46246/session/086201883b2af1bafdeaf532fb52c529/url {'url': 'https://www.tiktok.com'}
+2025-06-12 13:35:32,271 - ERROR - \u274c Gagal scraping: HTTPConnectionPool(host='localhost', port=46246): Read timed out. (read timeout=120)
+2025-06-12 13:35:32,274 - DEBUG - DELETE http://localhost:46246/session/086201883b2af1bafdeaf532fb52c529 {}
+2025-06-12 13:35:32,277 - DEBUG - Starting new HTTP connection (2): localhost:46246
+2025-06-12 13:36:11,816 - DEBUG - http://localhost:46246 "DELETE /session/086201883b2af1bafdeaf532fb52c529 HTTP/1.1" 200 0
+2025-06-12 13:36:11,817 - DEBUG - Remote response: status=200 | data={"value":null} | headers=HTTPHeaderDict({'Content-Length': '14', 'Content-Type': 'application/json; charset=utf-8', 'cache-control': 'no-cache'})
+2025-06-12 13:36:11,818 - DEBUG - Finished Request
+2025-06-12 13:36:15,569 - DEBUG - \U0001f6d1 Driver ditutup
+2025-06-12 13:36:15,595 - DEBUG - \U0001f6d1 Koneksi database ditutup
+2025-06-12 13:36:15,651 - INFO - 127.0.0.1 - - [12/Jun/2025 13:36:15] "POST /scrape HTTP/1.1" 200 -
+2025-06-12 13:47:23,144 - DEBUG - \U0001f680 Memulai proses scraping...
+2025-06-12 13:48:22,629 - INFO - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on http://127.0.0.1:5000
+2025-06-12 13:48:22,629 - INFO - [33mPress CTRL+C to quit[0m
+2025-06-12 13:48:22,692 - INFO -  * Restarting with stat
+2025-06-12 13:48:23,426 - DEBUG - \U0001f680 Memulai proses scraping...
+2025-06-12 13:48:26,702 - WARNING -  * Debugger is active!
+2025-06-12 13:48:26,706 - INFO -  * Debugger PIN: 145-095-061
+2025-06-12 13:52:23,478 - INFO - 127.0.0.1 - - [12/Jun/2025 13:52:23] "OPTIONS /scrape HTTP/1.1" 200 -
+2025-06-12 13:52:23,488 - INFO - \U0001f4e5 Memulai proses scraping dari endpoint /scrape...
+2025-06-12 13:52:23,490 - DEBUG - \u2705 Koneksi database berhasil.
+2025-06-12 13:52:23,490 - DEBUG - 
+\U0001f50d Scraping untuk tagar: #kejaksaan agung
+2025-06-12 13:52:23,491 - DEBUG - Skipping Selenium Manager; path to chrome driver specified in Service class: C:\ALMOST\kodingan skripsi\laravel-sentimen-kejagung\public\scripts\chromedriver.exe
+2025-06-12 13:52:23,523 - DEBUG - Started executable: `C:\ALMOST\kodingan skripsi\laravel-sentimen-kejagung\public\scripts\chromedriver.exe` in a child process with pid: 5680 using 0 to output -3
+2025-06-12 13:52:25,037 - DEBUG - POST http://localhost:1234/session {'capabilities': {'firstMatch': [{}], 'alwaysMatch': {'browserName': 'chrome', 'pageLoadStrategy': <PageLoadStrategy.normal: 'normal'>, 'goog:chromeOptions': {'extensions': [], 'args': ['--headless', '--no-sandbox', '--disable-dev-shm-usage', '--disable-gpu', '--window-size=1920,1080', '--user-agent=Mozilla/5.0']}}}}
+2025-06-12 13:52:25,039 - DEBUG - Starting new HTTP connection (1): localhost:1234
+2025-06-12 13:52:27,878 - DEBUG - http://localhost:1234 "POST /session HTTP/1.1" 200 0
+2025-06-12 13:52:27,879 - DEBUG - Remote response: status=200 | data={"value":{"capabilities":{"acceptInsecureCerts":false,"browserName":"chrome","browserVersion":"109.0.5414.168","chrome":{"chromedriverVersion":"109.0.5414.74 (e7c5703604daa9cc128ccf5a5d3e993513758913-refs/branch-heads/5414@{#1172})","userDataDir":"C:\\Program Files (x86)\\scoped_dir5680_1101155930"},"goog:chromeOptions":{"debuggerAddress":"localhost:1239"},"networkConnectionEnabled":false,"pageLoadStrategy":"normal","platformName":"windows","proxy":{},"setWindowRect":true,"strictFileInteractability":false,"timeouts":{"implicit":0,"pageLoad":300000,"script":30000},"unhandledPromptBehavior":"dismiss and notify","webauthn:extension:credBlob":true,"webauthn:extension:largeBlob":true,"webauthn:virtualAuthenticators":true},"sessionId":"5f06a01e9e6251797946565365db94d1"}} | headers=HTTPHeaderDict({'Content-Length': '775', 'Content-Type': 'application/json; charset=utf-8', 'cache-control': 'no-cache'})
+2025-06-12 13:52:27,879 - DEBUG - Finished Request
+2025-06-12 13:52:27,880 - DEBUG - POST http://localhost:1234/session/5f06a01e9e6251797946565365db94d1/timeouts {'pageLoad': 240000}
+2025-06-12 13:52:27,882 - DEBUG - http://localhost:1234 "POST /session/5f06a01e9e6251797946565365db94d1/timeouts HTTP/1.1" 200 0
+2025-06-12 13:52:27,882 - DEBUG - Remote response: status=200 | data={"value":null} | headers=HTTPHeaderDict({'Content-Length': '14', 'Content-Type': 'application/json; charset=utf-8', 'cache-control': 'no-cache'})
+2025-06-12 13:52:27,882 - DEBUG - Finished Request
+2025-06-12 13:52:27,882 - DEBUG - POST http://localhost:1234/session/5f06a01e9e6251797946565365db94d1/url {'url': 'https://www.tiktok.com'}
+2025-06-12 13:54:27,888 - ERROR - \u274c Gagal scraping: HTTPConnectionPool(host='localhost', port=1234): Read timed out. (read timeout=120)
+2025-06-12 13:54:27,889 - DEBUG - DELETE http://localhost:1234/session/5f06a01e9e6251797946565365db94d1 {}
+2025-06-12 13:54:27,892 - DEBUG - Starting new HTTP connection (2): localhost:1234
+2025-06-12 13:54:49,605 - DEBUG - http://localhost:1234 "DELETE /session/5f06a01e9e6251797946565365db94d1 HTTP/1.1" 200 0
+2025-06-12 13:54:49,608 - DEBUG - Remote response: status=200 | data={"value":null} | headers=HTTPHeaderDict({'Content-Length': '14', 'Content-Type': 'application/json; charset=utf-8', 'cache-control': 'no-cache'})
+2025-06-12 13:54:49,609 - DEBUG - Finished Request
+2025-06-12 13:54:53,361 - DEBUG - \U0001f6d1 Driver ditutup
+2025-06-12 13:54:53,362 - DEBUG - 
+\U0001f50d Scraping untuk tagar: #kejagung
+2025-06-12 13:54:53,363 - DEBUG - Skipping Selenium Manager; path to chrome driver specified in Service class: C:\ALMOST\kodingan skripsi\laravel-sentimen-kejagung\public\scripts\chromedriver.exe
+2025-06-12 13:54:53,413 - DEBUG - Started executable: `C:\ALMOST\kodingan skripsi\laravel-sentimen-kejagung\public\scripts\chromedriver.exe` in a child process with pid: 5424 using 0 to output -3
+2025-06-12 13:55:25,208 - DEBUG - POST http://localhost:1361/session {'capabilities': {'firstMatch': [{}], 'alwaysMatch': {'browserName': 'chrome', 'pageLoadStrategy': <PageLoadStrategy.normal: 'normal'>, 'goog:chromeOptions': {'extensions': [], 'args': ['--headless', '--no-sandbox', '--disable-dev-shm-usage', '--disable-gpu', '--window-size=1920,1080', '--user-agent=Mozilla/5.0']}}}}
+2025-06-12 13:55:25,212 - DEBUG - Starting new HTTP connection (1): localhost:1361
+2025-06-12 13:55:32,053 - DEBUG - http://localhost:1361 "POST /session HTTP/1.1" 200 0
+2025-06-12 13:55:32,054 - DEBUG - Remote response: status=200 | data={"value":{"capabilities":{"acceptInsecureCerts":false,"browserName":"chrome","browserVersion":"109.0.5414.168","chrome":{"chromedriverVersion":"109.0.5414.74 (e7c5703604daa9cc128ccf5a5d3e993513758913-refs/branch-heads/5414@{#1172})","userDataDir":"C:\\Program Files (x86)\\scoped_dir5424_549539505"},"goog:chromeOptions":{"debuggerAddress":"localhost:1372"},"networkConnectionEnabled":false,"pageLoadStrategy":"normal","platformName":"windows","proxy":{},"setWindowRect":true,"strictFileInteractability":false,"timeouts":{"implicit":0,"pageLoad":300000,"script":30000},"unhandledPromptBehavior":"dismiss and notify","webauthn:extension:credBlob":true,"webauthn:extension:largeBlob":true,"webauthn:virtualAuthenticators":true},"sessionId":"ae43a1c1d8aa340dcdc678d2a35ff9fd"}} | headers=HTTPHeaderDict({'Content-Length': '774', 'Content-Type': 'application/json; charset=utf-8', 'cache-control': 'no-cache'})
+2025-06-12 13:55:32,057 - DEBUG - Finished Request
+2025-06-12 13:55:32,060 - DEBUG - POST http://localhost:1361/session/ae43a1c1d8aa340dcdc678d2a35ff9fd/timeouts {'pageLoad': 240000}
+2025-06-12 13:55:32,069 - DEBUG - http://localhost:1361 "POST /session/ae43a1c1d8aa340dcdc678d2a35ff9fd/timeouts HTTP/1.1" 200 0
+2025-06-12 13:55:32,070 - DEBUG - Remote response: status=200 | data={"value":null} | headers=HTTPHeaderDict({'Content-Length': '14', 'Content-Type': 'application/json; charset=utf-8', 'cache-control': 'no-cache'})
+2025-06-12 13:55:32,071 - DEBUG - Finished Request
+2025-06-12 13:55:32,073 - DEBUG - POST http://localhost:1361/session/ae43a1c1d8aa340dcdc678d2a35ff9fd/url {'url': 'https://www.tiktok.com'}
+2025-06-12 13:57:31,327 - DEBUG - http://localhost:1361 "POST /session/ae43a1c1d8aa340dcdc678d2a35ff9fd/url HTTP/1.1" 200 0
+2025-06-12 13:57:31,328 - DEBUG - Remote response: status=200 | data={"value":null} | headers=HTTPHeaderDict({'Content-Length': '14', 'Content-Type': 'application/json; charset=utf-8', 'cache-control': 'no-cache'})
+2025-06-12 13:57:31,329 - DEBUG - Finished Request
+2025-06-12 13:57:36,455 - DEBUG - POST http://localhost:1361/session/ae43a1c1d8aa340dcdc678d2a35ff9fd/cookie {'cookie': {'domain': 'tiktok.com', 'expirationDate': 1778949086.492558, 'hostOnly': False, 'httpOnly': False, 'name': '_ttp', 'path': '/', 'sameSite': 'None', 'secure': True, 'session': False, 'value': '2ONeE7uBL2rZ7wSZuDyrsPK7nNo'}}
+2025-06-12 13:57:43,936 - DEBUG - http://localhost:1361 "POST /session/ae43a1c1d8aa340dcdc678d2a35ff9fd/cookie HTTP/1.1" 200 0
+2025-06-12 13:57:43,937 - DEBUG - Remote response: status=200 | data={"value":null} | headers=HTTPHeaderDict({'Content-Length': '14', 'Content-Type': 'application/json; charset=utf-8', 'cache-control': 'no-cache'})
+2025-06-12 13:57:43,938 - DEBUG - Finished Request
+2025-06-12 13:57:43,940 - DEBUG - POST http://localhost:1361/session/ae43a1c1d8aa340dcdc678d2a35ff9fd/cookie {'cookie': {'domain': 'tiktok.com', 'expirationDate': 1754745147.266256, 'hostOnly': False, 'httpOnly': True, 'name': 'cmpl_token', 'path': '/', 'sameSite': 'None', 'secure': True, 'session': False, 'value': 'AgQQAPOgF-RO0rd2sMjWdB0B_ZpnOxud_4orYN93TA'}}
+2025-06-12 13:57:44,304 - DEBUG - http://localhost:1361 "POST /session/ae43a1c1d8aa340dcdc678d2a35ff9fd/cookie HTTP/1.1" 200 0
+2025-06-12 13:57:44,305 - DEBUG - Remote response: status=200 | data={"value":null} | headers=HTTPHeaderDict({'Content-Length': '14', 'Content-Type': 'application/json; charset=utf-8', 'cache-control': 'no-cache'})
+2025-06-12 13:57:44,305 - DEBUG - Finished Request
+2025-06-12 13:57:44,306 - DEBUG - POST http://localhost:1361/session/ae43a1c1d8aa340dcdc678d2a35ff9fd/cookie {'cookie': {'domain': 'tiktok.com', 'expirationDate': 1781097147.265966, 'hostOnly': False, 'httpOnly': True, 'name': 'd_ticket', 'path': '/', 'sameSite': 'None', 'secure': False, 'session': False, 'value': 'c81a1f35be23f8c0b297abba5aca6846872c8'}}
+2025-06-12 13:57:44,586 - DEBUG - http://localhost:1361 "POST /session/ae43a1c1d8aa340dcdc678d2a35ff9fd/cookie HTTP/1.1" 200 0
+2025-06-12 13:57:44,587 - DEBUG - Remote response: status=200 | data={"value":null} | headers=HTTPHeaderDict({'Content-Length': '14', 'Content-Type': 'application/json; charset=utf-8', 'cache-control': 'no-cache'})
+2025-06-12 13:57:44,587 - DEBUG - Finished Request
+2025-06-12 13:57:44,589 - DEBUG - POST http://localhost:1361/session/ae43a1c1d8aa340dcdc678d2a35ff9fd/cookie {'cookie': {'domain': 'tiktok.com', 'expirationDate': 1750425164.121041, 'hostOnly': False, 'httpOnly': False, 'name': 'msToken', 'path': '/', 'sameSite': 'None', 'secure': True, 'session': False, 'value': 'AOybQa2JbjnkuJFuerL3GP51yWwCxYd4XHmjmFamMW0QW0Bnphb3dhmZR2SdMJmYl91AA3fqOk2vu06QfLKrrvjGNEX6Ca511WPc...'}}
+2025-06-12 13:57:44,716 - DEBUG - http://localhost:1361 "POST /session/ae43a1c1d8aa340dcdc678d2a35ff9fd/cookie HTTP/1.1" 200 0
+2025-06-12 13:57:44,717 - DEBUG - Remote response: status=200 | data={"value":null} | headers=HTTPHeaderDict({'Content-Length': '14', 'Content-Type': 'application/json; charset=utf-8', 'cache-control': 'no-cache'})
+2025-06-12 13:57:44,719 - DEBUG - Finished Request
+2025-06-12 13:57:44,721 - DEBUG - POST http://localhost:1361/session/ae43a1c1d8aa340dcdc678d2a35ff9fd/cookie {'cookie': {'domain': 'tiktok.com', 'expirationDate': 1754745147.266191, 'hostOnly': False, 'httpOnly': True, 'name': 'multi_sids', 'path': '/', 'sameSite': 'None', 'secure': True, 'session': False, 'value': '7442302216645821496%3A0c8c993efd3b6caca4194eba388882e8'}}
+2025-06-12 13:57:44,805 - DEBUG - http://localhost:1361 "POST /session/ae43a1c1d8aa340dcdc678d2a35ff9fd/cookie HTTP/1.1" 200 0
+2025-06-12 13:57:44,806 - DEBUG - Remote response: status=200 | data={"value":null} | headers=HTTPHeaderDict({'Content-Length': '14', 'Content-Type': 'application/json; charset=utf-8', 'cache-control': 'no-cache'})
+2025-06-12 13:57:44,808 - DEBUG - Finished Request
+2025-06-12 13:57:44,810 - DEBUG - POST http://localhost:1361/session/ae43a1c1d8aa340dcdc678d2a35ff9fd/cookie {'cookie': {'domain': 'tiktok.com', 'expirationDate': 1781097162.798882, 'hostOnly': False, 'httpOnly': True, 'name': 'odin_tt', 'path': '/', 'sameSite': 'None', 'secure': False, 'session': False, 'value': '342716e6deeeae3375111b47a710fb9b513a5b127b5f5e8f23a4aa7fe935a77a52c35c506fb824d925cb6aaa6085d712db25...'}}
+2025-06-12 13:57:44,856 - DEBUG - http://localhost:1361 "POST /session/ae43a1c1d8aa340dcdc678d2a35ff9fd/cookie HTTP/1.1" 200 0
+2025-06-12 13:57:44,857 - DEBUG - Remote response: status=200 | data={"value":null} | headers=HTTPHeaderDict({'Content-Length': '14', 'Content-Type': 'application/json; charset=utf-8', 'cache-control': 'no-cache'})
+2025-06-12 13:57:44,859 - DEBUG - Finished Request
+2025-06-12 13:57:44,861 - DEBUG - POST http://localhost:1361/session/ae43a1c1d8aa340dcdc678d2a35ff9fd/cookie {'cookie': {'domain': 'tiktok.com', 'expirationDate': 1751288698.150325, 'hostOnly': False, 'httpOnly': False, 'name': 'passport_csrf_token', 'path': '/', 'sameSite': 'None', 'secure': True, 'session': False, 'value': '74fd560a0b3980e573e57b487e17d859'}}
+2025-06-12 13:57:44,996 - DEBUG - http://localhost:1361 "POST /session/ae43a1c1d8aa340dcdc678d2a35ff9fd/cookie HTTP/1.1" 200 0
+2025-06-12 13:57:44,996 - DEBUG - Remote response: status=200 | data={"value":null} | headers=HTTPHeaderDict({'Content-Length': '14', 'Content-Type': 'application/json; charset=utf-8', 'cache-control': 'no-cache'})
+2025-06-12 13:57:44,997 - DEBUG - Finished Request
+2025-06-12 13:57:45,000 - DEBUG - POST http://localhost:1361/session/ae43a1c1d8aa340dcdc678d2a35ff9fd/cookie {'cookie': {'domain': 'tiktok.com', 'expirationDate': 1751288698.150447, 'hostOnly': False, 'httpOnly': False, 'name': 'passport_csrf_token_default', 'path': '/', 'sameSite': 'None', 'secure': True, 'session': False, 'value': '74fd560a0b3980e573e57b487e17d859'}}
+2025-06-12 13:57:45,185 - DEBUG - http://localhost:1361 "POST /session/ae43a1c1d8aa340dcdc678d2a35ff9fd/cookie HTTP/1.1" 200 0
+2025-06-12 13:57:45,187 - DEBUG - Remote response: status=200 | data={"value":null} | headers=HTTPHeaderDict({'Content-Length': '14', 'Content-Type': 'application/json; charset=utf-8', 'cache-control': 'no-cache'})
+2025-06-12 13:57:45,188 - DEBUG - Finished Request
+2025-06-12 13:57:45,191 - DEBUG - POST http://localhost:1361/session/ae43a1c1d8aa340dcdc678d2a35ff9fd/cookie {'cookie': {'domain': 'tiktok.com', 'hostOnly': False, 'httpOnly': False, 'name': 's_v_web_id', 'path': '/', 'sameSite': 'None', 'secure': True, 'session': True, 'value': 'verify_mbqjgb8s_moVmvmgz_PM47_4VoT_8fjX_PmrXOp4PoHB5'}}
+2025-06-12 13:57:45,685 - DEBUG - http://localhost:1361 "POST /session/ae43a1c1d8aa340dcdc678d2a35ff9fd/cookie HTTP/1.1" 200 0
+2025-06-12 13:57:45,686 - DEBUG - Remote response: status=200 | data={"value":null} | headers=HTTPHeaderDict({'Content-Length': '14', 'Content-Type': 'application/json; charset=utf-8', 'cache-control': 'no-cache'})
+2025-06-12 13:57:45,688 - DEBUG - Finished Request
+2025-06-12 13:57:45,691 - DEBUG - POST http://localhost:1361/session/ae43a1c1d8aa340dcdc678d2a35ff9fd/cookie {'cookie': {'domain': 'tiktok.com', 'expirationDate': 1765113147.737381, 'hostOnly': False, 'httpOnly': True, 'name': 'sessionid', 'path': '/', 'sameSite': 'None', 'secure': True, 'session': False, 'value': '0c8c993efd3b6caca4194eba388882e8'}}
+2025-06-12 13:57:46,177 - DEBUG - http://localhost:1361 "POST /session/ae43a1c1d8aa340dcdc678d2a35ff9fd/cookie HTTP/1.1" 200 0
+2025-06-12 13:57:46,179 - DEBUG - Remote response: status=200 | data={"value":null} | headers=HTTPHeaderDict({'Content-Length': '14', 'Content-Type': 'application/json; charset=utf-8', 'cache-control': 'no-cache'})
+2025-06-12 13:57:46,181 - DEBUG - Finished Request
+2025-06-12 13:57:46,183 - DEBUG - POST http://localhost:1361/session/ae43a1c1d8aa340dcdc678d2a35ff9fd/cookie {'cookie': {'domain': 'tiktok.com', 'expirationDate': 1765113147.737417, 'hostOnly': False, 'httpOnly': True, 'name': 'sessionid_ss', 'path': '/', 'sameSite': 'None', 'secure': True, 'session': False, 'value': '0c8c993efd3b6caca4194eba388882e8'}}
+2025-06-12 13:57:46,860 - DEBUG - http://localhost:1361 "POST /session/ae43a1c1d8aa340dcdc678d2a35ff9fd/cookie HTTP/1.1" 200 0
+2025-06-12 13:57:46,861 - DEBUG - Remote response: status=200 | data={"value":null} | headers=HTTPHeaderDict({'Content-Length': '14', 'Content-Type': 'application/json; charset=utf-8', 'cache-control': 'no-cache'})
+2025-06-12 13:57:46,863 - DEBUG - Finished Request
+2025-06-12 13:57:46,865 - DEBUG - POST http://localhost:1361/session/ae43a1c1d8aa340dcdc678d2a35ff9fd/cookie {'cookie': {'domain': 'tiktok.com', 'expirationDate': 1780665158.737161, 'hostOnly': False, 'httpOnly': True, 'name': 'sid_guard', 'path': '/', 'sameSite': 'None', 'secure': True, 'session': False, 'value': '0c8c993efd3b6caca4194eba388882e8%7C1749561158%7C15551989%7CSun%2C+07-Dec-2025+13%3A12%3A27+GMT'}}
+2025-06-12 13:57:46,968 - DEBUG - http://localhost:1361 "POST /session/ae43a1c1d8aa340dcdc678d2a35ff9fd/cookie HTTP/1.1" 200 0
+2025-06-12 13:57:46,969 - DEBUG - Remote response: status=200 | data={"value":null} | headers=HTTPHeaderDict({'Content-Length': '14', 'Content-Type': 'application/json; charset=utf-8', 'cache-control': 'no-cache'})
+2025-06-12 13:57:46,969 - DEBUG - Finished Request
+2025-06-12 13:57:46,970 - DEBUG - POST http://localhost:1361/session/ae43a1c1d8aa340dcdc678d2a35ff9fd/cookie {'cookie': {'domain': 'tiktok.com', 'expirationDate': 1765113147.737342, 'hostOnly': False, 'httpOnly': True, 'name': 'sid_tt', 'path': '/', 'sameSite': 'None', 'secure': True, 'session': False, 'value': '0c8c993efd3b6caca4194eba388882e8'}}
+2025-06-12 13:57:47,317 - DEBUG - http://localhost:1361 "POST /session/ae43a1c1d8aa340dcdc678d2a35ff9fd/cookie HTTP/1.1" 200 0
+2025-06-12 13:57:47,319 - DEBUG - Remote response: status=200 | data={"value":null} | headers=HTTPHeaderDict({'Content-Length': '14', 'Content-Type': 'application/json; charset=utf-8', 'cache-control': 'no-cache'})
+2025-06-12 13:57:47,320 - DEBUG - Finished Request
+2025-06-12 13:57:47,322 - DEBUG - POST http://localhost:1361/session/ae43a1c1d8aa340dcdc678d2a35ff9fd/cookie {'cookie': {'domain': 'tiktok.com', 'expirationDate': 1765113147.737453, 'hostOnly': False, 'httpOnly': True, 'name': 'sid_ucp_v1', 'path': '/', 'sameSite': 'None', 'secure': True, 'session': False, 'value': '1.0.0-KGNjZGNhMWIxODY3NDZmN2M0YzdjYmQ0NThjZjQxNWM3OGU1ZWY2YzgKGgi4iJvy9c2XpGcQxt6gwgYYsws4AUDyB0gEEA...'}}
+2025-06-12 13:57:47,929 - DEBUG - http://localhost:1361 "POST /session/ae43a1c1d8aa340dcdc678d2a35ff9fd/cookie HTTP/1.1" 200 0
+2025-06-12 13:57:47,931 - DEBUG - Remote response: status=200 | data={"value":null} | headers=HTTPHeaderDict({'Content-Length': '14', 'Content-Type': 'application/json; charset=utf-8', 'cache-control': 'no-cache'})
+2025-06-12 13:57:47,933 - DEBUG - Finished Request
+2025-06-12 13:57:47,935 - DEBUG - POST http://localhost:1361/session/ae43a1c1d8aa340dcdc678d2a35ff9fd/cookie {'cookie': {'domain': 'tiktok.com', 'expirationDate': 1765113147.737489, 'hostOnly': False, 'httpOnly': True, 'name': 'ssid_ucp_v1', 'path': '/', 'sameSite': 'None', 'secure': True, 'session': False, 'value': '1.0.0-KGNjZGNhMWIxODY3NDZmN2M0YzdjYmQ0NThjZjQxNWM3OGU1ZWY2YzgKGgi4iJvy9c2XpGcQxt6gwgYYsws4AUDyB0gEEA...'}}
+2025-06-12 13:57:47,996 - DEBUG - http://localhost:1361 "POST /session/ae43a1c1d8aa340dcdc678d2a35ff9fd/cookie HTTP/1.1" 200 0
+2025-06-12 13:57:47,998 - DEBUG - Remote response: status=200 | data={"value":null} | headers=HTTPHeaderDict({'Content-Length': '14', 'Content-Type': 'application/json; charset=utf-8', 'cache-control': 'no-cache'})
+2025-06-12 13:57:48,000 - DEBUG - Finished Request
+2025-06-12 13:57:48,001 - DEBUG - POST http://localhost:1361/session/ae43a1c1d8aa340dcdc678d2a35ff9fd/cookie {'cookie': {'domain': 'tiktok.com', 'expirationDate': 1765113147.798563, 'hostOnly': False, 'httpOnly': True, 'name': 'store-country-code', 'path': '/', 'sameSite': 'None', 'secure': False, 'session': False, 'value': 'id'}}
+2025-06-12 13:57:48,133 - DEBUG - http://localhost:1361 "POST /session/ae43a1c1d8aa340dcdc678d2a35ff9fd/cookie HTTP/1.1" 200 0
+2025-06-12 13:57:48,135 - DEBUG - Remote response: status=200 | data={"value":null} | headers=HTTPHeaderDict({'Content-Length': '14', 'Content-Type': 'application/json; charset=utf-8', 'cache-control': 'no-cache'})
+2025-06-12 13:57:48,136 - DEBUG - Finished Request
+2025-06-12 13:57:48,137 - DEBUG - POST http://localhost:1361/session/ae43a1c1d8aa340dcdc678d2a35ff9fd/cookie {'cookie': {'domain': 'tiktok.com', 'expirationDate': 1765113147.798677, 'hostOnly': False, 'httpOnly': True, 'name': 'store-country-code-src', 'path': '/', 'sameSite': 'None', 'secure': False, 'session': False, 'value': 'uid'}}
+2025-06-12 13:57:48,428 - DEBUG - http://localhost:1361 "POST /session/ae43a1c1d8aa340dcdc678d2a35ff9fd/cookie HTTP/1.1" 200 0
+2025-06-12 13:57:48,428 - DEBUG - Remote response: status=200 | data={"value":null} | headers=HTTPHeaderDict({'Content-Length': '14', 'Content-Type': 'application/json; charset=utf-8', 'cache-control': 'no-cache'})
+2025-06-12 13:57:48,429 - DEBUG - Finished Request
+2025-06-12 13:57:48,431 - DEBUG - POST http://localhost:1361/session/ae43a1c1d8aa340dcdc678d2a35ff9fd/cookie {'cookie': {'domain': 'tiktok.com', 'expirationDate': 1765113147.798423, 'hostOnly': False, 'httpOnly': True, 'name': 'store-country-sign', 'path': '/', 'sameSite': 'None', 'secure': False, 'session': False, 'value': 'MEIEDFGYyWcDn318gWEO9QQgi2cDwjqqrosCsJGLCMxnhKAXAJpB6j5TZk-HwB4YWkIEEM6RBqT41amvngsw84qq6vc'}}
+2025-06-12 13:57:48,699 - DEBUG - http://localhost:1361 "POST /session/ae43a1c1d8aa340dcdc678d2a35ff9fd/cookie HTTP/1.1" 200 0
+2025-06-12 13:57:48,700 - DEBUG - Remote response: status=200 | data={"value":null} | headers=HTTPHeaderDict({'Content-Length': '14', 'Content-Type': 'application/json; charset=utf-8', 'cache-control': 'no-cache'})
+2025-06-12 13:57:48,701 - DEBUG - Finished Request
+2025-06-12 13:57:48,702 - DEBUG - POST http://localhost:1361/session/ae43a1c1d8aa340dcdc678d2a35ff9fd/cookie {'cookie': {'domain': 'tiktok.com', 'expirationDate': 1765113147.798218, 'hostOnly': False, 'httpOnly': True, 'name': 'store-idc', 'path': '/', 'sameSite': 'None', 'secure': False, 'session': False, 'value': 'alisg'}}
+2025-06-12 13:57:48,836 - DEBUG - http://localhost:1361 "POST /session/ae43a1c1d8aa340dcdc678d2a35ff9fd/cookie HTTP/1.1" 200 0
+2025-06-12 13:57:48,837 - DEBUG - Remote response: status=200 | data={"value":null} | headers=HTTPHeaderDict({'Content-Length': '14', 'Content-Type': 'application/json; charset=utf-8', 'cache-control': 'no-cache'})
+2025-06-12 13:57:48,839 - DEBUG - Finished Request
+2025-06-12 13:57:48,840 - DEBUG - POST http://localhost:1361/session/ae43a1c1d8aa340dcdc678d2a35ff9fd/cookie {'cookie': {'domain': 'tiktok.com', 'expirationDate': 1765113151.85102, 'hostOnly': False, 'httpOnly': True, 'name': 'tt_chain_token', 'path': '/', 'sameSite': 'None', 'secure': True, 'session': False, 'value': 'hp6E8Vlk1mRkmZa1EI1pKg=='}}
+2025-06-12 13:57:49,050 - DEBUG - http://localhost:1361 "POST /session/ae43a1c1d8aa340dcdc678d2a35ff9fd/cookie HTTP/1.1" 200 0
+2025-06-12 13:57:49,051 - DEBUG - Remote response: status=200 | data={"value":null} | headers=HTTPHeaderDict({'Content-Length': '14', 'Content-Type': 'application/json; charset=utf-8', 'cache-control': 'no-cache'})
+2025-06-12 13:57:49,052 - DEBUG - Finished Request
+2025-06-12 13:57:49,054 - ERROR - \u274c Gagal memuat cookies: 
+2025-06-12 13:57:49,056 - DEBUG - POST http://localhost:1361/session/ae43a1c1d8aa340dcdc678d2a35ff9fd/url {'url': 'https://www.tiktok.com/search?q=%23kejagung'}
+2025-06-12 13:59:32,695 - DEBUG - http://localhost:1361 "POST /session/ae43a1c1d8aa340dcdc678d2a35ff9fd/url HTTP/1.1" 200 0
+2025-06-12 13:59:32,696 - DEBUG - Remote response: status=200 | data={"value":null} | headers=HTTPHeaderDict({'Content-Length': '14', 'Content-Type': 'application/json; charset=utf-8', 'cache-control': 'no-cache'})
+2025-06-12 13:59:32,697 - DEBUG - Finished Request
+2025-06-12 13:59:37,698 - DEBUG - POST http://localhost:1361/session/ae43a1c1d8aa340dcdc678d2a35ff9fd/element {'using': 'tag name', 'value': 'body'}
+2025-06-12 13:59:43,722 - DEBUG - http://localhost:1361 "POST /session/ae43a1c1d8aa340dcdc678d2a35ff9fd/element HTTP/1.1" 200 0
+2025-06-12 13:59:43,723 - DEBUG - Remote response: status=200 | data={"value":{"element-6066-11e4-a52e-4f735466cecf":"3dbb348f-fade-43d3-aa03-cc86e2a705b8"}} | headers=HTTPHeaderDict({'Content-Length': '88', 'Content-Type': 'application/json; charset=utf-8', 'cache-control': 'no-cache'})
+2025-06-12 13:59:43,724 - DEBUG - Finished Request
+2025-06-12 13:59:43,783 - DEBUG - POST http://localhost:1361/session/ae43a1c1d8aa340dcdc678d2a35ff9fd/element/3dbb348f-fade-43d3-aa03-cc86e2a705b8/value {'text': '\ue010', 'value': ['\ue010']}
+2025-06-12 13:59:52,638 - DEBUG - http://localhost:1361 "POST /session/ae43a1c1d8aa340dcdc678d2a35ff9fd/element/3dbb348f-fade-43d3-aa03-cc86e2a705b8/value HTTP/1.1" 200 0
+2025-06-12 13:59:52,640 - DEBUG - Remote response: status=200 | data={"value":null} | headers=HTTPHeaderDict({'Content-Length': '14', 'Content-Type': 'application/json; charset=utf-8', 'cache-control': 'no-cache'})
+2025-06-12 13:59:52,641 - DEBUG - Finished Request
+2025-06-12 13:59:54,645 - DEBUG - POST http://localhost:1361/session/ae43a1c1d8aa340dcdc678d2a35ff9fd/element {'using': 'tag name', 'value': 'body'}
+2025-06-12 14:00:08,587 - DEBUG - http://localhost:1361 "POST /session/ae43a1c1d8aa340dcdc678d2a35ff9fd/element HTTP/1.1" 200 0
+2025-06-12 14:00:08,588 - DEBUG - Remote response: status=200 | data={"value":{"element-6066-11e4-a52e-4f735466cecf":"3dbb348f-fade-43d3-aa03-cc86e2a705b8"}} | headers=HTTPHeaderDict({'Content-Length': '88', 'Content-Type': 'application/json; charset=utf-8', 'cache-control': 'no-cache'})
+2025-06-12 14:00:08,590 - DEBUG - Finished Request
+2025-06-12 14:00:08,595 - DEBUG - POST http://localhost:1361/session/ae43a1c1d8aa340dcdc678d2a35ff9fd/element/3dbb348f-fade-43d3-aa03-cc86e2a705b8/value {'text': '\ue010', 'value': ['\ue010']}
+2025-06-12 14:00:14,295 - DEBUG - http://localhost:1361 "POST /session/ae43a1c1d8aa340dcdc678d2a35ff9fd/element/3dbb348f-fade-43d3-aa03-cc86e2a705b8/value HTTP/1.1" 200 0
+2025-06-12 14:00:14,297 - DEBUG - Remote response: status=200 | data={"value":null} | headers=HTTPHeaderDict({'Content-Length': '14', 'Content-Type': 'application/json; charset=utf-8', 'cache-control': 'no-cache'})
+2025-06-12 14:00:14,298 - DEBUG - Finished Request
+2025-06-12 14:00:16,307 - DEBUG - POST http://localhost:1361/session/ae43a1c1d8aa340dcdc678d2a35ff9fd/element {'using': 'tag name', 'value': 'body'}
+2025-06-12 14:00:33,783 - DEBUG - http://localhost:1361 "POST /session/ae43a1c1d8aa340dcdc678d2a35ff9fd/element HTTP/1.1" 200 0
+2025-06-12 14:00:33,784 - DEBUG - Remote response: status=200 | data={"value":{"element-6066-11e4-a52e-4f735466cecf":"3dbb348f-fade-43d3-aa03-cc86e2a705b8"}} | headers=HTTPHeaderDict({'Content-Length': '88', 'Content-Type': 'application/json; charset=utf-8', 'cache-control': 'no-cache'})
+2025-06-12 14:00:33,786 - DEBUG - Finished Request
+2025-06-12 14:00:33,790 - DEBUG - POST http://localhost:1361/session/ae43a1c1d8aa340dcdc678d2a35ff9fd/element/3dbb348f-fade-43d3-aa03-cc86e2a705b8/value {'text': '\ue010', 'value': ['\ue010']}
+2025-06-12 14:00:34,901 - DEBUG - http://localhost:1361 "POST /session/ae43a1c1d8aa340dcdc678d2a35ff9fd/element/3dbb348f-fade-43d3-aa03-cc86e2a705b8/value HTTP/1.1" 200 0
+2025-06-12 14:00:34,902 - DEBUG - Remote response: status=200 | data={"value":null} | headers=HTTPHeaderDict({'Content-Length': '14', 'Content-Type': 'application/json; charset=utf-8', 'cache-control': 'no-cache'})
+2025-06-12 14:00:34,903 - DEBUG - Finished Request
+2025-06-12 14:00:36,904 - DEBUG - POST http://localhost:1361/session/ae43a1c1d8aa340dcdc678d2a35ff9fd/elements {'using': 'css selector', 'value': 'a[href*="/video/"]'}
+2025-06-12 14:00:50,104 - DEBUG - http://localhost:1361 "POST /session/ae43a1c1d8aa340dcdc678d2a35ff9fd/elements HTTP/1.1" 200 0
+2025-06-12 14:00:50,105 - DEBUG - Remote response: status=200 | data={"value":[{"element-6066-11e4-a52e-4f735466cecf":"3779e1f3-0527-4733-a1f9-77412f0e8e94"},{"element-6066-11e4-a52e-4f735466cecf":"639b6104-a99b-4ee3-a250-628e0f928415"},{"element-6066-11e4-a52e-4f735466cecf":"76d1b6c9-275b-412c-b926-7c813dc89c42"},{"element-6066-11e4-a52e-4f735466cecf":"99eb3555-f616-4866-a9fe-119300f09148"},{"element-6066-11e4-a52e-4f735466cecf":"5314a4b9-c4a2-4347-ae3e-9adffba89647"},{"element-6066-11e4-a52e-4f735466cecf":"5ecf4da7-e7a5-4b87-bb07-d7adc839ef07"},{"element-6066-11e4-a52e-4f735466cecf":"aeb43d2c-d585-41f3-9845-ffcb2b37fe2c"},{"element-6066-11e4-a52e-4f735466cecf":"a8947223-b278-42be-8a56-703cc21d98bb"},{"element-6066-11e4-a52e-4f735466cecf":"c25617d0-71b4-4fc0-9f57-1047c9fcfcc6"},{"element-6066-11e4-a52e-4f735466cecf":"8e5dacd8-44e0-4d9b-bdfd-b5953eb7e46c"},{"element-6066-11e4-a52e-4f735466cecf":"1c91fba2-50bd-4ffc-b06e-3e04c462ff9c"},{"element-6066-11e4-a52e-4f735466cecf":"50a80266-6ab6-4818-9c5d-5bbfb574770f"},{"element-6066-11e4-a52e-4f735466cecf":"65398d8a-06b0-4209-a7d8-547f13dc5ec5"},{"element-6066-11e4-a52e-4f735466cecf":"181da6c3-bb03-48d3-a20d-dfc1bed212e6"},{"element-6066-11e4-a52e-4f735466cecf":"29389cce-9e4c-471f-bc15-23fc16dbf17b"},{"element-6066-11e4-a52e-4f735466cecf":"c7226d8f-fc45-44a3-8b2c-9c668157bcf1"},{"element-6066-11e4-a52e-4f735466cecf":"8de890a3-5b3b-4a34-8fcc-dc92c0613eb9"},{"element-6066-11e4-a52e-4f735466cecf":"26692b40-e62a-4bfd-afa6-9fde66898f2e"},{"element-6066-11e4-a52e-4f735466cecf":"968cc3e3-1d1c-4eee-8609-11ccd97cd606"},{"element-6066-11e4-a52e-4f735466cecf":"49044d62-86c4-419a-862e-5277c6900055"},{"element-6066-11e4-a52e-4f735466cecf":"2c2eff21-e57b-4de7-a858-9711a247707a"},{"element-6066-11e4-a52e-4f735466cecf":"8c173b98-c60d-4a24-a6cd-1985eb3c03ff"},{"element-6066-11e4-a52e-4f735466cecf":"14b3ac2a-d38f-4b61-b6bb-e52ef51ea4ad"},{"element-6066-11e4-a52e-4f735466cecf":"6569164e-ba8b-4de8-adc1-410b64d42278"},{"element-6066-11e4-a52e-4f735466cecf":"5c0e8079-ed48-4be4-ac42-c9f157f72057"},{"element-6066-11e4-a52e-4f735466cecf":"06910441-c53f-4098-8a8e-4da441c71524"},{"element-6066-11e4-a52e-4f735466cecf":"1013926d-5b91-4f80-8276-165ec51db765"},{"element-6066-11e4-a52e-4f735466cecf":"a903731a-75c4-4d9b-8241-8da888a8b0d5"},{"element-6066-11e4-a52e-4f735466cecf":"336c0907-9a06-41a8-b32d-834fe5ca28ef"},{"element-6066-11e4-a52e-4f735466cecf":"6bd4c1ce-b7ff-4555-ad47-603481506021"},{"element-6066-11e4-a52e-4f735466cecf":"0b773eb1-1061-43b1-9db1-76285bc7f5aa"},{"element-6066-11e4-a52e-4f735466cecf":"51d119aa-9fb2-4b08-a768-e4bb2c604975"},{"element-6066-11e4-a52e-4f735466cecf":"217d27d0-d31e-4025-bcdc-6a8c19d7223f"},{"element-6066-11e4-a52e-4f735466cecf":"263d49b1-e003-4f4c-8cbb-2fbf5153e973"},{"element-6066-11e4-a52e-4f735466cecf":"d8d41b1f-ec54-48c4-bb69-c433f7b992d3"},{"element-6066-11e4-a52e-4f735466cecf":"530bea9a-4b52-46a4-b4d8-d99b4db1702a"},{"element-6066-11e4-a52e-4f735466cecf":"d39f7ec8-eaf6-474c-b72f-1982bd60030a"},{"element-6066-11e4-a52e-4f735466cecf":"b81ecd52-7ab1-4002-aa49-3697ebd94d0b"},{"element-6066-11e4-a52e-4f735466cecf":"51c0bf93-226b-42fe-ba57-574471ad870c"},{"element-6066-11e4-a52e-4f735466cecf":"672792bc-7400-43b0-960b-a65cebc73ed8"},{"element-6066-11e4-a52e-4f735466cecf":"7a183123-ba8c-4aab-a4ab-2ee57d087620"},{"element-6066-11e4-a52e-4f735466cecf":"96ec80e6-a393-4a6e-ba07-41079252eeeb"},{"element-6066-11e4-a52e-4f735466cecf":"d48547cc-4137-4454-ad92-fb926d0ade86"},{"element-6066-11e4-a52e-4f735466cecf":"47411d93-0421-43cb-8a3f-40a95ce044cc"},{"element-6066-11e4-a52e-4f735466cecf":"c22d0783-dd1e-4ca9-9e4e-565e0909743b"},{"element-6066-11e4-a52e-4f735466cecf":"924f4165-8521-4eab-a4ed-a5854402aba8"},{"element-6066-11e4-a52e-4f735466cecf":"556fba57-968b-4852-944a-2f907020f46d"},{"element-6066-11e4-a52e-4f735466cecf":"6278bf8e-c40e-458a-84b2-ce1bc2fbf5c5"}]} | headers=HTTPHeaderDict({'Content-Length': '3803', 'Content-Type': 'application/json; charset=utf-8', 'cache-control': 'no-cache'})
+2025-06-12 14:00:50,106 - DEBUG - Finished Request
+2025-06-12 14:00:50,232 - DEBUG - POST http://localhost:1361/session/ae43a1c1d8aa340dcdc678d2a35ff9fd/execute/sync {'script': '/* getAttribute */return (function(){return (function(){var d=this||self;function f(a,b){function c(...', 'args': [{'element-6066-11e4-a52e-4f735466cecf': '3779e1f3-0527-4733-a1f9-77412f0e8e94'}, 'href']}
+2025-06-12 14:00:50,334 - DEBUG - http://localhost:1361 "POST /session/ae43a1c1d8aa340dcdc678d2a35ff9fd/execute/sync HTTP/1.1" 200 0
+2025-06-12 14:00:50,335 - DEBUG - Remote response: status=200 | data={"value":"https://www.tiktok.com/@maoinfoindonesia/video/7482826963111988487"} | headers=HTTPHeaderDict({'Content-Length': '78', 'Content-Type': 'application/json; charset=utf-8', 'cache-control': 'no-cache'})
+2025-06-12 14:00:50,336 - DEBUG - Finished Request
+2025-06-12 14:00:50,338 - DEBUG - POST http://localhost:1361/session/ae43a1c1d8aa340dcdc678d2a35ff9fd/execute/sync {'script': '/* getAttribute */return (function(){return (function(){var d=this||self;function f(a,b){function c(...', 'args': [{'element-6066-11e4-a52e-4f735466cecf': '639b6104-a99b-4ee3-a250-628e0f928415'}, 'href']}
+2025-06-12 14:00:50,375 - DEBUG - http://localhost:1361 "POST /session/ae43a1c1d8aa340dcdc678d2a35ff9fd/execute/sync HTTP/1.1" 200 0
+2025-06-12 14:00:50,376 - DEBUG - Remote response: status=200 | data={"value":"https://www.tiktok.com/@inilahcom/video/7511615380486491410"} | headers=HTTPHeaderDict({'Content-Length': '71', 'Content-Type': 'application/json; charset=utf-8', 'cache-control': 'no-cache'})
+2025-06-12 14:00:50,378 - DEBUG - Finished Request
+2025-06-12 14:00:50,380 - DEBUG - POST http://localhost:1361/session/ae43a1c1d8aa340dcdc678d2a35ff9fd/execute/sync {'script': '/* getAttribute */return (function(){return (function(){var d=this||self;function f(a,b){function c(...', 'args': [{'element-6066-11e4-a52e-4f735466cecf': '76d1b6c9-275b-412c-b926-7c813dc89c42'}, 'href']}
+2025-06-12 14:00:50,424 - DEBUG - http://localhost:1361 "POST /session/ae43a1c1d8aa340dcdc678d2a35ff9fd/execute/sync HTTP/1.1" 200 0
+2025-06-12 14:00:50,424 - DEBUG - Remote response: status=200 | data={"value":"https://www.tiktok.com/@sipalingadvokat/video/7509497546323021062"} | headers=HTTPHeaderDict({'Content-Length': '77', 'Content-Type': 'application/json; charset=utf-8', 'cache-control': 'no-cache'})
+2025-06-12 14:00:50,426 - DEBUG - Finished Request
+2025-06-12 14:00:50,429 - DEBUG - POST http://localhost:1361/session/ae43a1c1d8aa340dcdc678d2a35ff9fd/execute/sync {'script': '/* getAttribute */return (function(){return (function(){var d=this||self;function f(a,b){function c(...', 'args': [{'element-6066-11e4-a52e-4f735466cecf': '99eb3555-f616-4866-a9fe-119300f09148'}, 'href']}
+2025-06-12 14:00:50,510 - DEBUG - http://localhost:1361 "POST /session/ae43a1c1d8aa340dcdc678d2a35ff9fd/execute/sync HTTP/1.1" 200 0
+2025-06-12 14:00:50,511 - DEBUG - Remote response: status=200 | data={"value":"https://www.tiktok.com/@yudiztea/video/7372952547817966854"} | headers=HTTPHeaderDict({'Content-Length': '70', 'Content-Type': 'application/json; charset=utf-8', 'cache-control': 'no-cache'})
+2025-06-12 14:00:50,512 - DEBUG - Finished Request
+2025-06-12 14:00:50,513 - DEBUG - POST http://localhost:1361/session/ae43a1c1d8aa340dcdc678d2a35ff9fd/execute/sync {'script': '/* getAttribute */return (function(){return (function(){var d=this||self;function f(a,b){function c(...', 'args': [{'element-6066-11e4-a52e-4f735466cecf': '5314a4b9-c4a2-4347-ae3e-9adffba89647'}, 'href']}
+2025-06-12 14:00:50,543 - DEBUG - http://localhost:1361 "POST /session/ae43a1c1d8aa340dcdc678d2a35ff9fd/execute/sync HTTP/1.1" 200 0
+2025-06-12 14:00:50,544 - DEBUG - Remote response: status=200 | data={"value":"https://www.tiktok.com/@maoinfoindonesia/video/7477839239242173703"} | headers=HTTPHeaderDict({'Content-Length': '78', 'Content-Type': 'application/json; charset=utf-8', 'cache-control': 'no-cache'})
+2025-06-12 14:00:50,545 - DEBUG - Finished Request
+2025-06-12 14:00:50,547 - DEBUG - \U0001f3a5 Memproses: https://www.tiktok.com/@sipalingadvokat/video/7509497546323021062
+2025-06-12 14:00:50,665 - DEBUG - Starting new HTTPS connection (1): www.tiktok.com:443
+2025-06-12 14:00:55,813 - DEBUG - https://www.tiktok.com:443 "GET /api/comment/list/?aid=1988&aweme_id=7509497546323021062&cursor=0&count=100 HTTP/1.1" 200 18848
+2025-06-12 14:00:56,081 - DEBUG - \u2705 Disimpan: Na ini baru jaksa Agung yg Betul2menegak...
+2025-06-12 14:00:57,201 - DEBUG - \u2705 Disimpan: yg di tangkap banyak,yg jd masalah nya d...
+2025-06-12 14:00:58,391 - DEBUG - \u2705 Disimpan: Jangan kendor ungkap sampai akar-akarnya...
+2025-06-12 14:00:59,620 - DEBUG - \u2705 Disimpan: usut FORMULA E jakarta pak karna pake an...
+2025-06-12 14:00:59,710 - DEBUG - \u2705 Disimpan: terus tugas komisi pemberantasan korupsi...
+2025-06-12 14:00:59,809 - DEBUG - \u2705 Disimpan: hukum ny juga harus tegas pak.. miskinka...
+2025-06-12 14:00:59,923 - DEBUG - \u2705 Disimpan: semuanya ternak mulyono\U0001f602\U0001f602\U0001f602...
+2025-06-12 14:01:01,151 - DEBUG - \u2705 Disimpan: asal jgn dgeser aja jaksa agungnya...
+2025-06-12 14:01:02,640 - DEBUG - \u2705 Disimpan: duitnya di kemanain...
+2025-06-12 14:01:02,716 - DEBUG - \u2705 Disimpan: smoga selalu sehat Pak Burhanudin...?\U0001f64f\U0001f3fc\U0001f64f...
+2025-06-12 14:01:03,959 - DEBUG - \u2705 Disimpan: Kalau uang sitaan di sembunyikan tidak j...
+2025-06-12 14:01:04,109 - DEBUG - \u2705 Disimpan: uwangnya cuman d sita , trs k mn itu uwg...
+2025-06-12 14:01:04,262 - DEBUG - \u2705 Disimpan: iya emang di bongkar mantap tapi cuma yg...
+2025-06-12 14:01:04,407 - DEBUG - \u2705 Disimpan: saya sebagai keluarga besar Kejaksaan Ba...
+2025-06-12 14:01:05,726 - DEBUG - \u2705 Disimpan: gass jaksaqu, hanya kalianlah yg masih b...
+2025-06-12 14:01:05,862 - DEBUG - \u2705 Disimpan: semoga selamanya kejagung kerjanya seper...
+2025-06-12 14:01:07,164 - DEBUG - \u2705 Disimpan: tapi kasus besar di sumenep tidak ditind...
+2025-06-12 14:01:07,309 - DEBUG - \u2705 Disimpan: pake lunasi utang negara......
+2025-06-12 14:01:07,477 - DEBUG - \u2705 Disimpan: Keren Pak Semoga Kebenaran & Keadilan Di...
+2025-06-12 14:01:07,631 - DEBUG - \u2705 Disimpan: angkabedar hasilnya hilang entah kemana ...
+2025-06-12 14:01:08,942 - DEBUG - \u2705 Disimpan: maju terus pak...
+2025-06-12 14:01:10,208 - DEBUG - \u2705 Disimpan: mantep terus ungkap semua saya setuju pa...
+2025-06-12 14:01:10,359 - DEBUG - \u2705 Disimpan: lindungi Jaksa dari group Mulyono , dulu...
+2025-06-12 14:01:11,525 - DEBUG - \u2705 Disimpan: polisi mana coba presrelise serentak se-...
+2025-06-12 14:01:11,620 - DEBUG - \u2705 Disimpan: Bismilahiromanirohim Alkamdulilahirobila...
+2025-06-12 14:01:13,070 - DEBUG - \u2705 Disimpan: Sehat selalu pak JAKSA Yg pemberani & Ju...
+2025-06-12 14:01:13,203 - DEBUG - \u2705 Disimpan: sejarah akan mencatat...
+2025-06-12 14:01:13,300 - DEBUG - \u2705 Disimpan: iya ini kta dukung pemerintah. lha kok i...
+2025-06-12 14:01:13,432 - DEBUG - \u2705 Disimpan: Mana ya kasusnya Harvey Moeis suaminya s...
+2025-06-12 14:01:14,698 - DEBUG - \u2705 Disimpan: percuma rakyat percaya ke kejaksaan agun...
+2025-06-12 14:01:14,776 - DEBUG - \u2705 Disimpan: \U0001f970\U0001f970\U0001f970 mohon jangan mundur walaupun se jeng...
+2025-06-12 14:01:16,119 - DEBUG - \u2705 Disimpan: KPKnya malah Tidur \U0001f602...
+2025-06-12 14:01:16,218 - DEBUG - \u2705 Disimpan: ALhamdulillah benar 100 persen maju teru...
+2025-06-12 14:01:16,266 - DEBUG - \u2705 Disimpan: mantap,tegakan ke adilan pak Burhanudin...
+2025-06-12 14:01:16,400 - DEBUG - \u2705 Disimpan: sangat hebat dan luar biasa kejaksaan ag...
+2025-06-12 14:01:17,552 - DEBUG - \u2705 Disimpan: mantap bapak Kejagung di era bapak Prabo...
+2025-06-12 14:01:17,620 - DEBUG - \u2705 Disimpan: memang betul lbh percaya sama kejagung...
+2025-06-12 14:01:17,807 - DEBUG - \u2705 Disimpan: maju terus pk burhan allooh bersama pk b...
+2025-06-12 14:01:17,975 - DEBUG - \u2705 Disimpan: Lanjutken Bapak Jaksa Agung perjuanganny...
+2025-06-12 14:01:18,050 - DEBUG - \u2705 Disimpan: ungkap sampai ke akar"?? nya...
+2025-06-12 14:01:18,119 - DEBUG - \u2705 Disimpan: maju terus pantang mundur.. pak \U0001f44d\U0001f44d\U0001f44d\U0001f44d...
+2025-06-12 14:01:19,328 - DEBUG - \u2705 Disimpan: mudah"an bpk sehat trus...
+2025-06-12 14:01:19,429 - DEBUG - \u2705 Disimpan: KPK mau BUBARRRRR...
+2025-06-12 14:01:19,496 - DEBUG - \u2705 Disimpan: semangat buat pak kejaksaan Agung Indone...
+2025-06-12 14:01:19,561 - DEBUG - \u2705 Disimpan: mantaf pa Burhanudin maju teruuus pa rak...
+2025-06-12 14:01:19,632 - DEBUG - \u2705 Disimpan: Percaya, Kejagung memang mantap\U0001f44d\U0001f44d\U0001f44d...
+2025-06-12 14:01:19,634 - DEBUG - \U0001f3a5 Memproses: https://www.tiktok.com/@yudiztea/video/7372952547817966854
+2025-06-12 14:01:19,650 - DEBUG - Starting new HTTPS connection (1): www.tiktok.com:443
+2025-06-12 14:01:22,616 - DEBUG - https://www.tiktok.com:443 "GET /api/comment/list/?aid=1988&aweme_id=7372952547817966854&cursor=0&count=100 HTTP/1.1" 200 19706
+2025-06-12 14:01:22,912 - DEBUG - \u2705 Disimpan: ohhh Budi Gunawan ya \U0001f923\U0001f923...
+2025-06-12 14:01:23,104 - DEBUG - \u2705 Disimpan: BRIMOB TIDAK PERNAH BERKHIANAT\U0001f602\U0001f605...
+2025-06-12 14:01:23,276 - DEBUG - \u2705 Disimpan: jangan takut kejagung rakyat dan preside...
+2025-06-12 14:01:23,443 - DEBUG - \u2705 Disimpan: klo brimob vs TNI kira kira menang mana ...
+2025-06-12 14:01:24,581 - DEBUG - \u2705 Disimpan: anti teror sedang neror...
+2025-06-12 14:01:24,692 - DEBUG - \u2705 Disimpan: apa brimob dilatih memang untuk ini?...
+2025-06-12 14:01:25,796 - DEBUG - \u2705 Disimpan: tangkap bapak budi...
+2025-06-12 14:01:25,922 - DEBUG - \u2705 Disimpan: utus kopassus, buat lindungi kejagung...
+2025-06-12 14:01:25,996 - DEBUG - \u2705 Disimpan: POLISI HAMA...
+2025-06-12 14:01:26,085 - DEBUG - \u2705 Disimpan: ini bukan brimob ya ges ini pol pp\U0001f60c...
+2025-06-12 14:01:26,152 - DEBUG - \u2705 Disimpan: TNI buat nangkap Polisi Pungli Pemeras m...
+2025-06-12 14:01:27,316 - DEBUG - \u2705 Disimpan: oo ala pantas lh mafia gk pernah musnah,...
+2025-06-12 14:01:27,631 - DEBUG - \u2705 Disimpan: yang begini nih TNI harus turun tangan...
+2025-06-12 14:01:27,694 - DEBUG - \u2705 Disimpan: mantap.
+setuju kebijakan presiden mengin...
+2025-06-12 14:01:27,771 - DEBUG - \u2705 Disimpan: Itulah hebatnya polri, patroli rutin saj...
+2025-06-12 14:01:27,842 - DEBUG - \u2705 Disimpan: kalo sudah mantan jendral itu sdh gx ada...
+2025-06-12 14:01:27,946 - DEBUG - \u2705 Disimpan: pak prabowo coba tengok ini... tolong ja...
+2025-06-12 14:01:28,052 - DEBUG - \u2705 Disimpan: prajurit brimob hanya disuruh atasan...
+2025-06-12 14:01:28,243 - DEBUG - \u2705 Disimpan: ayok netizen 62 tau kn tugasy apa sekrng...
+2025-06-12 14:01:28,526 - DEBUG - \u2705 Disimpan: Mantan Jendral tdk sehebat itu .. siapap...
+2025-06-12 14:01:28,679 - DEBUG - \u2705 Disimpan: 271T itu nol nya brp om? kalau buat pens...
+2025-06-12 14:01:29,869 - DEBUG - \u2705 Disimpan: kok mereka mau jadi "peliharaan"?...
+2025-06-12 14:01:29,955 - DEBUG - \u2705 Disimpan: jngn smpai hilang kasus vina kawal trs...
+2025-06-12 14:01:31,120 - DEBUG - \u2705 Disimpan: TNI ambil alih jaga kejaksaan Agung biar...
+2025-06-12 14:01:31,211 - DEBUG - \u2705 Disimpan: ayo kopasus sama marinir jaga kejagung \U0001f97a...
+2025-06-12 14:01:31,277 - DEBUG - \u2705 Disimpan: Kelas kejagungku,\U0001f64f\U0001f525 jangan gentar KPK su...
+2025-06-12 14:01:31,353 - DEBUG - \u2705 Disimpan: hukum adalah pedoman bangsa. makanya huk...
+2025-06-12 14:01:31,443 - DEBUG - \u2705 Disimpan: mana tindakan Kapolri ini anggota bapak...
+2025-06-12 14:01:32,632 - DEBUG - \u2705 Disimpan: BRAVO TNI...KAWAL KEJAGUNG...
+2025-06-12 14:01:32,709 - DEBUG - \u2705 Disimpan: kaya gini kebetulan? sangat kebetulan se...
+2025-06-12 14:01:32,764 - DEBUG - \u2705 Disimpan: Ini rakyat harus tahu , jgn diam saja . ...
+2025-06-12 14:01:32,831 - DEBUG - \u2705 Disimpan: klo kejagung smp knp2,ini sama saja PK! ...
+2025-06-12 14:01:33,972 - DEBUG - \u2705 Disimpan: Terlalu luas memberikan wewenang akhir b...
+2025-06-12 14:01:34,073 - DEBUG - \u2705 Disimpan: jangan takut pak kejagung ada pelindung ...
+2025-06-12 14:01:34,208 - DEBUG - \u2705 Disimpan: yg gaji brimob siapa ya,...
+2025-06-12 14:01:34,284 - DEBUG - \u2705 Disimpan: digaji rakyat hanya untuk menakuti 2arga...
+2025-06-12 14:01:34,326 - DEBUG - \u2705 Disimpan: tolong di berikan pengamanan yang mantap...
+2025-06-12 14:01:35,455 - DEBUG - \u2705 Disimpan: jaksa tdk pernah gentar kayaknya selama ...
+2025-06-12 14:01:35,554 - DEBUG - \u2705 Disimpan: anti teror lagi meneror...
+2025-06-12 14:01:35,640 - DEBUG - \u2705 Disimpan: mantab.. pak prabowo...
+2025-06-12 14:01:35,705 - DEBUG - \u2705 Disimpan: Udah kyk drama korea aja wkwk...
+2025-06-12 14:01:35,827 - DEBUG - \u2705 Disimpan: maksudnya Apa Coba Keliling Kejagung...
+2025-06-12 14:01:35,879 - DEBUG - \u2705 Disimpan: cek petinggi polri yg menyuruh anak buah...
+2025-06-12 14:01:35,937 - DEBUG - \u2705 Disimpan: ada apa dengan berimob siapa yang merint...
+2025-06-12 14:01:36,036 - DEBUG - \u2705 Disimpan: back up nya keras pantesan susah kebongk...
+2025-06-12 14:01:36,117 - DEBUG - \u2705 Disimpan: netizen indonesia siap kawal biar terang...
+2025-06-12 14:01:36,170 - DEBUG - \u2705 Disimpan: inikan udah lama kok dimunculkan.lg...
+2025-06-12 14:01:36,225 - DEBUG - \u2705 Disimpan: kejadian lama nich...
+2025-06-12 14:01:36,225 - DEBUG - \U0001f3a5 Memproses: https://www.tiktok.com/@maoinfoindonesia/video/7482826963111988487
+2025-06-12 14:01:36,235 - DEBUG - Starting new HTTPS connection (1): www.tiktok.com:443
+2025-06-12 14:01:40,083 - DEBUG - https://www.tiktok.com:443 "GET /api/comment/list/?aid=1988&aweme_id=7482826963111988487&cursor=0&count=100 HTTP/1.1" 200 20640
+2025-06-12 14:01:40,324 - DEBUG - \u2705 Disimpan: Ternyata Godaan Dari Nona Celline Yg kua...
+2025-06-12 14:01:40,403 - DEBUG - \u2705 Disimpan: celine bangga punya bapak\U0001f525...
+2025-06-12 14:01:40,540 - DEBUG - \u2705 Disimpan: tolong yg di surabaya di cek gubernur je...
+2025-06-12 14:01:40,622 - DEBUG - \u2705 Disimpan: periksa keluarga mulyono...
+2025-06-12 14:01:40,686 - DEBUG - \u2705 Disimpan: kaga cokelat kaga ijo sebenernya sama aj...
+2025-06-12 14:01:40,863 - DEBUG - \u2705 Disimpan: Ternyata banyak yg di rahasiakan di nega...
+2025-06-12 14:01:41,052 - DEBUG - \u2705 Disimpan: sy ingin mengabdi, usia sy sudah tua, SE...
+2025-06-12 14:01:41,268 - DEBUG - \u2705 Disimpan: mba Inul pasti bangga sama suami ny\U0001f97a...
+2025-06-12 14:01:41,573 - DEBUG - \u2705 Disimpan: apalagi kalau RUU TNI sampe disahkan \U0001f97a\U0001f97a...
+2025-06-12 14:01:41,774 - DEBUG - \u2705 Disimpan: maap ini suaminya Inul Daratista ternyat...
+2025-06-12 14:01:41,853 - DEBUG - \u2705 Disimpan: kapan lagi punya jaksa kaya gini, cuma d...
+2025-06-12 14:01:41,963 - DEBUG - \u2705 Disimpan: berani sekali bpk ini...salam hormat pak...
+2025-06-12 14:01:42,047 - DEBUG - \u2705 Disimpan: TNI bersama Bandar \U0001f602...
+2025-06-12 14:01:42,173 - DEBUG - \u2705 Disimpan: preeeeetz istri saja dah lima, dgn pasil...
+2025-06-12 14:01:42,299 - DEBUG - \u2705 Disimpan: jirrr sekeelas militer kek gini?...
+2025-06-12 14:01:42,441 - DEBUG - \u2705 Disimpan: "seorang MILITER" apa jadinya jika RUU T...
+2025-06-12 14:01:42,663 - DEBUG - \u2705 Disimpan: Kita di ancam itu bukan takut kehilangan...
+2025-06-12 14:01:42,786 - DEBUG - \u2705 Disimpan: pak jaksa sebut militer.. brti = TNI,,,
+...
+2025-06-12 14:01:42,936 - DEBUG - \u2705 Disimpan: Kenapa ya kita seakan perang lawan bangs...
+2025-06-12 14:01:43,039 - DEBUG - \u2705 Disimpan: dikira ijo ga main, hehehe mereka ga kel...
+2025-06-12 14:01:43,096 - DEBUG - \u2705 Disimpan: apalagi celine
+godaannya besar bgt...
+2025-06-12 14:01:43,164 - DEBUG - \u2705 Disimpan: Tolong pak, adili si abah...
+2025-06-12 14:01:43,215 - DEBUG - \u2705 Disimpan: kasus pagar laut gimana pak...
+2025-06-12 14:01:43,307 - DEBUG - \u2705 Disimpan: Nah TNI yg nekan tapi Presiden Dari Tni...
+2025-06-12 14:01:43,365 - DEBUG - \u2705 Disimpan: pas lulus SMA pengen langsung daftar TNI...
+2025-06-12 14:01:43,416 - DEBUG - \u2705 Disimpan: ada pewaris dari almarhum Pa.Baharuddin ...
+2025-06-12 14:01:43,549 - DEBUG - \u2705 Disimpan: dia cerita TNI yg dulu..bkn skrg\U0001f602...
+2025-06-12 14:01:43,659 - DEBUG - \u2705 Disimpan: Tolak RUU TNI...
+2025-06-12 14:01:43,731 - DEBUG - \u2705 Disimpan: jadi ingat kejagung terbakar waktu itu\U0001f525...
+2025-06-12 14:01:45,057 - DEBUG - \u2705 Disimpan: bubur kacang hijau ternyata...\U0001f602...
+2025-06-12 14:01:45,241 - DEBUG - \u2705 Disimpan: BERANI g priksa Jokowi pak?????trus kema...
+2025-06-12 14:01:45,337 - DEBUG - \u2705 Disimpan: kejaksaan harus di jaga TNI biar negara ...
+2025-06-12 14:01:45,462 - DEBUG - \u2705 Disimpan: terus kenapa si tohir gak tersangka...
+2025-06-12 14:01:45,540 - DEBUG - \u2705 Disimpan: Pantesan di sah kan \U0001f605\U0001f605 rupanya begini ce...
+2025-06-12 14:01:45,669 - DEBUG - \u2705 Disimpan: apa guna kpk jika mahkamah agung yg berg...
+2025-06-12 14:01:45,848 - DEBUG - \u2705 Disimpan: Sehat selalu pak Jaksa Agung.
+Semoga sel...
+2025-06-12 14:01:46,076 - DEBUG - \u2705 Disimpan: \U0001f602\U0001f602\U0001f602tidak percaya mereka...
+2025-06-12 14:01:46,203 - DEBUG - \u2705 Disimpan: masih mau kasih ruang kekuasaan buat TNI...
+2025-06-12 14:01:46,306 - DEBUG - \u2705 Disimpan: See? Alesan kenapa loreng ijo/cokelat sa...
+2025-06-12 14:01:46,438 - DEBUG - \u2705 Disimpan: saran saya pakai rompi anti peluru. inga...
+2025-06-12 14:01:46,565 - DEBUG - \u2705 Disimpan: salam hormat kami BPK Burhanuddin...
+2025-06-12 14:01:46,761 - DEBUG - \u2705 Disimpan: sebutkan instansi pemerintahan yg berint...
+2025-06-12 14:01:46,860 - DEBUG - \u2705 Disimpan: matanya berkaca-kaca. sehat-sehat y bapa...
+2025-06-12 14:01:46,946 - DEBUG - \u2705 Disimpan: bahkan seorang TNI bintang juga ada yg m...
+2025-06-12 14:01:47,012 - DEBUG - \u2705 Disimpan: smpek punya 5......
+2025-06-12 14:01:47,214 - DEBUG - \u2705 Disimpan: sy lebih jagoin kejaksaan dr pada TNI...
+2025-06-12 14:01:47,461 - DEBUG - \u2705 Disimpan: semoga pak jaksa agung Burhanudin di ber...
+2025-06-12 14:01:48,708 - DEBUG - \u2705 Disimpan: Kita harus jaga suami mba inul \U0001f525...
+2025-06-12 14:01:48,931 - DEBUG - \u2705 Disimpan: \U0001f44f\U0001f44f\U0001f64f\U0001f64f\U0001f4aa rakyat dibelakang kejaksaan...
+2025-06-12 14:01:49,010 - DEBUG - \u2705 Disimpan: Ijo mainnya rapi bro...
+2025-06-12 14:01:49,011 - DEBUG - \U0001f3a5 Memproses: https://www.tiktok.com/@inilahcom/video/7511615380486491410
+2025-06-12 14:01:49,021 - DEBUG - Starting new HTTPS connection (1): www.tiktok.com:443
+2025-06-12 14:01:51,971 - DEBUG - https://www.tiktok.com:443 "GET /api/comment/list/?aid=1988&aweme_id=7511615380486491410&cursor=0&count=100 HTTP/1.1" 200 None
+2025-06-12 14:01:52,179 - DEBUG - \u2705 Disimpan: hasbiallah ilyas pkb...
+2025-06-12 14:01:52,247 - DEBUG - \u2705 Disimpan: tangkap dan adili anis \U0001f5ff...
+2025-06-12 14:01:52,315 - DEBUG - \u2705 Disimpan: anj pemain juga ni orang...
+2025-06-12 14:01:52,382 - DEBUG - \u2705 Disimpan: korupsi itu apa gak mendzolimi orang...
+2025-06-12 14:01:52,437 - DEBUG - \u2705 Disimpan: tangkep jg ni org keliatan panik seperti...
+2025-06-12 14:01:52,505 - DEBUG - \u2705 Disimpan: periksa ni org...
+2025-06-12 14:01:52,693 - DEBUG - \u2705 Disimpan: kejagung tlg periksa org ini...
+2025-06-12 14:01:52,761 - DEBUG - \u2705 Disimpan: D:dewan
+P:perampok
+R:rakyat....
+2025-06-12 14:01:52,949 - DEBUG - \u2705 Disimpan: sedang mencari keringanan\U0001f92a...
+2025-06-12 14:01:52,993 - DEBUG - \u2705 Disimpan: dia takut ketauan juga\U0001f602...
+2025-06-12 14:01:53,048 - DEBUG - \u2705 Disimpan: gasabar bgt gen z yg nguasain Indonesia ...
+2025-06-12 14:01:54,171 - DEBUG - \u2705 Disimpan: "nenek² yang ngambil bawang dihakimi, ya...
+2025-06-12 14:01:54,305 - DEBUG - \u2705 Disimpan: "Walaupun mereka korupsi tapi kita janga...
+2025-06-12 14:01:54,368 - DEBUG - \u2705 Disimpan: ini layak dicurigahi,ini termasuk ternak...
+2025-06-12 14:01:54,439 - DEBUG - \u2705 Disimpan: haha die koruptor jg...
+2025-06-12 14:01:54,506 - DEBUG - \u2705 Disimpan: Kok bisa ya orang2 kek gini bisa masuk D...
+2025-06-12 14:01:54,864 - DEBUG - \u2705 Disimpan: keadilan hanya dimiliki oleh mereka Yang...
+2025-06-12 14:01:55,090 - DEBUG - \u2705 Disimpan: Di kira yang korupsi ga mendzolimi rakya...
+2025-06-12 14:01:55,224 - DEBUG - \u2705 Disimpan: trus yg korupsi tu menurut luu ga menzol...
+2025-06-12 14:01:56,372 - DEBUG - \u2705 Disimpan: apa yg di bicarakan bapak ini? panjang t...
+2025-06-12 14:01:56,486 - DEBUG - \u2705 Disimpan: Cara ngomgnya udh kliatan takut diperiks...
+2025-06-12 14:01:56,627 - DEBUG - \u2705 Disimpan: usulan konyol macam apa ini...
+2025-06-12 14:01:56,756 - DEBUG - \u2705 Disimpan: KPK periksa hasbiallah Ilyas...
+2025-06-12 14:01:56,819 - DEBUG - \u2705 Disimpan: orang pinter pastinya paham maksud bapak...
+2025-06-12 14:01:56,888 - DEBUG - \u2705 Disimpan: fiks orang yg ngomong koruptor...
+2025-06-12 14:01:56,941 - DEBUG - \u2705 Disimpan: Yang ngbela pasti kbagian.....
+2025-06-12 14:01:57,009 - DEBUG - \u2705 Disimpan: kok bisa orang ini jd anggota DPR RI. ha...
+2025-06-12 14:01:57,087 - DEBUG - \u2705 Disimpan: siapa yg pilih dy JD DPR ri\U0001f601...
+2025-06-12 14:01:57,209 - DEBUG - \u2705 Disimpan: patut di duga ini orang terlibat koropsi...
+2025-06-12 14:01:57,409 - DEBUG - \u2705 Disimpan: kosong banget ga ada isinya pembahasanny...
+2025-06-12 14:01:57,723 - DEBUG - \u2705 Disimpan: umur segitu emang lagi lucu"nya...
+2025-06-12 14:01:57,873 - DEBUG - \u2705 Disimpan: langsung kejaksaan agung periksa orang i...
+2025-06-12 14:01:57,942 - DEBUG - \u2705 Disimpan: Koruptor emang ada yang sampai di gebuki...
+2025-06-12 14:01:58,095 - DEBUG - \u2705 Disimpan: Kenapa ini orang bisa jadi dpr ri...
+2025-06-12 14:01:58,227 - DEBUG - \u2705 Disimpan: fraksi partai apa ini \u2753...
+2025-06-12 14:01:58,359 - DEBUG - \u2705 Disimpan: ingin melindungi diri sebelum ditangkap ...
+2025-06-12 14:01:58,752 - DEBUG - \u2705 Disimpan: Kejaksaan Agung patut periksa kekayaan o...
+2025-06-12 14:01:58,888 - DEBUG - \u2705 Disimpan: jd curiga sm yg bicara\U0001f923...
+2025-06-12 14:01:58,952 - DEBUG - \u2705 Disimpan: pahamilah ..dia berusaha melindungi diri...
+2025-06-12 14:01:59,004 - DEBUG - \u2705 Disimpan: lalu pak mereka yg korupsi berpikir bahw...
+2025-06-12 14:01:59,104 - DEBUG - \u2705 Disimpan: KPK tolong periksa orang ini...
+2025-06-12 14:01:59,151 - DEBUG - \u2705 Disimpan: periksa juga org ini KPK \U0001f600 kayak ketekut...
+2025-06-12 14:01:59,307 - DEBUG - \u2705 Disimpan: info pindah negara, udh muak sama negara...
+2025-06-12 14:01:59,538 - DEBUG - \u2705 Disimpan: Dia takut dizolimi ya??? \U0001f62d\U0001f62d\U0001f62d...
+2025-06-12 14:01:59,974 - DEBUG - \u2705 Disimpan: Kok Masih Ada aja manusia yg berfikiran ...
+2025-06-12 14:02:00,186 - DEBUG - \u2705 Disimpan: ngasih kode dari sekarang ,bila dia keci...
+2025-06-12 14:02:00,470 - DEBUG - \u2705 Disimpan: laa terus koruptor itu ga mendzolimi mas...
+2025-06-12 14:02:00,718 - DEBUG - \u2705 Disimpan: ini dpr ko tidak mewakili hati rakyat si...
+2025-06-12 14:02:01,121 - DEBUG - \u2705 Disimpan: cie cie yg gerah…\U0001f923\U0001f605\U0001f602 jelas ini sudah ‘pe...
+2025-06-12 14:02:01,307 - DEBUG - \u2705 Disimpan: Guys! jangan terkecoh sama story Gerindr...
+2025-06-12 14:02:01,308 - DEBUG - \U0001f3a5 Memproses: https://www.tiktok.com/@maoinfoindonesia/video/7477839239242173703
+2025-06-12 14:02:01,320 - DEBUG - Starting new HTTPS connection (1): www.tiktok.com:443
+2025-06-12 14:02:05,354 - DEBUG - https://www.tiktok.com:443 "GET /api/comment/list/?aid=1988&aweme_id=7477839239242173703&cursor=0&count=100 HTTP/1.1" 200 23892
+2025-06-12 14:02:05,553 - DEBUG - \u2705 Disimpan: emang suami inul daratista gada obat \U0001f525\U0001f525\U0001f525...
+2025-06-12 14:02:05,635 - DEBUG - \u2705 Disimpan: Udah jelas dirut pertamina ke bongkar ga...
+2025-06-12 14:02:05,712 - DEBUG - \u2705 Disimpan: wiss mantap pak...
+2025-06-12 14:02:06,020 - DEBUG - \u2705 Disimpan: Pak Jokowi yg masukkin keranjang kuning,...
+2025-06-12 14:02:06,247 - DEBUG - \u2705 Disimpan: Coba geser dikit keluarga Mulyono pak. k...
+2025-06-12 14:02:06,648 - DEBUG - \u2705 Disimpan: kalian percaya?
+\U0001f923\U0001f923\U0001f923...
+2025-06-12 14:02:06,998 - DEBUG - \u2705 Disimpan: pertahankan jaksa ini pak prabowo...
+2025-06-12 14:02:07,436 - DEBUG - \u2705 Disimpan: pasti mbak Inul semakin bangga dengan su...
+2025-06-12 14:02:07,605 - DEBUG - \u2705 Disimpan: kami ingin lihat bukti, bukan janji...
+2025-06-12 14:02:07,702 - DEBUG - \u2705 Disimpan: OMON OMON NIH ORANG \U0001f923\U0001f923 ABIS KETEMU ERICK...
+2025-06-12 14:02:07,751 - DEBUG - \u2705 Disimpan: tindak dulu Mulyono.. Baru saya percaya...
+2025-06-12 14:02:07,818 - DEBUG - \u2705 Disimpan: gayaaamu boleh jugak pak.. buktinya dlap...
+2025-06-12 14:02:08,015 - DEBUG - \u2705 Disimpan: klo cuma koar² kyk gitu semua orang juga...
+2025-06-12 14:02:08,084 - DEBUG - \u2705 Disimpan: next, MULYONO tangkap pak \U0001faf5...
+2025-06-12 14:02:08,184 - DEBUG - \u2705 Disimpan: Banyak cakap...
+2025-06-12 14:02:08,283 - DEBUG - \u2705 Disimpan: beliau sedang diincar oleh para mafia...
+2025-06-12 14:02:08,352 - DEBUG - \u2705 Disimpan: maaf bapak rakyat indonesia Ndak butuh O...
+2025-06-12 14:02:08,550 - DEBUG - \u2705 Disimpan: ternyata raja kecil = Riza Chalid...
+2025-06-12 14:02:08,658 - DEBUG - \u2705 Disimpan: kasih bukti dlu pak baru kami percya, gk...
+2025-06-12 14:02:08,761 - DEBUG - \u2705 Disimpan: yg disini nangkap koruptor
+yg disana kam...
+2025-06-12 14:02:08,827 - DEBUG - \u2705 Disimpan: trima kasih Bapak Jaksa Agung yg mau mew...
+2025-06-12 14:02:08,963 - DEBUG - \u2705 Disimpan: buktikan. kita masyarakat indonesia suda...
+2025-06-12 14:02:09,023 - DEBUG - \u2705 Disimpan: ijin pak jaksa agung dan pak presiden Pr...
+2025-06-12 14:02:09,148 - DEBUG - \u2705 Disimpan: Dr dlu solgan nya juga gini gess gk kage...
+2025-06-12 14:02:09,257 - DEBUG - \u2705 Disimpan: adili jokowi...
+2025-06-12 14:02:09,359 - DEBUG - \u2705 Disimpan: pak jaksa agung ini harus bener2 dijaga....
+2025-06-12 14:02:09,414 - DEBUG - \u2705 Disimpan: Jangan omon Omon Bro...
+2025-06-12 14:02:09,478 - DEBUG - \u2705 Disimpan: semoga pak jaksa agung selalu sehat dili...
+2025-06-12 14:02:09,534 - DEBUG - \u2705 Disimpan: embak inul semangkin bangga sama suaminy...
+2025-06-12 14:02:09,590 - DEBUG - \u2705 Disimpan: Jadi ingat Jaksa Agung Burhanuddin Lopa ...
+2025-06-12 14:02:09,731 - DEBUG - \u2705 Disimpan: ini baru jksa satu hati dengn bapk prabw...
+2025-06-12 14:02:09,803 - DEBUG - \u2705 Disimpan: kenapa pas Jokowi presiden nya , bapak j...
+2025-06-12 14:02:09,888 - DEBUG - \u2705 Disimpan: SEMOGA TIDAK OMON OMON \u2714\ufe0f...
+2025-06-12 14:02:11,088 - DEBUG - \u2705 Disimpan: masih ada yg percaya sama orang2 diatas?...
+2025-06-12 14:02:11,232 - DEBUG - \u2705 Disimpan: jangan cuma...pak
+tapi buktikan.....
+2025-06-12 14:02:11,364 - DEBUG - \u2705 Disimpan: uang nyah di kemanain...
+2025-06-12 14:02:11,500 - DEBUG - \u2705 Disimpan: Istrimu aja banyak \U0001f602\U0001f602\U0001f602\U0001f602...
+2025-06-12 14:02:11,564 - DEBUG - \u2705 Disimpan: adili anis...
+2025-06-12 14:02:11,634 - DEBUG - \u2705 Disimpan: heran kenapa belom di ganti ya emang jab...
+2025-06-12 14:02:11,720 - DEBUG - \u2705 Disimpan: Menyala mas adam\U0001f525\U0001f525...
+2025-06-12 14:02:11,777 - DEBUG - \u2705 Disimpan: Jangan omong tok...
+2025-06-12 14:02:11,841 - DEBUG - \u2705 Disimpan: buktiin aja pak,,mudah"an bukan omon omo...
+2025-06-12 14:02:11,898 - DEBUG - \u2705 Disimpan: tidak ada lagi, jadi selama ini ngapain ...
+2025-06-12 14:02:11,953 - DEBUG - \u2705 Disimpan: apa kabar KPK? udah gitu aja...
+2025-06-12 14:02:12,020 - DEBUG - \u2705 Disimpan: PANAS DINGIN KALIAN...DI ERA PRESIDEN RI...
+2025-06-12 14:02:12,089 - DEBUG - \u2705 Disimpan: tegas jugak suami mbak Inul ya\U0001f4aa\U0001f44d...
+2025-06-12 14:02:12,154 - DEBUG - \u2705 Disimpan: kalau manusia koar2 jujur saya kurang pe...
+2025-06-12 14:02:12,234 - DEBUG - \u2705 Disimpan: apa benar perkataan bpk...
+2025-06-12 14:02:12,236 - DEBUG - DELETE http://localhost:1361/session/ae43a1c1d8aa340dcdc678d2a35ff9fd {}
+2025-06-12 14:02:12,581 - DEBUG - http://localhost:1361 "DELETE /session/ae43a1c1d8aa340dcdc678d2a35ff9fd HTTP/1.1" 200 0
+2025-06-12 14:02:12,584 - DEBUG - Remote response: status=200 | data={"value":null} | headers=HTTPHeaderDict({'Content-Length': '14', 'Content-Type': 'application/json; charset=utf-8', 'cache-control': 'no-cache'})
+2025-06-12 14:02:12,585 - DEBUG - Finished Request
+2025-06-12 14:02:15,504 - DEBUG - \U0001f6d1 Driver ditutup
+2025-06-12 14:02:15,512 - DEBUG - \U0001f6d1 Koneksi database ditutup
+2025-06-12 14:02:15,517 - INFO - 127.0.0.1 - - [12/Jun/2025 14:02:15] "POST /scrape HTTP/1.1" 200 -
+2025-06-12 14:14:49,583 - INFO -  * Detected change in 'C:\\ALMOST\\kodingan skripsi\\laravel-sentimen-kejagung\\public\\scripts\\ml_predict.py', reloading
+2025-06-12 14:14:52,417 - INFO -  * Restarting with stat
+2025-06-12 14:15:12,173 - DEBUG - \U0001f680 Memulai proses scraping...
+2025-06-12 14:15:53,959 - INFO - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on http://127.0.0.1:5000
+2025-06-12 14:15:53,960 - INFO - [33mPress CTRL+C to quit[0m
+2025-06-12 14:15:53,969 - INFO -  * Restarting with stat
+2025-06-12 14:15:54,773 - DEBUG - \U0001f680 Memulai proses scraping...
+2025-06-12 14:15:57,750 - WARNING -  * Debugger is active!
+2025-06-12 14:15:57,753 - INFO -  * Debugger PIN: 145-095-061
+2025-06-12 14:16:38,003 - DEBUG - Starting new HTTPS connection (1): translate.google.com:443
+2025-06-12 14:16:39,038 - DEBUG - https://translate.google.com:443 "GET /m?tl=en&sl=auto&q=jadi+ingat+kejaksaan+agung+terbakar+waktu+itu HTTP/1.1" 200 None
+2025-06-12 14:16:39,536 - DEBUG - Starting new HTTPS connection (1): translate.google.com:443
+2025-06-12 14:16:40,438 - DEBUG - https://translate.google.com:443 "GET /m?tl=en&sl=auto&q=terus+kenapa+si+tohir+tidak+tersangka HTTP/1.1" 200 None
+2025-06-12 14:16:41,626 - DEBUG - Starting new HTTPS connection (1): translate.google.com:443
+2025-06-12 14:16:43,625 - DEBUG - https://translate.google.com:443 "GET /m?tl=en&sl=auto&q=tolak+ruu+tni HTTP/1.1" 200 None
+2025-06-12 14:16:44,584 - DEBUG - Starting new HTTPS connection (1): translate.google.com:443
+2025-06-12 14:16:46,362 - DEBUG - https://translate.google.com:443 "GET /m?tl=en&sl=auto&q=pantesan+di+sah+kan+rupanya+begini+ceritanya+toh HTTP/1.1" 200 None
+2025-06-12 14:16:47,124 - DEBUG - Starting new HTTPS connection (1): translate.google.com:443
+2025-06-12 14:16:48,869 - DEBUG - https://translate.google.com:443 "GET /m?tl=en&sl=auto&q=apa+guna+komisi+pemberantasan+korupsi+jika+mahkamah+agung+yang+bergerak+terus+untuk+membasmi+koropsi HTTP/1.1" 200 None
+2025-06-12 14:16:49,620 - DEBUG - Starting new HTTPS connection (1): translate.google.com:443
+2025-06-12 14:16:51,507 - DEBUG - https://translate.google.com:443 "GET /m?tl=en&sl=auto&q=bubur+kacang+hijau+ternyata HTTP/1.1" 200 None
+2025-06-12 14:16:51,862 - DEBUG - Starting new HTTPS connection (1): translate.google.com:443
+2025-06-12 14:16:54,244 - DEBUG - https://translate.google.com:443 "GET /m?tl=en&sl=auto&q=kejaksaan+harus+di+jaga+tni+agar+negara+aman+kerjasama+tni+sama+kejaksaan+penting HTTP/1.1" 200 None
+2025-06-12 14:16:55,442 - DEBUG - Starting new HTTPS connection (1): translate.google.com:443
+2025-06-12 14:16:57,266 - DEBUG - https://translate.google.com:443 "GET /m?tl=en&sl=auto&q=berani+g+priksa+jokowi+pak+terus+kemarin+bahas+apa+dengan+eric+tohir+pak HTTP/1.1" 200 None
+2025-06-12 14:16:57,461 - DEBUG - Starting new HTTPS connection (1): translate.google.com:443
+2025-06-12 14:16:59,136 - DEBUG - https://translate.google.com:443 "GET /m?tl=en&sl=auto&q=see+alesan+kenapa+loreng+ijo+cokelat+sama+ajaa HTTP/1.1" 200 None
+2025-06-12 14:17:00,536 - DEBUG - Starting new HTTPS connection (1): translate.google.com:443
+2025-06-12 14:17:02,826 - DEBUG - https://translate.google.com:443 "GET /m?tl=en&sl=auto&q=sehat+selalu+pak+jaksa+agung+semoga+selalu+dalam+lindungi+tuhan HTTP/1.1" 200 None
+2025-06-12 14:17:03,384 - DEBUG - Starting new HTTPS connection (1): translate.google.com:443
+2025-06-12 14:17:06,743 - DEBUG - https://translate.google.com:443 "GET /m?tl=en&sl=auto&q=salam+hormat+kami+bapak+burhanuddin HTTP/1.1" 200 None
+2025-06-12 14:17:07,245 - DEBUG - Starting new HTTPS connection (1): translate.google.com:443
+2025-06-12 14:17:09,530 - DEBUG - https://translate.google.com:443 "GET /m?tl=en&sl=auto&q=tidak+percaya+mereka HTTP/1.1" 200 None
+2025-06-12 14:17:09,957 - DEBUG - Starting new HTTPS connection (1): translate.google.com:443
+2025-06-12 14:17:11,911 - DEBUG - https://translate.google.com:443 "GET /m?tl=en&sl=auto&q=saran+saya+pakai+rompi+anti+peluru+ingat+kasus+penembakan+di+lampu+merah HTTP/1.1" 200 None
+2025-06-12 14:17:12,610 - DEBUG - Starting new HTTPS connection (1): translate.google.com:443
+2025-06-12 14:17:14,233 - DEBUG - https://translate.google.com:443 "GET /m?tl=en&sl=auto&q=masih+mau+kasih+ruang+kekuasaan+buat+tni HTTP/1.1" 200 None
+2025-06-12 14:17:14,408 - DEBUG - Starting new HTTPS connection (1): translate.google.com:443
+2025-06-12 14:17:16,213 - DEBUG - https://translate.google.com:443 "GET /m?tl=en&sl=auto&q=rakyat+dibelakang+kejaksaan HTTP/1.1" 200 None
+2025-06-12 14:17:16,889 - DEBUG - Starting new HTTPS connection (1): translate.google.com:443
+2025-06-12 14:17:18,729 - DEBUG - https://translate.google.com:443 "GET /m?tl=en&sl=auto&q=sebutkan+instansi+pemerintah+yang+berintegritas+di+konoha HTTP/1.1" 200 None
+2025-06-12 14:17:18,948 - DEBUG - Starting new HTTPS connection (1): translate.google.com:443
+2025-06-12 14:17:20,546 - DEBUG - https://translate.google.com:443 "GET /m?tl=en&sl=auto&q=kita+harus+jaga+suami+mba+inul HTTP/1.1" 200 None
+2025-06-12 14:17:20,750 - DEBUG - Starting new HTTPS connection (1): translate.google.com:443
+2025-06-12 14:17:25,502 - DEBUG - https://translate.google.com:443 "GET /m?tl=en&sl=auto&q=matanya+berkaca+kaca+sehat+sehat+y+bapak+selalu+dalam+lindungan+allah+swt HTTP/1.1" 200 None
+2025-06-12 14:17:25,963 - DEBUG - Starting new HTTPS connection (1): translate.google.com:443
+2025-06-12 14:17:27,448 - DEBUG - https://translate.google.com:443 "GET /m?tl=en&sl=auto&q=bahkan+seorang+tni+bintang+juga+ada+yang+main+gtuan+ya HTTP/1.1" 200 None
+2025-06-12 14:17:27,964 - DEBUG - Starting new HTTPS connection (1): translate.google.com:443
+2025-06-12 14:17:29,520 - DEBUG - https://translate.google.com:443 "GET /m?tl=en&sl=auto&q=apaan+itu+bintang+yang+saya+tahu+cuman+bintang HTTP/1.1" 200 None
+2025-06-12 14:17:30,283 - DEBUG - Starting new HTTPS connection (1): translate.google.com:443
+2025-06-12 14:17:33,026 - DEBUG - https://translate.google.com:443 "GET /m?tl=en&sl=auto&q=saya+lebih+jagoin+kejaksaan+dari+pada+tni HTTP/1.1" 200 None
+2025-06-12 14:17:33,756 - DEBUG - Starting new HTTPS connection (1): translate.google.com:443
+2025-06-12 14:17:35,752 - DEBUG - https://translate.google.com:443 "GET /m?tl=en&sl=auto&q=semoga+pak+jaksa+agung+burhanudin+di+beri+kesehatan+dan+keselamatan+dunia+akhirat HTTP/1.1" 200 None
+2025-06-12 14:17:36,545 - DEBUG - Starting new HTTPS connection (1): translate.google.com:443
+2025-06-12 14:17:39,217 - DEBUG - https://translate.google.com:443 "GET /m?tl=en&sl=auto&q=great+banget+jaksa+ku HTTP/1.1" 200 None
+2025-06-12 14:17:40,526 - DEBUG - Starting new HTTPS connection (1): translate.google.com:443
+2025-06-12 14:17:42,742 - DEBUG - https://translate.google.com:443 "GET /m?tl=en&sl=auto&q=mau+tanya+yang+cewek+itu+tb+nya+berapa+ya HTTP/1.1" 200 None
+2025-06-12 14:17:43,151 - DEBUG - Starting new HTTPS connection (1): translate.google.com:443
+2025-06-12 14:17:45,959 - DEBUG - https://translate.google.com:443 "GET /m?tl=en&sl=auto&q=kak+mau+nanya+itu+penempatan+kita+bisa+milih+atau+ditentuin+dari+sana HTTP/1.1" 200 None
+2025-06-12 14:17:46,683 - DEBUG - Starting new HTTPS connection (1): translate.google.com:443
+2025-06-12 14:17:48,167 - DEBUG - https://translate.google.com:443 "GET /m?tl=en&sl=auto&q=kak+mau+taya+pendaftaran+ya+pake+sertifikat+komputer HTTP/1.1" 200 None
+2025-06-12 14:17:52,399 - DEBUG - Starting new HTTPS connection (1): translate.google.com:443
+2025-06-12 14:17:54,524 - DEBUG - https://translate.google.com:443 "GET /m?tl=en&sl=auto&q=kapan+dibuka+kak HTTP/1.1" 200 None
+2025-06-12 14:17:55,546 - DEBUG - Starting new HTTPS connection (1): translate.google.com:443
+2025-06-12 14:17:57,276 - DEBUG - https://translate.google.com:443 "GET /m?tl=en&sl=auto&q=kalau+jaksa+boleh+pakai+kacamata+ya HTTP/1.1" 200 None
+2025-06-12 14:17:57,661 - DEBUG - Starting new HTTPS connection (1): translate.google.com:443
+2025-06-12 14:17:59,471 - DEBUG - https://translate.google.com:443 "GET /m?tl=en&sl=auto&q=kak+kalau+d+sistem+informasi+bisa+daftar+juga+tidak+kak+di+kejaksaan+itu HTTP/1.1" 200 None
+2025-06-12 14:18:00,521 - DEBUG - Starting new HTTPS connection (1): translate.google.com:443
+2025-06-12 14:18:02,920 - DEBUG - https://translate.google.com:443 "GET /m?tl=en&sl=auto&q=sekarang+websate+nya+ganti+lagi+yo HTTP/1.1" 200 None
+2025-06-12 14:18:03,409 - DEBUG - Starting new HTTPS connection (1): translate.google.com:443
+2025-06-12 14:18:05,608 - DEBUG - https://translate.google.com:443 "GET /m?tl=en&sl=auto&q=ka+mau+tanya+s+manajemen+kalau+dikejaksaksan+aku+ambil+formasinya+bidang+apa+ka+tolong+mimpiku+banget+masuk+kejaksaan HTTP/1.1" 200 None
+2025-06-12 14:18:06,457 - DEBUG - Starting new HTTPS connection (1): translate.google.com:443
+2025-06-12 14:18:08,524 - DEBUG - https://translate.google.com:443 "GET /m?tl=en&sl=auto&q=pakai+ijazah+d+ipk+pas+itu+aman+di+administrasi+kak HTTP/1.1" 200 None
+2025-06-12 14:18:09,548 - DEBUG - Starting new HTTPS connection (1): translate.google.com:443
+2025-06-12 14:18:11,210 - DEBUG - https://translate.google.com:443 "GET /m?tl=en&sl=auto&q=kak+syarat+bmi+masih+berlaku HTTP/1.1" 200 None
+2025-06-12 14:18:12,212 - DEBUG - Starting new HTTPS connection (1): translate.google.com:443
+2025-06-12 14:18:13,798 - DEBUG - https://translate.google.com:443 "GET /m?tl=en&sl=auto&q=ka+kalau+kejaksaan+di+pindahin+tidak+si HTTP/1.1" 200 None
+2025-06-12 14:18:14,673 - DEBUG - Starting new HTTPS connection (1): translate.google.com:443
+2025-06-12 14:18:17,449 - DEBUG - https://translate.google.com:443 "GET /m?tl=en&sl=auto&q=untuk+formasi+keshtn+bisa+kak HTTP/1.1" 200 None
+2025-06-12 14:18:17,546 - DEBUG - Starting new HTTPS connection (1): translate.google.com:443
+2025-06-12 14:18:19,124 - DEBUG - https://translate.google.com:443 "GET /m?tl=en&sl=auto&q=kelihatan+spt+orang+bersih+semua HTTP/1.1" 200 None
+2025-06-12 14:18:19,860 - DEBUG - Starting new HTTPS connection (1): translate.google.com:443
+2025-06-12 14:18:21,728 - DEBUG - https://translate.google.com:443 "GET /m?tl=en&sl=auto&q=jaksa+super+power HTTP/1.1" 200 None
+2025-06-12 14:18:23,120 - DEBUG - Starting new HTTPS connection (1): translate.google.com:443
+2025-06-12 14:18:24,723 - DEBUG - https://translate.google.com:443 "GET /m?tl=en&sl=auto&q=bagaimana+keterlibatan+para+jaksa+di+daerah+kok+tidak+di+periksa+contoh+kasus+keterlibatan+oknum+jaksa+dikalimantan HTTP/1.1" 200 None
+2025-06-12 14:18:25,692 - DEBUG - Starting new HTTPS connection (1): translate.google.com:443
+2025-06-12 14:18:27,155 - DEBUG - https://translate.google.com:443 "GET /m?tl=en&sl=auto&q=masih+tebang+pilih HTTP/1.1" 200 None
+2025-06-12 14:18:27,843 - DEBUG - Starting new HTTPS connection (1): translate.google.com:443
+2025-06-12 14:18:29,331 - DEBUG - https://translate.google.com:443 "GET /m?tl=en&sl=auto&q=byk+istri HTTP/1.1" 200 None
+2025-06-12 14:18:30,488 - DEBUG - Starting new HTTPS connection (1): translate.google.com:443
+2025-06-12 14:18:32,799 - DEBUG - https://translate.google.com:443 "GET /m?tl=en&sl=auto&q=super HTTP/1.1" 200 None
+2025-06-12 14:18:32,917 - DEBUG - Starting new HTTPS connection (1): translate.google.com:443
+2025-06-12 14:18:35,072 - DEBUG - https://translate.google.com:443 "GET /m?tl=en&sl=auto&q=of+pejuang+kampung+babel+semangat+postingan+ini+dibagikan+via+tiktok+lite+unduh+tiktok+lite+untuk+menikmati HTTP/1.1" 200 None
+2025-06-12 14:18:35,760 - DEBUG - Starting new HTTPS connection (1): translate.google.com:443
+2025-06-12 14:18:38,014 - DEBUG - https://translate.google.com:443 "GET /m?tl=en&sl=auto&q=just+update+jamwas+sudah+diganti+bapak+rudi+margono+dan+kepala+badan+digantikan+leo+e+simanjuntak HTTP/1.1" 200 None
+2025-06-12 14:18:38,601 - DEBUG - Starting new HTTPS connection (1): translate.google.com:443
+2025-06-12 14:18:40,630 - DEBUG - https://translate.google.com:443 "GET /m?tl=en&sl=auto&q=oke+super+power+kebal+hukum+dan+tidak+tersentuh+dewan+perwakilan+rakyat+tidak+faham+tatanegara+bikin+uu+dengan+kwenangan+acak+kadut HTTP/1.1" 200 None
+2025-06-12 14:18:41,529 - DEBUG - Starting new HTTPS connection (1): translate.google.com:443
+2025-06-12 14:18:43,162 - DEBUG - https://translate.google.com:443 "GET /m?tl=en&sl=auto&q=hanya+intansi+dinas+sosial+maling+korupsi+di+intansi+dinas+sosial+yang+kebal+hukum+jabatan+naik+jadi+maling+di+kab+kutai+timur HTTP/1.1" 200 None
+2025-06-12 14:18:43,770 - DEBUG - Starting new HTTPS connection (1): translate.google.com:443
+2025-06-12 14:18:45,257 - DEBUG - https://translate.google.com:443 "GET /m?tl=en&sl=auto&q=store+lihat+properti+patung+dewi+keadilan+ukuran+cuma+tersedia+di+rp+uk+cuma+rp+uk+cuma+rp+ribu+di HTTP/1.1" 200 None
+2025-06-12 14:18:46,124 - DEBUG - Starting new HTTPS connection (1): translate.google.com:443
+2025-06-12 14:18:47,652 - DEBUG - https://translate.google.com:443 "GET /m?tl=en&sl=auto&q=tangkap+firly HTTP/1.1" 200 None
+2025-06-12 14:18:48,219 - DEBUG - Starting new HTTPS connection (1): translate.google.com:443
+2025-06-12 14:18:49,743 - DEBUG - https://translate.google.com:443 "GET /m?tl=en&sl=auto&q=anak+buahnya+yang+di+daera+audit+juga+pak HTTP/1.1" 200 None
+2025-06-12 14:18:50,285 - DEBUG - Starting new HTTPS connection (1): translate.google.com:443
+2025-06-12 14:18:51,874 - DEBUG - https://translate.google.com:443 "GET /m?tl=en&sl=auto&q=ridwan+kamil+bagaimana+kabarnya+bos+cuma+motor+nya+saja+yang+ditahan HTTP/1.1" 200 None
+2025-06-12 14:18:52,519 - DEBUG - Starting new HTTPS connection (1): translate.google.com:443
+2025-06-12 14:18:54,721 - DEBUG - https://translate.google.com:443 "GET /m?tl=en&sl=auto&q=setiap+kejari+jaksa+nya+mkan+uang+suap+perkara HTTP/1.1" 200 None
+2025-06-12 14:18:55,186 - DEBUG - Starting new HTTPS connection (1): translate.google.com:443
+2025-06-12 14:18:56,842 - DEBUG - https://translate.google.com:443 "GET /m?tl=en&sl=auto&q=setuju HTTP/1.1" 200 None
+2025-06-12 14:18:57,023 - DEBUG - Starting new HTTPS connection (1): translate.google.com:443
+2025-06-12 14:18:58,596 - DEBUG - https://translate.google.com:443 "GET /m?tl=en&sl=auto&q=di+tingkat+desa+dan+kelurahan+itu+byk+korop+korop+di+setiap+program+pemerintah+yang+turun+ke+pemerintaan+bawah HTTP/1.1" 200 None
+2025-06-12 14:18:58,750 - DEBUG - Starting new HTTPS connection (1): translate.google.com:443
+2025-06-12 14:19:00,237 - DEBUG - https://translate.google.com:443 "GET /m?tl=en&sl=auto&q=daerah+berat+pak+rata+kekeluargaan+masih+kental+coba+tny+netizen HTTP/1.1" 200 None
+2025-06-12 14:19:00,820 - DEBUG - Starting new HTTPS connection (1): translate.google.com:443
+2025-06-12 14:19:03,192 - DEBUG - https://translate.google.com:443 "GET /m?tl=en&sl=auto&q=samaa+poll+saya+saja+punya+data+nya+pernh+buat+laporan+tapi+tak+direspon HTTP/1.1" 200 None
+2025-06-12 14:19:03,666 - DEBUG - Starting new HTTPS connection (1): translate.google.com:443
+2025-06-12 14:19:06,760 - DEBUG - https://translate.google.com:443 "GET /m?tl=en&sl=auto&q=salut+pak+kajagung+monitor+juga+bawahan+di+bawah HTTP/1.1" 200 None
+2025-06-12 14:19:07,913 - DEBUG - Starting new HTTPS connection (1): translate.google.com:443
+2025-06-12 14:19:10,141 - DEBUG - https://translate.google.com:443 "GET /m?tl=en&sl=auto&q=benar+pak HTTP/1.1" 200 None
+2025-06-12 14:19:10,460 - DEBUG - Starting new HTTPS connection (1): translate.google.com:443
+2025-06-12 14:19:12,119 - DEBUG - https://translate.google.com:443 "GET /m?tl=en&sl=auto&q=sesama+keluarga+juga+ada+korupsi+pak+apa+lagi+daerah+haha HTTP/1.1" 200 None
+2025-06-12 14:19:12,975 - DEBUG - Starting new HTTPS connection (1): translate.google.com:443
+2025-06-12 14:19:14,603 - DEBUG - https://translate.google.com:443 "GET /m?tl=en&sl=auto&q=semua+ini+karena+orang+nomer+satu+di+republik+ini+yaitu+bapak+presiden+kita+prabowo HTTP/1.1" 200 None
+2025-06-12 14:19:15,475 - DEBUG - Starting new HTTPS connection (1): translate.google.com:443
+2025-06-12 14:19:17,049 - DEBUG - https://translate.google.com:443 "GET /m?tl=en&sl=auto&q=daerah+banyak+bangett HTTP/1.1" 200 None
+2025-06-12 14:19:17,654 - DEBUG - Starting new HTTPS connection (1): translate.google.com:443
+2025-06-12 14:19:19,206 - DEBUG - https://translate.google.com:443 "GET /m?tl=en&sl=auto&q=cobah+cek+k+manggarai+barat+pak+flores+ntt HTTP/1.1" 200 None
+2025-06-12 14:19:20,216 - DEBUG - Starting new HTTPS connection (1): translate.google.com:443
+2025-06-12 14:19:22,810 - DEBUG - https://translate.google.com:443 "GET /m?tl=en&sl=auto&q=bayangkan+pak+bupatinya+punya+motor+ada+warga+yang+tidak+punya HTTP/1.1" 200 None
+2025-06-12 14:19:23,289 - DEBUG - Starting new HTTPS connection (1): translate.google.com:443
+2025-06-12 14:19:26,043 - DEBUG - https://translate.google.com:443 "GET /m?tl=en&sl=auto&q=hampir+semua+koorruuppp HTTP/1.1" 200 None
+2025-06-12 14:19:26,608 - DEBUG - Starting new HTTPS connection (1): translate.google.com:443
+2025-06-12 14:19:28,258 - DEBUG - https://translate.google.com:443 "GET /m?tl=en&sl=auto&q=mari+ukir+sejarah+baik+di+negeri+ini+bapak+buat+anak+cucu+kita+bangga HTTP/1.1" 200 None
+2025-06-12 14:19:28,490 - DEBUG - Starting new HTTPS connection (1): translate.google.com:443
+2025-06-12 14:19:30,116 - DEBUG - https://translate.google.com:443 "GET /m?tl=en&sl=auto&q=ya+allah+ya+rob+semoga+selalu+di+bawah+lindunganmu+bapak+kejaksaan+agung+kami+ini+aminnn HTTP/1.1" 200 None
+2025-06-12 14:19:31,011 - DEBUG - Starting new HTTPS connection (1): translate.google.com:443
+2025-06-12 14:19:33,481 - DEBUG - https://translate.google.com:443 "GET /m?tl=en&sl=auto&q=tegas+berani+kami+bangga+padamu+pak HTTP/1.1" 200 None
+2025-06-12 14:19:34,143 - DEBUG - Starting new HTTPS connection (1): translate.google.com:443
+2025-06-12 14:19:35,902 - DEBUG - https://translate.google.com:443 "GET /m?tl=en&sl=auto&q=iya+karena+tidak+bisa+naik+pangkat HTTP/1.1" 200 None
+2025-06-12 14:19:36,324 - DEBUG - Starting new HTTPS connection (1): translate.google.com:443
+2025-06-12 14:19:38,370 - DEBUG - https://translate.google.com:443 "GET /m?tl=en&sl=auto&q=teori+nya+begituh+praktek+nya+nol+besar HTTP/1.1" 200 None
+2025-06-12 14:19:38,976 - DEBUG - Starting new HTTPS connection (1): translate.google.com:443
+2025-06-12 14:19:40,521 - DEBUG - https://translate.google.com:443 "GET /m?tl=en&sl=auto&q=subianto+ri+subianto+rakabuming+subianto+miskinkan+korupsi HTTP/1.1" 200 None
+2025-06-12 14:19:41,383 - DEBUG - Starting new HTTPS connection (1): translate.google.com:443
+2025-06-12 14:19:42,866 - DEBUG - https://translate.google.com:443 "GET /m?tl=en&sl=auto&q=target+bos+photo HTTP/1.1" 200 None
+2025-06-12 14:19:43,007 - DEBUG - Starting new HTTPS connection (1): translate.google.com:443
+2025-06-12 14:19:44,690 - DEBUG - https://translate.google.com:443 "GET /m?tl=en&sl=auto&q=korupsi+di+daerah+itu+adalah+ketika+calo+proyek+dari+partai+penguasa+memainkan+perannya+dengan+kadis+dan+ppk+untuk+memenangkan+proyek HTTP/1.1" 200 None
+2025-06-12 14:19:44,952 - DEBUG - Starting new HTTPS connection (1): translate.google.com:443
+2025-06-12 14:19:46,466 - DEBUG - https://translate.google.com:443 "GET /m?tl=en&sl=auto&q=beliau+nafasnya+baharudin+lopa+zaman+now HTTP/1.1" 200 None
+2025-06-12 14:19:47,445 - DEBUG - Starting new HTTPS connection (1): translate.google.com:443
+2025-06-12 14:19:49,025 - DEBUG - https://translate.google.com:443 "GET /m?tl=en&sl=auto&q=go+bapak HTTP/1.1" 200 None
+2025-06-12 14:19:49,826 - DEBUG - Starting new HTTPS connection (1): translate.google.com:443
+2025-06-12 14:19:51,612 - DEBUG - https://translate.google.com:443 "GET /m?tl=en&sl=auto&q=masih+bingung+kenapa+dinamakan+jaksa+agung+muda+kenapa+dikasih+kata+muda+padahal+udah+seniorkan+tua+mereka HTTP/1.1" 200 None
+2025-06-12 14:19:52,381 - DEBUG - Starting new HTTPS connection (1): translate.google.com:443
+2025-06-12 14:19:54,432 - DEBUG - https://translate.google.com:443 "GET /m?tl=en&sl=auto&q=militer+bukan+seragamnya+kayak+mau+perang HTTP/1.1" 200 None
+2025-06-12 14:19:55,195 - DEBUG - Starting new HTTPS connection (1): translate.google.com:443
+2025-06-12 14:19:56,898 - DEBUG - https://translate.google.com:443 "GET /m?tl=en&sl=auto&q=kejaksaan+agung+kebakatan+total+gedung+diem+bae+lucu+mereka HTTP/1.1" 200 None
+2025-06-12 14:19:57,793 - DEBUG - Starting new HTTPS connection (1): translate.google.com:443
+2025-06-12 14:19:59,581 - DEBUG - https://translate.google.com:443 "GET /m?tl=en&sl=auto&q=terus+kasus+suap+impor+baja+bagaimana+bos HTTP/1.1" 200 None
+2025-06-12 14:20:00,225 - DEBUG - Starting new HTTPS connection (1): translate.google.com:443
+2025-06-12 14:20:02,629 - DEBUG - https://translate.google.com:443 "GET /m?tl=en&sl=auto&q=pak+kajagung+makin+mirip+pak+adam HTTP/1.1" 200 None
+2025-06-12 14:20:03,125 - DEBUG - Starting new HTTPS connection (1): translate.google.com:443
+2025-06-12 14:20:06,016 - DEBUG - https://translate.google.com:443 "GET /m?tl=en&sl=auto&q=jaksa+agung+muda+tapi+kok+tidak+keliatan+muda HTTP/1.1" 200 None
+2025-06-12 14:20:06,717 - DEBUG - Starting new HTTPS connection (1): translate.google.com:443
+2025-06-12 14:20:09,073 - DEBUG - https://translate.google.com:443 "GET /m?tl=en&sl=auto&q=agak+familiar+sama+pa+ali+mukartono+pernah+liat+dimana+ya+lupaaaa HTTP/1.1" 200 None
+2025-06-12 14:20:09,524 - DEBUG - Starting new HTTPS connection (1): translate.google.com:443
+2025-06-12 14:20:12,482 - DEBUG - https://translate.google.com:443 "GET /m?tl=en&sl=auto&q=wakil+jaksa+agung+tidak+ada HTTP/1.1" 200 None
+2025-06-12 14:20:13,254 - DEBUG - Starting new HTTPS connection (1): translate.google.com:443
+2025-06-12 14:20:15,146 - DEBUG - https://translate.google.com:443 "GET /m?tl=en&sl=auto&q=ada+apa HTTP/1.1" 200 None
+2025-06-12 14:20:15,249 - DEBUG - Starting new HTTPS connection (1): translate.google.com:443
+2025-06-12 14:20:17,121 - DEBUG - https://translate.google.com:443 "GET /m?tl=en&sl=auto&q=mantuuul HTTP/1.1" 200 None
+2025-06-12 14:20:18,523 - DEBUG - Starting new HTTPS connection (1): translate.google.com:443
+2025-06-12 14:20:20,465 - DEBUG - https://translate.google.com:443 "GET /m?tl=en&sl=auto&q=kenapa+sih+namanya+muda+kan+bukan+jabatan+anak+muda HTTP/1.1" 200 None
+2025-06-12 14:20:20,608 - DEBUG - Starting new HTTPS connection (1): translate.google.com:443
+2025-06-12 14:20:22,715 - DEBUG - https://translate.google.com:443 "GET /m?tl=en&sl=auto&q=salam+buat+pak+adam HTTP/1.1" 200 None
+2025-06-12 14:20:23,412 - DEBUG - Starting new HTTPS connection (1): translate.google.com:443
+2025-06-12 14:20:25,667 - DEBUG - https://translate.google.com:443 "GET /m?tl=en&sl=auto&q=kenapa+jaksa+jarang+banget+perempuan HTTP/1.1" 200 None
+2025-06-12 14:20:26,438 - DEBUG - Starting new HTTPS connection (1): translate.google.com:443
+2025-06-12 14:20:28,363 - DEBUG - https://translate.google.com:443 "GET /m?tl=en&sl=auto&q=pk+tolong+kades+kami+rayat+kudu+rejo+butih+keadilan HTTP/1.1" 200 None
+2025-06-12 14:20:29,153 - DEBUG - Starting new HTTPS connection (1): translate.google.com:443
+2025-06-12 14:20:32,055 - DEBUG - https://translate.google.com:443 "GET /m?tl=en&sl=auto&q=semoga+amanah+ya+pak HTTP/1.1" 200 None
+2025-06-12 14:20:33,651 - DEBUG - Starting new HTTPS connection (1): translate.google.com:443
+2025-06-12 14:20:36,233 - DEBUG - https://translate.google.com:443 "GET /m?tl=en&sl=auto&q=semoga+amanah+sakitu+gw+ti+pusatmah HTTP/1.1" 200 None
+2025-06-12 14:20:37,229 - DEBUG - Starting new HTTPS connection (1): translate.google.com:443
+2025-06-12 14:20:39,255 - DEBUG - https://translate.google.com:443 "GET /m?tl=en&sl=auto&q=belajar+dari+sini HTTP/1.1" 200 None
+2025-06-12 14:20:40,135 - DEBUG - Starting new HTTPS connection (1): translate.google.com:443
+2025-06-12 14:20:42,234 - DEBUG - https://translate.google.com:443 "GET /m?tl=en&sl=auto&q=tolong+dong+di+audit+kemendikbud+mulai+dari+sekolah+sampe+ke+kementeriannya HTTP/1.1" 200 None
+2025-06-12 14:20:43,256 - DEBUG - Starting new HTTPS connection (1): translate.google.com:443
+2025-06-12 14:20:44,804 - DEBUG - https://translate.google.com:443 "GET /m?tl=en&sl=auto&q=oknumnya+banyak+dan+anti+kritik HTTP/1.1" 200 None
+2025-06-12 14:20:45,806 - DEBUG - Starting new HTTPS connection (1): translate.google.com:443
+2025-06-12 14:20:47,238 - DEBUG - https://translate.google.com:443 "GET /m?tl=en&sl=auto&q=sarang+mafia HTTP/1.1" 200 None
+2025-06-12 14:20:48,636 - DEBUG - Starting new HTTPS connection (1): translate.google.com:443
+2025-06-12 14:20:50,278 - DEBUG - https://translate.google.com:443 "GET /m?tl=en&sl=auto&q=dapat+jata+dari+pc+bukan HTTP/1.1" 200 None
+2025-06-12 14:20:51,287 - DEBUG - Starting new HTTPS connection (1): translate.google.com:443
+2025-06-12 14:20:53,709 - DEBUG - https://translate.google.com:443 "GET /m?tl=en&sl=auto&q=semoga+amanah+kebal+akan+amplop+coklat+sambo HTTP/1.1" 200 None
+2025-06-12 14:20:54,482 - DEBUG - Starting new HTTPS connection (1): translate.google.com:443
+2025-06-12 14:20:56,096 - DEBUG - https://translate.google.com:443 "GET /m?tl=en&sl=auto&q=hebat+ini+kajagung+moga+bisa+diangkat+lagi HTTP/1.1" 200 None
+2025-06-12 14:20:56,791 - DEBUG - Starting new HTTPS connection (1): translate.google.com:443
+2025-06-12 14:20:58,319 - DEBUG - https://translate.google.com:443 "GET /m?tl=en&sl=auto&q=di+hukum+dimiskinkan+lebih+berat+daripada+dipenjara+tahun HTTP/1.1" 200 None
+2025-06-12 14:20:59,285 - DEBUG - Starting new HTTPS connection (1): translate.google.com:443
+2025-06-12 14:21:01,266 - DEBUG - https://translate.google.com:443 "GET /m?tl=en&sl=auto&q=rakyat+mendukungmu+dan+mendukung+pak+prabowo HTTP/1.1" 200 None
+2025-06-12 14:21:01,830 - DEBUG - Starting new HTTPS connection (1): translate.google.com:443
+2025-06-12 14:21:05,776 - DEBUG - https://translate.google.com:443 "GET /m?tl=en&sl=auto&q=ko+kejaksaan+agung+lebih+hebat+dari+komisi+pemberantasan+korupsi HTTP/1.1" 200 None
+2025-06-12 14:21:06,687 - DEBUG - Starting new HTTPS connection (1): translate.google.com:443
+2025-06-12 14:21:09,082 - DEBUG - https://translate.google.com:443 "GET /m?tl=en&sl=auto&q=ko+komisi+pemberantasan+korupsi+kinerja+nya+gaada HTTP/1.1" 200 None
+2025-06-12 14:21:09,298 - DEBUG - Starting new HTTPS connection (1): translate.google.com:443
+2025-06-12 14:21:10,753 - DEBUG - https://translate.google.com:443 "GET /m?tl=en&sl=auto&q=great+kejaksaan+agung+ri HTTP/1.1" 200 None
+2025-06-12 14:21:11,942 - DEBUG - Starting new HTTPS connection (1): translate.google.com:443
+2025-06-12 14:21:13,400 - DEBUG - https://translate.google.com:443 "GET /m?tl=en&sl=auto&q=satu+persatu+mulai+terungkap HTTP/1.1" 200 None
+2025-06-12 14:21:13,987 - DEBUG - Starting new HTTPS connection (1): translate.google.com:443
+2025-06-12 14:21:15,358 - DEBUG - https://translate.google.com:443 "GET /m?tl=en&sl=auto&q=pengawalannya+perlu+diperketat HTTP/1.1" 200 None
+2025-06-12 14:21:16,529 - DEBUG - Starting new HTTPS connection (1): translate.google.com:443
+2025-06-12 14:21:18,040 - DEBUG - https://translate.google.com:443 "GET /m?tl=en&sl=auto&q=lanjutkan+sampe+tuntas HTTP/1.1" 200 None
+2025-06-12 14:21:19,072 - DEBUG - Starting new HTTPS connection (1): translate.google.com:443
+2025-06-12 14:21:21,299 - DEBUG - https://translate.google.com:443 "GET /m?tl=en&sl=auto&q=lain+dulu+lain+sekarang+itulah+kepentingan+presiden+terpilih+pak+prabowo+subianto HTTP/1.1" 200 None
+2025-06-12 14:21:21,523 - DEBUG - Starting new HTTPS connection (1): translate.google.com:443
+2025-06-12 14:21:25,512 - DEBUG - https://translate.google.com:443 "GET /m?tl=en&sl=auto&q=harus+di+kawal+rapi+bapak+ini HTTP/1.1" 200 None
+2025-06-12 14:21:26,394 - DEBUG - Starting new HTTPS connection (1): translate.google.com:443
+2025-06-12 14:21:27,863 - DEBUG - https://translate.google.com:443 "GET /m?tl=en&sl=auto&q=semoga+jaman+presiden+pak+prabowo+sekarang+jaman+nya+hukum+tidak+bisa+dibeli HTTP/1.1" 200 None
+2025-06-12 14:21:28,226 - DEBUG - Starting new HTTPS connection (1): translate.google.com:443
+2025-06-12 14:21:29,912 - DEBUG - https://translate.google.com:443 "GET /m?tl=en&sl=auto&q=sehat+selalu+orang+baik HTTP/1.1" 200 None
+2025-06-12 14:21:30,123 - DEBUG - Starting new HTTPS connection (1): translate.google.com:443
+2025-06-12 14:21:32,378 - DEBUG - https://translate.google.com:443 "GET /m?tl=en&sl=auto&q=sht+selalu+bapak HTTP/1.1" 200 None
+2025-06-12 14:21:32,976 - DEBUG - Starting new HTTPS connection (1): translate.google.com:443
+2025-06-12 14:21:35,039 - DEBUG - https://translate.google.com:443 "GET /m?tl=en&sl=auto&q=keren HTTP/1.1" 200 None
+2025-06-12 14:21:35,124 - DEBUG - Starting new HTTPS connection (1): translate.google.com:443
+2025-06-12 14:21:36,902 - DEBUG - https://translate.google.com:443 "GET /m?tl=en&sl=auto&q=semoga+beliau+selalu+dalam+petunjuk+dan+perlindungan+allah+swt+amen+ya+rabbal+alamin HTTP/1.1" 200 None
+2025-06-12 14:21:38,420 - DEBUG - Starting new HTTPS connection (1): translate.google.com:443
+2025-06-12 14:21:41,542 - DEBUG - https://translate.google.com:443 "GET /m?tl=en&sl=auto&q=rakyat+dibelakangmu+pak+jangan+gentar HTTP/1.1" 200 None
+2025-06-12 14:21:42,423 - DEBUG - Starting new HTTPS connection (1): translate.google.com:443
+2025-06-12 14:21:44,036 - DEBUG - https://translate.google.com:443 "GET /m?tl=en&sl=auto&q=luar+biasa+pak+adam HTTP/1.1" 200 None
+2025-06-12 14:21:44,450 - DEBUG - Starting new HTTPS connection (1): translate.google.com:443
+2025-06-12 14:21:45,979 - DEBUG - https://translate.google.com:443 "GET /m?tl=en&sl=auto&q=goss+terussss+pak+burr+kami+rakyat+bersama+bapak+sehat+selalu+buat+bapak+dan+tim HTTP/1.1" 200 None
+2025-06-12 14:21:46,367 - DEBUG - Starting new HTTPS connection (1): translate.google.com:443
+2025-06-12 14:21:47,956 - DEBUG - https://translate.google.com:443 "GET /m?tl=en&sl=auto&q=bravo+kejaksaan+agung HTTP/1.1" 200 None
+2025-06-12 14:21:48,418 - DEBUG - Starting new HTTPS connection (1): translate.google.com:443
+2025-06-12 14:21:50,063 - DEBUG - https://translate.google.com:443 "GET /m?tl=en&sl=auto&q=saya+merasa+lega+baru+di+kepemimpinan+pak+prabowo+pejabat+kita+mulai+ketar+ketir HTTP/1.1" 200 None
+2025-06-12 14:21:50,702 - DEBUG - Starting new HTTPS connection (1): translate.google.com:443
+2025-06-12 14:21:52,617 - DEBUG - https://translate.google.com:443 "GET /m?tl=en&sl=auto&q=sehat+sehat+pak HTTP/1.1" 200 None
+2025-06-12 14:21:53,327 - DEBUG - Starting new HTTPS connection (1): translate.google.com:443
+2025-06-12 14:21:55,391 - DEBUG - https://translate.google.com:443 "GET /m?tl=en&sl=auto&q=super+power+kejaksaan+agung+great HTTP/1.1" 200 None
+2025-06-12 14:21:56,061 - DEBUG - Starting new HTTPS connection (1): translate.google.com:443
+2025-06-12 14:21:57,521 - DEBUG - https://translate.google.com:443 "GET /m?tl=en&sl=auto&q=bapak+burhanuddin+great HTTP/1.1" 200 None
+2025-06-12 14:21:58,378 - DEBUG - Starting new HTTPS connection (1): translate.google.com:443
+2025-06-12 14:21:59,835 - DEBUG - https://translate.google.com:443 "GET /m?tl=en&sl=auto&q=makanya+saya+terheran+heran+melihat+presiden+kt+ini+pidato+pak+presiden+menggelegar+keseluruhan+negara+ini HTTP/1.1" 200 None
+2025-06-12 14:22:00,276 - DEBUG - Starting new HTTPS connection (1): translate.google.com:443
+2025-06-12 14:22:02,138 - DEBUG - https://translate.google.com:443 "GET /m?tl=en&sl=auto&q=maju+terus+pk+jaksa HTTP/1.1" 200 None
+2025-06-12 14:22:03,036 - DEBUG - Starting new HTTPS connection (1): translate.google.com:443
+2025-06-12 14:22:05,625 - DEBUG - https://translate.google.com:443 "GET /m?tl=en&sl=auto&q=jng+lupa+pak+ungkap+kasus+kamu HTTP/1.1" 200 None
+2025-06-12 14:22:06,646 - DEBUG - Starting new HTTPS connection (1): translate.google.com:443
+2025-06-12 14:22:08,767 - DEBUG - https://translate.google.com:443 "GET /m?tl=en&sl=auto&q=mudahan+jaksa+agung+beserta+kel+diberi+kesehatan+dan+kekuatan+amen HTTP/1.1" 200 None
+2025-06-12 14:22:09,561 - DEBUG - Starting new HTTPS connection (1): translate.google.com:443
+2025-06-12 14:22:11,193 - DEBUG - https://translate.google.com:443 "GET /m?tl=en&sl=auto&q=bravo+kejaksaan+agung+ri HTTP/1.1" 200 None
+2025-06-12 14:22:11,632 - DEBUG - Starting new HTTPS connection (1): translate.google.com:443
+2025-06-12 14:22:13,293 - DEBUG - https://translate.google.com:443 "GET /m?tl=en&sl=auto&q=ys+allah+masa HTTP/1.1" 200 None
+2025-06-12 14:22:14,297 - DEBUG - Starting new HTTPS connection (1): translate.google.com:443
+2025-06-12 14:22:15,937 - DEBUG - https://translate.google.com:443 "GET /m?tl=en&sl=auto&q=sesuai+dengan+kumis+hebat+bapak HTTP/1.1" 200 None
+2025-06-12 14:22:16,556 - DEBUG - Starting new HTTPS connection (1): translate.google.com:443
+2025-06-12 14:22:18,096 - DEBUG - https://translate.google.com:443 "GET /m?tl=en&sl=auto&q=ini+bukan+berani+tebang+pilih+bro HTTP/1.1" 200 None
+2025-06-12 14:22:19,267 - DEBUG - Starting new HTTPS connection (1): translate.google.com:443
+2025-06-12 14:22:20,941 - DEBUG - https://translate.google.com:443 "GET /m?tl=en&sl=auto&q=kasus+sambo+gimanna+tuh+tenggelam+kah HTTP/1.1" 200 None
+2025-06-12 14:22:21,849 - DEBUG - Starting new HTTPS connection (1): translate.google.com:443
+2025-06-12 14:22:24,015 - DEBUG - https://translate.google.com:443 "GET /m?tl=en&sl=auto&q=perlu+di+pertahankan+prestasi+kejaksaan+agung HTTP/1.1" 200 None
+2025-06-12 14:22:24,774 - DEBUG - Starting new HTTPS connection (1): translate.google.com:443
+2025-06-12 14:22:26,458 - DEBUG - https://translate.google.com:443 "GET /m?tl=en&sl=auto&q=great+s HTTP/1.1" 200 None
+2025-06-12 14:22:26,582 - DEBUG - Starting new HTTPS connection (1): translate.google.com:443
+2025-06-12 14:22:28,215 - DEBUG - https://translate.google.com:443 "GET /m?tl=en&sl=auto&q=luar+biasa+kejaksaan+layak+di+apresiasi+dng+menaikkan+gaji+dan+tunjangannya+jgn+hakim+saja+yang+dinaikkan+kejaksaan+tidak+pandang+bulu HTTP/1.1" 200 None
+2025-06-12 14:22:28,939 - DEBUG - Starting new HTTPS connection (1): translate.google.com:443
+2025-06-12 14:22:30,571 - DEBUG - https://translate.google.com:443 "GET /m?tl=en&sl=auto&q=rakyat+ingin+hidup+sejahtera HTTP/1.1" 200 None
+2025-06-12 14:22:31,101 - DEBUG - Starting new HTTPS connection (1): translate.google.com:443
+2025-06-12 14:22:33,585 - DEBUG - https://translate.google.com:443 "GET /m?tl=en&sl=auto&q=betul+sekali+keselamatan+burhanuddin+harus+dijaga+oleh+presiden HTTP/1.1" 200 None
+2025-06-12 14:22:34,815 - DEBUG - Starting new HTTPS connection (1): translate.google.com:443
+2025-06-12 14:22:36,437 - DEBUG - https://translate.google.com:443 "GET /m?tl=en&sl=auto&q=sehat+pa+barudin+jabatanya+di+perpanjang HTTP/1.1" 200 None
+2025-06-12 14:22:36,978 - DEBUG - Starting new HTTPS connection (1): translate.google.com:443
+2025-06-12 14:22:39,048 - DEBUG - https://translate.google.com:443 "GET /m?tl=en&sl=auto&q=ini+baru+jaksa+agung+paling+dimuliakan+oleh+allah+swt HTTP/1.1" 200 None
+2025-06-12 14:22:40,391 - DEBUG - Starting new HTTPS connection (1): translate.google.com:443
+2025-06-12 14:22:42,008 - DEBUG - https://translate.google.com:443 "GET /m?tl=en&sl=auto&q=great+keren HTTP/1.1" 200 None
+2025-06-12 14:22:42,129 - DEBUG - Starting new HTTPS connection (1): translate.google.com:443
+2025-06-12 14:22:43,584 - DEBUG - https://translate.google.com:443 "GET /m?tl=en&sl=auto&q=sehat+selalu+pak+panjang+umur+negara+membutuhkan+bapak HTTP/1.1" 200 None
+2025-06-12 14:22:44,072 - DEBUG - Starting new HTTPS connection (1): translate.google.com:443
+2025-06-12 14:22:45,561 - DEBUG - https://translate.google.com:443 "GET /m?tl=en&sl=auto&q=salut+buat+kejaksaan+agung HTTP/1.1" 200 None
+2025-06-12 14:22:47,239 - DEBUG - Starting new HTTPS connection (1): translate.google.com:443
+2025-06-12 14:22:48,825 - DEBUG - https://translate.google.com:443 "GET /m?tl=en&sl=auto&q=sangat+bisa+di+pahami+kawal+terus+sampai+selesai HTTP/1.1" 200 None
+2025-06-12 14:22:49,338 - DEBUG - Starting new HTTPS connection (1): translate.google.com:443
+2025-06-12 14:22:50,927 - DEBUG - https://translate.google.com:443 "GET /m?tl=en&sl=auto&q=kalau+kejaksaan+agung+udah+mulai+on+fire+ngebongkar+kasus+tugas+kita+jangan+cuma+nonton+tapi+ikut+kawal+jangan+sampai+api+keadilan+disiram+air+basah+kepentingan HTTP/1.1" 200 None
+2025-06-12 14:22:51,520 - DEBUG - Starting new HTTPS connection (1): translate.google.com:443
+2025-06-12 14:22:53,438 - DEBUG - https://translate.google.com:443 "GET /m?tl=en&sl=auto&q=great+kami+mendukung+mu+tni HTTP/1.1" 200 None
+2025-06-12 14:22:54,117 - DEBUG - Starting new HTTPS connection (1): translate.google.com:443
+2025-06-12 14:22:55,814 - DEBUG - https://translate.google.com:443 "GET /m?tl=en&sl=auto&q=great+kawal+terus+pokonya HTTP/1.1" 200 None
+2025-06-12 14:22:56,925 - DEBUG - Starting new HTTPS connection (1): translate.google.com:443
+2025-06-12 14:22:58,566 - DEBUG - https://translate.google.com:443 "GET /m?tl=en&sl=auto&q=kawal+terus+kejaksaan+pak+tni HTTP/1.1" 200 None
+2025-06-12 14:22:58,951 - DEBUG - Starting new HTTPS connection (1): translate.google.com:443
+2025-06-12 14:23:00,963 - DEBUG - https://translate.google.com:443 "GET /m?tl=en&sl=auto&q=terus+kawal+pengamanan+abang HTTP/1.1" 200 None
+2025-06-12 14:23:01,662 - DEBUG - Starting new HTTPS connection (1): translate.google.com:443
+2025-06-12 14:23:05,427 - DEBUG - https://translate.google.com:443 "GET /m?tl=en&sl=auto&q=goss+abang+tni HTTP/1.1" 200 None
+2025-06-12 14:23:06,830 - DEBUG - Starting new HTTPS connection (1): translate.google.com:443
+2025-06-12 14:23:08,995 - DEBUG - https://translate.google.com:443 "GET /m?tl=en&sl=auto&q=betul+sekali+itu+harus+dipahami+oleh+semua+pihak+kawal+terus+kejaksaan+tni HTTP/1.1" 200 None
+2025-06-12 14:23:09,927 - DEBUG - Starting new HTTPS connection (1): translate.google.com:443
+2025-06-12 14:23:11,408 - DEBUG - https://translate.google.com:443 "GET /m?tl=en&sl=auto&q=sinergi+kejaksaan+dan+tni+untuk+perkuat+penegakan+hukum+dan+wujudkan+transparansi+dalam+menuntaskan+permasalahan HTTP/1.1" 200 None
+2025-06-12 14:23:12,072 - DEBUG - Starting new HTTPS connection (1): translate.google.com:443
+2025-06-12 14:23:13,629 - DEBUG - https://translate.google.com:443 "GET /m?tl=en&sl=auto&q=great+kawal+dengan+baaik HTTP/1.1" 200 None
+2025-06-12 14:23:14,743 - DEBUG - Starting new HTTPS connection (1): translate.google.com:443
+2025-06-12 14:23:16,220 - DEBUG - https://translate.google.com:443 "GET /m?tl=en&sl=auto&q=sangat+setuju+sekali+karna+dukungan+dari+tni+memang+di+perlukan+apalagi+terhadap+pengamanan+kawal+terus+keadilan+di+negeri+ini HTTP/1.1" 200 None
+2025-06-12 14:23:17,008 - DEBUG - Starting new HTTPS connection (1): translate.google.com:443
+2025-06-12 14:23:18,660 - DEBUG - https://translate.google.com:443 "GET /m?tl=en&sl=auto&q=kawal+terus+pak+sampai+tuntas+mudah+dipahami+sih+tapi HTTP/1.1" 200 None
+2025-06-12 14:23:18,853 - DEBUG - Starting new HTTPS connection (1): translate.google.com:443
+2025-06-12 14:23:20,730 - DEBUG - https://translate.google.com:443 "GET /m?tl=en&sl=auto&q=kawal+terus+keadilan+dalam+penegakan+hukum+pak HTTP/1.1" 200 None
+2025-06-12 14:23:21,250 - DEBUG - Starting new HTTPS connection (1): translate.google.com:443
+2025-06-12 14:23:23,511 - DEBUG - https://translate.google.com:443 "GET /m?tl=en&sl=auto&q=ada+pertanyaan+untuk+jaksa+atau+yang+paham+hukum+seseorang+sudah+jadi+tersangka+oleh+kepolisian+yaitu+diduga+melanggar+pasal+kuhp+menggunakan+surat+palsu+untuk+perpanjangan+hgb+pertanyaanya+pasal+delik+biasa+siapa+yang+berhak+melaporkan+dugaan+tsb+petunjuk+jpu+tidak+memiliki+legal+standing+ai+pelapor+perkara+perdata+sedang+tidak+ada+tetapi+ada+petunjuk+jpu+harus+diselesaiakan+secara+perdata+sesuai+perma+no+tahun+apakaj+petunjuk+jpu+diatas+benar+sehingga+pihak+kepolisian+tidak+bisa+melengkapi+p+dari+jpu HTTP/1.1" 200 None
+2025-06-12 14:23:24,888 - DEBUG - Starting new HTTPS connection (1): translate.google.com:443
+2025-06-12 14:23:26,522 - DEBUG - https://translate.google.com:443 "GET /m?tl=en&sl=auto&q=dukung+banget+gua+mah HTTP/1.1" 200 None
+2025-06-12 14:23:26,878 - DEBUG - Starting new HTTPS connection (1): translate.google.com:443
+2025-06-12 14:23:28,547 - DEBUG - https://translate.google.com:443 "GET /m?tl=en&sl=auto&q=setuju+banget+kalau+gua+mh HTTP/1.1" 200 None
+2025-06-12 14:23:29,676 - DEBUG - Starting new HTTPS connection (1): translate.google.com:443
+2025-06-12 14:23:31,817 - DEBUG - https://translate.google.com:443 "GET /m?tl=en&sl=auto&q=iyakan+sajalah+ntar+kritik+dibilang+buzer+bayaran+pula HTTP/1.1" 200 None
+2025-06-12 14:23:32,899 - DEBUG - Starting new HTTPS connection (1): translate.google.com:443
+2025-06-12 14:23:34,974 - DEBUG - https://translate.google.com:443 "GET /m?tl=en&sl=auto&q=semangat+bapak+tni+dalam+menjaga+kejaksaan+agung HTTP/1.1" 200 None
+2025-06-12 14:23:35,761 - DEBUG - Starting new HTTPS connection (1): translate.google.com:443
+2025-06-12 14:23:37,887 - DEBUG - https://translate.google.com:443 "GET /m?tl=en&sl=auto&q=kalau+aku+dukung+tni+agar+tidak+nganggur+di+barak+sekalian+usul+bentuk+tim+detasemen+kurve+atau+korps+hansip+percuma+di+gaji+tidak+ada+kerja HTTP/1.1" 200 None
+2025-06-12 14:23:38,615 - DEBUG - Starting new HTTPS connection (1): translate.google.com:443
+2025-06-12 14:23:40,490 - DEBUG - https://translate.google.com:443 "GET /m?tl=en&sl=auto&q=terus+berjuang+pak HTTP/1.1" 200 None
+2025-06-12 14:23:41,091 - DEBUG - Starting new HTTPS connection (1): translate.google.com:443
+2025-06-12 14:23:42,798 - DEBUG - https://translate.google.com:443 "GET /m?tl=en&sl=auto&q=suai+anggarannya+dukman+juga+cukup+besar HTTP/1.1" 200 None
+2025-06-12 14:23:43,312 - DEBUG - Starting new HTTPS connection (1): translate.google.com:443
+2025-06-12 14:23:45,056 - DEBUG - https://translate.google.com:443 "GET /m?tl=en&sl=auto&q=bingung+siapa+yang+ngasih+peringkatnya HTTP/1.1" 200 None
+2025-06-12 14:23:45,949 - DEBUG - Starting new HTTPS connection (1): translate.google.com:443
+2025-06-12 14:23:47,615 - DEBUG - https://translate.google.com:443 "GET /m?tl=en&sl=auto&q=banyak+punglinya HTTP/1.1" 200 None
+2025-06-12 14:23:48,192 - DEBUG - Starting new HTTPS connection (1): translate.google.com:443
+2025-06-12 14:23:49,714 - DEBUG - https://translate.google.com:443 "GET /m?tl=en&sl=auto&q=komisi+pemberantasan+korupsi+sudah+tidak+ada+suaranya+apa+karena+sudah+kenyang+semua HTTP/1.1" 200 None
+2025-06-12 14:23:50,433 - DEBUG - Starting new HTTPS connection (1): translate.google.com:443
+2025-06-12 14:23:52,159 - DEBUG - https://translate.google.com:443 "GET /m?tl=en&sl=auto&q=mentri+pupr+tidak+bisa+tidur+ini HTTP/1.1" 200 None
+2025-06-12 14:23:52,913 - DEBUG - Starting new HTTPS connection (1): translate.google.com:443
+2025-06-12 14:23:54,800 - DEBUG - https://translate.google.com:443 "GET /m?tl=en&sl=auto&q=komisi+pemberantasan+korupsi+lagi+subuk+gurusin+kasus+ya+sekjen+pdip+soal+itu+lebih+penting+dari+pada+kasus+besar+yang+membuat+rakyat+menjadi+sensara+karna+kasus+akan+membuat+para+pejabat+jadi+sensara HTTP/1.1" 200 None
+2025-06-12 14:23:55,397 - DEBUG - Starting new HTTPS connection (1): translate.google.com:443
+2025-06-12 14:23:57,104 - DEBUG - https://translate.google.com:443 "GET /m?tl=en&sl=auto&q=nah+lho+oprasi+pembersihan+negeri+terus+berlangsung HTTP/1.1" 200 None
+2025-06-12 14:23:57,496 - DEBUG - Starting new HTTPS connection (1): translate.google.com:443
+2025-06-12 14:23:59,509 - DEBUG - https://translate.google.com:443 "GET /m?tl=en&sl=auto&q=bravo+jaksa+agung HTTP/1.1" 200 None
+2025-06-12 14:23:59,927 - DEBUG - Starting new HTTPS connection (1): translate.google.com:443
+2025-06-12 14:24:02,255 - DEBUG - https://translate.google.com:443 "GET /m?tl=en&sl=auto&q=walikota+bandar+lampung+pernah+di+periksa+tapi+hasilnya+hilang+bak+asap+rokok+why HTTP/1.1" 200 None
+2025-06-12 14:24:03,114 - DEBUG - Starting new HTTPS connection (1): translate.google.com:443
+2025-06-12 14:24:05,420 - DEBUG - https://translate.google.com:443 "GET /m?tl=en&sl=auto&q=tunggu+beritanya+dari+orang+dalam+ajah HTTP/1.1" 200 None
+2025-06-12 14:24:06,503 - DEBUG - Starting new HTTPS connection (1): translate.google.com:443
+2025-06-12 14:24:08,753 - DEBUG - https://translate.google.com:443 "GET /m?tl=en&sl=auto&q=sikat+terus HTTP/1.1" 200 None
+2025-06-12 14:24:09,791 - DEBUG - Starting new HTTPS connection (1): translate.google.com:443
+2025-06-12 14:24:11,428 - DEBUG - https://translate.google.com:443 "GET /m?tl=en&sl=auto&q=kasus+diana+wamen+pu+bejibun+dari+semenjak+dia+di+bina+marga+dll HTTP/1.1" 200 None
+2025-06-12 14:24:12,761 - DEBUG - Starting new HTTPS connection (1): translate.google.com:443
+2025-06-12 14:24:14,363 - DEBUG - https://translate.google.com:443 "GET /m?tl=en&sl=auto&q=semoga+kejaksaan+agung+selalu+diberi+kemampuan+memberantas+korupsi+di+segala+lini HTTP/1.1" 200 None
+2025-06-12 14:24:15,006 - DEBUG - Starting new HTTPS connection (1): translate.google.com:443
+2025-06-12 14:24:16,718 - DEBUG - https://translate.google.com:443 "GET /m?tl=en&sl=auto&q=up+terus+beritanya+rakyat+agar+ngerti HTTP/1.1" 200 None
+2025-06-12 14:24:17,450 - DEBUG - Starting new HTTPS connection (1): translate.google.com:443
+2025-06-12 14:24:19,113 - DEBUG - https://translate.google.com:443 "GET /m?tl=en&sl=auto&q=jgn+semua+tempat+dijadikan+ladang HTTP/1.1" 200 None
+2025-06-12 14:24:20,446 - DEBUG - Starting new HTTPS connection (1): translate.google.com:443
+2025-06-12 14:24:22,522 - DEBUG - https://translate.google.com:443 "GET /m?tl=en&sl=auto&q=anak+buahnya+jokowi+lama+lama+masuk+bui+semua+ada+mungkinan+si+pangeran+juga+pertinya HTTP/1.1" 200 None
+2025-06-12 14:24:23,151 - DEBUG - Starting new HTTPS connection (1): translate.google.com:443
+2025-06-12 14:24:25,291 - DEBUG - https://translate.google.com:443 "GET /m?tl=en&sl=auto&q=komisi+pemberantasan+korupsi+tinggal+di+bubarkan+jangan+jadi+beban+megara HTTP/1.1" 200 None
+2025-06-12 14:24:26,087 - DEBUG - Starting new HTTPS connection (1): translate.google.com:443
+2025-06-12 14:24:27,786 - DEBUG - https://translate.google.com:443 "GET /m?tl=en&sl=auto&q=ayu+pak+presiden+tangkapi+dan+penjarakan+para+korupsi+jgn+diberi+ampun HTTP/1.1" 200 None
+2025-06-12 14:24:28,341 - DEBUG - Starting new HTTPS connection (1): translate.google.com:443
+2025-06-12 14:24:30,086 - DEBUG - https://translate.google.com:443 "GET /m?tl=en&sl=auto&q=polri+dan+komisi+pemberantasan+korupsi+sedang+nonton+korupsi+di+tangkapin+kejaksaan+tangkap+semua+korupsi+tanpa+pandang+bulu+yang+terbukti+bersalah+penjarakan+korupsi+sudah+sangat+parah+hampir+di+semua+kementrian+ada+kasus+korupsi+yang+di+lakukan+oleh+pejabat+korupsi HTTP/1.1" 200 None
+2025-06-12 14:24:31,808 - DEBUG - Starting new HTTPS connection (1): translate.google.com:443
+2025-06-12 14:24:34,527 - DEBUG - https://translate.google.com:443 "GET /m?tl=en&sl=auto&q=gopooll+para+korupsi HTTP/1.1" 200 None
+2025-06-12 14:24:35,444 - DEBUG - Starting new HTTPS connection (1): translate.google.com:443
+2025-06-12 14:24:37,531 - DEBUG - https://translate.google.com:443 "GET /m?tl=en&sl=auto&q=padahal+dia+sudah+menghayal+beli+alphard+beli+rumah+lagi+nambah+bini+eh+ketahuan+dulu HTTP/1.1" 200 None
+2025-06-12 14:24:38,113 - DEBUG - Starting new HTTPS connection (1): translate.google.com:443
+2025-06-12 14:24:40,045 - DEBUG - https://translate.google.com:443 "GET /m?tl=en&sl=auto&q=semua+hakim+itu+makan+uang+suap+perkara HTTP/1.1" 200 None
+2025-06-12 14:24:40,595 - DEBUG - Starting new HTTPS connection (1): translate.google.com:443
+2025-06-12 14:24:42,246 - DEBUG - https://translate.google.com:443 "GET /m?tl=en&sl=auto&q=tambah+lagi+gol+sakit+hati+nti HTTP/1.1" 200 None
+2025-06-12 14:24:42,915 - DEBUG - Starting new HTTPS connection (1): translate.google.com:443
+2025-06-12 14:24:44,640 - DEBUG - https://translate.google.com:443 "GET /m?tl=en&sl=auto&q=makin+banyak+yang+korupsi+makin+susah+nyari+uang+tahu+tidak+sekarang+susah+bangat+jualan+sepi+pengunjung+uang+entah+kemana+semakin+hari+semakin+parah HTTP/1.1" 200 None
+2025-06-12 14:24:46,208 - DEBUG - Starting new HTTPS connection (1): translate.google.com:443
+2025-06-12 14:24:47,665 - DEBUG - https://translate.google.com:443 "GET /m?tl=en&sl=auto&q=jadi+ovt+ke+hakim+yang+mutusin+mama+paula+selingkuh HTTP/1.1" 200 None
+2025-06-12 14:24:47,877 - DEBUG - Starting new HTTPS connection (1): translate.google.com:443
+2025-06-12 14:24:49,384 - DEBUG - https://translate.google.com:443 "GET /m?tl=en&sl=auto&q=hukum+seberat+berat+nya+karna+selain+merugikan+negara+juga+sangat+mencoreng+nama+baik+lembaga HTTP/1.1" 200 None
+2025-06-12 14:24:50,193 - DEBUG - Starting new HTTPS connection (1): translate.google.com:443
+2025-06-12 14:24:52,073 - DEBUG - https://translate.google.com:443 "GET /m?tl=en&sl=auto&q=dah+hal+biasa+inisial+p+dari+pengadilan+republik+cinta+jeparang+sama+istri+keduanya+pelakornya+kantor+bag+duta+anak+michat+itu+kus+juga+inisial+istrinya+s+suka+terima+di+kantor+rmh+tmpt+mkn+or+perantara+proyek+mereka+setelah+putusan+ketok+palu+suka+minta+hotel+dan+tiket+a+jadi+manten+saja+di+hotel+daerah+bogor+aman+saja+tuh+tidak+ketekong+msh+mimpin+persidangan+suka+jadi+ketua+majelis+cinta+tuh+agung HTTP/1.1" 200 None
+2025-06-12 14:24:53,392 - DEBUG - Starting new HTTPS connection (1): translate.google.com:443
+2025-06-12 14:24:55,102 - DEBUG - https://translate.google.com:443 "GET /m?tl=en&sl=auto&q=sumatra+selatan+hakimnya+jaksa+inspektorat+bapak+kepala+daerah+kepala+dinas+kontraktor+kaya+raya+bermain+rapi+cantik+bersinergi+hanya+kejaksaan+agung+mampu+beri+perubahan HTTP/1.1" 200 None
+2025-06-12 14:24:55,747 - DEBUG - Starting new HTTPS connection (1): translate.google.com:443
+2025-06-12 14:24:57,340 - DEBUG - https://translate.google.com:443 "GET /m?tl=en&sl=auto&q=mau+naikin+harga+kremes+rp+saja+mikir+banget+pertimbangan+uang+baru+susah+kasihan+konsumen+eh+jebul+di+tilep+wong+kejaksaan+smkn+pd+g+takut+karma+dari+semesta HTTP/1.1" 200 None
+2025-06-12 14:24:58,272 - DEBUG - Starting new HTTPS connection (1): translate.google.com:443
+2025-06-12 14:24:59,817 - DEBUG - https://translate.google.com:443 "GET /m?tl=en&sl=auto&q=selalu+trulang+terus+karena+hukumnya+tidak+ditegakan+dngan+benar+tidak+ada+efek+jeranya+uu+perampasan+susah+disahkan+miskinkan+korupsi+tpu+kasihan+ma+anak+korupsi+coba+ituh+meledakkkkkk HTTP/1.1" 200 None
+2025-06-12 14:25:00,392 - DEBUG - Starting new HTTPS connection (1): translate.google.com:443
+2025-06-12 14:25:03,017 - DEBUG - https://translate.google.com:443 "GET /m?tl=en&sl=auto&q=great+goodjob+kejaksaan+agung+ri+berantas+n+tangkap+pelaku+korupsi HTTP/1.1" 200 None
+2025-06-12 14:25:03,504 - DEBUG - Starting new HTTPS connection (1): translate.google.com:443
+2025-06-12 14:25:06,939 - DEBUG - https://translate.google.com:443 "GET /m?tl=en&sl=auto&q=pinternya+buat+ngebohongin+org+sayang+ya HTTP/1.1" 200 None
+2025-06-12 14:25:07,962 - DEBUG - Starting new HTTPS connection (1): translate.google.com:443
+2025-06-12 14:25:10,395 - DEBUG - https://translate.google.com:443 "GET /m?tl=en&sl=auto&q=seharusnya+perputaran+uang+itu+cepat+ini+malah+di+korupsi+jadinya+lambat HTTP/1.1" 200 None
+2025-06-12 14:25:11,507 - DEBUG - Starting new HTTPS connection (1): translate.google.com:443
+2025-06-12 14:25:13,191 - DEBUG - https://translate.google.com:443 "GET /m?tl=en&sl=auto&q=pinter+keblinger+hri+tuanya+hidup+dipenjara+miris HTTP/1.1" 200 None
+2025-06-12 14:25:14,205 - DEBUG - Starting new HTTPS connection (1): translate.google.com:443
+2025-06-12 14:25:15,842 - DEBUG - https://translate.google.com:443 "GET /m?tl=en&sl=auto&q=harta+hakim+ali+muhtarom+tersebar+dijepara HTTP/1.1" 200 None
+2025-06-12 14:25:16,207 - DEBUG - Starting new HTTPS connection (1): translate.google.com:443
+2025-06-12 14:25:17,908 - DEBUG - https://translate.google.com:443 "GET /m?tl=en&sl=auto&q=itu+yakin+tempat+tidur+nya+hakim+ali+muhtarom HTTP/1.1" 200 None
+2025-06-12 14:25:18,232 - DEBUG - Starting new HTTPS connection (1): translate.google.com:443
+2025-06-12 14:25:19,837 - DEBUG - https://translate.google.com:443 "GET /m?tl=en&sl=auto&q=untung+uang+cash+ku+yang+m+aku+simpen+rapih+di+dalam+pikiran+ku+jadi+tidak+bakal+ada+yang+nemuin+amanlah+pokoknya HTTP/1.1" 200 None
+2025-06-12 14:25:20,498 - DEBUG - Starting new HTTPS connection (1): translate.google.com:443
+2025-06-12 14:25:22,235 - DEBUG - https://translate.google.com:443 "GET /m?tl=en&sl=auto&q=beruntung+nya+istri+hakim+ali+muhtarom+bisa+melihat+n+memegang+uang+m+secara+lgsung HTTP/1.1" 200 None
+2025-06-12 14:25:22,962 - DEBUG - Starting new HTTPS connection (1): translate.google.com:443
+2025-06-12 14:25:24,651 - DEBUG - https://translate.google.com:443 "GET /m?tl=en&sl=auto&q=ternyata+m+cuman+seiprit+itu HTTP/1.1" 200 None
+2025-06-12 14:25:25,122 - DEBUG - Starting new HTTPS connection (1): translate.google.com:443
+2025-06-12 14:25:26,604 - DEBUG - https://translate.google.com:443 "GET /m?tl=en&sl=auto&q=masak+ya+itu+tempat+tidur+nya+hakim+ali+muhtarom HTTP/1.1" 200 None
+2025-06-12 14:25:27,293 - DEBUG - Starting new HTTPS connection (1): translate.google.com:443
+2025-06-12 14:25:28,882 - DEBUG - https://translate.google.com:443 "GET /m?tl=en&sl=auto&q=tidak+yakin+juga+masak+sekelas+hakim+tempat+kasurnya+seperti+itu HTTP/1.1" 200 None
+2025-06-12 14:27:01,012 - INFO - 127.0.0.1 - - [12/Jun/2025 14:27:01] "POST /analyze/analisis-ml HTTP/1.1" 200 -

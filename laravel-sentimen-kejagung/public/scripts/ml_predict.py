@@ -85,7 +85,7 @@ def exec_main_script():
         SELECT id, video_id, username, comment, tanggal_komentar 
         FROM komentar_mentah
         WHERE is_processed_ml = 0 AND is_processed_vader = 0
-        LIMIT 800
+        LIMIT 200
     """
     data_mentah = pd.read_sql(query, engine)
 

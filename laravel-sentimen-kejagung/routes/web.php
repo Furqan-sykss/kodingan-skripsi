@@ -6,6 +6,7 @@ use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\Admin\ResultController;
 use App\Http\Controllers\Admin\ScrapeController;
 use App\Http\Controllers\Admin\MLAnalysisController;
+use App\Http\Controllers\ExportController;
 use App\Http\Middleware\AdminMiddleware; // ⬅️ Tambahkan ini
 
 // Route::get('/', function () {
@@ -20,6 +21,7 @@ Route::middleware(['auth'])->group(function () {
 
     // 🏠 Halaman Dashboard untuk semua user
     Route::get('/', [DashboardController::class, 'index'])->name('dashboard');
+    Route::get('/export-komentar-ml', [ExportController::class, 'exportKomentarML'])->name('export.komentar.ml');
 
     Route::middleware([AdminMiddleware::class])->group(function () {
         Route::post('/scrape', [ScrapeController::class, 'scrape'])->name('scrape');
