@@ -1,8 +1,7 @@
+from scraping_komentar_dedup import run_scraping
 from flask import Flask, jsonify, request
 from flask_cors import CORS
-import subprocess
 import os
-import traceback
 import logging
 # curl -X POST http://127.0.0.1:5000/scrape
 from sentiment_vader import run_vader_analysis
@@ -12,47 +11,36 @@ app = Flask(__name__)
 CORS(app)
 
 # Setup Logging
-logging.basicConfig(
-    filename='flask_log.txt',
-    level=logging.DEBUG,
-    format='%(asctime)s - %(levelname)s - %(message)s',
-)
+logging.basicConfig(level=logging.DEBUG)
 # Path ke script scraping
 SCRIPT_PATH = os.path.join(os.getcwd(), 'public',
                            'scripts', 'scraping_komentar_dedup.py')
 
 
 # ✅ Endpoint untuk menjalankan scraping
-@app.route('/scrape', methods=['POST'])
+
 @app.route('/scrape', methods=['POST'])
 def scrape():
+    app.logger.info("📥 Memulai proses scraping dari endpoint /scrape...")
     try:
-        logging.info("📥 Memulai proses scraping dari endpoint /scrape...")
-        result = subprocess.run(
-            ['python', SCRIPT_PATH],
-            stdout=subprocess.PIPE,
-            stderr=subprocess.PIPE,
-            text=True
-        )
+        total_disimpan = run_scraping()
 
-        if result.returncode != 0:
-            logging.error(f"❌ Scraping gagal: {result.stderr}")
+        if total_disimpan > 0:
             return jsonify({
-                'status': 'error',
-                'message': f"Scraping gagal: {result.stderr}"
-            }), 500
-
-        logging.info("✅ Scraping berhasil diselesaikan.")
-        return jsonify({
-            'status': 'success',
-            'message': 'Scraping berhasil diselesaikan.'
-        }), 200
+                'status': 'success',
+                'message': f'Scraping berhasil diselesaikan. Total komentar disimpan: {total_disimpan}'
+            }), 200
+        else:
+            return jsonify({
+                'status': 'partial',
+                'message': 'Tidak ada komentar yang berhasil disimpan. Coba lagi nanti.'
+            }), 200
 
     except Exception as e:
-        logging.error("❌ Exception saat scraping: " + traceback.format_exc())
+        logging.exception("❌ Terjadi kesalahan saat menjalankan scraping")
         return jsonify({
             'status': 'error',
-            'message': f"Gagal menjalankan scraping: {str(e)}"
+            'message': f'Scraping gagal: {str(e)}'
         }), 500
 
 

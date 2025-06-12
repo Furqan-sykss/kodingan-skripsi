@@ -14,7 +14,7 @@ from selenium.webdriver.common.keys import Keys
 from selenium.webdriver.chrome.service import Service
 from dotenv import load_dotenv
 
-# ========== ✅ Logging ==========
+# ✅ Logging
 logging.basicConfig(
     filename='scraping_log.txt',
     level=logging.DEBUG,
@@ -22,32 +22,15 @@ logging.basicConfig(
 )
 logging.debug("🚀 Memulai proses scraping...")
 
-# ========== ✅ Load .env ==========
+# ✅ Load .env
 load_dotenv(dotenv_path=os.path.join(
     os.path.dirname(os.path.dirname(__file__)), '.env'))
 
-# ========== ✅ Path Konfigurasi ==========
 SCRIPT_DIR = os.path.dirname(os.path.abspath(__file__))
 CHROMEDRIVER_PATH = os.path.join(SCRIPT_DIR, 'chromedriver.exe')
 COOKIE_FILE_PATH = os.path.join(SCRIPT_DIR, 'tiktok_cookies.json')
 
-# ========== ✅ Koneksi DB ==========
-try:
-    db = pymysql.connect(
-        host=os.getenv("DB_HOST"),
-        port=int(os.getenv("DB_PORT")),
-        user=os.getenv("DB_USERNAME"),
-        password=os.getenv("DB_PASSWORD"),
-        database=os.getenv("DB_DATABASE"),
-        charset='utf8mb4'
-    )
-    cursor = db.cursor()
-    logging.debug("✅ Koneksi database berhasil.")
-except Exception as e:
-    logging.error(f"❌ Koneksi database gagal: {e}")
-    exit()
-
-# ========== ✅ Fungsi Validasi ==========
+# ✅ Validasi komentar
 
 
 def komentar_valid(teks):
@@ -57,37 +40,6 @@ def komentar_valid(teks):
     if re.fullmatch(r"[^\w\s]+", teks):
         return False
     return True
-
-
-def komentar_sudah_ada(video_id, comment_text):
-    sql = "SELECT COUNT(*) FROM komentar_mentah WHERE video_id = %s AND comment = %s"
-    cursor.execute(sql, (video_id, comment_text))
-    result = cursor.fetchone()
-    return result[0] > 0
-
-
-def simpan_komentar(data):
-    try:
-        sql = """
-            INSERT INTO komentar_mentah (
-                video_id, kata_kunci, username, comment, likes, replies, tanggal_komentar,
-                is_processed_vader, is_processed_ml, created_at
-            ) VALUES (%s, %s, %s, %s, %s, %s, %s, 0, 0, NOW())
-        """
-        cursor.execute(sql, (
-            data['video_id'],
-            data['kata_kunci'],
-            data['username'],
-            data['comment'],
-            data['likes'],
-            data['replies'],
-            data['tanggal_komentar']
-        ))
-        db.commit()
-        logging.debug(
-            f"✅ Disimpan: {data['comment'][:40]}... ({data['video_id']})")
-    except Exception as e:
-        logging.error(f"❌ Gagal simpan DB: {e}")
 
 
 def load_cookies(driver, cookie_path):
@@ -106,10 +58,8 @@ def load_cookies(driver, cookie_path):
     except Exception as e:
         logging.error(f"❌ Gagal memuat cookies: {e}")
 
-# ========== ✅ Fungsi Utama ==========
 
-
-def scraping_by_hashtag(tagar, max_videos=5, max_comments=50):
+def scraping_by_hashtag(tagar, db, cursor, max_videos=5, max_comments=100):
     logging.debug(f"\n🔍 Scraping untuk tagar: #{tagar}")
     options = Options()
     options.add_argument('--headless')
@@ -121,6 +71,9 @@ def scraping_by_hashtag(tagar, max_videos=5, max_comments=50):
 
     service = Service(CHROMEDRIVER_PATH)
     driver = webdriver.Chrome(service=service, options=options)
+    driver.set_page_load_timeout(240)
+
+    komentar_disimpan = 0
 
     try:
         driver.get("https://www.tiktok.com")
@@ -137,7 +90,7 @@ def scraping_by_hashtag(tagar, max_videos=5, max_comments=50):
         collected = set()
         for link in links:
             href = link.get_attribute("href")
-            if "/video/" in href and not komentar_sudah_ada(href, ""):
+            if "/video/" in href:
                 collected.add(href)
             if len(collected) >= max_videos:
                 break
@@ -156,19 +109,16 @@ def scraping_by_hashtag(tagar, max_videos=5, max_comments=50):
                 "Referer": video_url
             }
 
-            response = requests.get(api_url, headers=headers, timeout=10)
+            response = requests.get(api_url, headers=headers, timeout=30)
             response.raise_for_status()
             data = response.json()
             comments = data.get('comments', [])
-
-            if not comments:
-                logging.debug(f"❌ Tidak ada komentar di: {video_url}")
-                continue
 
             for item in comments:
                 raw_comment = item.get('text', '')
                 if not komentar_valid(raw_comment):
                     continue
+
                 user_nickname = item.get('user', {}).get('nickname', 'unknown')
                 likes = item.get('digg_count', 0)
                 replies = item.get('reply_comment_total', 0)
@@ -177,26 +127,54 @@ def scraping_by_hashtag(tagar, max_videos=5, max_comments=50):
                 tanggal_komentar = datetime.datetime.fromtimestamp(unix_date).strftime(
                     '%Y-%m-%d %H:%M:%S') if unix_date else None
 
-                simpan_komentar({
-                    "video_id": video_url,
-                    "kata_kunci": tagar,
-                    "username": user_nickname,
-                    "comment": raw_comment,
-                    "likes": likes,
-                    "replies": replies,
-                    "tanggal_komentar": tanggal_komentar
-                })
+                try:
+                    sql = """
+                        INSERT INTO komentar_mentah (
+                            video_id, kata_kunci, username, comment, likes, replies, tanggal_komentar,
+                            is_processed_vader, is_processed_ml, created_at
+                        ) VALUES (%s, %s, %s, %s, %s, %s, %s, 0, 0, NOW())
+                    """
+                    cursor.execute(sql, (
+                        video_url, tagar, user_nickname, raw_comment,
+                        likes, replies, tanggal_komentar
+                    ))
+                    db.commit()
+                    komentar_disimpan += 1
+                    logging.debug(f"✅ Disimpan: {raw_comment[:40]}...")
+                except Exception as e:
+                    logging.error(f"❌ Gagal simpan DB: {e}")
 
     except Exception as e:
         logging.error(f"❌ Gagal scraping: {e}")
     finally:
         driver.quit()
-        db.close()
-        logging.debug("🛑 Driver & koneksi database ditutup")
+        logging.debug("🛑 Driver ditutup")
+
+    return komentar_disimpan
 
 
-# ========== ✅ Main ==========
-if __name__ == '__main__':
-    hashtags = ["kejaksaan agung", "kejagung", "kinerja kejaksaan agung"]
+# ✅ Main untuk dipanggil Flask
+def run_scraping():
+    try:
+        db = pymysql.connect(
+            host=os.getenv("DB_HOST"),
+            port=int(os.getenv("DB_PORT")),
+            user=os.getenv("DB_USERNAME"),
+            password=os.getenv("DB_PASSWORD"),
+            database=os.getenv("DB_DATABASE"),
+            charset='utf8mb4'
+        )
+        cursor = db.cursor()
+        logging.debug("✅ Koneksi database berhasil.")
+    except Exception as e:
+        logging.error(f"❌ Koneksi database gagal: {e}")
+        return 0
+
+    hashtags = ["kejaksaan agung", "kejagung"]
+    total_berhasil = 0
     for tag in hashtags:
-        scraping_by_hashtag(tag)
+        total_berhasil += scraping_by_hashtag(tag, db, cursor)
+
+    db.close()
+    logging.debug("🛑 Koneksi database ditutup")
+    return total_berhasil

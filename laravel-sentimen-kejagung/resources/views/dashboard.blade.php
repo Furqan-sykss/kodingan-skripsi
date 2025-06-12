@@ -626,25 +626,42 @@
         }
 
         // Scraping Process
-        $('#scrapeButton').on('click', function() {
-            showLoading('Scraping...', 'Harap tunggu, ini bisa memakan waktu beberapa menit');
+        $('#scrapeButton').on('click', function () {
+    showLoading(
+        'Sedang melakukan scraping...',
+        'Proses ini mungkin memakan waktu beberapa menit'
+    );
 
-            $.ajax({
-                url: "http://127.0.0.1:5000/scrape",
-                type: "POST",
-                success: function(response) {
-                    hideLoading();
-                    alert(response.message);
-                    if (confirm("Lihat hasil sekarang?")) {
-                        window.location.href = "{{ route('scraping.result') }}";
-                    }
-                },
-                error: function(xhr, status, error) {
-                    hideLoading();
-                    alert("Gagal: " + (xhr.responseJSON?.message || error));
+    $.ajax({
+        url: "http://127.0.0.1:5000/scrape",
+        type: "POST",
+        headers: {
+            'X-CSRF-TOKEN': '{{ csrf_token() }}'
+        },
+        success: function (response) {
+            hideLoading();
+
+            if (response.status === "success") {
+                alert(`${response.message}\nJumlah komentar disimpan: ${response.total_saved}`);
+                if (confirm("Scraping berhasil! Ingin melihat hasil?")) {
+                    window.location.href = "{{ route('scraping.result') }}";
                 }
-            });
-        });
+            } else if (response.status === "partial") {
+                alert(`Scraping sebagian berhasil.\n${response.message}\nKomentar disimpan: ${response.total_saved}`);
+                if (confirm("Lihat data yang berhasil?")) {
+                    window.location.href = "{{ route('scraping.result') }}";
+                }
+            } else {
+                alert(`Scraping gagal.\n${response.message}`);
+            }
+        },
+        error: function (xhr, status, error) {
+            hideLoading();
+            alert("Tidak dapat menghubungi server Flask.\nStatus: " + status + "\nError: " + error);
+        }
+    });
+});
+
 
 
         // ML Analysis Process
