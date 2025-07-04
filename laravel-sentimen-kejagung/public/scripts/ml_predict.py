@@ -34,7 +34,12 @@ def normalisasi_kata(teks):
 def apply_idioms(teks):
     idiom_dict = {
         "maung": "hero", "jos": "awesome", "gass": "go",
-        "mantap": "great", "di tangan": "in the hands of"
+        "di tangan": "in the hands of", "gokil": "crazy cool",
+        "gasskeun": "let's go", "sangar": "awesome", "kpk gunanya apa": "kpk is useless",
+        "kpk kerjanya apa": "kpk does nothing",
+        "ngapain aja": "what have they done",
+        "fungsi nya apa": "what's the function",
+        "kerjanya cuma": "only does",
     }
     for k, v in idiom_dict.items():
         teks = teks.replace(k, v)
@@ -85,7 +90,7 @@ def exec_main_script():
         SELECT id, video_id, username, comment, tanggal_komentar 
         FROM komentar_mentah
         WHERE is_processed_ml = 0 AND is_processed_vader = 0
-        LIMIT 200
+        LIMIT 300
     """
     data_mentah = pd.read_sql(query, engine)
 

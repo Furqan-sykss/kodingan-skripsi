@@ -25,7 +25,12 @@ except Exception as e:
 # =================== 🌐 Idiom + Cache Translasi ===================
 idiom_dict = {
     "maung": "hero", "jos": "awesome", "gass": "go",
-    "mantap": "great", "di tangan": "in the hands of",
+    "di tangan": "in the hands of", "gokil": "crazy cool",
+    "gasskeun": "let's go", "sangar": "awesome", "kpk gunanya apa": "kpk is useless",
+    "kpk kerjanya apa": "kpk does nothing",
+    "ngapain aja": "what have they done",
+    "fungsi nya apa": "what's the function",
+    "kerjanya cuma": "only does",
 }
 translation_cache = {}
 
@@ -106,7 +111,7 @@ def analyze_sentiment(teks):
 # =================== 🚀 Eksekusi Analisis ===================
 
 
-def run_vader_analysis(limit=400):
+def run_vader_analysis(limit=500):
     logger.info("🚀 Mulai analisis VADER...")
     select_query = f"""
         SELECT id, video_id, username, comment, tanggal_komentar
@@ -126,6 +131,8 @@ def run_vader_analysis(limit=400):
         )
     """
     update_query = "UPDATE komentar_mentah SET is_processed_vader = 1 WHERE id = :id"
+    processed = 0
+    skipped = 0
 
     with Session() as session:
         data = pd.read_sql(text(select_query), engine)
@@ -153,8 +160,11 @@ def run_vader_analysis(limit=400):
                 session.execute(text(update_query), {"id": row["id"]})
                 session.commit()
                 logger.info(f"✅ Komentar ID {row['id']} diproses.")
+                processed += 1
             except Exception as e:
                 logger.error(f"❌ Gagal proses ID {row['id']}: {e}")
                 session.rollback()
+                skipped += 1
 
     logger.info("✅ Analisis selesai.")
+    return {"processed": processed, "skipped": skipped}
