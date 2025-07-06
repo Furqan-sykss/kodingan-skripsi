@@ -31,9 +31,9 @@ model = RandomForestClassifier(
     random_state=42
 )
 
-# ==== Setup K-Fold ====
-n_splits = 5
-n_repeats = 3
+# ==== Setup K-Fold ===
+n_splits = 10
+n_repeats = 5
 
 cv = RepeatedStratifiedKFold(
     n_splits=n_splits,

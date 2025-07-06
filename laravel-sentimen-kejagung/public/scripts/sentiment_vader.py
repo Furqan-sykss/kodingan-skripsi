@@ -9,10 +9,23 @@ from sqlalchemy.orm import sessionmaker, Session
 from nltk.sentiment.vader import SentimentIntensityAnalyzer
 from deep_translator import GoogleTranslator
 
+
 # =================== 🔧 Logging ===================
-logging.basicConfig(level=logging.INFO,
-                    format='%(asctime)s - %(levelname)s - %(message)s')
-logger = logging.getLogger(__name__)
+log_formatter = logging.Formatter('%(asctime)s - %(levelname)s - %(message)s')
+logger = logging.getLogger('sentiment_vader_logger')
+logger.setLevel(logging.INFO)
+
+# Handler ke file
+file_handler = logging.FileHandler('sentiment_vader.log', encoding='utf-8')
+file_handler.setFormatter(log_formatter)
+if not any(isinstance(h, logging.FileHandler) for h in logger.handlers):
+    logger.addHandler(file_handler)
+
+# Handler ke console
+stream_handler = logging.StreamHandler()
+stream_handler.setFormatter(log_formatter)
+if not any(isinstance(h, logging.StreamHandler) for h in logger.handlers):
+    logger.addHandler(stream_handler)
 
 # =================== 📄 Load Kamus Normalisasi ===================
 try:
@@ -111,7 +124,7 @@ def analyze_sentiment(teks):
 # =================== 🚀 Eksekusi Analisis ===================
 
 
-def run_vader_analysis(limit=500):
+def run_vader_analysis(limit=458):
     logger.info("🚀 Mulai analisis VADER...")
     select_query = f"""
         SELECT id, video_id, username, comment, tanggal_komentar

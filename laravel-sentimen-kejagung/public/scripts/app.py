@@ -4,6 +4,7 @@ from flask_cors import CORS
 import os
 import logging
 # curl -X POST http://127.0.0.1:5000/scrape
+# curl -X POST http://127.0.0.1:5000/analyze/vader
 from sentiment_vader import run_vader_analysis
 from ml_predict import run_ML_analysis
 
@@ -11,7 +12,17 @@ app = Flask(__name__)
 CORS(app)
 
 # Setup Logging
-logging.basicConfig(level=logging.DEBUG)
+app_logger = logging.getLogger("flask_app")
+app_logger.setLevel(logging.DEBUG)
+
+# Cek agar tidak double handler
+app.logger.setLevel(logging.DEBUG)
+if not app.logger.handlers:
+    handler = logging.StreamHandler()
+    formatter = logging.Formatter('%(asctime)s - %(levelname)s - %(message)s')
+    handler.setFormatter(formatter)
+    app.logger.addHandler(handler)
+
 # Path ke script scraping
 SCRIPT_PATH = os.path.join(os.getcwd(), 'public',
                            'scripts', 'scraping_komentar_dedup.py')

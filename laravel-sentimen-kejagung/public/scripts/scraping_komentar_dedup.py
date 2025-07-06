@@ -14,13 +14,19 @@ from selenium.webdriver.common.keys import Keys
 from selenium.webdriver.chrome.service import Service
 from dotenv import load_dotenv
 
-# ✅ Logging
-logging.basicConfig(
-    filename='scraping_log.txt',
-    level=logging.DEBUG,
-    format='%(asctime)s - %(levelname)s - %(message)s',
-)
-logging.debug("🚀 Memulai proses scraping...")
+scrape_logger = logging.getLogger('scrape_logger')
+scrape_logger.setLevel(logging.DEBUG)
+file_handler = logging.FileHandler('scraping_log.log', encoding='utf-8')
+formatter = logging.Formatter('%(asctime)s - %(levelname)s - %(message)s')
+file_handler.setFormatter(formatter)
+if not any(isinstance(h, logging.FileHandler) for h in scrape_logger.handlers):
+    scrape_logger.addHandler(file_handler)
+# Tambahkan handler ke console agar log juga tampil di terminal
+stream_handler = logging.StreamHandler()
+stream_handler.setFormatter(formatter)
+if not any(isinstance(h, logging.StreamHandler) for h in scrape_logger.handlers):
+    scrape_logger.addHandler(stream_handler)
+
 
 # ✅ Load .env
 load_dotenv(dotenv_path=os.path.join(
@@ -54,13 +60,13 @@ def load_cookies(driver, cookie_path):
                 if cookie.get("domain", "").startswith("."):
                     cookie["domain"] = cookie["domain"].lstrip(".")
                 driver.add_cookie(cookie)
-        logging.debug("✅ Cookies dimuat.")
+        scrape_logger.debug("✅ Cookies dimuat.")
     except Exception as e:
-        logging.error(f"❌ Gagal memuat cookies: {e}")
+        scrape_logger.error(f"❌ Gagal memuat cookies: {e}")
 
 
 def scraping_by_hashtag(tagar, db, cursor, max_videos=5, max_comments=100):
-    logging.debug(f"\n🔍 Scraping untuk tagar: #{tagar}")
+    scrape_logger.debug(f"\n🔍 Scraping untuk tagar: #{tagar}")
     options = Options()
     options.add_argument('--headless')
     options.add_argument('--no-sandbox')
@@ -96,7 +102,7 @@ def scraping_by_hashtag(tagar, db, cursor, max_videos=5, max_comments=100):
                 break
 
         for video_url in collected:
-            logging.debug(f"🎥 Memproses: {video_url}")
+            scrape_logger.debug(f"🎥 Memproses: {video_url}")
             parts = video_url.split("/video/")
             if len(parts) < 2:
                 continue
@@ -140,41 +146,48 @@ def scraping_by_hashtag(tagar, db, cursor, max_videos=5, max_comments=100):
                     ))
                     db.commit()
                     komentar_disimpan += 1
-                    logging.debug(f"✅ Disimpan: {raw_comment[:40]}...")
+                    scrape_logger.debug(f"✅ Disimpan: {raw_comment[:40]}...")
                 except Exception as e:
-                    logging.error(f"❌ Gagal simpan DB: {e}")
+                    scrape_logger.error(f"❌ Gagal simpan DB: {e}")
 
     except Exception as e:
-        logging.error(f"❌ Gagal scraping: {e}")
+        scrape_logger.error(f"❌ Gagal scraping: {e}")
     finally:
         driver.quit()
-        logging.debug("🛑 Driver ditutup")
+        scrape_logger.debug("🛑 Driver ditutup")
 
     return komentar_disimpan
 
 
 # ✅ Main untuk dipanggil Flask
 def run_scraping():
+    scrape_logger.info('Fungsi run_scraping() dipanggil')
     try:
         db = pymysql.connect(
             host=os.getenv("DB_HOST"),
-            port=int(os.getenv("DB_PORT")),
+            port=int(os.getenv("DB_PORT") or 3306),
             user=os.getenv("DB_USERNAME"),
             password=os.getenv("DB_PASSWORD"),
             database=os.getenv("DB_DATABASE"),
             charset='utf8mb4'
         )
         cursor = db.cursor()
-        logging.debug("✅ Koneksi database berhasil.")
+        scrape_logger.info("✅ Koneksi database berhasil.")
     except Exception as e:
-        logging.error(f"❌ Koneksi database gagal: {e}")
+        scrape_logger.error(f"❌ Koneksi database gagal: {e}")
         return 0
 
     hashtags = ["kejaksaan agung", "kejagung"]
     total_berhasil = 0
     for tag in hashtags:
+        scrape_logger.info(f"Memulai scraping untuk tagar: {tag}")
         total_berhasil += scraping_by_hashtag(tag, db, cursor)
 
     db.close()
-    logging.debug("🛑 Koneksi database ditutup")
+    scrape_logger.info("🛑 Koneksi database ditutup")
     return total_berhasil
+
+
+# ✅ jika digunakan untuk dipanggil manual
+# if __name__ == "__main__":
+#     run_scraping()
