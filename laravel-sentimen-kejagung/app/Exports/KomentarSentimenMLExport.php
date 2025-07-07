@@ -8,18 +8,20 @@ use Maatwebsite\Excel\Concerns\WithHeadings;
 
 class KomentarSentimenMLExport implements FromCollection, WithHeadings
 {
+    protected $columns;
+
+    public function __construct(array $columns)
+    {
+        $this->columns = $columns;
+    }
+
     public function collection()
     {
-        return KomentarSentimenML::select('video_id', 'tanggal_komentar', 'comment', 'predicted_label', 'created_at')->get();
+        return KomentarSentimenML::select($this->columns)->get();
     }
 
     public function headings(): array
     {
-        return [
-            'video_id', 'tanggal_komentar',
-            'comment',
-            'Label Prediksi',
-            'Tanggal Dibuat',
-        ];
+        return $this->columns;
     }
 }

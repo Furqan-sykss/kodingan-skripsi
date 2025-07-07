@@ -12,20 +12,23 @@ from selenium.webdriver.chrome.options import Options
 from selenium.webdriver.common.by import By
 from selenium.webdriver.common.keys import Keys
 from selenium.webdriver.chrome.service import Service
+from webdriver_manager.chrome import ChromeDriverManager
 from dotenv import load_dotenv
 
-scrape_logger = logging.getLogger('scrape_logger')
-scrape_logger.setLevel(logging.DEBUG)
-file_handler = logging.FileHandler('scraping_log.log', encoding='utf-8')
+
+# Logger untuk crawling
+crawl_logger = logging.getLogger('crawl_logger')
+crawl_logger.setLevel(logging.DEBUG)
+file_handler = logging.FileHandler('crawling_log.log', encoding='utf-8')
 formatter = logging.Formatter('%(asctime)s - %(levelname)s - %(message)s')
 file_handler.setFormatter(formatter)
-if not any(isinstance(h, logging.FileHandler) for h in scrape_logger.handlers):
-    scrape_logger.addHandler(file_handler)
+if not any(isinstance(h, logging.FileHandler) for h in crawl_logger.handlers):
+    crawl_logger.addHandler(file_handler)
 # Tambahkan handler ke console agar log juga tampil di terminal
 stream_handler = logging.StreamHandler()
 stream_handler.setFormatter(formatter)
-if not any(isinstance(h, logging.StreamHandler) for h in scrape_logger.handlers):
-    scrape_logger.addHandler(stream_handler)
+if not any(isinstance(h, logging.StreamHandler) for h in crawl_logger.handlers):
+    crawl_logger.addHandler(stream_handler)
 
 
 # ✅ Load .env
@@ -33,7 +36,6 @@ load_dotenv(dotenv_path=os.path.join(
     os.path.dirname(os.path.dirname(__file__)), '.env'))
 
 SCRIPT_DIR = os.path.dirname(os.path.abspath(__file__))
-CHROMEDRIVER_PATH = os.path.join(SCRIPT_DIR, 'chromedriver.exe')
 COOKIE_FILE_PATH = os.path.join(SCRIPT_DIR, 'tiktok_cookies.json')
 
 # ✅ Validasi komentar
@@ -60,13 +62,14 @@ def load_cookies(driver, cookie_path):
                 if cookie.get("domain", "").startswith("."):
                     cookie["domain"] = cookie["domain"].lstrip(".")
                 driver.add_cookie(cookie)
-        scrape_logger.debug("✅ Cookies dimuat.")
+        crawl_logger.debug("✅ Cookies dimuat.")
+        return True
     except Exception as e:
-        scrape_logger.error(f"❌ Gagal memuat cookies: {e}")
+        crawl_logger.error(f"❌ Gagal memuat cookies: {e}")
+        return False
 
-
-def scraping_by_hashtag(tagar, db, cursor, max_videos=5, max_comments=100):
-    scrape_logger.debug(f"\n🔍 Scraping untuk tagar: #{tagar}")
+def crawling_by_hashtag(tagar, db, cursor, max_videos=5, max_comments=100):
+    crawl_logger.debug(f"\n🔍 Crawling untuk tagar: #{tagar}")
     options = Options()
     options.add_argument('--headless')
     options.add_argument('--no-sandbox')
@@ -75,16 +78,26 @@ def scraping_by_hashtag(tagar, db, cursor, max_videos=5, max_comments=100):
     options.add_argument('--window-size=1920,1080')
     options.add_argument('--user-agent=Mozilla/5.0')
 
-    service = Service(CHROMEDRIVER_PATH)
-    driver = webdriver.Chrome(service=service, options=options)
-    driver.set_page_load_timeout(240)
+    try:
+        # ChromeDriver otomatis dicocokkan menggunakan webdriver-manager
+        driver = webdriver.Chrome(ChromeDriverManager().install(), options=options)
+        driver.set_page_load_timeout(240)
+    except Exception as e:
+        crawl_logger.error(f"❌ Gagal inisialisasi driver: {e}")
+        return 0
 
     komentar_disimpan = 0
 
     try:
         driver.get("https://www.tiktok.com")
         time.sleep(5)
-        load_cookies(driver, COOKIE_FILE_PATH)
+
+        # Stop crawling jika cookies gagal dimuat
+        if not load_cookies(driver, COOKIE_FILE_PATH):
+            crawl_logger.error("🚫 Proses crawling dihentikan karena gagal memuat cookies.")
+            driver.quit()
+            return 0
+
         driver.get(f"https://www.tiktok.com/search?q=%23{tagar}")
         time.sleep(5)
 
@@ -102,7 +115,7 @@ def scraping_by_hashtag(tagar, db, cursor, max_videos=5, max_comments=100):
                 break
 
         for video_url in collected:
-            scrape_logger.debug(f"🎥 Memproses: {video_url}")
+            crawl_logger.debug(f"🎥 Memproses: {video_url}")
             parts = video_url.split("/video/")
             if len(parts) < 2:
                 continue
@@ -146,22 +159,23 @@ def scraping_by_hashtag(tagar, db, cursor, max_videos=5, max_comments=100):
                     ))
                     db.commit()
                     komentar_disimpan += 1
-                    scrape_logger.debug(f"✅ Disimpan: {raw_comment[:40]}...")
+                    crawl_logger.debug(f"✅ Disimpan: {raw_comment[:40]}...")
                 except Exception as e:
-                    scrape_logger.error(f"❌ Gagal simpan DB: {e}")
+                    crawl_logger.error(f"❌ Gagal simpan DB: {e}")
 
     except Exception as e:
-        scrape_logger.error(f"❌ Gagal scraping: {e}")
+        crawl_logger.error(f"❌ Gagal crawling: {e}")
     finally:
         driver.quit()
-        scrape_logger.debug("🛑 Driver ditutup")
+        crawl_logger.debug("🛑 Driver ditutup")
 
     return komentar_disimpan
 
 
+
 # ✅ Main untuk dipanggil Flask
-def run_scraping():
-    scrape_logger.info('Fungsi run_scraping() dipanggil')
+def run_crawling():
+    crawl_logger.info('Fungsi run_crawling() dipanggil')
     try:
         db = pymysql.connect(
             host=os.getenv("DB_HOST"),
@@ -172,19 +186,19 @@ def run_scraping():
             charset='utf8mb4'
         )
         cursor = db.cursor()
-        scrape_logger.info("✅ Koneksi database berhasil.")
+        crawl_logger.info("✅ Koneksi database berhasil.")
     except Exception as e:
-        scrape_logger.error(f"❌ Koneksi database gagal: {e}")
+        crawl_logger.error(f"❌ Koneksi database gagal: {e}")
         return 0
 
     hashtags = ["kejaksaan agung", "kejagung"]
     total_berhasil = 0
     for tag in hashtags:
-        scrape_logger.info(f"Memulai scraping untuk tagar: {tag}")
-        total_berhasil += scraping_by_hashtag(tag, db, cursor)
+        crawl_logger.info(f"Memulai crawling untuk tagar: {tag}")
+        total_berhasil += crawling_by_hashtag(tag, db, cursor)
 
     db.close()
-    scrape_logger.info("🛑 Koneksi database ditutup")
+    crawl_logger.info("🛑 Koneksi database ditutup")
     return total_berhasil
 
 

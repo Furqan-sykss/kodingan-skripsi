@@ -1,4 +1,4 @@
-from scraping_komentar_dedup import run_scraping
+from scraping_komentar_dedup import run_crawling
 from flask import Flask, jsonify, request
 from flask_cors import CORS
 import os
@@ -30,25 +30,27 @@ SCRIPT_PATH = os.path.join(os.getcwd(), 'public',
 
 # ✅ Endpoint untuk menjalankan scraping
 
-@app.route('/scrape', methods=['POST'])
-def scrape():
-    app.logger.info("📥 Memulai proses scraping dari endpoint /scrape...")
+@app.route('/crawling', methods=['POST'])
+def crawl():
+    app.logger.info("📥 Memulai proses scraping dari endpoint /crawling...")
     try:
-        total_disimpan = run_scraping()
+        total_disimpan = run_crawling()
 
         if total_disimpan > 0:
             return jsonify({
                 'status': 'success',
-                'message': f'Scraping berhasil diselesaikan. Total komentar disimpan: {total_disimpan}'
+                'message': f'Scraping berhasil diselesaikan. Total komentar disimpan: {total_disimpan}',
+                'total_saved': total_disimpan
             }), 200
         else:
             return jsonify({
                 'status': 'partial',
-                'message': 'Tidak ada komentar yang berhasil disimpan. Coba lagi nanti.'
+                'message': 'Tidak ada komentar yang berhasil disimpan. Coba lagi nanti.',
+                'total_saved': 0
             }), 200
 
     except Exception as e:
-        logging.exception("❌ Terjadi kesalahan saat menjalankan scraping")
+        logging.exception("❌ Terjadi kesalahan saat menjalankan crawling")
         return jsonify({
             'status': 'error',
             'message': f'Scraping gagal: {str(e)}'

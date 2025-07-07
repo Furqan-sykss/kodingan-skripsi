@@ -3,12 +3,12 @@
 2025-07-06 19:29:51,289 - INFO - Memulai scraping untuk tagar: kejaksaan agung
 2025-07-06 19:29:51,305 - DEBUG - 
 🔍 Scraping untuk tagar: #kejaksaan agung
-2025-07-06 19:36:35,959 - INFO - Fungsi run_scraping() dipanggil
+2025-07-06 19:36:35,959 - INFO - Fungsi run_crawl() dipanggil
 2025-07-06 19:36:35,959 - INFO - ✅ Koneksi database berhasil.
 2025-07-06 19:36:35,959 - INFO - Memulai scraping untuk tagar: kejaksaan agung
 2025-07-06 19:36:35,959 - DEBUG - 
 🔍 Scraping untuk tagar: #kejaksaan agung
-2025-07-06 19:37:21,126 - ERROR - ❌ Gagal memuat cookies: 
+2025-07-06 19:37:21,126 - DEBUG - ✅ Cookies dimuat. 
 2025-07-06 19:37:56,576 - DEBUG - 🎥 Memproses: https://www.tiktok.com/@rionaldo_7/video/7440819263767629112
 2025-07-06 19:37:57,663 - DEBUG - ✅ Disimpan: Bismillah jadi adhyaksa muda... 🥺...
 2025-07-06 19:37:57,679 - DEBUG - ✅ Disimpan: allahumma sholli ala sayyidina muhammad,...
