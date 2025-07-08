@@ -52,21 +52,32 @@ def komentar_valid(teks):
 
 def load_cookies(driver, cookie_path):
     try:
-        with open(cookie_path, "r") as f:
+        with open(cookie_path, "r", encoding="utf-8") as f:
             cookies = json.load(f)
             for cookie in cookies:
-                cookie.pop("storeId", None)
-                cookie.pop("id", None)
-                if "sameSite" in cookie and cookie["sameSite"].lower() in ["no_restriction", "unspecified"]:
-                    cookie["sameSite"] = "None"
+                # Hapus key tidak dikenal Selenium
+                for key in ["storeId", "id", "hostOnly", "session", "expirationDate"]:
+                    cookie.pop(key, None)
+
+                # Perbaiki nilai sameSite
+                if "sameSite" in cookie:
+                    samesite = cookie["sameSite"].lower()
+                    if samesite in ["unspecified", "no_restriction"]:
+                        cookie.pop("sameSite", None)
+
+                # Hapus domain titik di awal
                 if cookie.get("domain", "").startswith("."):
                     cookie["domain"] = cookie["domain"].lstrip(".")
+
                 driver.add_cookie(cookie)
+
         crawl_logger.debug("✅ Cookies dimuat.")
         return True
+
     except Exception as e:
-        crawl_logger.error(f"❌ Gagal memuat cookies: {e}")
+        crawl_logger.exception("❌ Gagal memuat cookies:")
         return False
+
 
 def crawling_by_hashtag(tagar, db, cursor, max_videos=5, max_comments=100):
     crawl_logger.debug(f"\n🔍 Crawling untuk tagar: #{tagar}")
@@ -79,9 +90,10 @@ def crawling_by_hashtag(tagar, db, cursor, max_videos=5, max_comments=100):
     options.add_argument('--user-agent=Mozilla/5.0')
 
     try:
-        # ChromeDriver otomatis dicocokkan menggunakan webdriver-manager
-        driver = webdriver.Chrome(ChromeDriverManager().install(), options=options)
+        service = Service(ChromeDriverManager().install())
+        driver = webdriver.Chrome(service=service, options=options)
         driver.set_page_load_timeout(240)
+        crawl_logger.info("✅ ChromeDriver berhasil diinisialisasi.")
     except Exception as e:
         crawl_logger.error(f"❌ Gagal inisialisasi driver: {e}")
         return 0
@@ -94,7 +106,8 @@ def crawling_by_hashtag(tagar, db, cursor, max_videos=5, max_comments=100):
 
         # Stop crawling jika cookies gagal dimuat
         if not load_cookies(driver, COOKIE_FILE_PATH):
-            crawl_logger.error("🚫 Proses crawling dihentikan karena gagal memuat cookies.")
+            crawl_logger.error(
+                "🚫 Proses crawling dihentikan karena gagal memuat cookies.")
             driver.quit()
             return 0
 
@@ -170,7 +183,6 @@ def crawling_by_hashtag(tagar, db, cursor, max_videos=5, max_comments=100):
         crawl_logger.debug("🛑 Driver ditutup")
 
     return komentar_disimpan
-
 
 
 # ✅ Main untuk dipanggil Flask
