@@ -79,7 +79,7 @@ def load_cookies(driver, cookie_path):
         return False
 
 
-def crawling_by_hashtag(tagar, db, cursor, max_videos=5, max_comments=100):
+def crawling_by_hashtag(tagar, db, cursor, max_videos=4, max_comments=100):
     crawl_logger.debug(f"\n🔍 Crawling untuk tagar: #{tagar}")
     options = Options()
     options.add_argument('--headless')
