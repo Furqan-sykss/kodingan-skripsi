@@ -9,7 +9,6 @@ from sqlalchemy.orm import sessionmaker, Session
 from nltk.sentiment.vader import SentimentIntensityAnalyzer
 from deep_translator import GoogleTranslator
 
-
 # =================== 🔧 Logging ===================
 log_formatter = logging.Formatter('%(asctime)s - %(levelname)s - %(message)s')
 logger = logging.getLogger('sentiment_vader_logger')
@@ -35,16 +34,7 @@ except Exception as e:
     logger.error(f"Gagal load kamus_normalisasi.json: {e}")
     normalization_dict = {}
 
-# =================== 🌐 Idiom + Cache Translasi ===================
-idiom_dict = {
-    "maung": "hero", "jos": "awesome", "gass": "go",
-    "di tangan": "in the hands of", "gokil": "crazy cool",
-    "gasskeun": "let's go", "sangar": "awesome", "kpk gunanya apa": "kpk is useless",
-    "kpk kerjanya apa": "kpk does nothing",
-    "ngapain aja": "what have they done",
-    "fungsi nya apa": "what's the function",
-    "kerjanya cuma": "only does",
-}
+# =================== 🌐 Cache Translasi ===================
 translation_cache = {}
 
 # =================== 🔎 VADER & NLTK ===================
@@ -69,7 +59,8 @@ Session = sessionmaker(bind=engine)
 def bersihkan_teks(teks):
     teks = re.sub(r"http\S+|@\S+|#\S+", "", teks)
     teks = re.sub(r"\d+", "", teks)
-    teks = re.sub(r"[^\w\s]", " ", teks)
+    teks = re.sub(r"[^0-9A-Za-z\s\.\,\!\?\:\;\-\–]", "", teks)
+    # teks = re.sub(r"[^\w\s]", " ", teks)
     teks = teks.lower().strip()
     teks = re.sub(r'\s+', ' ', teks)
     return teks
@@ -88,17 +79,10 @@ def preprocessing(teks):
 # =================== 🌐 Translasi ===================
 
 
-def apply_idioms(teks):
-    for k, v in idiom_dict.items():
-        teks = teks.replace(k, v)
-    return teks
-
-
 def translate(teks):
     if teks in translation_cache:
         return translation_cache[teks]
     try:
-        teks = apply_idioms(teks)
         translated = GoogleTranslator(
             source='auto', target='en').translate(teks)
         translation_cache[teks] = translated
@@ -124,14 +108,16 @@ def analyze_sentiment(teks):
 # =================== 🚀 Eksekusi Analisis ===================
 
 
-def run_vader_analysis(limit=458):
+def run_vader_analysis(limit=70):
     logger.info("🚀 Mulai analisis VADER...")
     select_query = f"""
-        SELECT id, video_id, username, comment, tanggal_komentar
-        FROM komentar_mentah
-        WHERE is_processed_vader = 0 AND is_processed_ml = 0
-        ORDER BY id LIMIT {limit}
+    SELECT id, video_id, username, comment, tanggal_komentar
+    FROM komentar_mentah
+    WHERE is_processed_vader = 0 AND is_processed_ml = 0 AND id >= 13874
+    ORDER BY id LIMIT {limit}
     """
+    # ORDER  BY RAND()  LIMIT {limit}
+
     insert_query = """
         INSERT INTO komentar_sentimen_vader (
             mentah_id, video_id, username, tanggal_komentar, comment,

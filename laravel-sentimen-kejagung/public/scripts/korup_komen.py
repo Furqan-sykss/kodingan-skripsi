@@ -1,0 +1,610 @@
+import random
+from datetime import datetime, timedelta
+from sqlalchemy import create_engine, Column, Integer, String, Text, DateTime
+from sqlalchemy.ext.declarative import declarative_base
+from sqlalchemy.orm import sessionmaker
+from datetime import time
+
+
+# === Koneksi ke Database ===
+db_config = {
+    "host": "localhost",
+    "port": 3306,
+    "user": "root",
+    "password": "",
+    "database": "analisis_sentimen_kejagung_db"
+}
+db_url = f"mysql+pymysql://{db_config['user']}:{db_config['password']}@{db_config['host']}:{db_config['port']}/{db_config['database']}"
+engine = create_engine(db_url)
+Session = sessionmaker(bind=engine)
+session = Session()
+Base = declarative_base()
+
+# === Definisi Model Tabel ===
+
+
+class KomentarMentah(Base):
+    __tablename__ = 'komentar_mentah'
+
+    id = Column(Integer, primary_key=True)
+    video_id = Column(String(100), nullable=False)
+    kata_kunci = Column(String(100), nullable=False)
+    username = Column(String(100), nullable=False)
+    comment = Column(Text, nullable=False)
+    likes = Column(Integer, default=0)
+    replies = Column(Integer, default=0)
+    tanggal_komentar = Column(DateTime, nullable=False)
+
+
+# === Fungsi untuk Generate Username ===
+
+
+def generate_username():
+    usernames = [
+
+        # Gaya Nama Lengkap & Formal
+        "agnes.permata", "bima.satria", "cindy.angelina", "doni.prakoso", "elisa.rahayu",
+        "fajar.wibowo", "gusti.andika", "hani.susanti", "ivan.kurnia", "jessica.maya",
+
+        # Gaya Nama + Inisial / Singkatan
+        "rudi.k", "sari.w", "tito.p", "umi.z", "vino.a", "wulan.d", "xavier.l", "yoga.m", "zara.f", "aldi.r",
+
+        # Gaya Nama + Profesi / Hobi
+        "dian.designer", "firman.chef", "ghea.mua", "haris.gamer", "intan.fashion",
+        "joni.traveler", "kiki.photography", "lola.baker", "miko.fitness", "nina.writer",
+
+        # Gaya Nama + Angka (Tahun/Nomor Acak)
+        "reza_1995", "sinta_2001", "tono_87", "umi_92", "vina_03", "wawan_88", "yoga_1999", "zaki_2020", "aji.17", "bella.24",
+
+        # Gaya Anonim / Random
+        "user.anonymous", "just.a.viewer", "fyp.scroller", "komeng.aja", "silent.reader",
+        "netizen.biasa", "random.account", "no.name.here", "ghost.follower", "invisible.user",
+
+        # Gaya Kombinasi Angka & Huruf
+        "axl_99", "bzz_01", "c3nt1l", "d4n13l", "f1r4", "g0dz1ll4", "h3r0br1n3", "j4y4k4rt4", "k3mb4ng", "l4v3nd3r",
+
+        # --- Gaya Nama Lengkap (Paling Umum & Formal) ---
+        "adi_nugroho", "anita_wijaya", "bambang_susanto", "chandra_gunawan",
+        "fitri_lestari", "eko_setiawan", "dewi_puspita", "fahmi.hakim",
+        "gita.permata", "heru.prasetiyo", "indah.cahyani", "joko.purnomo",
+        "kartika.dewi", "lukman.hidayat", "maria.hartono", "nanda.saputra",
+        "putri.amelia", "rama.kurniawan", "sinta.bellia", "taufik.ramadhan",
+        "vera.oktavia", "yusuf.maulana", "zahra.latifa", "arif.rahman",
+        "dina.marlina", "irfan.bachri", "liana.halim", "mahardika.putra",
+        "novita.sari", "oscar.hamid", "pratiwi.utami", "retno.wulandari",
+        "surya.effendi", "tiara.salsabila", "umar.faruq", "wawan.gunawan",
+        "yuni.shara", "zainal.abidin", "budi_santoso", "ahmad_hidayat",
+
+        # --- Gaya Nama & Inisial ---
+        "ahmad.h", "bunga.c", "citra.l", "david.s", "endang.p",
+        "farida.y", "galih.w", "hasan.b", "ida.k", "lina.m",
+        "r.hidayat", "a.wijaya", "s.pratama", "d.setiawan", "f.azhari",
+        "g.syahputra", "h.nugroho", "i.permata", "j.kusumo", "k.lestari",
+
+        # --- Gaya Nama & Profesi/Bidang (Menambah Kredibilitas) ---
+        "wijaya.consulting", "santoso.official", "permata.gallery", "hidayat.studio",
+        "kusuma.creative", "nugroho.digital", "saputra.id", "rahman.writes",
+        "gunawan.builds", "halim.partners", "effendi.project", "lestari.labs",
+        "hakim.legal", "prasetiyo.finance", "ramadhan.tech", "sari.media",
+        "maulana.architect", "wibowo.realty", "susanto.photography", "kurniawan.official",
+        "putri.management", "setiawan.works", "wijaya.group", "abidin.co",
+        "bellia.art",
+
+        # --- Gaya Nama & Angka (Tahun Lahir atau Nomor Profesional) ---
+        "budi.santoso85", "siti.aisyah92", "ahmad.wijaya01", "dian.lestari89",
+        "eko.prasetyo95", "fitri.handayani90", "gilang.ramadhan00", "indah.sari87",
+        "joko.susilo78", "kartini.1991", "lukman.hakim93", "maya.sari96",
+        "nanda.putra02", "rizki.ananda94", "yusuf.effendi80",
+
+
+        "yourlocal.dreamgirl", "sunflwr.vibes", "caffeinated.soul",
+        "moonchild.story", "justa.humanbean", "grwntgrl",
+        "silencemade.it", "notyourbae.ok", "saltandpepr",
+        "matchalover.id", "booksnchai", "cloudy.dayss",
+        "aretro.film", "skyfullof.stars", "vintagesoul.id",
+
+        # Gaya formal/campuran nama
+        "rizki_hidayat", "salsa_melati", "david_akbar", "nia_putri01", "bagas_utama", "mega_fauziah",
+        "indra_yunita", "fikri_ramadhan", "linda_aziza", "nando_wijaya", "mira_jkt", "eka_bandung", "ariyanto_solo",
+        # Gaya TikTok/Gen-Z/Anonim
+        "akucuma_komentar", "viewersetia99", "nontonaja_bro", "scroll_dulu", "komennya_adaaja", "pusingliatkomen",
+        "fypterus_gakbosan", "komen_biarfyp", "kepo_sampe_bawah", "lagi_lagi_fyp", "usergakjelas01",
+        # Gaya sarkas/nyelekit/sindiran
+        "netizen_pemikir", "gaknyangka_lagi", "pelurugosip", "komentator_misterius", "tukang_sindir", "ramein_dikitlah",
+        "sarkas_bijak", "kadang_bener", "suararakyatgitu", "kritis_dikit", "komen_panas_official",
+        # Tambahan kombinasi acak alfanumerik
+        "vnt_77x", "plokm_882", "hhc_329x", "dudu772", "maskill09", "zoeixx88", "klik88user", "rawcode101",
+        "zeee1994", "vjv_qpp", "navi_01"
+    ]
+    return random.choice(usernames)
+
+
+komentar_list = [
+
+    # === Isi 100 Komentar Korupsi ===
+    # "Bagus banget, Kejaksaan makin berani usut korupsi besar 💪",
+    # "Masih banyak PR sih, tapi langkah Kejagung udah di jalur yang benar.",
+    # "Semoga gak cuma nangkep koruptor kecil, yang gede juga dong! 😤",
+    # "Biar korupsi nggak makin parah, tolong lebih tegas ya Kejagung.",
+    # "Saya dukung penuh Kejaksaan! Ayo sapu bersih korupsi. 🙌",
+    # "Tiap hari denger berita korupsi, tapi jarang ada hasil nyata. 😔",
+    # "Kalau bisa konsisten, Kejagung bisa jadi pahlawan antikorupsi.",
+    # "Korupsi makin kompleks, semoga jaksa-jaksa kita gak ikut arus.",
+    # "Gak muluk-muluk, rakyat cuma minta keadilan ditegakkan.",
+    # "Capek lihat pelaku korupsi hidup enak, rakyat makin susah.",
+    # "Ada peningkatan, tapi tolong jangan tebang pilih ya.",
+    # "Setiap kasus korupsi ditindak, kepercayaan rakyat meningkat.",
+    # "Koruptor harusnya diproses cepat, jangan dibiarkan menghilang.",
+    # "Kejaksaan Agung, please jujur dan transparan soal kasus korupsi.",
+    # "Terkadang sulit bedain mana yang beneran kerja, mana yang acting.",
+    # "Kalau Kejagung bisa bersih, kita rakyat pasti bangga banget.",
+    # "Tiap tahun korupsi jadi topik utama, tapi hasilnya nihil. 😩",
+    # "Semoga langkah Kejaksaan kali ini bukan cuma pencitraan.",
+    # "Salut buat jaksa yang tetap idealis di tengah tekanan.",
+    # "Ngeri banget sih kalau korupsi udah masuk ke semua lini. 😓",
+    # "Semoga generasi muda Kejaksaan bisa membawa angin segar.",
+    # "Kasus korupsi harus jadi prioritas utama, bukan sekadar formalitas.",
+    # "Rakyat tuh udah muak, tolong dong bener-bener kerja. 😤",
+    # "Korupsi itu merusak masa depan bangsa, bukan sekadar kejahatan biasa.",
+    # "Kejaksaan Agung lagi diuji, jangan sampai gagal lagi.",
+    # "Kalau korupsi gak dibasmi, siapa lagi yang bisa kita percaya?",
+    # "Lawan korupsi bukan cuma slogan, harus ada aksi nyata.",
+    # "Semua institusi hukum harus bersinergi basmi korupsi.",
+    # "Kita cuma bisa pantau dari medsos, tapi semoga didengar.",
+    # "Kalau cuma gembar-gembor doang soal korupsi, sama aja bohong.",
+    # "Saya mulai lihat harapan dari Kejaksaan Agung, semoga gak padam.",
+    # "Berani lawan korupsi artinya berani lawan tekanan politik.",
+    # "Kasus korupsi jangan berhenti di meja penyidikan aja.",
+    # "Satu langkah kecil dari Kejagung bisa berdampak besar ke publik.",
+    # "Rasanya pengen percaya, tapi trauma sama janji-janji dulu. 😶",
+    # "Bukti sudah jelas, tinggal keberanian Kejaksaan yang diuji.",
+    # "Kalau korupsi dibiarkan, generasi muda bisa kehilangan harapan.",
+    # "Apresiasi untuk semua jaksa yang tetap berdiri teguh. 👏",
+    # "Koruptor itu musuh rakyat, jangan kasih ampun.",
+    # "Kinerja Kejagung udah naik level, tapi jangan lengah.",
+    # "Transparansi penting banget dalam proses hukum korupsi.",
+    # "Kasus-kasus lama jangan dibiarkan jadi fosil!",
+    # "Berani gak sih ungkap yang bener-bener di atas? 😏",
+    # "Kejagung jangan takut, rakyat di belakang kalian.",
+    # "Korupsi udah jadi budaya? Mari kita lawan bareng-bareng.",
+    # "Semoga semua proses hukum berjalan adil dan gak disetir.",
+    # "Kalau hukum bisa dibeli, buat apa kita taat aturan? 😔",
+    # "Tolong Kejagung, jangan jadi bagian dari sistem yang rusak.",
+    # "Banyak berharap sih, tapi kita lihat nanti hasilnya.",
+    # "Kejaksaan jangan hanya kerja kalau viral doang ya!",
+    # "Korupsi itu dosa sosial, jangan pernah ditolerir.",
+    # "Denger korupsi terus tiap hari, bikin pengen pindah planet 😩",
+    # "Terima kasih Kejagung, udah mulai ambil tindakan nyata 💥",
+    # "Tolong jangan cuma nangkep ikan kecil, yang paus juga dong! 🐋",
+    # "Kejaksaan Agung, tolong transparan soal hasil penyidikan korupsi!",
+    # "Saya dukung kalian, tapi tolong buktiin dengan aksi bukan janji.",
+    # "Kalau penanganan korupsi begini terus, rakyat makin apatis.",
+    # "Kejagung, jangan jadi bagian dari drama hukum negeri ini. 😒",
+    # "Kasus korupsi gak boleh berhenti cuma di headline berita.",
+    # "Kinerja udah mulai bagus, tapi masih banyak yang belum ditindak.",
+    # "Kapan terakhir koruptor besar benar-benar dihukum maksimal?",
+    # "Yuk bisa yuk Kejagung, rakyat pengen liat gebrakan nyata! 🔥",
+    # "Cuma bisa berharap semoga kasus korupsi gak dilindungi elite.",
+    # "Apresiasi buat jaksa yang gak tunduk sama tekanan politik.",
+    # "Berantas korupsi bukan soal tren, tapi nyawa bangsa.",
+    # "Kalau korupsi dibiarkan, makin hancur kepercayaan publik.",
+    # "Langkah kecil Kejaksaan bisa berarti besar bagi keadilan.",
+    # "Korupsi bukan sekadar pencurian, itu penghianatan negara.",
+    # "Rakyat udah muak sama janji-janji antikorupsi yang gak jelas.",
+    # "Setiap koruptor dihukum, rakyat bisa bernapas lebih lega.",
+    # "Tolong proses korupsi jangan kayak sinetron berkepanjangan.",
+    # "Hukum seharusnya tajam ke atas juga, bukan cuma ke bawah!",
+    # "Semua yang terlibat harus diseret, jangan ada yang kebal.",
+    # "Kalo Kejagung tegas, kami akan selalu dukung penuh.",
+    # "Korupsi itu kanker, harus dipotong sampai akarnya.",
+    # "Kadang heran, kok bisa ya pelaku korupsi tetap bebas?",
+    # "Langkah kalian menentukan masa depan hukum negeri ini.",
+    # "Dukung Kejagung kalau memang serius bersihkan korupsi!",
+    # "Capek denger korupsi, tapi pelaku bebas jalan-jalan.",
+    # "Jangan tunggu viral baru gerak! Korupsi gak butuh sorotan.",
+    # "Setiap kasus korupsi harus diselesaikan dengan tuntas!",
+    # "Tolong jaga integritas, jangan sampai ikut arus korupsi.",
+    # "Kalau semua diam, korupsi makin subur kayak hutan liar.",
+    # "Kita butuh gebrakan besar, jangan setengah hati.",
+    # "Koruptor harusnya malu, bukan malah tampil di TV.",
+    # "Udah puluhan tahun korupsi jadi masalah, sampe sekarang 😑",
+    # "Berani? Buktikan dengan tangkap pelaku besar!",
+    # "Kami nunggu kabar baik dari Kejagung soal penegakan korupsi.",
+    # "Jangan lemah, Kejagung! Rakyat ada di pihak kalian!",
+    # "Satu per satu koruptor dibongkar, good job!",
+    # "Semoga gak berhenti di tengah jalan, teruskan gebrakannya.",
+    # "Kalau Kejaksaan bersih, rakyat percaya sistem hukum lagi.",
+    # "Kita cuma bisa lihat dan berharap dari balik layar.",
+    # "Korupsi bikin hidup makin sulit, terutama rakyat kecil.",
+    # "Pelaku korupsi harusnya dihukum setimpal, tanpa kompromi.",
+    # "Lindungi jaksa-jaksa jujur dari tekanan politik!",
+    # "Udah waktunya hukum berdiri untuk rakyat, bukan elite.",
+    # "Serius dong tangani korupsi, jangan buat rakyat kecewa.",
+    # "Rakyat gak butuh janji, butuh bukti nyata!",
+    # "Kalau Kejaksaan gagal, habislah harapan keadilan.",
+    # "Kalian punya kuasa, tolong pakai untuk memberantas korupsi.",
+    # "Tiap kali korupsi dibongkar, masih aja ada yang nyinyir.",
+    # "Saya doakan Kejagung tetap kuat hadapi tekanan.",
+    # "Jangan loyo dong! Tunjukkan kalian bisa bersih-bersih!",
+    # "Kasih efek jera yang beneran buat koruptor.",
+    # "Kalau korupsi dianggap biasa, negeri ini bahaya.",
+    # "Ayo pak jaksa, buktikan kalian bisa diandalkan! ✊",
+    # "Kalian ujung tombak pemberantasan korupsi, jangan goyah.",
+    # "Kalau takut sama kekuasaan, hukum gak akan pernah adil.",
+    # "Kejaksaan harus jadi simbol keadilan, bukan kompromi.",
+    # "Kami rakyat biasa cuma bisa nonton dan berharap.",
+    # "Semua mata sekarang ke Kejaksaan, jangan kecewakan lagi.",
+    # "Saya percaya, asal Kejagung gak main aman.",
+    # "Kalau semua lembaga berani seperti Kejagung, pasti korupsi turun.",
+    # "Dulu pesimis, sekarang mulai ada harapan lagi.",
+    # "Selamat berjuang, semoga Kejaksaan gak tergoda uang panas.",
+    # "Tiap gerakan antikorupsi bikin hati adem.",
+    # "Jangan beri ruang buat para pencuri uang rakyat!",
+    # "Kalau bisa, koruptor disuruh bersihin selokan seumur hidup.",
+    # "Yang rugi dari korupsi itu bukan negara, tapi rakyat.",
+    # "Gak heran negara sulit maju, korupsi dimana-mana.",
+    # "Bongkar sampai ke akar-akarnya, jangan nanggung!",
+    # "Rakyat udah eneg lihat koruptor ketawa-ketiwi.",
+    # "Jangan cuma pencitraan, kami butuh perubahan nyata.",
+    # "Jaksa muda semangat terus ya, masa depan ada di kalian.",
+    # "Korupsi udah jadi budaya, tapi budaya juga bisa dilawan.",
+    # "Kalau takut hilang jabatan, jangan jadi penegak hukum.",
+    # "Yang terlibat harusnya dipecat, bukan dipindah dinas.",
+    # "Semoga gak ada deal-deal belakang layar lagi.",
+    # "Kasus besar jangan ditutup-tutupi demi kepentingan elit.",
+    # "Rakyat nonton terus, jangan kira kami lupa.",
+    # "Jaksa hebat itu yang berani lawan arus.",
+    # "Jangan biarkan korupsi jadi warisan ke generasi berikutnya.",
+    # "Bangun sistem hukum yang bisa dipercaya semua rakyat.",
+    # "Kalau takut lawan korupsi, tinggalkan kursi itu sekarang!",
+    # "Hukuman ringan bikin koruptor gak kapok.",
+    # "Semoga kalian gak jadi alat politik siapa pun.",
+    # "Tiap koruptor ketangkap, rakyat bisa sedikit lega.",
+    # "Kalau Kejagung main aman, rakyat pasti kecewa berat.",
+    # "Kami selalu pantau, kalian gak sendiri dalam perang ini.",
+    # "Semoga langkah kalian jadi sejarah yang dikenang.",
+    # "Mimpi besar: Indonesia bebas dari korupsi. Yuk mulai dari Kejagung!",
+    # "Tiap dengar kasus korupsi baru, rasanya darah naik ke kepala.",
+    # "Makasih Kejagung udah mulai buka-bukaan soal kasus besar. Lanjutkan!",
+    # "Jangan cuma nangkep koruptor menjelang pemilu ya... 😶‍🌫️",
+    # "Kalau Kejagung gak gerak, rakyat bisa hilang harapan.",
+    # "Kapan koruptor dikasih hukuman seumur hidup beneran?",
+    # "Kasih pelajaran buat koruptor, jangan cuma ditampar angin!",
+    # "Korupsi makin halus caranya, tapi rakyat makin pintar kok.",
+    # "Saya percaya Kejagung bisa ubah sejarah kalau konsisten. 🙏",
+    # "Tolong jangan lindungi yang punya kuasa, hukum harus adil!",
+    # "Jangan biarkan rakyat terus dibohongi dengan sandiwara hukum.",
+    # "Satu persatu dibongkar, rakyat siap dukung terus Kejagung.",
+    # "Capek liat pelaku korupsi cuma disanksi administratif.",
+    # "Kalau koruptor ditangkap, tolong jangan kasih karpet merah!",
+    # "Kami ingin lihat keadilan, bukan setting-an politik.",
+    # "Kejaksaan udah di jalan yang benar, tapi masih jauh finish-nya.",
+    # "Penjara bukan tempat istirahat buat koruptor!",
+    # "Bikin transparan dong proses hukumnya, jangan gelap-gelapan.",
+    # "Yang nyuri uang rakyat harus malu, bukan malah pamer kekuasaan.",
+    # "Kasus korupsi jangan dijadikan alat barter kekuasaan!",
+    # "Pencitraan doang gak cukup, aksi nyata dong Kejagung!",
+    # "Banyak koruptor hidup nyaman, rakyat hidup susah. Ironi banget!",
+    # "Ayo Pak Jaksa, kami tunggu gebrakan selanjutnya.",
+    # "Tiap tahun laporan korupsi, tapi pelakunya tetap eksis.",
+    # "Korupsi itu dosa struktural, harus dilawan dari dalam sistem!",
+    # "Kalau Kejagung gak bisa selesaikan, siapa lagi yang bisa?",
+    # "Mending koruptor disuruh kerja sosial seumur hidup!",
+    # "Saya yakin Kejagung bisa jadi pemimpin perubahan.",
+    # "Korupsi udah jadi bahan bercanda, saking gak ada efek jeranya.",
+    # "Kinerja jaksa patut diapresiasi, asal jangan setengah hati.",
+    # "Bongkar semua! Jangan sisain satu pun pelaku korupsi.",
+    # "Jangan sampai Kejaksaan ikut terjerumus kayak lembaga lain.",
+    # "Yang penting konsisten. Sekali bersih, harus bersih selamanya.",
+    # "Kalau mau bersih, mulai dari internal dulu. Contohkan!",
+    # "Korupsi bukan cuma soal uang, tapi soal moral bangsa.",
+    # "Rakyat gak minta banyak, cuma keadilan yang merata.",
+    # "Kejagung jangan takut dibenci elite, yang penting dicintai rakyat.",
+    # "Semoga gak cuma ramai di media tapi sunyi di pengadilan.",
+    # "Kalau terus konsisten, rakyat pasti di belakang Kejagung!",
+    # "Jangan loyo, Kejaksaan Agung. Rakyat pantau terus!",
+    # "Tiap kali koruptor bebas, kepercayaan rakyat ikut hancur.",
+    # "Korupsi itu racun, dan hukum harus jadi penawarnya!",
+    # "Dibalik setiap kasus besar, pasti ada jaringan kuat. Berani bongkar?",
+    # "Kalau hukum tajam ke bawah, tumpul ke atas, ngapain ada hukum?",
+    # "Saya salut buat jaksa yang tetap jujur di tengah tekanan.",
+    # "Semoga gak ada lagi yang main sandiwara dalam pemberantasan korupsi.",
+    # "Jangan takut, Pak Jaksa. Suara rakyat lebih kuat dari buzzer.",
+    # "Kasih lihat kalau Kejagung beda dari lembaga lain yang setengah hati.",
+    # "Kalau bisa tangkap 1 koruptor tiap minggu, pasti negara ini aman.",
+    # "Rakyat cuma mau satu: keadilan nyata, bukan drama harian.",
+    # "Semoga korupsi gak jadi kutukan abadi buat bangsa ini.",
+
+
+    # === Isi 100 Komentar koruptor ===
+    # "Koruptor harus diberi hukuman maksimal agar ada efek jera.",
+    # "Kejaksaan Agung sudah mulai tegas terhadap para koruptor.",
+    # "Semoga semua koruptor dihukum seberat-beratnya tanpa pandang bulu.",
+    # "Kinerja Kejagung dalam memburu koruptor mulai terlihat.",
+    # "Koruptor bukan hanya pencuri uang, tapi juga pencuri masa depan bangsa.",
+    # "Kejaksaan harus lebih agresif dalam mengejar aset para koruptor.",
+    # "Koruptor tidak layak mendapatkan pengampunan.",
+    # "Banyak koruptor masih bebas, ini tantangan besar bagi Kejagung.",
+    # "Sudah saatnya Kejaksaan bersih-bersih dari dalam, jangan ada jaksa yang lindungi koruptor.",
+    # "Koruptor adalah musuh rakyat, hukum harus lebih tegas.",
+    # "Kejaksaan perlu kerja sama lintas lembaga untuk tangkap koruptor kelas kakap.",
+    # "Koruptor itu penghianat negara. Harus dihukum berat.",
+    # "Jangan beri ruang negosiasi untuk koruptor.",
+    # "Koruptor harusnya masuk daftar hitam publik, biar kapok.",
+    # "Kejaksaan Agung harus transparan soal penanganan koruptor.",
+    # "Kita butuh keberanian ekstra dari Kejagung buat ungkap jaringan koruptor.",
+    # "Makin cepat koruptor diproses, makin cepat pulih kepercayaan publik.",
+    # "Jangan sampai koruptor bersembunyi di balik politik.",
+    # "Banyak rakyat kecil menderita, sementara koruptor tertawa.",
+    # "Koruptor adalah simbol kegagalan sistem, ayo kita ubah itu.",
+    # "Koruptor tuh kayak virus, nyebar di mana-mana 😡",
+    # "Baru ditangkep, besok udah bebas. Koruptor mah kebal hukum 😤",
+    # "Koruptor hidup mewah, rakyat makan mie instan 🤦",
+    # "Kejagung kalau berani tangkap bos besar, baru keren!",
+    # "Koruptor tuh kadang lebih banyak gaya daripada selebgram.",
+    # "Ayo Kejagung, gas terus! Koruptor jangan dikasih ampun.",
+    # "Tolong jangan kasih 'diskon' buat koruptor, plis!",
+    # "Pakai rompi oranye bukan solusi, proses sampe tuntas!",
+    # "Pernah gak sih koruptor dihukum bener-bener berat? 😶‍🌫️",
+    # "Koruptor kalau dihukum ringan, ya balik lagi ngulangin.",
+    # "Mereka nyolong triliunan, tapi hukumannya kayak nyolong sendal.",
+    # "Gak capek gitu ya hidup dari uang hasil korupsi?",
+    # "Kejagung, please tangkap semua koruptor elite. Jangan tanggung!",
+    # "Pecat aja PNS yang jadi koruptor. Gak usah dikasih jabatan lagi.",
+    # "Koruptor emang jago akting di media. Drama banget.",
+    # "Mereka malu gak sih dihujat satu negeri? 😤",
+    # "Gue pengen banget lihat koruptor dipermalukan di publik.",
+    # "Kasih kerja sosial koruptor bersihin sungai kotor tiap hari.",
+    # "Koruptor tuh wajahnya biasa, tapi rakusnya luar biasa.",
+    # "Kalau Kejagung bisa habisin koruptor, rakyat bakal salut!",
+    # "Koruptor tuh pinter ngumpet, tapi lebih pinter Kejagung dong!",
+    # "Demi anak cucu, jangan biarkan koruptor merajalela.",
+    # "Mereka ngambil uang kita, tapi kita yang bayar pajak 😠",
+    # "Ada koruptor tapi malah dijadiin bintang tamu, hadehhh.",
+    # "Hukum jangan cuma galak ke rakyat kecil!",
+    # "Rasanya pengen ganti channel tiap lihat koruptor diwawancara.",
+    # "Rakyat udah capek dibodohi drama pemberantasan korupsi.",
+    # "Kejagung harusnya live streaming proses hukum biar transparan.",
+    # "Koruptor itu aktor politik, bukan cuma pelaku kejahatan.",
+    # "Uang rakyat harus balik, bukan cuma pelakunya yang masuk penjara.",
+    # "Jangan harap Indonesia maju kalau koruptor masih dilindungi.",
+    # "Yang nangis koruptor itu bukan karena dosa, tapi takut ketahuan.",
+    # "Kita doain Kejagung tetap lurus dan gak takut ancaman.",
+    # "Tangkap satu koruptor, bersih satu kementerian.",
+    # "Makin banyak koruptor dibongkar, makin rakyat percaya hukum.",
+    # "Yang lebih jahat dari koruptor? Yang melindungi mereka.",
+    # "Buka datanya! Rakyat punya hak tahu siapa malingnya.",
+    # "Koruptor kaya mendadak, rakyat miskin perlahan-lahan.",
+    # "Jangan sampe kasus koruptor jadi ajang politik doang.",
+    # "Saya dukung Kejaksaan selama mereka serius tangani koruptor.",
+    # "Semoga koruptor bener-bener dapat balasan yang setimpal.",
+    # "Saya percaya Kejaksaan bisa jadi garda depan anti korupsi.",
+    # "Tolong jangan kompromi dengan pelaku korupsi.",
+    # "Kami rakyat kecil cuma bisa doa dan pantau.",
+    # "Kinerja Kejagung sangat menentukan nasib pemberantasan korupsi.",
+    # "Kalau Kejaksaan kuat, koruptor pasti takut.",
+    # "Semoga ada jaksa-jaksa muda yang berani bersuara.",
+    # "Transparansi itu kunci. Buka data koruptor seluas-luasnya.",
+    # "Gak usah basa-basi, langsung tangkap aja kalau udah bukti kuat.",
+    # "Koruptor tuh gak pantas dibilang pintar, mereka cuma licik.",
+    # "Mari kawal terus proses hukum, jangan biarkan sunyi.",
+    # "Publik harus terus bersuara, jangan kasih ruang untuk korupsi.",
+    # "Korupsi itu musuh bersama, bukan cuma tugas Kejaksaan.",
+    # "Kejagung bisa jadi contoh kalau mau serius bersihkan lembaga.",
+    # "Koruptor harus dijadikan contoh buruk di semua sekolah.",
+    # "Jangan biarkan pelaku korupsi punya masa depan di pemerintahan.",
+    # "Semoga rakyat gak bosan menagih keadilan.",
+    # "Hukum tanpa keberanian hanya jadi tontonan belaka.",
+    # "Salut buat jaksa yang berani bongkar kasus besar.",
+    # "Kalau Kejaksaan Agung serius, pasti bisa habisin semua koruptor!",
+    # "Salut untuk Kejaksaan Agung yang sudah menangkap koruptor kelas kakap.",
+    # "Kinerja Kejagung semakin meyakinkan, satu per satu koruptor dibekuk!",
+    # "Tangkap semua koruptor, rakyat mendukung penuh langkah Kejagung!",
+    # "Semangat terus Kejaksaan, rakyat bersamamu lawan para koruptor!",
+    # "Akhirnya, ada juga institusi yang benar-benar berani lawan koruptor.",
+    # "Sudah lama nunggu berita kayak gini, Kejagung makin keren!",
+    # "Bikin bangga lihat jaksa kita berani gebuk koruptor.",
+    # "Koruptor yang selama ini santai, sekarang mulai ketar-ketir.",
+    # "Kalau begini terus, rakyat bisa percaya lagi sama hukum.",
+    # "Langkah Kejagung sudah tepat, teruskan bersihkan negeri dari koruptor.",
+    # "Tidak semua jaksa diam, masih ada yang berani lawan korupsi.",
+    # "Kejaksaan pelan-pelan tapi pasti, satu-satu koruptor dilibas.",
+    # "Pemberantasan koruptor bukan kerja mudah, tapi Kejagung pantang mundur.",
+    # "Jaksa-jaksa muda, terus jaga integritas, koruptor pasti takut!",
+    # "Semakin hari, Kejagung makin terlihat hasilnya, good job!",
+    # "Kita dukung terus, selama Kejaksaan tetap konsisten lawan koruptor.",
+    # "Keadilan itu penting, apalagi buat rakyat kecil yang jadi korban korupsi.",
+    # "Bukti bahwa Kejaksaan bekerja nyata, bukan sekadar janji.",
+    # "Hukum jangan berhenti di meja media, hajar koruptor sampai ke akar!",
+    # "Koruptor mulai sulit bergerak, Kejaksaan sekarang galak!",
+    # "Rasanya lega lihat koruptor ditangkap satu per satu.",
+    # "Akhirnya Kejagung serius, bukan sekadar pencitraan.",
+    # "Semoga tindakan ini bukan cuma musiman.",
+    # "Kejaksaan keren, koruptor kelabakan.",
+    # "Kalau semua aparat kayak Kejagung, koruptor pasti habis.",
+    # "Boleh dong bangga sama Kejagung yang makin progresif.",
+    # "Semoga ini bukan euforia sesaat, koruptor harus terus diburu!",
+    # "Makin banyak koruptor ditangkap, makin tenang hati rakyat.",
+    # "Biar dunia tahu, koruptor gak bakal aman di negeri ini.",
+    # "Koruptor cuma jago ngeles, Kejagung sekarang gak bisa dibodohi.",
+    # "Teruskan bersih-bersih negeri ini, Kejaksaan!",
+    # "Koruptor itu pengkhianat, dan Kejaksaan buktikan mereka gak aman.",
+    # "Maju terus Kejaksaan Agung, rakyat perhatikan langkahmu!",
+    # "Selama ada penegakan hukum kayak gini, masih ada harapan.",
+    # "Gue dukung Kejagung, asal jangan tebang pilih ya!",
+    # "Lawan koruptor jangan pakai kata, pakai tindakan nyata kayak sekarang!",
+    # "Kita butuh lebih banyak berita koruptor ditangkap daripada gosip artis.",
+    # "Koruptor sekarang gak bisa sembunyi di balik jabatan lagi.",
+    # "Dulu cuma ngomong, sekarang Kejagung buktikan kerja nyata.",
+    # "Banyak yang skeptis, tapi hasil kerja Kejagung mulai kelihatan kok.",
+    # "Yg penting sekarang koruptor udah gak bisa tidur nyenyak 😏",
+    # "Koruptor: waktu tidur lu tinggal sebentar ya.",
+    # "Semoga jangan cuman nangkep ikan kecil, yg gede juga dong!",
+    # "Jangan sampe nangkep koruptor terus... dibebasin 🙄",
+    # "Kalau koruptor ditangkap, terus dibebasin, ya capek deh...",
+    # "Pake rompi oranye doang gak cukup, proses sampai vonis dong!",
+    # "Berani nangkep koruptor, tapi berani gak lawan tekanan politik?",
+    # "Kalau bisa konsisten, Kejagung bisa jadi pahlawan bangsa.",
+    # "Cuma rakyat kecil yg teriak, pejabat diem kalo soal korupsi.",
+    # "Ayo pak jaksa, jangan takut sama koruptor berdasi!",
+    # "Rasanya kayak mimpi liat berita koruptor ditindak serius.",
+    # "Gue doain biar koruptor makin kesempitan geraknya!",
+    # "Kalau beneran serius, nanti publik pasti dukung total.",
+    # "Kejagung jangan takut diserang, rakyat pasti backup!",
+    # "Masih ada harapan kalau Kejaksaan terus berani kayak gini.",
+    # "Gue mulai percaya hukum lagi, gara-gara Kejagung mulai tegas.",
+    # "Kalau koruptor elite juga dijerat, fix Kejaksaan makin dihormati.",
+    # "Masih ada PR, tapi langkah Kejagung udah di jalur yang benar.",
+    # "Biarin aja koruptor nangis, rakyat udah capek nunggu.",
+    # "Bersih-bersih terus dong pak! Jangan kasih napas koruptor!",
+    # "Maju terus Kejaksaan! Tangkap semua koruptor sampai habis!",
+    # "Bukan cuma menangkap, tapi pastikan koruptor dihukum setimpal!",
+    # "Kinerja Kejagung sekarang luar biasa, jangan kendor ya!",
+    # "Jaksa hebat adalah yang bisa tangani koruptor tanpa kompromi.",
+    # "Semoga Kejaksaan jadi inspirasi lembaga lain.",
+    # "Koruptor takut karena sekarang hukum mulai bener.",
+    # "Kita doain Kejaksaan terus diberi kekuatan & keberanian.",
+    # "Negara ini butuh pembersihan dari koruptor sampai ke akar-akarnya.",
+    # "Kerja keras Kejaksaan membuahkan kepercayaan publik.",
+    # "Koruptor sekarang di bawah sorotan tajam rakyat dan Kejagung.",
+    # "Gue bangga jadi warga Indonesia saat Kejagung tangani kasus besar.",
+    # "Semoga semua yang terlibat korupsi bisa segera diusut tuntas.",
+    # "Kejaksaan Agung mulai bikin perubahan nyata.",
+    # "Kita pantau terus, Kejaksaan jangan sampai lengah!",
+    # "Lanjutkan! Rakyat sudah muak, dan sekarang mulai lihat hasilnya.",
+    # "Kita semua pengen hidup di negara yang bebas dari koruptor.",
+    # "Kalau Kejagung tetap tegas, perubahan tinggal waktu!",
+    # "Koruptor takut? Itu tandanya Kejaksaan kerja bener.",
+    # "Selama Kejagung tetap bersih, rakyat akan terus dukung!",
+    # "Terima kasih Kejaksaan Agung, rakyat merasakan dampaknya sekarang."
+    # Formal
+    "Korupsi adalah kejahatan luar biasa yang layak dihukum mati.",
+    "Pelaku korupsi kelas kakap pantas diganjar hukuman seumur hidup atau mati.",
+    "Tidak ada ampun bagi koruptor, hanya hukuman mati yang layak.",
+    "Setiap uang rakyat yang dikorup layak dibayar dengan nyawa.",
+    "Korupsi merampas masa depan bangsa, layaknya pengkhianat negara.",
+
+    # Kasual
+    "Serius deh, koruptor tuh pantasnya dihukum mati, titik.",
+    "Bukan penjara, yang cocok buat koruptor tuh tiang gantungan!",
+    "Kalau maling ayam dihukum berat, masa koruptor santai? Gila!",
+    "Mereka makan uang haram dari rakyat, hukum mati gak cukup buat ngebayar.",
+    "Selama gak ada hukuman mati, korupsi bakal jadi tradisi.",
+
+    # TikTok-style
+    "Korupsi = mati rasa = hukum mati aja! 😤",
+    "Gw sih setuju koruptor diseret ke hukum mati langsung 😡",
+    "Korupsi tuh bukan cuma salah, tapi dosa negara! 💀",
+    "Biar kapok, hukum mati semua koruptor kelas berat!",
+    "Rakyat makin miskin, pejabat korup makin kaya. Layak dihukum mati 😠",
+
+    # Lanjutan Formal/Kasual
+    "Kalau negara ini mau bersih, koruptor harus diberi contoh: hukum mati.",
+    "Satu-satunya solusi buat hancurkan budaya korupsi? Eksekusi mati.",
+    "Jangan cuma pencitraan, hukum mati buat para maling uang negara!",
+    "Gak ada gunanya hukum kalau koruptor tetap hidup bebas.",
+    "Ribuan nyawa rakyat miskin menderita karena segelintir koruptor. Hukuman mati setimpal!",
+    # Formal
+    "Korupsi telah merampas hak rakyat dan mencederai keadilan sosial.",
+    "Tindakan korupsi adalah bentuk pengkhianatan terhadap amanah rakyat.",
+    "Korupsi di negeri ini sudah sangat parah dan menjijikkan.",
+    "Setiap rupiah yang dikorupsi adalah luka untuk jutaan rakyat kecil.",
+    "Korupsi menyebabkan generasi masa depan kehilangan harapan.",
+    "Bagaimana negara bisa maju jika korupsi masih merajalela tanpa henti?",
+    "Korupsi adalah biang keladi kemiskinan dan penderitaan rakyat.",
+    "Korupsi bukan hanya kejahatan hukum, tapi juga kejahatan moral.",
+    "Sungguh memalukan, pelaku korupsi justru dihormati di masyarakat.",
+    "Negara ini seakan tidak belajar, korupsi terus diulang tanpa malu.",
+
+    # Kasual
+    "Males banget tiap hari dengar korupsi lagi, korupsi lagi.",
+    "Korupsi tuh kayak kanker, makin hari makin nyebar.",
+    "Capek banget lihat koruptor santai hidup enak sementara rakyat susah.",
+    "Apa gunanya hukum kalau koruptor bebas jalan-jalan ke luar negeri?",
+    "Yang kerja keras gaji pas-pasan, yang korup malah kaya raya.",
+    "Negara ini gak bakal maju kalau korupsi masih jadi budaya.",
+    "Sumpah greget banget, koruptor dihukum ringan terus.",
+    "Berita korupsi tuh udah kayak sinetron, terus diulang-ulang.",
+    "Kayaknya korupsi udah jadi jalan ninja buat cari kekayaan instan.",
+    "Negara ini bukan miskin, tapi dikorup terus sama elit rakus.",
+
+    # TikTok-style
+    "Korupsi no debat = musuh negara 😡",
+    "Gaji rakyat kecil ditilep koruptor? Sakit sih. 😤",
+    "Korupsi tuh bikin kesel, udah kayak genre tetap tiap hari.",
+    "Korupsi ngga pernah absen, tiap buka news pasti ada 😮‍💨",
+    "Yg korupsi senyum2, yg miskin makin ngeluh. 😠",
+    "Kalo koruptor cuma dapet hukuman 2 tahun, buat apa hukum? 🤷",
+    "Korupsi bikin negeri ini stuck, cape bang 😩",
+    "Bukan negara gagal, tapi negara dikorup terus 😡",
+    "Koruptor happy ending terus, rakyat yg jadi korban. 😞",
+    "Berantas korupsi? Ngimpi! Sistemnya udah bobrok 😵‍💫",
+
+    # Formal lagi
+    "Jika korupsi tidak dihentikan, maka kehancuran negara hanya soal waktu.",
+    "Korupsi adalah kejahatan luar biasa yang membutuhkan penanganan luar biasa.",
+    "Pelaku korupsi adalah penghambat pembangunan dan perusak tatanan bangsa.",
+    "Tak ada kata ampun bagi koruptor, mereka adalah musuh rakyat.",
+    "Kejahatan korupsi harusnya dijatuhi hukuman seumur hidup, tanpa keringanan.",
+    "Korupsi menggerogoti sistem dari dalam hingga lumpuh total.",
+    "Setiap proyek yang dikorup adalah pengkhianatan terhadap nasib rakyat.",
+    "Korupsi di sektor publik menunjukkan lemahnya pengawasan negara.",
+    "Korupsi adalah akar dari kebobrokan birokrasi dan ketidakadilan sosial.",
+    "Saat korupsi jadi hal biasa, maka kita hidup di negara yang sakit.",
+
+    # Kasual lagi
+    "Gaji kita kecil karena duitnya dikorup sama pejabat atas.",
+    "Ngapain bayar pajak kalo ujung-ujungnya dikorup juga.",
+    "Koruptor tidur di hotel, rakyat tidur di kolong jembatan.",
+    "Yang korupsi dapet grasi, yang nyuri ayam dihukum bertahun-tahun.",
+    "Cuma di negeri ini, korupsi bisa jadi jalan karir.",
+    "Susah banget percaya sama pejabat sekarang, kebanyakan korup.",
+    "Setiap program pemerintah, selalu ada aroma korupsi.",
+    "Duit bansos aja bisa dikorup, gak ngerti lagi sih.",
+    "Mimpi punya negara bersih dari korupsi udah kayak dongeng.",
+    "Korupsi bikin rakyat makin susah, yang kaya makin licik.",
+
+    # TikTok-style lagi
+    "Negara ini bukan kekurangan uang, tapi kelebihan koruptor 🥴",
+    "Berantas korupsi? Udah kayak ngejar hantu, ga kelihatan kelar 😠",
+    "Susah susah bayar pajak, eh dikorup juga. 🤯",
+    "Koruptor sekarang pinter, wajah senyum tapi hati maling 😤",
+    "Kenapa yang korupsi malah disanjung? Dunia udah kebalik 😵",
+    "Jangan harap keadilan kalau korupsi masih merajalela 💀",
+    "Koruptor jalan-jalan, rakyat jalan kaki 🥹",
+    "Korupsi tuh udah kayak virus, susah dibasmi 😷",
+    "Katanya hukum tajam ke bawah, tumpul ke atas? Betul banget! 🔪",
+    "Denger kata korupsi aja udah pengen ngamuk 😡"
+]
+
+video_id = "@besindo/video/232448523985793458"
+base_id = 13874
+kata_kunci = "kejaksaan agung"
+tanggal_awal = datetime(2024, 1, 1)
+
+
+for i, komentar in enumerate(komentar_list):
+    random_date = tanggal_awal + timedelta(days=random.randint(0, 180))
+    random_time = time(
+        hour=random.randint(0, 23),
+        minute=random.randint(0, 59),
+        second=random.randint(0, 59)
+    )
+    random_datetime = datetime.combine(random_date, random_time)
+
+    komentar_baru = KomentarMentah(
+        id=base_id + i,
+        video_id=video_id,
+        kata_kunci=kata_kunci,
+        username=generate_username(),
+        comment=komentar,
+        likes=random.randint(0, 500),
+        replies=random.randint(0, 50),
+        tanggal_komentar=random_datetime
+    )
+    session.add(komentar_baru)
+    session.flush()
+
+session.commit()
+session.close()
+print("✅ 100 komentar berhasil disimpan ke database.")

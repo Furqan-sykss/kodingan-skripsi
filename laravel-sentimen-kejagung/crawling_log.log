@@ -2511,3 +2511,18 @@ kurang yakin gua.......
 2025-07-14 22:31:05,131 - DEBUG - ✅ Disimpan: apa kabar KPK? udah gitu aja...
 2025-07-14 22:31:08,538 - DEBUG - 🛑 Driver ditutup
 2025-07-14 22:31:08,542 - INFO - 🛑 Koneksi database ditutup
+2025-07-15 14:19:57,648 - INFO - Fungsi run_crawling() dipanggil
+2025-07-15 14:19:57,662 - INFO - ✅ Koneksi database berhasil.
+2025-07-15 14:19:57,663 - INFO - Memulai crawling untuk tagar: kejaksaan agung
+2025-07-15 14:19:57,663 - DEBUG - 
+🔍 Crawling untuk tagar: #kejaksaan agung
+2025-07-15 14:21:35,750 - ERROR - ❌ Gagal inisialisasi driver: Could not reach host. Are you offline?
+2025-07-15 14:21:35,750 - INFO - Memulai crawling untuk tagar: kejagung
+2025-07-15 14:21:35,750 - DEBUG - 
+🔍 Crawling untuk tagar: #kejagung
+2025-07-15 14:24:40,983 - ERROR - ❌ Gagal inisialisasi driver: ('Connection broken: IncompleteRead(65536 bytes read, 34882 more expected)', IncompleteRead(65536 bytes read, 34882 more expected))
+2025-07-15 14:24:40,984 - INFO - Memulai crawling untuk tagar: kinerja kejaksaan agung
+2025-07-15 14:24:40,984 - DEBUG - 
+🔍 Crawling untuk tagar: #kinerja kejaksaan agung
+2025-07-15 14:24:50,422 - ERROR - ❌ Gagal inisialisasi driver: Could not reach host. Are you offline?
+2025-07-15 14:24:50,424 - INFO - 🛑 Koneksi database ditutup

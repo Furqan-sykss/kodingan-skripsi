@@ -203,7 +203,7 @@ def run_crawling():
         crawl_logger.error(f"❌ Koneksi database gagal: {e}")
         return 0
 
-    hashtags = ["kejaksaan agung", "kejagung"]
+    hashtags = ["kejaksaan agung", "kejagung", "kinerja kejaksaan agung"]
     total_berhasil = 0
     for tag in hashtags:
         crawl_logger.info(f"Memulai crawling untuk tagar: {tag}")
