@@ -13,13 +13,13 @@ kamus_path = os.path.join(os.getcwd(), "public/scripts/kamus_normalisasi.json")
 with open(kamus_path, 'r', encoding='utf-8') as f:
     normalization_dict = json.load(f)
 
-# === Fungsi preprocessing (gabungan dari sentiment_vader.py) ===
+# === Fungsi preprocessing ===
 
 
 def bersihkan_teks(teks):
-    teks = re.sub(r"http\S+|@\S+|#[A-Za-z0-9_]+", "", teks)
+    teks = re.sub(r"http\S+|@\S+|#\S+", "", teks)
     teks = re.sub(r"\d+", "", teks)
-    teks = re.sub(r"[^a-zA-Z\s]", " ", teks)
+    teks = re.sub(r"[^0-9A-Za-z\s\.\,\!\?\:\;\-\–]", "", teks)
     teks = teks.lower().strip()
     teks = re.sub(r'\s+', ' ', teks)
     return teks
@@ -31,24 +31,8 @@ def normalisasi_kata(teks):
     return " ".join(hasil)
 
 
-def apply_idioms(teks):
-    idiom_dict = {
-        "maung": "hero", "jos": "awesome", "gass": "go",
-        "di tangan": "in the hands of", "gokil": "crazy cool",
-        "gasskeun": "let's go", "sangar": "awesome", "kpk gunanya apa": "kpk is useless",
-        "kpk kerjanya apa": "kpk does nothing",
-        "ngapain aja": "what have they done",
-        "fungsi nya apa": "what's the function",
-        "kerjanya cuma": "only does",
-    }
-    for k, v in idiom_dict.items():
-        teks = teks.replace(k, v)
-    return teks
-
-
 def translate(teks):
     try:
-        teks = apply_idioms(teks)
         return GoogleTranslator(source='auto', target='en').translate(teks)
     except:
         return teks
@@ -90,7 +74,7 @@ def exec_main_script():
         SELECT id, video_id, username, comment, tanggal_komentar 
         FROM komentar_mentah
         WHERE is_processed_ml = 0 AND is_processed_vader = 0
-        LIMIT 500
+        ORDER  BY RAND() LIMIT 1000
     """
     data_mentah = pd.read_sql(query, engine)
 

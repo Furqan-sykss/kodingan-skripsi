@@ -1,0 +1,172 @@
+2025-07-29 23:30:58,875 - ERROR - ❌ Gagal koneksi DB: (1045, "Access denied for user 'AINUN SYUHADAH LUBIS'@'localhost' (using password: NO)")
+2025-07-29 23:36:49,313 - INFO - 🚀 Mulai crawling TikTok by URL
+2025-07-29 23:36:49,364 - INFO - Memproses video: https://www.tiktok.com/@aiienun_13/video/7526802919744654648
+2025-07-29 23:36:49,837 - DEBUG - Ditemukan 46 komentar
+2025-07-29 23:36:49,873 - ERROR - DB insert gagal: (1048, "Column 'kata_kunci' cannot be null")
+2025-07-29 23:36:49,875 - ERROR - DB insert gagal: (1048, "Column 'kata_kunci' cannot be null")
+2025-07-29 23:36:49,879 - ERROR - DB insert gagal: (1048, "Column 'kata_kunci' cannot be null")
+2025-07-29 23:36:49,883 - ERROR - DB insert gagal: (1048, "Column 'kata_kunci' cannot be null")
+2025-07-29 23:36:49,911 - ERROR - DB insert gagal: (1048, "Column 'kata_kunci' cannot be null")
+2025-07-29 23:36:49,915 - ERROR - DB insert gagal: (1048, "Column 'kata_kunci' cannot be null")
+2025-07-29 23:36:49,967 - ERROR - DB insert gagal: (1048, "Column 'kata_kunci' cannot be null")
+2025-07-29 23:36:49,977 - ERROR - DB insert gagal: (1048, "Column 'kata_kunci' cannot be null")
+2025-07-29 23:36:49,979 - ERROR - DB insert gagal: (1048, "Column 'kata_kunci' cannot be null")
+2025-07-29 23:36:49,979 - ERROR - DB insert gagal: (1048, "Column 'kata_kunci' cannot be null")
+2025-07-29 23:36:49,984 - ERROR - DB insert gagal: (1048, "Column 'kata_kunci' cannot be null")
+2025-07-29 23:36:50,012 - ERROR - DB insert gagal: (1048, "Column 'kata_kunci' cannot be null")
+2025-07-29 23:36:50,015 - ERROR - DB insert gagal: (1048, "Column 'kata_kunci' cannot be null")
+2025-07-29 23:36:50,016 - ERROR - DB insert gagal: (1048, "Column 'kata_kunci' cannot be null")
+2025-07-29 23:36:50,029 - ERROR - DB insert gagal: (1048, "Column 'kata_kunci' cannot be null")
+2025-07-29 23:36:50,031 - ERROR - DB insert gagal: (1048, "Column 'kata_kunci' cannot be null")
+2025-07-29 23:36:50,032 - ERROR - DB insert gagal: (1048, "Column 'kata_kunci' cannot be null")
+2025-07-29 23:36:50,049 - ERROR - DB insert gagal: (1048, "Column 'kata_kunci' cannot be null")
+2025-07-29 23:36:50,067 - ERROR - DB insert gagal: (1048, "Column 'kata_kunci' cannot be null")
+2025-07-29 23:36:50,083 - ERROR - DB insert gagal: (1048, "Column 'kata_kunci' cannot be null")
+2025-07-29 23:36:50,085 - ERROR - DB insert gagal: (1048, "Column 'kata_kunci' cannot be null")
+2025-07-29 23:36:50,096 - ERROR - DB insert gagal: (1048, "Column 'kata_kunci' cannot be null")
+2025-07-29 23:36:50,097 - ERROR - DB insert gagal: (1048, "Column 'kata_kunci' cannot be null")
+2025-07-29 23:36:50,098 - ERROR - DB insert gagal: (1048, "Column 'kata_kunci' cannot be null")
+2025-07-29 23:36:50,099 - ERROR - DB insert gagal: (1048, "Column 'kata_kunci' cannot be null")
+2025-07-29 23:36:50,111 - ERROR - DB insert gagal: (1048, "Column 'kata_kunci' cannot be null")
+2025-07-29 23:36:50,113 - ERROR - DB insert gagal: (1048, "Column 'kata_kunci' cannot be null")
+2025-07-29 23:36:50,118 - ERROR - DB insert gagal: (1048, "Column 'kata_kunci' cannot be null")
+2025-07-29 23:36:50,128 - ERROR - DB insert gagal: (1048, "Column 'kata_kunci' cannot be null")
+2025-07-29 23:36:50,128 - ERROR - DB insert gagal: (1048, "Column 'kata_kunci' cannot be null")
+2025-07-29 23:36:50,128 - ERROR - DB insert gagal: (1048, "Column 'kata_kunci' cannot be null")
+2025-07-29 23:36:50,128 - ERROR - DB insert gagal: (1048, "Column 'kata_kunci' cannot be null")
+2025-07-29 23:36:50,128 - ERROR - DB insert gagal: (1048, "Column 'kata_kunci' cannot be null")
+2025-07-29 23:36:50,147 - ERROR - DB insert gagal: (1048, "Column 'kata_kunci' cannot be null")
+2025-07-29 23:36:50,149 - ERROR - DB insert gagal: (1048, "Column 'kata_kunci' cannot be null")
+2025-07-29 23:36:50,163 - ERROR - DB insert gagal: (1048, "Column 'kata_kunci' cannot be null")
+2025-07-29 23:36:50,164 - ERROR - DB insert gagal: (1048, "Column 'kata_kunci' cannot be null")
+2025-07-29 23:36:50,166 - ERROR - DB insert gagal: (1048, "Column 'kata_kunci' cannot be null")
+2025-07-29 23:36:50,166 - ERROR - DB insert gagal: (1048, "Column 'kata_kunci' cannot be null")
+2025-07-29 23:36:50,179 - ERROR - DB insert gagal: (1048, "Column 'kata_kunci' cannot be null")
+2025-07-29 23:36:50,181 - ERROR - DB insert gagal: (1048, "Column 'kata_kunci' cannot be null")
+2025-07-29 23:36:50,181 - ERROR - DB insert gagal: (1048, "Column 'kata_kunci' cannot be null")
+2025-07-29 23:36:50,193 - ERROR - DB insert gagal: (1048, "Column 'kata_kunci' cannot be null")
+2025-07-29 23:36:50,195 - ERROR - DB insert gagal: (1048, "Column 'kata_kunci' cannot be null")
+2025-07-29 23:36:50,200 - ERROR - DB insert gagal: (1048, "Column 'kata_kunci' cannot be null")
+2025-07-29 23:36:50,201 - ERROR - DB insert gagal: (1048, "Column 'kata_kunci' cannot be null")
+2025-07-29 23:36:50,213 - DEBUG - ✅ Tersimpan 0 komentar dari https://www.tiktok.com/@aiienun_13/video/7526802919744654648
+2025-07-29 23:36:51,214 - INFO - Memproses video: http://www.tiktok.com/@ali_id_official/video/7532070508398005509
+2025-07-29 23:36:51,620 - DEBUG - Ditemukan 49 komentar
+2025-07-29 23:36:51,620 - ERROR - DB insert gagal: (1048, "Column 'kata_kunci' cannot be null")
+2025-07-29 23:36:51,620 - ERROR - DB insert gagal: (1048, "Column 'kata_kunci' cannot be null")
+2025-07-29 23:36:51,620 - ERROR - DB insert gagal: (1048, "Column 'kata_kunci' cannot be null")
+2025-07-29 23:36:51,627 - ERROR - DB insert gagal: (1048, "Column 'kata_kunci' cannot be null")
+2025-07-29 23:36:51,627 - ERROR - DB insert gagal: (1048, "Column 'kata_kunci' cannot be null")
+2025-07-29 23:36:51,627 - ERROR - DB insert gagal: (1048, "Column 'kata_kunci' cannot be null")
+2025-07-29 23:36:51,639 - ERROR - DB insert gagal: (1048, "Column 'kata_kunci' cannot be null")
+2025-07-29 23:36:51,648 - ERROR - DB insert gagal: (1048, "Column 'kata_kunci' cannot be null")
+2025-07-29 23:36:51,649 - ERROR - DB insert gagal: (1048, "Column 'kata_kunci' cannot be null")
+2025-07-29 23:36:51,662 - ERROR - DB insert gagal: (1048, "Column 'kata_kunci' cannot be null")
+2025-07-29 23:36:51,662 - ERROR - DB insert gagal: (1048, "Column 'kata_kunci' cannot be null")
+2025-07-29 23:36:51,677 - ERROR - DB insert gagal: (1048, "Column 'kata_kunci' cannot be null")
+2025-07-29 23:36:51,677 - ERROR - DB insert gagal: (1048, "Column 'kata_kunci' cannot be null")
+2025-07-29 23:36:51,677 - ERROR - DB insert gagal: (1048, "Column 'kata_kunci' cannot be null")
+2025-07-29 23:36:51,683 - ERROR - DB insert gagal: (1048, "Column 'kata_kunci' cannot be null")
+2025-07-29 23:36:51,685 - ERROR - DB insert gagal: (1048, "Column 'kata_kunci' cannot be null")
+2025-07-29 23:36:51,694 - ERROR - DB insert gagal: (1048, "Column 'kata_kunci' cannot be null")
+2025-07-29 23:36:51,696 - ERROR - DB insert gagal: (1048, "Column 'kata_kunci' cannot be null")
+2025-07-29 23:36:51,698 - ERROR - DB insert gagal: (1048, "Column 'kata_kunci' cannot be null")
+2025-07-29 23:36:51,710 - ERROR - DB insert gagal: (1048, "Column 'kata_kunci' cannot be null")
+2025-07-29 23:36:51,712 - ERROR - DB insert gagal: (1048, "Column 'kata_kunci' cannot be null")
+2025-07-29 23:36:51,714 - ERROR - DB insert gagal: (1048, "Column 'kata_kunci' cannot be null")
+2025-07-29 23:36:51,716 - ERROR - DB insert gagal: (1048, "Column 'kata_kunci' cannot be null")
+2025-07-29 23:36:51,727 - ERROR - DB insert gagal: (1048, "Column 'kata_kunci' cannot be null")
+2025-07-29 23:36:51,728 - ERROR - DB insert gagal: (1048, "Column 'kata_kunci' cannot be null")
+2025-07-29 23:36:51,728 - ERROR - DB insert gagal: (1048, "Column 'kata_kunci' cannot be null")
+2025-07-29 23:36:51,732 - ERROR - DB insert gagal: (1048, "Column 'kata_kunci' cannot be null")
+2025-07-29 23:36:51,734 - ERROR - DB insert gagal: (1048, "Column 'kata_kunci' cannot be null")
+2025-07-29 23:36:51,734 - ERROR - DB insert gagal: (1048, "Column 'kata_kunci' cannot be null")
+2025-07-29 23:36:51,746 - ERROR - DB insert gagal: (1048, "Column 'kata_kunci' cannot be null")
+2025-07-29 23:36:51,747 - ERROR - DB insert gagal: (1048, "Column 'kata_kunci' cannot be null")
+2025-07-29 23:36:51,748 - ERROR - DB insert gagal: (1048, "Column 'kata_kunci' cannot be null")
+2025-07-29 23:36:51,749 - ERROR - DB insert gagal: (1048, "Column 'kata_kunci' cannot be null")
+2025-07-29 23:36:51,749 - ERROR - DB insert gagal: (1048, "Column 'kata_kunci' cannot be null")
+2025-07-29 23:36:51,768 - ERROR - DB insert gagal: (1048, "Column 'kata_kunci' cannot be null")
+2025-07-29 23:36:51,779 - ERROR - DB insert gagal: (1048, "Column 'kata_kunci' cannot be null")
+2025-07-29 23:36:51,780 - ERROR - DB insert gagal: (1048, "Column 'kata_kunci' cannot be null")
+2025-07-29 23:36:51,782 - ERROR - DB insert gagal: (1048, "Column 'kata_kunci' cannot be null")
+2025-07-29 23:36:51,784 - ERROR - DB insert gagal: (1048, "Column 'kata_kunci' cannot be null")
+2025-07-29 23:36:51,793 - ERROR - DB insert gagal: (1048, "Column 'kata_kunci' cannot be null")
+2025-07-29 23:36:51,795 - ERROR - DB insert gagal: (1048, "Column 'kata_kunci' cannot be null")
+2025-07-29 23:36:51,797 - ERROR - DB insert gagal: (1048, "Column 'kata_kunci' cannot be null")
+2025-07-29 23:36:51,800 - ERROR - DB insert gagal: (1048, "Column 'kata_kunci' cannot be null")
+2025-07-29 23:36:51,801 - ERROR - DB insert gagal: (1048, "Column 'kata_kunci' cannot be null")
+2025-07-29 23:36:51,811 - ERROR - DB insert gagal: (1048, "Column 'kata_kunci' cannot be null")
+2025-07-29 23:36:51,814 - ERROR - DB insert gagal: (1048, "Column 'kata_kunci' cannot be null")
+2025-07-29 23:36:51,814 - ERROR - DB insert gagal: (1048, "Column 'kata_kunci' cannot be null")
+2025-07-29 23:36:51,815 - ERROR - DB insert gagal: (1048, "Column 'kata_kunci' cannot be null")
+2025-07-29 23:36:51,816 - DEBUG - ✅ Tersimpan 0 komentar dari http://www.tiktok.com/@ali_id_official/video/7532070508398005509
+2025-07-29 23:36:52,820 - INFO - 🛑 Selesai. Total komentar disimpan: 0
+2025-07-29 23:42:22,426 - INFO - 🚀 Mulai crawling TikTok by URL
+2025-07-29 23:42:22,438 - INFO - Memproses video: https://www.tiktok.com/@aiienun_13/video/7526802919744654648
+2025-07-29 23:42:23,097 - DEBUG - Ditemukan 46 komentar
+2025-07-29 23:42:23,192 - DEBUG - ✅ Tersimpan 46 komentar dari https://www.tiktok.com/@aiienun_13/video/7526802919744654648
+2025-07-29 23:42:24,194 - INFO - Memproses video: http://www.tiktok.com/@ali_id_official/video/7532070508398005509
+2025-07-29 23:42:24,586 - DEBUG - Ditemukan 48 komentar
+2025-07-29 23:42:24,786 - DEBUG - ✅ Tersimpan 47 komentar dari http://www.tiktok.com/@ali_id_official/video/7532070508398005509
+2025-07-29 23:42:25,788 - INFO - 🛑 Selesai. Total komentar disimpan: 93
+2025-07-29 23:47:41,864 - INFO - 🚀 Start TikTok crawling by URL with de-duplication
+2025-07-29 23:47:41,879 - INFO - Processing video: https://www.tiktok.com/@aiienun_13/video/7526802919744654648
+2025-07-29 23:47:42,437 - DEBUG - Fetched 46 comments, total so far: 46
+2025-07-29 23:47:43,856 - DEBUG - Fetched 50 comments, total so far: 96
+2025-07-29 23:47:45,181 - DEBUG - Fetched 50 comments, total so far: 146
+2025-07-29 23:47:46,510 - DEBUG - Fetched 50 comments, total so far: 196
+2025-07-29 23:47:47,871 - DEBUG - Fetched 35 comments, total so far: 231
+2025-07-29 23:47:47,871 - INFO - Fetched 231 comments
+2025-07-29 23:47:48,005 - INFO - Saved 183 new comments from https://www.tiktok.com/@aiienun_13/video/7526802919744654648
+2025-07-29 23:47:49,012 - INFO - Processing video: http://www.tiktok.com/@ali_id_official/video/7532070508398005509
+2025-07-29 23:47:49,390 - DEBUG - Fetched 48 comments, total so far: 48
+2025-07-29 23:47:50,761 - DEBUG - Fetched 50 comments, total so far: 98
+2025-07-29 23:47:52,201 - DEBUG - Fetched 50 comments, total so far: 148
+2025-07-29 23:47:53,520 - DEBUG - Fetched 50 comments, total so far: 198
+2025-07-29 23:47:54,855 - DEBUG - Fetched 34 comments, total so far: 232
+2025-07-29 23:47:54,855 - INFO - Fetched 232 comments
+2025-07-29 23:47:54,953 - INFO - Saved 145 new comments from http://www.tiktok.com/@ali_id_official/video/7532070508398005509
+2025-07-29 23:47:55,962 - INFO - 🛑 Done. Total new comments saved: 328
+2025-07-29 23:49:02,328 - INFO - 🚀 Start TikTok crawling by URL with de-duplication
+2025-07-29 23:49:02,344 - INFO - Processing video: https://www.tiktok.com/@aiienun_13/video/7526802919744654648
+2025-07-29 23:49:03,060 - DEBUG - Fetched 46 comments, total so far: 46
+2025-07-29 23:49:06,562 - DEBUG - Fetched 50 comments, total so far: 96
+2025-07-29 23:49:10,045 - DEBUG - Fetched 50 comments, total so far: 146
+2025-07-29 23:49:13,385 - DEBUG - Fetched 50 comments, total so far: 196
+2025-07-29 23:49:16,711 - DEBUG - Fetched 35 comments, total so far: 231
+2025-07-29 23:49:16,711 - INFO - Fetched 231 comments
+2025-07-29 23:49:16,717 - INFO - Saved 0 new comments from https://www.tiktok.com/@aiienun_13/video/7526802919744654648
+2025-07-29 23:49:19,722 - INFO - Processing video: http://www.tiktok.com/@ali_id_official/video/7532070508398005509
+2025-07-29 23:49:20,106 - DEBUG - Fetched 48 comments, total so far: 48
+2025-07-29 23:49:23,527 - DEBUG - Fetched 50 comments, total so far: 98
+2025-07-29 23:49:26,865 - DEBUG - Fetched 50 comments, total so far: 148
+2025-07-29 23:49:30,277 - DEBUG - Fetched 50 comments, total so far: 198
+2025-07-29 23:49:34,709 - DEBUG - Fetched 49 comments, total so far: 247
+2025-07-29 23:49:38,101 - DEBUG - Fetched 50 comments, total so far: 297
+2025-07-29 23:49:41,459 - DEBUG - Fetched 50 comments, total so far: 347
+2025-07-29 23:49:44,934 - DEBUG - Fetched 50 comments, total so far: 397
+2025-07-29 23:49:48,243 - DEBUG - Fetched 50 comments, total so far: 447
+2025-07-29 23:49:51,433 - DEBUG - Fetched 0 comments, total so far: 447
+2025-07-29 23:49:51,436 - INFO - Fetched 447 comments
+2025-07-29 23:49:51,540 - INFO - Saved 174 new comments from http://www.tiktok.com/@ali_id_official/video/7532070508398005509
+2025-07-29 23:49:54,562 - INFO - 🛑 Done. Total new comments saved: 174
+2025-07-29 23:57:03,047 - DEBUG - ✅ Cookies dimuat ke driver
+2025-07-29 23:57:06,243 - INFO - ➡️ Memproses video: https://www.tiktok.com/@aiienun_13/video/7526802919744654648
+2025-07-29 23:57:07,201 - DEBUG - Fetched 46 comments (total so far 46)
+2025-07-29 23:57:10,691 - DEBUG - Fetched 50 comments (total so far 96)
+2025-07-29 23:57:14,286 - DEBUG - Fetched 50 comments (total so far 146)
+2025-07-29 23:57:17,979 - DEBUG - Fetched 50 comments (total so far 196)
+2025-07-29 23:57:21,530 - DEBUG - Fetched 35 comments (total so far 231)
+2025-07-29 23:57:21,530 - INFO - Total fetched comments: 231
+2025-07-29 23:57:21,632 - INFO - ✨ 10 komentar baru disimpan
+2025-07-29 23:57:24,642 - INFO - ➡️ Memproses video: http://www.tiktok.com/@ali_id_official/video/7532070508398005509
+2025-07-29 23:57:25,237 - DEBUG - Fetched 50 comments (total so far 50)
+2025-07-29 23:57:28,760 - DEBUG - Fetched 50 comments (total so far 100)
+2025-07-29 23:57:32,226 - DEBUG - Fetched 50 comments (total so far 150)
+2025-07-29 23:57:35,945 - DEBUG - Fetched 50 comments (total so far 200)
+2025-07-29 23:57:39,423 - DEBUG - Fetched 34 comments (total so far 234)
+2025-07-29 23:57:39,428 - INFO - Total fetched comments: 234
+2025-07-29 23:57:39,467 - INFO - ✨ 10 komentar baru disimpan
+2025-07-29 23:57:42,469 - INFO - ✔️ Selesai semua video. Total komentar baru: 20
+2025-07-30 00:02:27,884 - DEBUG - ✅ Cookies dimuat ke driver
+2025-07-30 00:02:30,926 - INFO - ➡️ Memproses: https://www.tiktok.com/@some_user/video/7123456789012345678

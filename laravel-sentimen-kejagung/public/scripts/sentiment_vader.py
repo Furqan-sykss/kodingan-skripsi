@@ -108,14 +108,16 @@ def analyze_sentiment(teks):
 # =================== 🚀 Eksekusi Analisis ===================
 
 
-def run_vader_analysis(limit=70):
+def run_vader_analysis(limit=500):
     logger.info("🚀 Mulai analisis VADER...")
     select_query = f"""
     SELECT id, video_id, username, comment, tanggal_komentar
     FROM komentar_mentah
-    WHERE is_processed_vader = 0 AND is_processed_ml = 0 AND id >= 13874
-    ORDER BY id LIMIT {limit}
+    WHERE is_processed_vader = 0 AND is_processed_ml = 0
+    ORDER  BY RAND()  LIMIT {limit}
     """
+    # AND id >= 12917
+    # 13874
     # ORDER  BY RAND()  LIMIT {limit}
 
     insert_query = """
