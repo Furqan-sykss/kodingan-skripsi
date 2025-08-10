@@ -59,14 +59,19 @@ Session = sessionmaker(bind=engine)
 def bersihkan_teks(teks):
     teks = re.sub(r"http\S+|@\S+|#\S+", "", teks)
     teks = re.sub(r"\d+", "", teks)
-    teks = re.sub(r"[^0-9A-Za-z\s\.\,\!\?\:\;\-\–]", "", teks)
-    # teks = re.sub(r"[^\w\s]", " ", teks)
+    # teks = re.sub(r"[^0-9A-Za-z\s\.\,\!\?\:\;\-\–]", "", teks)
+    teks = re.sub(r"[^\w\s]", " ", teks)
     teks = teks.lower().strip()
     teks = re.sub(r'\s+', ' ', teks)
     return teks
 
 
 def normalisasi(teks):
+    # Normalisasi frasa (multi-word) terlebih dahulu
+    for key in sorted(normalization_dict, key=lambda x: -len(x.split())):
+        if " " in key and key in teks:
+            teks = teks.replace(key, normalization_dict[key])
+    # Lanjutkan normalisasi kata per kata
     kata_list = teks.split()
     return " ".join([normalization_dict.get(k, k) for k in kata_list])
 
@@ -108,14 +113,15 @@ def analyze_sentiment(teks):
 # =================== 🚀 Eksekusi Analisis ===================
 
 
-def run_vader_analysis(limit=132):
+def run_vader_analysis(limit=500):
     logger.info("🚀 Mulai analisis VADER...")
     select_query = f"""
     SELECT id, video_id, username, comment, tanggal_komentar
     FROM komentar_mentah
-    WHERE is_processed_vader = 0 AND is_processed_ml = 0 AND id >= 15787
+    WHERE is_processed_vader = 0 AND is_processed_ml = 0 AND YEAR(tanggal_komentar) = 2025
     LIMIT {limit}
     """
+    # AND id >= 15787
     # AND id >= 12917
     # 13874
     # ORDER  BY RAND()  LIMIT {limit}

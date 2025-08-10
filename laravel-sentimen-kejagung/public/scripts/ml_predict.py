@@ -7,6 +7,19 @@ import re
 import os
 import json
 import sys
+import logging
+
+# === Inisialisasi logger ===
+logger = logging.getLogger('ml_predict')
+logger.setLevel(logging.INFO)
+fh = logging.FileHandler('ml_predict_logging.log', encoding='utf-8')
+fh.setFormatter(logging.Formatter('%(asctime)s - %(levelname)s - %(message)s'))
+if not logger.hasHandlers():
+    logger.addHandler(fh)
+ch = logging.StreamHandler()
+ch.setFormatter(logging.Formatter('%(asctime)s - %(levelname)s - %(message)s'))
+if not any(isinstance(h, logging.StreamHandler) for h in logger.handlers):
+    logger.addHandler(ch)
 
 # === Load kamus normalisasi ===
 kamus_path = os.path.join(os.getcwd(), "public/scripts/kamus_normalisasi.json")
@@ -19,13 +32,18 @@ with open(kamus_path, 'r', encoding='utf-8') as f:
 def bersihkan_teks(teks):
     teks = re.sub(r"http\S+|@\S+|#\S+", "", teks)
     teks = re.sub(r"\d+", "", teks)
-    teks = re.sub(r"[^0-9A-Za-z\s\.\,\!\?\:\;\-\–]", "", teks)
+    teks = re.sub(r"[^\w\s]", " ", teks)
     teks = teks.lower().strip()
     teks = re.sub(r'\s+', ' ', teks)
     return teks
 
 
 def normalisasi_kata(teks):
+    # Normalisasi frasa (multi-word) terlebih dahulu
+    for key in sorted(normalization_dict, key=lambda x: -len(x.split())):
+        if " " in key and key in teks:
+            teks = teks.replace(key, normalization_dict[key])
+    # Lanjutkan normalisasi kata per kata
     kata_list = teks.split()
     hasil = [normalization_dict.get(kata, kata) for kata in kata_list]
     return " ".join(hasil)
@@ -34,7 +52,8 @@ def normalisasi_kata(teks):
 def translate(teks):
     try:
         return GoogleTranslator(source='auto', target='en').translate(teks)
-    except:
+    except Exception as e:
+        logger.warning(f"Translasi gagal: {e}")
         return teks
 
 # === Fungsi utama untuk Flask/API atau manual run ===
@@ -47,23 +66,27 @@ def run_ML_analysis():
         captured_output = StringIO()
         sys.stdout = captured_output
 
-        exec_main_script()
+        processed, skipped = exec_main_script()
 
         sys.stdout = original_stdout
         output = captured_output.getvalue()
-        print(output)
-        return {"status": "success", "message": "Analisis ML berhasil!", "output": output}
+        logger.info(output)
+        return {
+            "status": "success",
+            "message": f"Analisis ML berhasil! {processed} data berhasil diproses, {skipped} data gagal.",
+            "processed": processed,
+            "skipped": skipped,
+            "output": output
+        }
 
     except SystemExit:
         sys.stdout = original_stdout
+        logger.warning("Tidak ada data untuk diproses")
         return {"status": "warning", "message": "Tidak ada data untuk diproses"}
     except Exception as e:
         sys.stdout = original_stdout
-        print(f"❌ Error: {str(e)}")
+        logger.error(f"❌ Error: {str(e)}")
         raise e
-
-# === Script utama ===
-
 
 def exec_main_script():
     engine = create_engine(
@@ -74,13 +97,13 @@ def exec_main_script():
         SELECT id, video_id, username, comment, tanggal_komentar 
         FROM komentar_mentah
         WHERE is_processed_ml = 0 AND is_processed_vader = 0 AND id >= 13954
-       LIMIT 500 
+       LIMIT 1 
     """
     data_mentah = pd.read_sql(query, engine)
 
-    print(f"🔎 Jumlah Data: {len(data_mentah)}")
+    logger.info(f"🔎 Jumlah Data: {len(data_mentah)}")
     if data_mentah.empty:
-        print("❌ Tidak ada data yang perlu diproses.")
+        logger.warning("❌ Tidak ada data yang perlu diproses.")
         exit()
 
     # 2️⃣ Preprocessing
@@ -104,6 +127,9 @@ def exec_main_script():
 
     data_mentah['predicted_label'] = y_pred
     data_mentah['confidence_score'] = [max(p) for p in y_proba]
+
+    processed = 0
+    skipped = 0
 
     # 5️⃣ Simpan hasil ke database
     for _, row in data_mentah.iterrows():
@@ -134,10 +160,12 @@ def exec_main_script():
                     "created_at": datetime.now()
                 })
                 trans.commit()
-                print(f"✅ Prediksi disimpan untuk ID: {row['id']}")
+                logger.info(f"✅ Prediksi disimpan untuk ID: {row['id']}")
+                processed += 1
             except Exception as e:
                 trans.rollback()
-                print(f"❌ Gagal menyimpan ID {row['id']}: {e}")
+                logger.error(f"❌ Gagal menyimpan ID {row['id']}: {e}")
+                skipped += 1
 
     # 6️⃣ Update status
     update_query = text(
@@ -148,11 +176,12 @@ def exec_main_script():
             for id_ in data_mentah['id']:
                 conn.execute(update_query, {'id': id_})
             trans.commit()
-            print("✅ Status is_processed_ml berhasil di-update.")
+            logger.info("✅ Status is_processed_ml berhasil di-update.")
         except Exception as e:
             trans.rollback()
-            print(f"❌ Gagal update status: {e}")
+            logger.error(f"❌ Gagal update status: {e}")
 
+    return processed, skipped
 
 # ✅ Jalankan manual jika tidak lewat Flask
 if __name__ == "__main__":
