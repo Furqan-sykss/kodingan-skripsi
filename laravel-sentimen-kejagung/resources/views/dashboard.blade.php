@@ -640,7 +640,8 @@
 
                                 <!-- Tambah kolom Delete di <th> -->
                                 @if (Auth::user()->role === 'admin')
-                                    <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                                    <th scope="col"
+                                        class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
                                         Aksi
                                     </th>
                                 @endif
@@ -705,7 +706,8 @@
                                     <!-- Tambah kolom aksi untuk delete -->
                                     @if (Auth::user()->role === 'admin')
                                         <td class="px-6 py-4 whitespace-nowrap">
-                                            <button class="btn btn-danger btn-delete-komentar" data-id="{{ $item->id }}">
+                                            <button class="btn btn-danger btn-delete-komentar"
+                                                data-id="{{ $item->id }}">
                                                 Hapus
                                             </button>
                                         </td>
