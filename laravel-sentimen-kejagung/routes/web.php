@@ -26,12 +26,14 @@ Route::middleware(['auth'])->group(function () {
     // 🏠 Halaman Dashboard untuk semua user
     Route::get('/', [DashboardController::class, 'index'])->name('dashboard');
     Route::get('/export-komentar-ml', [ExportController::class, 'exportKomentarML'])->name('export.komentar.ml');
+    Route::delete('/komentar-ml/{id}', [DashboardController::class, 'deleteKomentarML'])->name('komentar.ml.delete');
 
     Route::middleware([AdminMiddleware::class])->group(function () {
         Route::post('/scrape', [ScrapeController::class, 'scrape'])->name('scrape');
         Route::get('/result', [ResultController::class, 'index'])->name('scraping.result');
         Route::post('/admin/analyze/analisis-ml', [MLAnalysisController::class, 'analyze_ml'])
             ->name('admin.analyze.ml');
+        Route::delete('/admin/komentar-mentah/{id}', [ResultController::class, 'deleteKomentarMentah'])->name('admin.komentar.mentah.delete');
     });
 });
 

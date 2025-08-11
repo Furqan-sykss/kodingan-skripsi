@@ -8,9 +8,11 @@
                     <x-nav-link :href="route('dashboard')" :active="request()->routeIs('dashboard')">
                         {{ __('Dashboard') }}
                     </x-nav-link>
-                    <x-nav-link :href="route('scraping.result')" :active="request()->routeIs('scraping.result')">
-                        {{ __('Hasil Scraping') }}
-                    </x-nav-link>
+                    @if(Auth::user() && Auth::user()->role === 'admin')
+                        <x-nav-link :href="route('scraping.result')" :active="request()->routeIs('scraping.result')">
+                            {{ __('Hasil Scraping') }}
+                        </x-nav-link>
+                    @endif
                 </div>
             </div>
 
@@ -90,9 +92,11 @@
             <x-responsive-nav-link :href="route('dashboard')" :active="request()->routeIs('dashboard')">
                 {{ __('Dashboard') }}
             </x-responsive-nav-link>
-            <x-responsive-nav-link :href="route('scraping.result')" :active="request()->routeIs('scraping.result')">
-                {{ __('Hasil Scraping') }}
-            </x-responsive-nav-link>
+            @if(Auth::user() && Auth::user()->role === 'admin')
+                <x-responsive-nav-link :href="route('scraping.result')" :active="request()->routeIs('scraping.result')">
+                    {{ __('Hasil Scraping') }}
+                </x-responsive-nav-link>
+            @endif
         </div>
 
         <!-- Responsive Settings Options -->

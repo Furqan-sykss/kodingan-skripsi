@@ -343,6 +343,15 @@
             background-color: #0d9f6e;
         }
 
+        .btn-danger {
+            background-color: #ef4444;
+            color: white;
+        }
+
+        .btn-danger:hover {
+            background-color: #dc2626;
+        }
+
         .comment-text,
         .video-id-text {
             max-width: 150px;
@@ -401,7 +410,8 @@
             <div class="flex items-center justify-between">
                 <div>
                     <h1 class="text-2xl font-bold">Dashboard Analisis Sentimen</h1>
-                    <p class="text-sm opacity-90">Visualisasi hasil analisis sentimen menggunakan Machine Learning</p>
+                    <p class="text-sm opacity-90">Visualisasi hasil analisis sentimen menggunakan Machine Learning
+                    </p>
                 </div>
                 <div class="text-right">
                     <p class="text-sm">Login sebagai:</p>
@@ -627,6 +637,13 @@
                                 <th scope="col"
                                     class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
                                     Confidence</th>
+
+                                <!-- Tambah kolom Delete di <th> -->
+                                @if (Auth::user()->role === 'admin')
+                                    <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                                        Aksi
+                                    </th>
+                                @endif
                             </tr>
                         </thead>
                         <tbody class="bg-white divide-y divide-gray-200">
@@ -684,6 +701,15 @@
                                                 class="text-xs font-medium text-gray-500">{{ number_format($item->confidence_score * 100, 0) }}%</span>
                                         </div>
                                     </td>
+
+                                    <!-- Tambah kolom aksi untuk delete -->
+                                    @if (Auth::user()->role === 'admin')
+                                        <td class="px-6 py-4 whitespace-nowrap">
+                                            <button class="btn btn-danger btn-delete-komentar" data-id="{{ $item->id }}">
+                                                Hapus
+                                            </button>
+                                        </td>
+                                    @endif
                                 </tr>
                             @endforeach
                         </tbody>
@@ -783,6 +809,31 @@
                     error: function(xhr, status, error) {
                         hideLoading();
                         alert("Terjadi kesalahan saat analisis ML. Error: " + error);
+                    }
+                });
+            }
+        });
+
+        // Delete Comment
+        $(document).on('click', '.btn-delete-komentar', function() {
+            if (confirm('Yakin ingin menghapus data ini?')) {
+                var id = $(this).data('id');
+                $.ajax({
+                    url: '/komentar-ml/' + id,
+                    type: 'DELETE',
+                    data: {
+                        _token: '{{ csrf_token() }}'
+                    },
+                    success: function(response) {
+                        if (response.success) {
+                            alert('Data berhasil dihapus!');
+                            location.reload();
+                        } else {
+                            alert('Gagal menghapus data!');
+                        }
+                    },
+                    error: function() {
+                        alert('Terjadi kesalahan saat menghapus data!');
                     }
                 });
             }

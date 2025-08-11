@@ -20,4 +20,20 @@ class DashboardController extends Controller
         $totalData = KomentarSentimenML::count();
         return view('dashboard', compact('komentar', 'limit', 'sentimentCounts', 'totalData'));
     }
+    public function deleteKomentarML($id)
+    {
+        // Cari data komentar_sentimen_ml
+        $komentar = KomentarSentimenML::findOrFail($id);
+
+        // Simpan mentah_id sebelum hapus
+        $mentahId = $komentar->mentah_id;
+
+        // Hapus data komentar_sentimen_ml
+        $komentar->delete();
+
+        // Hapus data terkait di komentar_mentah
+        DB::table('komentar_mentah')->where('id', $mentahId)->delete();
+
+        return response()->json(['success' => true]);
+    }
 }

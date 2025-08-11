@@ -60,8 +60,8 @@ def crawl():
 @app.route('/analyze/analisis-ml', methods=['POST'])
 def analyze_ml():
     try:
-        run_ML_analysis()
-        return jsonify({"message": "Analisis ML berhasil!"}), 200
+        result = run_ML_analysis()
+        return jsonify(result), 200
     except Exception as e:
         return jsonify({"error": str(e)}), 500
 

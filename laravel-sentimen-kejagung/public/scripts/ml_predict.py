@@ -88,6 +88,7 @@ def run_ML_analysis():
         logger.error(f"❌ Error: {str(e)}")
         raise e
 
+
 def exec_main_script():
     engine = create_engine(
         "mysql+pymysql://root:@localhost/analisis_sentimen_kejagung_db")
@@ -96,8 +97,8 @@ def exec_main_script():
     query = """
         SELECT id, video_id, username, comment, tanggal_komentar 
         FROM komentar_mentah
-        WHERE is_processed_ml = 0 AND is_processed_vader = 0 AND id >= 13954
-       LIMIT 1 
+        WHERE is_processed_ml = 0 AND is_processed_vader = 0 AND id >= 12917
+        LIMIT 500 
     """
     data_mentah = pd.read_sql(query, engine)
 
@@ -182,6 +183,7 @@ def exec_main_script():
             logger.error(f"❌ Gagal update status: {e}")
 
     return processed, skipped
+
 
 # ✅ Jalankan manual jika tidak lewat Flask
 if __name__ == "__main__":

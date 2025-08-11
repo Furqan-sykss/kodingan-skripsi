@@ -211,6 +211,9 @@
                             <th class="px-6 py-3">Likes</th>
                             <th class="px-6 py-3">Tanggal Komentar</th>
                             <th class="px-6 py-3">Waktu Scraping</th>
+                            @if (Auth::user()->role === 'admin')
+                                <th class="px-6 py-3">Aksi</th>
+                            @endif
                         </tr>
                     </thead>
                     <tbody>
@@ -236,6 +239,15 @@
                                 <td class="px-6 py-4 whitespace-nowrap">
                                     {{ \Carbon\Carbon::parse($item->created_at)->format('d M Y H:i') }}
                                 </td>
+                                @if (Auth::user()->role === 'admin')
+                                    <td class="px-6 py-4 whitespace-nowrap">
+                                        <button type="button"
+                                            class="btn-delete-mentah bg-red-600 hover:bg-red-700 text-white font-bold py-1 px-4 rounded transition"
+                                            data-id="{{ $item->id }}">
+                                            Hapus
+                                        </button>
+                                    </td>
+                                @endif
                             </tr>
                         @endforeach
                     </tbody>
@@ -248,12 +260,40 @@
         </div>
     </div>
 
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
     <script>
         // Make comment text fully visible on click
         document.querySelectorAll('.comment-text').forEach(el => {
             el.addEventListener('click', function() {
                 this.classList.toggle('expanded');
             });
+        });
+
+        $.ajaxSetup({
+            headers: {
+                'X-CSRF-TOKEN': '{{ csrf_token() }}'
+            }
+        });
+
+        $(document).on('click', '.btn-delete-mentah', function() {
+            if (confirm('Yakin ingin menghapus data ini beserta hasil analisisnya?')) {
+                var id = $(this).data('id');
+                $.ajax({
+                    url: '/admin/komentar-mentah/' + id,
+                    type: 'DELETE',
+                    success: function(response) {
+                        if (response.success) {
+                            alert('Data berhasil dihapus!');
+                            location.reload();
+                        } else {
+                            alert('Gagal menghapus data: ' + (response.message || ''));
+                        }
+                    },
+                    error: function() {
+                        alert('Terjadi kesalahan saat menghapus data!');
+                    }
+                });
+            }
         });
     </script>
 </x-app-layout>
