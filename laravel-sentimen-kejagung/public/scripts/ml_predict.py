@@ -95,11 +95,13 @@ def exec_main_script():
 
     # 1️⃣ Ambil data komentar mentah
     query = """
-        SELECT id, video_id, username, comment, tanggal_komentar 
-        FROM komentar_mentah
-        WHERE is_processed_ml = 0 AND is_processed_vader = 0 AND id >= 12917
-        LIMIT 500 
+        SELECT id, video_id, username, comment, tanggal_komentar
+        FROM komentar_mentah 
+        WHERE is_processed_ml = 0 AND is_processed_vader = 0 AND id >= 15787
+        LIMIT 500;
     """
+    # AND id >= 12917
+    # SELECT id, video_id, username, comment, tanggal_komentar FROM komentar_mentah WHERE is_processed_ml = 0 AND is_processed_vader = 0 LIMIT 500
     data_mentah = pd.read_sql(query, engine)
 
     logger.info(f"🔎 Jumlah Data: {len(data_mentah)}")

@@ -79,7 +79,7 @@ def load_cookies(driver, cookie_path):
         return False
 
 
-def crawling_by_hashtag(tagar, db, cursor, max_videos=4, max_comments=100):
+def crawling_by_hashtag(tagar, db, cursor, max_videos=10, max_comments=500):
     crawl_logger.debug(f"\n🔍 Crawling untuk tagar: #{tagar}")
     options = Options()
     options.add_argument('--headless')
@@ -160,19 +160,30 @@ def crawling_by_hashtag(tagar, db, cursor, max_videos=4, max_comments=100):
                     '%Y-%m-%d %H:%M:%S') if unix_date else None
 
                 try:
-                    sql = """
-                        INSERT INTO komentar_mentah (
-                            video_id, kata_kunci, username, comment, likes, replies, tanggal_komentar,
-                            is_processed_vader, is_processed_ml, created_at
-                        ) VALUES (%s, %s, %s, %s, %s, %s, %s, 0, 0, NOW())
-                    """
-                    cursor.execute(sql, (
-                        video_url, tagar, user_nickname, raw_comment,
-                        likes, replies, tanggal_komentar
-                    ))
-                    db.commit()
-                    komentar_disimpan += 1
-                    crawl_logger.debug(f"✅ Disimpan: {raw_comment[:40]}...")
+                    # ✅ cek duplikat dulu sebelum insert
+                    check_sql = "SELECT COUNT(*) FROM komentar_mentah WHERE comment = %s AND video_id = %s"
+                    cursor.execute(check_sql, (raw_comment, video_url))
+                    exists = cursor.fetchone()[0]
+
+                    if exists == 0:
+                        sql = """
+                            INSERT INTO komentar_mentah (
+                                video_id, kata_kunci, username, comment, likes, replies, tanggal_komentar,
+                                is_processed_vader, is_processed_ml, created_at
+                            ) VALUES (%s, %s, %s, %s, %s, %s, %s, 0, 0, NOW())
+                        """
+                        cursor.execute(sql, (
+                            video_url, tagar, user_nickname, raw_comment,
+                            likes, replies, tanggal_komentar
+                        ))
+                        db.commit()
+                        komentar_disimpan += 1
+                        crawl_logger.debug(
+                            f"✅ Disimpan: {raw_comment[:40]}...")
+                    else:
+                        crawl_logger.debug(
+                            f"⏩ Duplikat dilewati: {raw_comment[:40]}...")
+
                 except Exception as e:
                     crawl_logger.error(f"❌ Gagal simpan DB: {e}")
 
@@ -203,7 +214,7 @@ def run_crawling():
         crawl_logger.error(f"❌ Koneksi database gagal: {e}")
         return 0
 
-    hashtags = ["kejaksaan agung", "kejagung", "kinerja kejaksaan agung"]
+    hashtags = ["kejagung", "kejaksaan agung"]
     total_berhasil = 0
     for tag in hashtags:
         crawl_logger.info(f"Memulai crawling untuk tagar: {tag}")
@@ -216,4 +227,4 @@ def run_crawling():
 
 # ✅ jika digunakan untuk dipanggil manual
 # if __name__ == "__main__":
-#     run_scraping()
+#     run_crawling()
