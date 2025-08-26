@@ -12,10 +12,10 @@
                         <x-nav-link :href="route('scraping.result')" :active="request()->routeIs('scraping.result')">
                             {{ __('Hasil Scraping') }}
                         </x-nav-link>
-                        <x-nav-link :href="route('rincian.sentimen')" :active="request()->routeIs('rincian.sentimen')">
-                            {{ __('Rincian Sentimen') }}
-                        </x-nav-link>
                     @endif
+                    <x-nav-link :href="route('rincian.sentimen')" :active="request()->routeIs('rincian.sentimen')">
+                        {{ __('Rincian Sentimen') }}
+                    </x-nav-link>
                 </div>
             </div>
 
